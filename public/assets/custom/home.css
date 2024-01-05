@@ -1,0 +1,101 @@
+.mini-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #007bff; /* Change the color as needed */
+    border-radius: 50%;
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.custom-background {
+    background-image: url('/images/background.jpg'); /* Adjust the path to your image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;
+}
+
+section {
+    /* padding: 40px 0; */
+    background-color: #f4f1f1;
+
+    padding: 20px;
+    /*margin: 99px;*/
+    margin-block: 100px;
+    /* Bootstrap's background color for light backgrounds */
+}
+
+.feature {
+    padding: 20px;
+    border: 1px solid #c3dffa;
+    /* Bootstrap's border color for light backgrounds */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    /* White background color */
+
+
+    text-align: center;
+    margin: 15px;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    margin: 0 15px;
+    border-radius: 10%;
+    background-size: 10mm;
+    size: 2cm;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e8491d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+
+.testimonial {
+    text-align: center;
+    margin: 20px;
+}
+
+.contact {
+    text-align: center;
+    margin: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
