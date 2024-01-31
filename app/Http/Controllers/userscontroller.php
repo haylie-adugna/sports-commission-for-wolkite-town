@@ -2,11 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+
 use Illuminate\Http\Request;
-use app\model\user;
+ use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class userscontroller extends Controller
 {
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+        return view('backend.users.create');
+
+
+    }
     /**
      * Create a new controller instance.
      *

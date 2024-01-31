@@ -8,6 +8,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\Announcmentcontroller;
 use App\Http\Controllers\projectcontroller;
+use App\Http\Controllers\Auth\VerifyEmailController;
 
 
 /*
@@ -34,6 +35,7 @@ Route::get('/Registration', function () {
 })->name('registration');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/email_verfication', [VerifyEmailController::class, 'email_verfication'])->name('verify_email');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -43,7 +45,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/show', [HomeController::class, 'show'])->name('home.show');
 
 
-Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
+Route::get('/userscreate', [usersController::class, 'register'])->name('users.create');
+
+
 Route::get('/usersupdate', [usersController::class, 'edit'])->name('users.update');
 Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
 Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');

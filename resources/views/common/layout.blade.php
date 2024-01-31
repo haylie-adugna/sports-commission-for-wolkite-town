@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/custom/home.css">
+<link rel="stylesheet" href="{{ asset('assets/custom/home.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
+<script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
@@ -95,4 +95,18 @@
     .goog-te-gadget {
         color: #040f1c00;
     }
+
+
+        /* Your custom styles */
+        .navbar-nav .nav-item .nav-link {
+            text-decoration: none;
+            color: #000;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #fff; /* Set your desired hover text color */
+            background-color: #007bff; /* Set your desired hover background color */
+        }
+
 </style>

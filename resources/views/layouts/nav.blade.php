@@ -1,8 +1,8 @@
  <!-- navbar -->
- <nav class="navbar">
+ <nav class="navbar fixed-top">
     <div class="logo_item">
         <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="assets/images/logo.png" alt="CodingNepal" style="width: 100px; height: 100px;"> <!-- Adjust the width as needed -->
+        <img src="{{ asset('assets/images/logo.png') }}" alt="wtsc" style="width: 60px; height: 60px;"> <!-- Adjust the width as needed -->
         wolkite town sport commission
     </div>
 
@@ -26,7 +26,7 @@
       <i class='bx bx-bell' ></i>
 
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="assets/images/profile1.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+          <img src="{{ asset('assets/images/profile1.jpg') }}" alt="" width="30" height="30" class="rounded-circle">
           <span class="d-none d-sm-inline mx-1">{{ Auth::user()->name }}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

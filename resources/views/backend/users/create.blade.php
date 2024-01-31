@@ -1,26 +1,36 @@
 @extends('layouts.app')
 @section('content')
+@if(session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+    @endif
 <div class="py-5">
-<form class="row g-3 needs-validation" novalidate  method="POST" action="{{ route('register') }}">
+<form class="row g-3 needs-validation" novalidate  method="" action="{{ route('users.create') }}">
     <div class="col-md-4">
-      <label for="validationCustom01" class="form-label">First name user</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+      <label for="validationCustom01" class="form-label">First name</label>
+      <input type="text" name="name" class="form-control" id="validationCustom01" value="Mark" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Last names</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+      <label for="validationCustom02" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" id="validationCustom02" value="Otto" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">password</label>
+        <input type="email" class="form-control" name="password" id="validationCustom02" value="Otto" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
     <div class="col-md-4">
       <label for="validationCustomUsername" class="form-label">Username</label>
       <div class="input-group has-validation">
         <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+        <input type="text" class="form-control" name="user_type" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>

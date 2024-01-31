@@ -15,6 +15,7 @@
 
       @include('common.layout')
       <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
       <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>

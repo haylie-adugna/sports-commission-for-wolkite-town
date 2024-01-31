@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="assets/image/background.jpg">WOLKITE Logo</a>
+    <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="{{ asset('assets/images/logo.png') }}" alt="wtsc" style="width: 60px; height: 60px;"> <!-- Adjust the width as needed -->
+        wolkite town sport commission
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,8 +14,21 @@
 
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="#">today news</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">contact us</a>
+            </li>
+            <li class="nav-item">
+                <a href="/Schedule" class="nav-link">Schedule</a>
+            </li>
+            <li class="nav-item">
+                <a href="/events" class="nav-link">Events</a>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sports
@@ -25,7 +42,16 @@
                 </div>
             </li>
         </ul>
+
         <ul class="navbar-nav">
+            <i class='bx bx-sun' id="darkLight"></i>
+            <li>
+                <div class="col-4">languge
+                    <br>
+                    <div id="google_translate_element">
+                    </div>
+                </div>
+            </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                  </li>

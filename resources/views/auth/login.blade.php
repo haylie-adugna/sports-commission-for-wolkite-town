@@ -1,12 +1,13 @@
 @extends('welcome')
 
 @section('content')
+
 <body class="custom-background">
 
-
+<h1>login</h1>
 <div class="container ">
     <h1 class="text-center font-weight-bold text-primary my-4">
-        wolkite town sport commission
+        {{-- wolkite town sport --}}
       </h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
