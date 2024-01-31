@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
       <label for="validationCustom02" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" id="validationCustom02" value="Otto" required>
+      <input type="email" class="form-control" name="email" id="validationCustom02" value="users" required>
       <div class="valid-feedback">
         Looks good!
       </div>

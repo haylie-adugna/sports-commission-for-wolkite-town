@@ -11,6 +11,7 @@ use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,11 +47,10 @@ Route::get('/show', [HomeController::class, 'show'])->name('home.show');
 
 
 Route::get('/userscreate', [usersController::class, 'register'])->name('users.create');
-
-
 Route::get('/usersupdate', [usersController::class, 'edit'])->name('users.update');
 Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
 Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');
+
 
 
 Route::get('/Announcmentcreate', [Announcmentcontroller::class, 'create'])->name('announcment.create');
