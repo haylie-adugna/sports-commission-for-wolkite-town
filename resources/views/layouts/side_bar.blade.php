@@ -30,7 +30,7 @@
                 </span>
                 Add New User
               </a>
-              <a href="{{route('users.update')}}" class="nav_link sublink">
+              <a href="{{route('users.index')}}" class="nav_link sublink">
                 <span class="navlink_icon">
                   <i class="bx bx-cog"></i> <!-- Icon for Manage Users -->
                 </span>

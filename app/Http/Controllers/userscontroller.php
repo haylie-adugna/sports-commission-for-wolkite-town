@@ -4,41 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
- use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class userscontroller extends Controller
 {
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-        return view('backend.users.create');
-
-
-    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    protected $user;
+
+    public function __construct(User $user)
     {
-        $this->middleware('auth');
+        $this->user = $user;
     }
 
     /**
@@ -50,9 +36,16 @@ class userscontroller extends Controller
     {
         return view('backend.users.create');
     }
+    public function store(Request $request): RedirectResponse
+    {
+       User::create($request->all());
+       return redirect()->route('users.create')->with('status', 'Registration successful!');
+    }
     public function index()
     {
-        return view('backend.users.index');
+        $users= User::all();
+
+        return view('backend.users.index', compact('users'));
     }
     public function show()
     {

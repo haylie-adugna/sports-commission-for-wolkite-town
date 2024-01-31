@@ -46,7 +46,7 @@
         <ul class="navbar-nav">
             <i class='bx bx-sun' id="darkLight"></i>
             <li>
-                <div class="col-4">languge
+                <div class="col-4">
                     <br>
                     <div id="google_translate_element">
                     </div>

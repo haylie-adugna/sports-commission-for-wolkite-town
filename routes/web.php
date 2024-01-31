@@ -46,8 +46,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/show', [HomeController::class, 'show'])->name('home.show');
 
 
-Route::get('/userscreate', [usersController::class, 'register'])->name('users.create');
+Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
+Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
 Route::get('/usersupdate', [usersController::class, 'edit'])->name('users.update');
+Route::get('/showall', [usersController::class, 'index'])->name('users.index');
 Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
 Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');
 

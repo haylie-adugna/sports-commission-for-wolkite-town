@@ -45,56 +45,44 @@
     }
 </script>
 
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
+<script type="text/javascript" src="{{ asset('assets/js/languge.js') }}"> </script>
 <style>
     .custom-background{
         background-image: url('assets/images/logo.png');
         height: 100%;
         width: 100%;
     }
-    body {
-        top: 0px !important;
-        position: static !important;
-    }
-
     .VIpgJd-ZVi9od-ORHb-OEVmcd {
-        display: none !important;
+ display: none !important;
     }
+.VIpgJd-yAWNEb-hvhgNd{
+  display: none;
+}
 
-    .VIpgJd-yAWNEb-hvhgNd {
-        display: none;
-    }
-
-    .VIpgJd-yAWNEb-hvhgNd-l4eHX-i3jM8c {
-        display: none !important;
-    }
-
-    #google_translate_element {
-        color: transparent;
-    }
-
-    #google_translate_element a {
-        display: none;
-    }
-
-    #google_translate_element select {
-        background-color: #f6edfd;
-        color: #383ffa;
-        border: none;
-        border-radius: 3px;
-        padding: 6px 8px
-    }
-
-    .goog-te-combo {
-        width: 100%;
-        height: 40px;
-        border-radius: 5px;
-    }
-
-    .goog-te-gadget {
-        color: #040f1c00;
-    }
+.VIpgJd-yAWNEb-hvhgNd-l4eHX-i3jM8c{
+display: none !important;
+}
+#google_translate_element {
+  color: transparent;
+}
+#google_translate_element a {
+  display: none;
+}
+#google_translate_element select{
+   background-color:#f6edfd;
+   color:#383ffa;
+   border: none;
+   border-radius:3px;
+   padding:6px 8px
+}
+.goog-te-combo{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+.goog-te-gadget {
+    color: #040f1c00;
+}
 
 
         /* Your custom styles */
