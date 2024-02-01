@@ -17,6 +17,8 @@
       <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
       <!-- Boxicons CSS -->
+      <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
+
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body class="g-sidenav-show bg-gray-100 pl-5 pt-5">
