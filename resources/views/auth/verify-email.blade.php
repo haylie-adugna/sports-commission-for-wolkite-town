@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>verify email</title>
 
     <!-- Include your apple-touch-icon -->
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/images/logo.png') }}">
@@ -14,18 +14,39 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
 
     <!-- Add other CSS files or styles if needed -->
+    <style>
+         body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-container {
+            width: 500px;
+            margin: 1rem; /* Adjust margin as needed */
+            overflow: hidden; /* Make the container not scrollable */
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-    <div class="container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <div class="card card-container">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center min-vh-100">
+           <!-- Content goes here -->
+
+
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __('Thanks for signing up! Before getting started,
+             could you verify your email address by clicking
+              on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-success">
+            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        </div>
+
         @endif
 
         <div class="mt-4">
@@ -45,6 +66,7 @@
                 {{ __('Log Out') }}
             </button>
         </form>
+    </div>
     </div>
 
     <!-- Include Bootstrap JS from public folder -->
