@@ -49,19 +49,7 @@
 
 <script type="text/javascript" src="{{ asset('assets/js/languge.js') }}"> </script>
 <style>
-    a:hover {
-        text-decoration: underline;
-    }
 
-    button {
-        border: 1px solid #87CEEB; /* Light Blue, you can adjust the color */
-        background-color: transparent;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #87CEEB; /* Light Blue, matching the border color on hover */
-    }
     .custom-background{
         background-image: url('{{ asset('assets/images/logo.png') }}');
         height: 100%;

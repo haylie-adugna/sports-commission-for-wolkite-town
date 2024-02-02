@@ -10,7 +10,8 @@
               <span class="navlink_icon">
                 <i class="bx bx-home-alt"></i>
               </span>
-              <span class="navlink">Dashboard</span>
+              <a href="{{ route('dashboard') }}" class="nav_link sublink">Dashboard</a>
+
             </div>
           </li>
           @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager' || Auth::user()->user_type === 'projectmanager')

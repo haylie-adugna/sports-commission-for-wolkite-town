@@ -36,7 +36,7 @@
         <!-- Main content -->
         <div class="col-md-9">
             <div class="wrapper-content ml-25 mt-5" style="width: calc(100% - 250px);">
-                hello world
+
                 @yield('content')
             </div>
         </div>

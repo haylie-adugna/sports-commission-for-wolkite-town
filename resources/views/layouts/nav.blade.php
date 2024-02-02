@@ -34,12 +34,14 @@
 
 
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Edit profile</a></li>
-            <li><a class="dropdown-item" href="#">View profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">About</a></li>
-            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+            <li><a class="dropdown-item" href="#" title="Edit your profile"><i class="bx bx-edit-alt"></i> Edit profile</a></li>
+            <li><a class="dropdown-item" href="#" title="View your profile"><i class="bx bx-user"></i> View profile</a></li>
+            <li><a class="dropdown-item" href="#" title="Adjust your settings"><i class="bx bx-cog"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="#" title="Learn more about us"><i class="bx bx-info-circle"></i> About</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-log-out"></i> {{ __('Logout') }}</a></li>
         </ul>
+
+
     </div>
 
     <!-- Bootstrap JS, make sure it's loaded after jQuery -->

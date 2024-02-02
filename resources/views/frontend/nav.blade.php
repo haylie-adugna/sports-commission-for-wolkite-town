@@ -4,9 +4,10 @@
         <img src="{{ asset('assets/images/logo.png') }}" alt="wtsc" style="width: 60px; height: 60px;"> <!-- Adjust the width as needed -->
 
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -14,21 +15,21 @@
 
             </li>
             <li class="nav-item">
-                <a style="color:white;padding-left:0%"  aria-current="page" href="/"><button type="button" class="btn btn-primary py-2 px-4 mr-3">News</button></a>
+                <a style="color:white;padding-left:0%"  aria-current="page" href="/"><button type="button" class="btn btn-primary py-2 px-4 mr-3" title="latest news">News</button></a>
 
             </li>
             <li class="nav-item dropdown">
                 <div class="dropdown" style="display: inline-block;">
-                    <a class="nav-link btn btn-primary py-2 px-4 mr-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link btn btn-primary text-light py-2 px-4 mr-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sports
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Football</a></li>
-                        <li><a class="dropdown-item" href="#">Volleyball</a></li>
-                        <li><a class="dropdown-item" href="#">Basketball</a></li>
-                        <li><a class="dropdown-item" href="#">Cricket</a></li>
-                        <li><a class="dropdown-item" href="#">Other</a></li>
+                        <li><a class="dropdown-item text-info bg-light" href="#" title="more about football">Football</a></li>
+                        <li><a class="dropdown-item text-light bg-info" href="#" title="more about Volleyball">Volleyball</a></li>
+                        <li><a class="dropdown-item text-info bg-light" href="#" title="more about Basketball">Basketball</a></li>
+                        <li><a class="dropdown-item text-light bg-info" href="#" title="more about Cricket">Cricket</a></li>
+                        <li><a class="dropdown-item text-info bg-light" href="#" title="more about Other">Other sports</a></li>
                     </ul>
                 </div>
 
@@ -58,16 +59,16 @@
 
             </li>
             <li class="nav-item">
-                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/contactus')}}><button type="button" class="btn btn-primary py-2 px-4 mr-3">contact us</button></a>
+                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/contactus')}}""><button type="button" class="btn btn-primary py-2 px-4 mr-3">contact us</button></a>
 
 
             </li>
             <li class="nav-item">
-                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/Schedule')}}><button type="button" class="btn btn-primary py-2 px-4 mr-3">Schedule</button></a>
+                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/Schedule')}}""><button type="button" class="btn btn-primary py-2 px-4 mr-3">Schedule</button></a>
 
             </li>
             <li class="nav-item">
-                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/Events')}}><button type="button" class="btn btn-primary py-2 px-4 mr-3">Events</button></a>
+                <a style="color:white;padding-left:0%"  aria-current="page" href="{{url('/Events')}}"><button type="button" class="btn btn-primary py-2 px-4 mr-3">Events</button></a>
 
             </li>
 
@@ -91,13 +92,17 @@
 
 
 
-                 <li class="nav-item">
-                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                 </li>
-                 <li class="nav-item">
+
+
+                 {{-- <li class="nav-item">
                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                 </li>
+                 </li> --}}
         </ul>
 
     </div>
+
+
+    <a class="nav-link text-white bg-success font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
+
 </nav>
+
