@@ -48,27 +48,7 @@
                 Please select a valid user type.
             </div>
         </div>
-        <div class="col-md-4">
-            <label for="validationCustom04" class="form-label">Game Type</label>
-            <select class="form-select" name="user_type" id="validationCustom04" required>
-                <option selected disabled value="">Choose...</option>
-                @if (Auth::user()->user_type === 'clubmanager')
-                    <option value="coach">Coach</option>
-                    <option value="player">Player</option>
-                @endif
-                @if (Auth::user()->user_type === 'commissioner')
-                    <option value="gameofficer">Game Officer</option>
-                    <option value="projectmanager">Project Manager</option>
-                @endif
-                @if (Auth::user()->user_type === 'gameofficer')
-                    <option value="clubmanager">Club Manager</option>
-                    <option value="referee">Referee</option>
-                @endif
-            </select>
-            <div class="invalid-feedback">
-                Please select a valid user type.
-            </div>
-        </div>
+
         <div class="col-md-4">
             <label for="validationCustom03" class="form-label">Password</label>
             <input type="password" class="form-control" name="password" id="validationCustom03" required>
@@ -81,6 +61,25 @@
             <input type="password" class="form-control" name="password" id="validationCustom03" required>
             <div class="valid-feedback">
                 Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom04" class="form-label">Preferred Language</label>
+            <select class="form-select" name="preferred_language" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                <option value="english">English</option>
+                <option value="english">Edglish</option>
+                <option value="english">Esnglish</option>
+                <option value="english">Ernglish</option>
+                <option value="english">Eknglish</option>
+                <option value="english">Esnglish</option>
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+                <option value="french">French</option>
+                <!-- Add more language options as needed -->
+            </select>
+            <div class="invalid-feedback">
+                Please select a preferred language.
             </div>
         </div>
         <div class="col-md-6">
@@ -123,27 +122,41 @@
         </div>
       </form>
       <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function() {
-            'use strict'
+            'use strict';
 
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
+            var forms = document.querySelectorAll('.needs-validation');
 
             // Loop over them and prevent submission
             Array.prototype.slice.call(forms)
                 .forEach(function(form) {
                     form.addEventListener('submit', function(event) {
                         if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
+                            event.preventDefault();
+                            event.stopPropagation();
                         }
 
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+
+            // Password Match Validation
+            $('#validationCustom03, #validationCustom04').on('input', function() {
+                var password = $('#validationCustom03').val();
+                var retypePassword = $('#validationCustom04').val();
+
+                if (password === retypePassword) {
+                    $('#validationCustom04').removeClass('is-invalid').addClass('is-valid');
+                    $('.invalid-feedback').hide();
+                } else {
+                    $('#validationCustom04').removeClass('is-valid').addClass('is-invalid');
+                    $('.invalid-feedback').show();
+                }
+            });
+        })();
     </script>
+
 @endsection
     </div>
 </div>

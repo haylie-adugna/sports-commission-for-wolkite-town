@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/js/bootstrap.bundle.min.js') }}">
-
+<link rel="stylesheet" href="{{ asset('assets/js/jquery-3.3.1.slim.min.js') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
