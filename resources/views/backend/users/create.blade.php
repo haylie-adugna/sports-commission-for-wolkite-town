@@ -5,8 +5,6 @@
         <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
-
-
     <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('users.register') }}">        @csrf
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label">First name</label>
