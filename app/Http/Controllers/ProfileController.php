@@ -16,11 +16,15 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('backend.profile.edit', [
             'user' => $request->user(),
         ]);
     }
 
+    public function delete()
+    {
+        return view('backend.profile.delete-user-form');
+    }
     /**
      * Update the user's profile information.
      */
