@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
 @include('common.style')
-
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="skin-blue sidebar-mini fixed">
 <div class="wrapper">
@@ -242,5 +242,42 @@
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+{{--Error Alert Area--}}
+@if($errors->any())
+<div class="alert alert-danger border-0 alert-dismissible"style="color: #691911; background-color: #f4d6d2; border-color: #f0c5c1;">
+    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+
+        @foreach($errors->all() as $er)
+            <span><i class="icon-arrow-right5"></i> {{ $er }}</span> <br>
+        @endforeach
+
+</div>
+@endif
+<div id="ajax-alert" style="display: none"></div>
+@if (Auth::check())
+<script>
+var timeout = ({{config('session.lifetime')}} * 6000) - 6000;
+setTimeout(function(){
+if (confirm("Press OK to extend your session or Cancel to log out.") == true) {
+    window.location.reload(1);
+} else {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+       type:'POST',
+       url:"{{ route('logout') }}",
+       data:{},
+       success:function(){
+            window.location.replace('/');
+       }
+    });
+}
+},  timeout);
+</script>
+@endif
 </body>
 </html>

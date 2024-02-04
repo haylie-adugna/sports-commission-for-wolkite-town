@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class VerifyUser
@@ -15,6 +18,9 @@ class VerifyUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if (Auth::user()->verified == false) {
+            return redirect(route('verify_email'));
+            }
+            return $next($request);
     }
 }

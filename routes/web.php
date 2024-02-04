@@ -27,25 +27,14 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/Registration', function () {
-    return view('backend.registration');
-})->name('registration');
 
 Route::middleware('auth')->group(function () {
     Route::get('/email_verfication', [VerifyEmailController::class, 'email_verfication'])->name('verify_email');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::get('/show', [HomeController::class, 'show'])->name('home.show');
-
-
+Route::middleware(['auth', 'VerifyUser'])->group(function () {
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
 Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
 Route::get('/usersupdate', [usersController::class, 'edit'])->name('users.update');
@@ -53,6 +42,10 @@ Route::get('/showall', [usersController::class, 'index'])->name('users.index');
 Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
 Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');
 
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
 Route::get('/Announcmentcreate', [Announcmentcontroller::class, 'create'])->name('announcment.create');
@@ -72,7 +65,7 @@ Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('sportp
 Route::get('/projectupdate', [projectcontroller::class, 'edit'])->name('sportproject.update');
 Route::get('/projectshow', [projectcontroller::class, 'show'])->name('sportproject.show');
 Route::delete('/projectdelete', [projectcontroller::class, 'destroy'])->name('sportproject.destroy');
-
+});
 
 
 

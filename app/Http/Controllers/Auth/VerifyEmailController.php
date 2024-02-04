@@ -31,7 +31,7 @@ class VerifyEmailController extends Controller
         if (Auth::user()->verified == false) {
             return view("auth.verify-email");
         } else {
-            return Redirect::to(url()->previous());
+            return redirect(RouteServiceProvider::HOME);
         }
     }
 

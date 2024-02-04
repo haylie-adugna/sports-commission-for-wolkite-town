@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Middleware;
-
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use App\Providers\RouteServiceProvider;
+
 
 class RedirectIfAuthenticated
 {
@@ -21,10 +21,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if (Auth::user()->verified == true) {
                 return redirect(RouteServiceProvider::HOME);
+                }
+                else{
+                    return redirect(route('verify_email'));
+                    }
             }
+            return $next($request);
         }
-
-        return $next($request);
-    }
+        }
 }
