@@ -43,7 +43,7 @@ Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
 Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');
 
 
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
