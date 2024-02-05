@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
 <!-- Morris chart -->
 <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
+
+<link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins -->
+
 <!-- jvectormap -->
 <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
 <!-- Date Picker -->
@@ -20,6 +24,8 @@
 <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/pace/pace.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -34,13 +34,24 @@
 
 
 
+<!-- PACE -->
+<script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
 
 
 
 
 
+<!-- AdminLTE App -->
+<script src="{{ asset('dist/js/app.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
 
+<!-- jQuery 2.2.0 -->
+<script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<script src="{{ asset('dist/js/demo.js') }}"></script>
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
+    <!-- iCheck -->
+    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
 
 
 
