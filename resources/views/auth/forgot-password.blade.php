@@ -1,52 +1,85 @@
 @extends('welcome')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<!DOCTYPE html>
+<html>
+<head>
 
-                <div class="card-body">
-                    @if(session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="register-box">
 
-                    @if(session('connection_error'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ session('connection_error') }}
-                        </div>
-                    @else
-                        <!-- Your regular content for the password reset form -->
-                        <form method="POST" action="{{ route('password.email') }}">
-                            @csrf
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+<div class="register-logo">
+    <a href="/"><b>Wolkite</b>TSCMS</a>
+  </div>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
+    <div class="box box-success box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Reset password</h3>
 
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Email Password Reset Link') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    @endif
-                </div>
+            <form method="POST" action="{{ route('logout') }}" >
+              @csrf
+              <div class="box-tools pull-right">
+              <button type="submit" class="btn btn-box-tool btn-danger" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
-        </div>
+          </form>
+            <!-- /.box-tools -->
+          </div>
+
+
+        @if(session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if(session('connection_error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('connection_error') }}
+            </div>
+        @else
+            <!-- Your regular content for the password reset form -->
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+
+
+                    <div class="form-group has-feedback">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
+
+                        @error('email')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="col-xs-4 pull-right">
+                        <button type="submit" class="btn btn-block btn-success">Send</button>
+                      </div>
+
+
+
+            </form>
+        @endif
     </div>
 </div>
-@endsection
+
+
+</div>
+<!-- /.register-box -->
+
+
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
