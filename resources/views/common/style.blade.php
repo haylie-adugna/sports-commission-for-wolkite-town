@@ -4,7 +4,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
      folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
@@ -12,10 +15,6 @@
 <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
 <!-- Morris chart -->
 <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
-
-<link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins -->
-
 <!-- jvectormap -->
 <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
 <!-- Date Picker -->
@@ -25,7 +24,6 @@
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/pace/pace.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,27 +31,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
-
-
-
-{{-- <link rel="stylesheet" href="{{ asset('assets/custom/home.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-<!-- Boxicons CSS -->
-<link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
-<style>
-
-    .custom-background{
-        background-image: url('{{ asset('assets/images/logo.png') }}');
-        height: 100%;
-        width: 100%;
-    } --}}
     <style>
     .VIpgJd-ZVi9od-ORHb-OEVmcd {
  display: none !important;

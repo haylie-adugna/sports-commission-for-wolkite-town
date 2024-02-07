@@ -118,7 +118,7 @@
                         <div class="col-md-6">
                             <div class="box box-solid">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Carousel</h3>
+                                    <h3 class="box-title">Sport family</h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
@@ -133,14 +133,14 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="item active">
-                                                <img src="{{ asset('assets/images/logo.png') }}" alt="First slide">
+                                                <img src="{{ asset('assets/images/background1.jpg') }}" alt="First slide">
 
                                                 <div class="carousel-caption">
                                                     First Slide
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap"
+                                                <img src="{{ asset('assets/images/background2.jpg') }}"
                                                     alt="Second slide">
 
                                                 <div class="carousel-caption">
@@ -148,7 +148,7 @@
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <img src="http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap"
+                                                <img src="{{ asset('assets/images/background3.jpg') }}"
                                                     alt="Third slide">
 
                                                 <div class="carousel-caption">

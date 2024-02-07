@@ -31,6 +31,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/email_verfication', [VerifyEmailController::class, 'email_verfication'])->name('verify_email');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['auth', 'VerifyUser'])->group(function () {

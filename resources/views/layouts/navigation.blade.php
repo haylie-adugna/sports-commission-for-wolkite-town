@@ -15,6 +15,7 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            <li id="google_translate_element"></li>
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -220,7 +221,7 @@
                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                    {{ Auth::user()->name }}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
