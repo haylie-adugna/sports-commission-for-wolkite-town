@@ -41,6 +41,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
+            <li id="google_translate_element"></li>
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
               <!-- Menu toggle button -->
