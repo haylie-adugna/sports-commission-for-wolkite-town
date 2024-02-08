@@ -13,23 +13,26 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
+            $table->string('phone')->unique()->nullable();
+            $table->string('password');
             $table->boolean('verified')->default(false);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('user_type')->default('user');
             $table->string('age')->nullable();
             $table->string('gender')->nullable();
+            $table->string('date_of_birth')->nullable();
             $table->string('address')->nullable();
+            $table->string('country')->nullable();
             $table->string('nationality')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('city')->nullable();
+            $table->string('language')->nullable();
             $table->string('behavioral_record')->nullable();
             $table->string('photo')->nullable();
             $table->string('assigned_game')->nullable();
-            $table->string('language')->nullable();
             $table->string('experience')->nullable();
-            $table->string('date_of_birth')->nullable();
-            $table->string('user_type')->default('user');// Add a nullable column for user type
             $table->rememberToken();
             $table->timestamps();
         });

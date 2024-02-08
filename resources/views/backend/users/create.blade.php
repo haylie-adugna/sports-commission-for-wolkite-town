@@ -8,21 +8,21 @@
     <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('users.register') }}">        @csrf
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+          <input type="text" class="form-control" id="validationCustom01" name="first_name" value="haylie" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+          <input type="text" class="form-control" id="validationCustom02"  name="last_name" value="adugna" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustom02" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="validationCustom02" value="users" required>
+            <input type="email" class="form-control" name="email" id="validationCustom02" value="@gmail.com" required>
             <div class="valid-feedback">
                 Looks good!
             </div>

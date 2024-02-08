@@ -8,7 +8,7 @@
           <img src="{{ asset('assets/images/logo.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -31,63 +31,87 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager' || Auth::user()->user_type === 'projectmanager')
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="label label-primary pull-right">4</span>
+            <i class="fa fa-fw fa-users"></i>
+            <span>Users</span>
+            <span class="label label-primary pull-right bg-green">4</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('users.create')}}"><i class="fa fa-circle-o"></i> Add new user</a></li>
-            <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> User managment</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <li><a href="{{route('users.create')}}"><i class="fa fa-fw fa-user-plus"></i> Add new user</a></li>
+            <li><a href="{{route('users.index')}}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
+            <li><a href="pages/layout/fixed.html"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
+            @if (Auth::user()->user_type === 'commissioner')
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
+            @endif
           </ul>
         </li>
+        @endif
+
         <li>
           <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <small class="label pull-right bg-green">new</small>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
+            <i class="fa fa-fw fa-futbol-o"></i> <span>Games</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
+          @if (Auth::user()->user_type === 'commissioner')
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add new games</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games</a></li>
+            <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> Game Analysis</a></li>
+            <li><a href="pages/charts/inline.html"><i class="fa fa-fw fa-info-circle"></i> About Games</a></li>
           </ul>
+          @endif
+          @if (Auth::user()->user_type === 'gameofficer')
+          <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add game stastics</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
+            <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
+          </ul>
+          @endif
+
+        </li>
+
+        <li class="treeview">
+          <a href="pages/widgets.html">
+            <i class="fa fa-fw fa-newspaper-o"></i>
+            <span>Events</span>
+            <small class="label pull-right bg-green">news</small>
+          </a>
+          @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
+          <ul class="treeview-menu">
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-hacker-news"></i> Add Events</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage Events</a></li>
+            <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> Events Analaysis</a></li>
+          </ul>
+          @endif
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
+            <span>Complain</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="pages/UI/general.html"><i class="fa fa-fw fa-plus-circle"></i> Add Complain</a></li>
+            @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
+            <li><a href="pages/UI/icons.html"><i class="fa fa-fw fa-gear"></i> Manages complain</a></li>
+            @endif
+            <li><a href="pages/UI/buttons.html"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-edit"></i> <span>projects</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
+          @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager')
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="pages/forms/general.html"><i class="fa fa-fw fa-plus-square"></i> Add New project</a></li>
+            <li><a href="pages/forms/advanced.html"><i class="fa fa-fw fa-gear"></i> Manage project</a></li>
+            <li><a href="pages/forms/editors.html"><i class="fa fa-fw fa-gears"></i> project Analaysis</a></li>
           </ul>
+          @endif
         </li>
         <li class="treeview">
           <a href="#">

@@ -17,8 +17,17 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
       <div class="form-group has-feedback">
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter your name">
-        @error('name')
+        <input id="name" type="first_name" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="name" autofocus placeholder="Enter first name">
+        @error('first_name')
+        <span class="invalid-feedback text-danger" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input id="name" type="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus placeholder="Enter last name">
+        @error('first_name')
         <span class="invalid-feedback text-danger" role="alert">
             <strong>{{ $message }}</strong>
         </span>
