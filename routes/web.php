@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\usersController;
-use App\Http\Controllers\Announcmentcontroller;
+use App\Http\Controllers\Eventscontroller;
 use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
@@ -38,21 +38,24 @@ Route::middleware(['auth', 'VerifyUser'])->group(function () {
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
 Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
-Route::get('/usersupdate', [usersController::class, 'edit'])->name('users.update');
-Route::get('/showall', [usersController::class, 'index'])->name('users.index');
-Route::get('/usersshow', [usersController::class, 'show'])->name('users.show');
-Route::delete('/usersdelete', [usersController::class, 'destroy'])->name('users.destroy');
+Route::get('/usersupdate/{id}', [usersController::class, 'edit'])->name('users.update');
+Route::get('/showalluser', [usersController::class, 'index'])->name('users.index');
+Route::get('/usersshow/{id}', [usersController::class, 'show'])->name('users.show');
+Route::get('/usersdelete/{id}', [usersController::class, 'destroy'])->name('users.destroy');
 
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-Route::get('/Announcmentcreate', [Announcmentcontroller::class, 'create'])->name('announcment.create');
-Route::get('/Announcmentupdate', [Announcmentcontroller::class, 'edit'])->name('announcment.update');
-Route::get('/Announcmentshow', [Announcmentcontroller::class, 'show'])->name('announcment.show');
-Route::delete('/Announcmentdelete', [Announcmentcontroller::class, 'destroy'])->name('announcment.destroy');
+    // events
+Route::get('/eventscreate', [Eventscontroller::class, 'create'])->name('events.create');
+Route::post('/addevent', [EventsController::class, 'store'])->name('events.register');
+Route::get('/eventsupdate', [Eventscontroller::class, 'edit'])->name('events.update');
+Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.index');
+Route::get('/eventsshow', [Eventscontroller::class, 'show'])->name('events.show');
+Route::delete('/eventsdelete', [Eventscontroller::class, 'destroy'])->name('events.destroy');
 
 
 
@@ -66,6 +69,7 @@ Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('sportp
 Route::get('/projectupdate', [projectcontroller::class, 'edit'])->name('sportproject.update');
 Route::get('/projectshow', [projectcontroller::class, 'show'])->name('sportproject.show');
 Route::delete('/projectdelete', [projectcontroller::class, 'destroy'])->name('sportproject.destroy');
+
 });
 
 

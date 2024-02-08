@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Events;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -13,18 +13,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class userscontroller extends Controller
+class EventsController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    protected $user;
+    protected $events;
 
-    public function __construct(User $user)
+    public function __construct(Events $events)
     {
-        $this->user = $user;
+        $this->events = $events;
     }
 
     /**
@@ -34,32 +34,29 @@ class userscontroller extends Controller
      */
     public function create()
     {
-        return view('backend.users.create');
+        return view('backend.events.create');
     }
     public function store(Request $request): RedirectResponse
     {
-       User::create($request->all());
-       return redirect()->route('users.create')->with('status', 'Registration successful!');
+       events::create($request->all());
+       return redirect()->route('events.create')->with('status', 'events posted successfully');
     }
     public function index()
     {
-        $users= User::all();
+        $events= events::all();
 
-        return view('backend.users.index', compact('users'));
+        return view('backend.events.index', compact('events'));
     }
-    public function show($id)
+    public function show()
     {
-        $users= User::find($id);
-        return view('backend.users.show', compact('users'));
+        return view('backend.events.show');
     }
-    public function edit($id)
+    public function edit()
     {
-        $users= User::find($id);
-        return view('backend.users.update', compact('users'));
+        return view('backend.events.update');
     }
-    public function destroy($id)
+    public function destroy()
     {
-        $user = User::find($id);
-        $user->delete();
+
     }
 }

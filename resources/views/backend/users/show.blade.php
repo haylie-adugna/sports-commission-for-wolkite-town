@@ -9,39 +9,39 @@
 
                 <div class="card-body">
                     <div>
-                        <strong>Name:</strong> {{ $user->name }}
+                        <strong>Name:</strong> {{ $users->first_name }}
                     </div>
                     <div>
-                        <strong>Email:</strong> {{ $user->email }}
+                        <strong>Email:</strong> {{ $users->email }}
                     </div>
                     <div>
-                        <strong>Age:</strong> {{ $user->age }}
+                        <strong>Age:</strong> {{ $users->age }}
                     </div>
                     <div>
-                        <strong>Gender:</strong> {{ $user->gender }}
+                        <strong>Gender:</strong> {{ $users->gender }}
                     </div>
                     <!-- Add more fields as needed -->
 
                     {{-- You can also check if a field is not null before displaying it --}}
-                    @if ($user->address)
+                    @if ($users->address)
                         <div>
-                            <strong>Address:</strong> {{ $user->address }}
+                            <strong>Address:</strong> {{ $users->address }}
                         </div>
                     @endif
 
                     {{-- Displaying an image if the 'photo' field is not null --}}
-                    @if ($user->photo)
+                    @if ($users->photo)
                         <div>
                             <strong>Photo:</strong>
-                            <img src="{{ asset('path/to/photos/' . $user->photo) }}" alt="User Photo">
+                            <img src="{{ asset('path/to/photos/' . $users->photo) }}" alt="User Photo">
                         </div>
                     @endif
 
                     {{-- Displaying a link to the assigned game if available --}}
-                    @if ($user->assigned_game)
+                    @if ($users->assigned_game)
                         <div>
                             <strong>Assigned Game:</strong>
-                            <a href="{{ route('game.show', $user->assigned_game) }}">{{ $user->assigned_game }}</a>
+                            <a href="#">{{ $users->assigned_game }}</a>
                         </div>
                     @endif
 

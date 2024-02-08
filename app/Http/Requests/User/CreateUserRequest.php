@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\User;
 
-use App\Helpers\Qs;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -32,13 +31,8 @@ class CreateUserRequest extends FormRequest
             'email'=> ['email', 'max:100', 'unique:users'],
             'phone_number'=> ['string', 'min:12', 'max:20', 'unique:users'],
             'user_type'=> ['required'],
-            'user_name'=> ['alpha_dash', 'min:6', 'max:100', 'unique:users'],
             'password' => ['required', Password::defaults(), 'confirmed'],
-            'department'=> ['required', 'string', 'min:6', 'max:150'],
-            'year'=> ['required'],
-            'semister'=> ['required'],
             'block_number'=> ['required', 'integer'],
-            'dorm_number'=> ['required', 'integer'],
             'state'=> ['required'],
             'nationality'=> ['required'],
             'city'=> ['required'],

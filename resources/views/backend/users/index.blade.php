@@ -65,14 +65,14 @@
 
                                              <div class="dropdown-menu" role="menu">
                                                 {{--View Profile--}}
-                                                <a href="" class="dropdown-item"><i class="icon-eye"></i> View User Information</a>
+                                                <a href="{{route('users.show',$u1->id)}}" class="dropdown-item"><i class="icon-eye"></i> View User Information</a>
                                                 {{--Edit--}}
-                                                <a href="" class="dropdown-item"><i class="icon-pencil"></i> Edit User Information</a>
+                                                <a href="{{route('users.update',$u1->id)}}" class="dropdown-item"><i class="icon-pencil"></i> Edit User Information</a>
 
 
                                                     <a href="" class="dropdown-item"><i class="icon-lock"></i> Reset User password</a>
                                                     {{--Delete--}}
-                                                    <a id="" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete User</a>
+                                                    <a id="" href="{{route('users.destroy',$u1->id)}}" class="dropdown-item"><i class="icon-trash"></i> Delete User</a>
                                                     <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
 
                                             </div>

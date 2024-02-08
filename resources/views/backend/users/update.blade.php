@@ -5,7 +5,7 @@
     manage users
     <div class="col-md-4">
       <label for="validationCustom01" class="form-label">First name user</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+      <input type="text" class="form-control" id="validationCustom01" value="{{$users->first_name}}" required>
       <div class="valid-feedback">
         Looks good!
       </div>

@@ -8,7 +8,7 @@
           <img src="{{ asset('assets/images/logo.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</p>
+          <p>{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -80,9 +80,9 @@
           </a>
           @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-hacker-news"></i> Add Events</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage Events</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> Events Analaysis</a></li>
+            <li><a href="{{route('events.create')}}"><i class="fa fa-fw fa-hacker-news"></i> Add Events</a></li>
+            <li><a href="{{route('events.index')}}"><i class="fa fa-fw fa-gear"></i> Manage Events</a></li>
+            <li><a href="{{route('events.index')}}"><i class="fa fa-fw fa-spinner"></i> Events Analaysis</a></li>
           </ul>
           @endif
         </li>
