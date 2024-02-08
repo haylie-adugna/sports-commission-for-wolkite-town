@@ -5,14 +5,17 @@
         <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
-    <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('users.register') }}">        @csrf
-        <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" name="first_name" value="haylie" required>
-          <div class="valid-feedback">
-            Looks good!
+    <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('users.register') }}">
+        @csrf
+        <div class="form-group has-feedback">
+            <input id="name" type="first_name" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="name" autofocus placeholder="Enter first name">
+            @error('first_name')
+            <span class="invalid-feedback text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
-        </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
           <input type="text" class="form-control" id="validationCustom02"  name="last_name" value="adugna" required>

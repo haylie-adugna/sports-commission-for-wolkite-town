@@ -33,6 +33,9 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('assigned_game')->nullable();
             $table->string('experience')->nullable();
+            $table->string('mother_full_name')->nullable();
+            $table->string('status')->default('active');
+
             $table->rememberToken();
             $table->timestamps();
         });
