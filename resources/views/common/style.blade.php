@@ -25,6 +25,10 @@
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/pace/pace.min.css') }}">
 
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -32,7 +36,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 
+
 <![endif]-->
+<style>
+    #previewContainer img,
+    #previewContainer video {
+        max-width: 100%;
+        max-height: 150px; /* Adjust the height as needed */
+        margin-top: 10px; /* Add some spacing between the input and the preview */
+    }
+</style>
 <style>
     /* FROM HTTP://WWW.GETBOOTSTRAP.COM
      * Glyphicons

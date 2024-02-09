@@ -1,99 +1,224 @@
 @extends('layouts.app')
-@section('content')
-<div class="py-5">
-<form class="row g-3 needs-validation" novalidate  method="POST" action="{{ route('register') }}">
-    manage users
-    <div class="col-md-4">
-      <label for="validationCustom01" class="form-label">First name user</label>
-      <input type="text" class="form-control" id="validationCustom01" value="{{$users->first_name}}" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Last names</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="validationCustom03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="validationCustom04" class="form-label">State</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
-      </div>
-    </div>
-    <div class="col-md-3">
-        <label for="validationCustom04" class="form-label">Roles</label>
-        <select class="form-select" id="validationCustom04" required>
-          <option selected disabled value="user">Choose...</option>
 
-          @if (Auth::user()->user_type === 'clubmanager')
-          <option>couch</option>
-          <option>player</option>
-          @endif
-          @if (Auth::user()->user_type === 'commissioner')
-          <option>gameofficer</option>
-          <option>projectmanager</option>
-          @endif
-          @if (Auth::user()->user_type === 'gameofficer')
-          <option>clubmanager</option>
-          <option>referee</option>
-          @endif
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid state.
+@section('content')
+    <section class="content">
+        <div class="rows">
+            <!-- right column -->
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upadte User Information</h3>
+                </div>
+                <form novalidate method="POST" action="{{ route('register') }}">
+                    @csrf
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label for="First Name">First Name:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name"
+                                        value="{{ $users->first_name }}">
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <label for="Middle Name">Middle Name:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="middle_name" placeholder="middle Name"
+                                        value="{{ $users->middle_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2">
+                                <label for="last_Name">Last Name:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                        value="{{ $users->last_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="email" placeholder="Email"
+                                        value="{{ $users->email }}">
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <label for="phone Number">phone Number:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="text" class="form-control" name="phone_number"
+                                        placeholder="phone number" value="{{ $users->phone }}">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label for="Age">Age:</label>
+                                <input type="number" class="form-control" name="age" placeholder="Age"
+                                    value="{{ $users->age }}">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="country">Country:</label>
+                                <select class="form-control" name="country">
+                                    <option value="" selected disabled>{{ $users->country }}</option>
+                                    <option value="Country1">Ethiopia</option>
+                                    <option value="Country2">USA</option>
+                                    <option value="Country1">Kenya</option>
+                                    <option value="Country2">Sudan</option>
+                                    <option value="Country1">S/Afria</option>
+                                    <option value="Country2">chaina</option>
+                                    <option value="Country1">Russia</option>
+                                    <option value="Country2">Nigeria</option>
+                                    <option value="Country1">UK</option>
+                                    <option value="Country2">Itay</option>
+                                    <option value="Country1">Djibuti</option>
+                                    <option value="Country2">Brazil</option>
+                                    <!-- Add more countries as needed -->
+                                </select>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <label for="City">City:</label>
+                                <input type="text" class="form-control" name="city" placeholder="city">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="User_Type">User Type:</label>
+                                <select class="form-control" name="user_type" placeholder="User Type" >
+                                    <option value="" selected disabled>{{ $users->user_type }}</option>
+                                    <option value="couch">GameOfficer</option>
+                                    <option value="couch">couch</option>
+                                    <option value="gameofficer">commissioner</option>
+                                    <option value="clubmanager">ClubManager</option>
+                                    <option value="projectmanager">ProjectManager</option>
+                                    <option value="player">Player</option>
+                                    <option value="user">User</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="Assigned_Game">Assigned Game:</label>
+                                <input type="text" class="form-control" name="assigned_game" placeholder="assigned game" value="{{ $users->assigned_game }}">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="Language">Language:</label>
+                                <select class="form-control" name="languge" placeholder="languge" >
+                                    <option selected-value="{{ $users->languge }}" disabled>select languge</option>
+                                    <option value="English">English</option>
+                                    <option value="Amharic">Amharic</option>
+                                    <option value="guragie">guragie</option>
+                                    <option value="France">France</option>
+                                    <option value="Afanoromo">Afan oromo</option>
+                                    <option value="somali">somali</option>
+                                    <option value="Other">Other</option>
+
+                                </select>
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="Experience">Experience:</label>
+                                <input type="text" class="form-control" name="experience" placeholder="Experience" value="{{ $users->experience }}">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="date_of_birth">Date of Birth:</label>
+                                <input type="date" class="form-control" name="date_of_birth" value="{{ date('Y-m-d') }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="Nationality">Nationality:</label>
+                                <input type="text" class="form-control" name="nationality" placeholder="nationality">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="Gender">Gender:</label>
+                                <select class="form-control" name="gender" placeholder="Gender">
+                                    <option value="" selected disabled>Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-xs-3">
+                                <label for="Address">Address:</label>
+                                <input type="text" class="form-control" name="address" placeholder="Address">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="Mother Name">Mother Name:</label>
+                                <input type="text" class="form-control" name="mother_name"
+                                    placeholder="Mother full name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="Behavioral Records">Behavioral Records:</label>
+                                <div class="form-group">
+                                    <select class="form-control select2" multiple="multiple"
+                                        data-placeholder="Select Behavioral Records" style="width: 100%;">
+                                        <option>Red card</option>
+                                        <option>Yellow card</option>
+                                        <option>Green card</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <label for="club">Assigned Club:</label>
+                                <input type="text" class="form-control" name="club" placeholder="club">
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="Assigned_Project">Assigned Project:</label>
+                                <input type="text" class="form-control" name="project" placeholder="Project">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-secondary"><a href="{{route('users.index')}}">Cancel</a></button>
+                        <button type="submit"  class="btn btn-primary pull-right"><a href="{{route('users.index')}}">Update</a></button>
+                    </div>
+            </div>
+
+
+            </form>
         </div>
-      </div>
-    <div class="col-md-3">
-      <label for="validationCustom05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
+        <!-- /.box -->
         </div>
-      </div>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Register</button>
-    </div>
-    <div class="form-group row mb-3">
-        <div class="col-md-6 offset-md-4 text-right">
-            <button type="submit" class="btn btn-success btn-lg btn-hover-border">
-                {{ __('Register') }}
-            </button>
+        <!--/.col (right) -->
         </div>
-    </div>
-  </form>
-</div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 @endsection

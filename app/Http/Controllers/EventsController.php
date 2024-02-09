@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Http\Requests\Events\CreateEventRequest;
 
 class EventsController extends Controller
 {
@@ -36,11 +37,34 @@ class EventsController extends Controller
     {
         return view('backend.events.create');
     }
-    public function store(Request $request): RedirectResponse
+
+public function store(CreateEventRequest $request)
     {
-       events::create($request->all());
-       return redirect()->route('events.create')->with('status', 'events posted successfully');
+        $eventData = $request->except('file');
+        $data=[
+            'Tittle'=>$request->tittle,
+            'Type'=>$request->type,
+            'Body'=>$request->body,
+
+           ];
+
+        if($request->hasFile('image')){
+            $filenameWithExt= $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename. '_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/videos/',$fileNameToStore);
+            $data['image']=asset($path);
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        Events::create($data);
+
+        return redirect()->route('events.create')->with('status', 'Event posted successfully');
     }
+
+
     public function index()
     {
         $events= events::all();
@@ -55,8 +79,21 @@ class EventsController extends Controller
     {
         return view('backend.events.update');
     }
+
     public function destroy()
     {
+        try {
+            $events = Events::find($id); // Find the event by ID
+
+            // Perform any additional checks or authorization here
+
+            $events->delete(); // Delete the event
+
+            return redirect()->route('events.index')->with('success', 'Event deleted successfully');
+        } catch (\Exception $e) {
+            // Handle exceptions, e.g., if the event is not found
+            return redirect()->route('events.index')->with('error', 'Failed to delete the event');
+        }
 
     }
 }

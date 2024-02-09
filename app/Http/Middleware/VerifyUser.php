@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Carbon;
 
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\CreateEventRequest;
 
 class VerifyUser
 {

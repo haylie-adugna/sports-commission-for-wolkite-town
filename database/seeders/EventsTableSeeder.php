@@ -17,7 +17,6 @@ class EventsTableSeeder extends Seeder
         // Seed data for the 'news' type
         DB::table('events')->insert([
             'Tittle' => 'Sample News Title',
-            'Describtion' => 'This is a sample news description.',
             'Type' => 'news',
             'Body' => 'Sample news body content.',
             'photo' => 'news_photo.jpg',

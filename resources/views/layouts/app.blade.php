@@ -8,15 +8,15 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   @include('common.style')
 </head>
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini" >
 <div class="wrapper">
 
   @include('layouts.navigation')
   @include('layouts.sidebar1')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <div class="content">
+  <div class="content-wrapper" style="overflow:scroll;">
+    <div class="content" >
     @yield('content')
    </div>
     <!-- /.content -->

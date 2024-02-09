@@ -38,7 +38,8 @@ Route::middleware(['auth', 'VerifyUser'])->group(function () {
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
 Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
-Route::get('/usersupdate/{id}', [usersController::class, 'edit'])->name('users.update');
+Route::get('/usersedit/{id}', [usersController::class, 'edit'])->name('users.edit');
+Route::get('/usersupdate/{id}', [usersController::class, 'update'])->name('users.update');
 Route::get('/showalluser', [usersController::class, 'index'])->name('users.index');
 Route::get('/usersshow/{id}', [usersController::class, 'show'])->name('users.show');
 Route::get('/usersdelete/{id}', [usersController::class, 'destroy'])->name('users.destroy');
@@ -52,10 +53,10 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
     // events
 Route::get('/eventscreate', [Eventscontroller::class, 'create'])->name('events.create');
 Route::post('/addevent', [EventsController::class, 'store'])->name('events.register');
-Route::get('/eventsupdate', [Eventscontroller::class, 'edit'])->name('events.update');
+Route::get('/eventsupdate/{id}', [Eventscontroller::class, 'edit'])->name('events.update');
 Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.index');
-Route::get('/eventsshow', [Eventscontroller::class, 'show'])->name('events.show');
-Route::delete('/eventsdelete', [Eventscontroller::class, 'destroy'])->name('events.destroy');
+Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
+Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
 
 
 

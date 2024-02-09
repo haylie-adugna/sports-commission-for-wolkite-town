@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Webpatser\Countries\Countries;
 
 class userscontroller extends Controller
 {
@@ -57,9 +58,17 @@ class userscontroller extends Controller
         $users= User::find($id);
         return view('backend.users.update', compact('users'));
     }
+    public function updtate(Request $request, $id)
+    {
+        $users= User::find($id);
+       $this->$users-> User::update($request->all());
+        return redirect()->route('users.create')->with('status', 'update successful!');
+
+    }
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
+        return redirect()->route('users.index')->with('success', 'user deleted successfully');
     }
 }

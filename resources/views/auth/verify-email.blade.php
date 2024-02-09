@@ -34,7 +34,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <div class="box-tools pull-right">
-                            <button type="submit" class="btn btn-box-tool btn-danger" data-widget="remove"><i
+                            <button type="submit" class="btn btn-box-tool btn-danger"><i
                                     class="fa fa-times"></i></button>
                         </div>
                     </form>

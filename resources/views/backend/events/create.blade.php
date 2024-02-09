@@ -1,98 +1,110 @@
 @extends('layouts.app')
 @section('content')
-<div class="py-5">
-<form class="row g-3 needs-validation" novalidate  method="POST" action="{{ route('register') }}">
-    <div class="col-md-4">
-      <label for="validationCustom01" class="form-label">First name user</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Last names</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
+  <!-- Main content -->
+  <section class="content">
+    <div class="rows">
+      <!-- right column -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h2 class="box-title">Insert Event</h2>
         </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="validationCustom03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="validationCustom04" class="form-label">State</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
-      </div>
-    </div>
-    <div class="col-md-3">
-        <label for="validationCustom04" class="form-label">Roles</label>
-        <select class="form-select" id="validationCustom04" required>
-          <option selected disabled value="user">Choose...</option>
+        <form action="{{ route('events.register') }}" method="post" novalidate enctype="multipart/form-data">
+            @csrf
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-3">
+                <label for="Title">Event Title:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="title" placeholder="Title" required>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                  </span>
+                </div>
+              </div>
 
-          @if (Auth::user()->user_type === 'clubmanager')
-          <option>couch</option>
-          <option>player</option>
-          @endif
-          @if (Auth::user()->user_type === 'commissioner')
-          <option>gameofficer</option>
-          <option>projectmanager</option>
-          @endif
-          @if (Auth::user()->user_type === 'gameofficer')
-          <option>clubmanager</option>
-          <option>referee</option>
-          @endif
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid state.
-        </div>
+              <div class="col-xs-3">
+                <label for="category">Events Type</label>
+                <div class="input-group">
+                  <select class="form-control select2" name="event">
+                    <option selected="selected">News</option>
+                    <option>Announcement</option>
+                    <option>Result</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-xs-3">
+                <label for="type">Images or Videos:</label>
+                <div class="input-group">
+                    <input type="file" accept="image/*, video/*" class="form-control" name="image" id="fileInput" placeholder="image/video" required>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                    </span>
+                </div>
+                <div id="previewContainer"></div>
+            </div>
+
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <section class="content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="box">
+                        <div class="box-header">
+                          <h3>
+                            <label for="type">Content:</label>
+                          </h3>
+                          <!-- tools box -->
+                          <div class="pull-right box-tools">
+                            <button type="button" class="btn btn-default btn-sm" data-widget="collapse"
+                              data-toggle="tooltip" title="Collapse">
+                              <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-default btn-sm" data-widget="remove"
+                              data-toggle="tooltip" title="Remove">
+                              <i class="fa fa-times"></i></button>
+                          </div>
+                          <!-- /. tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body pad">
+                            <textarea class="textarea" placeholder="Place some text here" name="body"
+                              style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.col-->
+                  </div>
+                  <!-- ./row -->
+                </section>
+                <!-- /.content -->
+              </div>
+              <div class="col-xs-3">
+                <label for="created_by">Created by {{ Auth::user()->user_type }}</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="created_by" disabled="disabled" value="{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <a href="{{ route('events.index') }}" class="btn btn-warning">Cancel</a>
+            <button type="submit" class="btn btn-info pull-right">Post</button>
+          </div>
+        </form>
       </div>
-    <div class="col-md-3">
-      <label for="validationCustom05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
     </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
-      </div>
+    <div class="box-body pad">
+
+        <textarea id="editor1" name="editor1" rows="10" cols="80">
+        </textarea>
+
     </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Register</button>
-    </div>
-    <div class="form-group row mb-3">
-        <div class="col-md-6 offset-md-4 text-right">
-            <button type="submit" class="btn btn-success btn-lg btn-hover-border">
-                {{ __('Register') }}
-            </button>
-        </div>
-    </div>
-  </form>
-</div>
+    <!-- /.box -->
+  </section>
+
 @endsection

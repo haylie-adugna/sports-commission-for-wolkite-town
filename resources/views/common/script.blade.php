@@ -40,6 +40,16 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/languge.js') }}"> </script>
+
+<!-- CK Editor -->
+<script src="{{ asset('plugins/edited/ckeditor.js.txt') }}"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<script src="{{ asset('plugins/edited/ckeditor.js.txt') }}"></script>
+
+<script src="{{ asset('plugins/select2/select2.full.min.js') }}"></script>
+
+
 <script>
     $(function () {
       $("#example1").DataTable();
@@ -62,5 +72,64 @@
         );
     }
 </script>
+<script>
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('editor1');
+      //bootstrap WYSIHTML5 - text editor
+      $(".textarea").wysihtml5();
+    });
+  </script>
+<script>
+    document.getElementById('fileInput').addEventListener('change', function () {
+        var fileInput = this;
+        var previewContainer = document.getElementById('previewContainer');
+        previewContainer.innerHTML = ''; // Clear previous previews
+
+        var file = fileInput.files[0];
+
+        if (file) {
+            var fileType = file.type.split('/')[0]; // Get the file type (image or video)
+
+            if (fileType === 'image') {
+                // Display image preview
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.classList.add('preview-image');
+                previewContainer.appendChild(img);
+
+                // Assign the file to the 'photo' input
+                document.getElementsByName('photo')[0].value = file.name;
+            } else if (fileType === 'video') {
+                // Display video preview
+                var video = document.createElement('video');
+                video.src = URL.createObjectURL(file);
+                video.classList.add('preview-video');
+                video.setAttribute('controls', 'controls');
+                previewContainer.appendChild(video);
+
+                // Assign the file to the 'video' input
+                document.getElementsByName('video')[0].value = file.name;
+            } else {
+                // Unsupported file type
+                alert('Unsupported file type. Please upload an image or video.');
+            }
+        }
+    });
+</script>
+<script>
+    $(document).ready(function() {
+      $('.select2').select2({
+        tags: true
+      });
+    });
+  </script>
+   <script>
+    $(function () {
+      $(".select2").select2();
+
+    });
+  </script>
 
 
