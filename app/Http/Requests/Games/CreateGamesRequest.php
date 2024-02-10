@@ -13,7 +13,7 @@ class CreateGamesRequest extends FormRequest
     public function rules()
 {
     return [
-        'Name' => 'nullable|string',
+        'Name' => 'required|string',
         'Type' => 'nullable|string',
         'Body' => 'nullable|string',
         'photo' => 'nullable|string',

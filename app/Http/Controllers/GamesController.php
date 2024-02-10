@@ -39,9 +39,11 @@ class GamesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateGamesRequest $request)
     {
         //
+        Games::create($request->all());
+       return redirect()->route('games.create')->with('status', 'New game Cteated successful!');
     }
 
     /**
