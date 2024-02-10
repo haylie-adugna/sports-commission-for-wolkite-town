@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Events;
+use App\Models\Games;
 
 
-class Events extends Model
+class Games extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Tittle',
-        'Type',
-        'Body',
-        'photo',
-        'video',
-        'created_by',
+        'Name',
+        'Rules',
+        'Equipment',
+        'Duration',
+        'Venue',
+        'Season',
+        'Governing_Body',
         'status',
 
     ];

@@ -56,8 +56,8 @@
           </a>
           @if (Auth::user()->user_type === 'commissioner')
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add new games</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games</a></li>
+            <li><a href="{{route('games.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Add new games</a></li>
+            <li><a href="{{route('games.index')}}"><i class="fa fa-fw fa-gear"></i> Manage games</a></li>
             <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> Game Analysis</a></li>
             <li><a href="pages/charts/inline.html"><i class="fa fa-fw fa-info-circle"></i> About Games</a></li>
           </ul>

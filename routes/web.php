@@ -9,6 +9,7 @@ use App\Http\Controllers\usersController;
 use App\Http\Controllers\Eventscontroller;
 use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\GamesController;
 
 
 
@@ -58,6 +59,15 @@ Route::get('/eventsupdate/{id}', [Eventscontroller::class, 'edit'])->name('event
 Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.index');
 Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
+
+
+//games
+Route::get('/creategames', [GamesController::class, 'create'])->name('games.create');
+Route::post('/addgames', [GamesController::class, 'store'])->name('games.register');
+Route::get('/updategames/{id}', [GamesController::class, 'edit'])->name('games.update');
+Route::get('/showallgames', [GamesController::class, 'index'])->name('games.index');
+Route::get('/gamesshow/{id}', [GamesController::class, 'show'])->name('games.show');
+Route::get('/deletegames/{id}', [GamesController::class, 'destroy'])->name('games.destroy');
 
 
 

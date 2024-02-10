@@ -47,6 +47,7 @@ public function store(CreateEventRequest $request)
             'Tittle'=>$request->tittle,
             'Type'=>$request->type,
             'Body'=>$request->body,
+            'created_by'=>$request->created_by,
 
            ];
 

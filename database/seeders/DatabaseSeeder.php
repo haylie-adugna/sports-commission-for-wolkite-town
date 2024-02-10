@@ -14,9 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(EventsTableSeeder::class);
+        $this->call(GamesTableSeeder::class);
+
 
         \App\Models\User::factory(10)->create();
         \App\Models\Events::factory(10)->create();
+        \App\Models\Games::factory(10)->create();
+
 
 
         // \App\Models\User::factory()->create([

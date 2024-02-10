@@ -85,7 +85,7 @@
               <div class="col-xs-3">
                 <label for="created_by">Created by {{ Auth::user()->user_type }}</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="created_by" disabled
+                  <input type="text" class="form-control" name="created_by" readonly
                     value="{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}" required>
                 </div>
               </div>
