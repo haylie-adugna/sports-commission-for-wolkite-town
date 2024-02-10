@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Body')->nullable();
             $table->string('photo')->nullable();
             $table->string('video')->nullable();
-            $table->string('Created_by')->unique();
+            $table->string('Created_by')->nullable();
             $table->string('status')->default('active');
             $table->rememberToken();
             $table->timestamps();

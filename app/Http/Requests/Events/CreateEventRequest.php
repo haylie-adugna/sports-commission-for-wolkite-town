@@ -13,16 +13,14 @@ class CreateEventRequest extends FormRequest
     public function rules()
 {
     return [
-        'Tittle' => 'required|string',
-        'Type' => 'required|string',
-        'Body' => 'required|string',
+        'Tittle' => 'nullable|string',
+        'Type' => 'nullable|string',
+        'Body' => 'nullable|string',
         'photo' => 'nullable|string',
         'video' => 'nullable|string', // Adjust the validation rule for video based on your requirements
-        'Created_by' => 'required|user_type',
-        'status' => 'required|in:active,inactive', // Adjust the valid statuses based on your requirements
+        'Created_by' => 'nullable|user_type',
+        'status' => 'nullable|in:active,inactive', // Adjust the valid statuses based on your requirements
         'remember_token' => 'nullable|string',
-        'created_at' => 'required|date',
-        'updated_at' => 'required|date',
     ];
 }
 

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Requests\Events\CreateEventRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class EventsController extends Controller
 {
