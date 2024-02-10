@@ -17,6 +17,30 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="overflow:scroll;">
     <div class="content" >
+        {{--Error Alert Area--}}
+        @if($errors->any())
+        <div class="box box-danger">
+            <div class="alert alert-warning box-header with-border alert-dismissible" style="color: #f7f7f7;">
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+
+            <div class="row">
+                @foreach($errors->all() as $error)
+                    <div class="col-md-4">
+                        <span><i class="icon-arrow-right5"></i> {{ $error }}</span>
+                    </div>
+                @endforeach
+            </div>
+            </div>
+        </div>
+    @endif
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+        {{--end error check--}}
+
     @yield('content')
    </div>
     <!-- /.content -->

@@ -81,18 +81,18 @@
                                 <label for="country">Country:</label>
                                 <select class="form-control" name="country">
                                     <option value="" selected disabled>{{ $users->country }}</option>
-                                    <option value="Country1">Ethiopia</option>
-                                    <option value="Country2">USA</option>
-                                    <option value="Country1">Kenya</option>
-                                    <option value="Country2">Sudan</option>
-                                    <option value="Country1">S/Afria</option>
-                                    <option value="Country2">chaina</option>
-                                    <option value="Country1">Russia</option>
-                                    <option value="Country2">Nigeria</option>
-                                    <option value="Country1">UK</option>
-                                    <option value="Country2">Itay</option>
-                                    <option value="Country1">Djibuti</option>
-                                    <option value="Country2">Brazil</option>
+                                    <option value="Ethiopia">Ethiopia</option>
+                                    <option value="USA">USA</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="Sudan">Sudan</option>
+                                    <option value="S/Afria">S/Afria</option>
+                                    <option value="china">china</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="UK">UK</option>
+                                    <option value="Itay">Itay</option>
+                                    <option value="Djibuti">Djibuti</option>
+                                    <option value="Brazil">Brazil</option>
                                     <!-- Add more countries as needed -->
                                 </select>
                             </div>
@@ -206,8 +206,8 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-secondary"><a href="{{route('users.index')}}">Cancel</a></button>
-                        <button type="submit"  class="btn btn-primary pull-right"><a href="{{route('users.index')}}">Update</a></button>
+                        <button type="submit" class="btn btn-warning"><a href="{{route('users.index')}}">Cancel</a></button>
+                        <button type="submit"  class="btn btn-primary pull-right">Update</button>
                     </div>
             </div>
 

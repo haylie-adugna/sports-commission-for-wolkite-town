@@ -11,12 +11,19 @@ class CreateEventRequest extends FormRequest
     }
 
     public function rules()
-    {
-        return [
-            'title' => 'required',
-            'type' => 'required',
-            'body' => 'required',
-            'image' => 'required|mimes:jpeg,png,mp4|max:20480',
-        ];
-    }
+{
+    return [
+        'Tittle' => 'required|string',
+        'Type' => 'required|string',
+        'Body' => 'required|string',
+        'photo' => 'nullable|string',
+        'video' => 'nullable|string', // Adjust the validation rule for video based on your requirements
+        'Created_by' => 'required|user_type',
+        'status' => 'required|in:active,inactive', // Adjust the valid statuses based on your requirements
+        'remember_token' => 'nullable|string',
+        'created_at' => 'required|date',
+        'updated_at' => 'required|date',
+    ];
+}
+
 }

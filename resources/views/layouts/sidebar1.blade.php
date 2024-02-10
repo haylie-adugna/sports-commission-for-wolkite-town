@@ -41,7 +41,7 @@
           <ul class="treeview-menu">
             <li><a href="{{route('users.create')}}"><i class="fa fa-fw fa-user-plus"></i> Add new user</a></li>
             <li><a href="{{route('users.index')}}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
+            <li><a href="{{route('users.analaysis')}}"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
             @if (Auth::user()->user_type === 'commissioner')
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
             @endif

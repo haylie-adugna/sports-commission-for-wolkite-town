@@ -7,12 +7,15 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdtateUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Webpatser\Countries\Countries;
+use Illuminate\Support\Facades\DB;
+
 
 class userscontroller extends Controller
 {
@@ -37,7 +40,7 @@ class userscontroller extends Controller
     {
         return view('backend.users.create');
     }
-    public function store(Request $request): RedirectResponse
+    public function store(CreateUserRequest $request)
     {
        User::create($request->all());
        return redirect()->route('users.create')->with('status', 'Registration successful!');
@@ -58,17 +61,40 @@ class userscontroller extends Controller
         $users= User::find($id);
         return view('backend.users.update', compact('users'));
     }
-    public function updtate(Request $request, $id)
+    public function updtate(UpdtateUserRequest $request, $id)
     {
         $users= User::find($id);
        $this->$users-> User::update($request->all());
-        return redirect()->route('users.create')->with('status', 'update successful!');
+        return redirect()->route('users.update')->with('status', 'update successful!');
 
     }
+    public function analaysis()
+{
+    $userCountsByType = DB::table('users')
+        ->select('user_type', DB::raw('count(*) as count'))
+        ->groupBy('user_type')
+        ->get();
+
+    return view('backend.users.analaysis', compact('userCountsByType'));
+    return view('dashboard', compact('userCountsByType'));
+}
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-        return redirect()->route('users.index')->with('success', 'user deleted successfully');
+
+    // Check if the user is trying to delete their own account
+    if ($user && $user->id === Auth::id()) {
+        // Render a confirmation view for the user to confirm account deletion
+        return view('backend.users.confirm-delete', compact('user'));
     }
+
+    // If the user is trying to delete another user account
+    if ($user) {
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    }
+
+    // If the user is not found
+    return redirect()->route('users.index')->with('error', 'User not found.');
+}
 }

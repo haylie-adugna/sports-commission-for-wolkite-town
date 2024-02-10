@@ -42,6 +42,7 @@ Route::get('/usersedit/{id}', [usersController::class, 'edit'])->name('users.edi
 Route::get('/usersupdate/{id}', [usersController::class, 'update'])->name('users.update');
 Route::get('/showalluser', [usersController::class, 'index'])->name('users.index');
 Route::get('/usersshow/{id}', [usersController::class, 'show'])->name('users.show');
+Route::get('/useranalaysis', [usersController::class, 'analaysis'])->name('users.analaysis');
 Route::get('/usersdelete/{id}', [usersController::class, 'destroy'])->name('users.destroy');
 
 
