@@ -8,7 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\User\CreateUserRequest;
-use App\Http\Requests\User\UpdtateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -61,7 +61,7 @@ class userscontroller extends Controller
         $users= User::find($id);
         return view('backend.users.update', compact('users'));
     }
-    public function updtate(UpdtateUserRequest $request, $id)
+    public function updtate(UpdateUserRequest $request, $id)
     {
         $users= User::find($id);
        $this->$users-> User::update($request->all());

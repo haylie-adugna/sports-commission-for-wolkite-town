@@ -9,9 +9,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Upadte User Information</h3>
                 </div>
-                <form novalidate method="POST" action="{{ route('register') }}">
+                <form novalidate method="POST" action="{{ route('users.update', ['id' => $users->id]) }}">
                     @csrf
-
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-2">

@@ -95,9 +95,9 @@
           <ul class="treeview-menu">
             <li><a href="pages/UI/general.html"><i class="fa fa-fw fa-plus-circle"></i> Add Complain</a></li>
             @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
-            <li><a href="pages/UI/icons.html"><i class="fa fa-fw fa-gear"></i> Manages complain</a></li>
+            <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-gear"></i> Manages complain</a></li>
             @endif
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
+            <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -107,8 +107,8 @@
           </a>
           @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager')
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-fw fa-plus-square"></i> Add New project</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-fw fa-gear"></i> Manage project</a></li>
+            <li><a href="{{route('project.create')}}"><i class="fa fa-fw fa-plus-square"></i> Add New project</a></li>
+            <li><a href="{{route('project.index')}}"><i class="fa fa-fw fa-gear"></i> Manage project</a></li>
             <li><a href="pages/forms/editors.html"><i class="fa fa-fw fa-gears"></i> project Analaysis</a></li>
           </ul>
           @endif

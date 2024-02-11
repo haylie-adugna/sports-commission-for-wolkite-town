@@ -29,7 +29,7 @@
 
             <div class="box box-success box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Verify Email</h3>
+                    <h3 class="box-title">Verify Your Email</h3>
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

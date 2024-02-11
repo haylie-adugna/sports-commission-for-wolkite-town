@@ -4,14 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Events;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+
 use App\Http\Requests\Events\CreateEventRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -83,7 +76,7 @@ public function store(CreateEventRequest $request)
         return view('backend.events.update');
     }
 
-    public function destroy()
+    public function destroy(string $id)
     {
         try {
             $events = Events::find($id); // Find the event by ID

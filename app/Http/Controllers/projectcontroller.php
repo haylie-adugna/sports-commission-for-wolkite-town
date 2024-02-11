@@ -24,19 +24,19 @@ class projectcontroller extends Controller
      */
     public function create()
     {
-        return view('backend.sportproject.create');
+        return view('backend.project.create');
     }
     public function index()
     {
-        return view('backend.sportproject.index');
+        return view('backend.project.index');
     }
     public function show()
     {
-        return view('backend.sportproject.show');
+        return view('backend.project.show');
     }
     public function edit()
     {
-        return view('backend.sportproject.edit');
+        return view('backend.project.edit');
     }
     public function destroy()
     {

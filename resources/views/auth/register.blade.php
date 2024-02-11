@@ -17,7 +17,7 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
       <div class="form-group has-feedback">
-        <input id="name" type="first_name" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="Enter first name">
+        <input id="name" type="first_name" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus placeholder="Enter your name">
         @error('first_name')
         <span class="invalid-feedback text-danger" role="alert">
             <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input id="name" type="middle_name" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" required autocomplete="middle_name" autofocus placeholder="Enter middle name">
+        <input id="name" type="middle_name" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" required autocomplete="middle_name" autofocus placeholder="Enter father name">
         @error('middle_name')
         <span class="invalid-feedback text-danger" role="alert">
             <strong>{{ $message }}</strong>

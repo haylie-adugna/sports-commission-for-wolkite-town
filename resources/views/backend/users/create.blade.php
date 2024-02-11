@@ -246,15 +246,14 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <label for="club">Behavioral Records:</label>
                                 <div class="form-group">
-                                    <select name="behavioral_record" class="form-control select2" multiple="multiple" data-placeholder="Select Behavioral Records" style="width: 100%;">
-                                        <option>Red card</option>
-                                        <option>Yellow card</option>
-                                        <option>Green card</option>
-                                    </select>
+                                  <select class="form-control select2" multiple="multiple" data-placeholder="Select Behavioral Records" style="width: 100%;">
+                                    <option>Red card</option>
+                                    <option>Yellow card</option>
+                                    <option>Green card</option>
+                                  </select>
                                 </div>
-                            </div>
+                                </div>
 
 
                             <div class="col-xs-3">
@@ -298,4 +297,24 @@
         </div>
         <!-- /.row -->
     </section>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+ <!-- Ionicons -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+
+ <!-- Select2 -->
+ <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+ <!-- AdminLTE Skins. Choose a skin from the css/skins
+      folder instead of downloading all of them to reduce the load. -->
+ <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+
+<!-- jQuery 2.2.0 -->
+<script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<!-- Bootstrap 3.3.6 -->
+
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/select2.full.min.js') }}"></script>
+
 @endsection

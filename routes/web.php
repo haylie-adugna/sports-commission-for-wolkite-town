@@ -32,7 +32,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/email_verfication', [VerifyEmailController::class, 'email_verfication'])->name('verify_email');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['auth', 'VerifyUser'])->group(function () {
@@ -77,10 +77,13 @@ Route::get('/show', [ClubController::class, 'show'])->name('club.show');
 Route::delete('/delete', [ClubController::class, 'destroy'])->name('club.destroy');
 
 
-Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('sportproject.edit');
-Route::get('/projectupdate', [projectcontroller::class, 'edit'])->name('sportproject.update');
-Route::get('/projectshow', [projectcontroller::class, 'show'])->name('sportproject.show');
-Route::delete('/projectdelete', [projectcontroller::class, 'destroy'])->name('sportproject.destroy');
+
+Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('project.create');
+Route::post('/addproject', [projectcontroller::class, 'store'])->name('project.register');
+Route::get('/projectupdate/{id}', [projectcontroller::class, 'edit'])->name('project.update');
+Route::get('/showallproject', [projectcontroller::class, 'index'])->name('project.index');
+Route::get('/projectshow/{id}', [projectcontroller::class, 'show'])->name('project.show');
+Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('project.destroy');
 
 });
 

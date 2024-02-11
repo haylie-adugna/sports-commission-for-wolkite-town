@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Requests\Games\CreateGamesRequest;
+use App\Http\Requests\Games\UpdateGameRequest;
 use Illuminate\Support\Facades\DB;
 
 class GamesController extends Controller
@@ -67,7 +68,7 @@ class GamesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updtate(UpdtateUserRequest $request, $id)
+    public function updtate(UpdateGameRequest $request, $id)
     {
         $games= games::find($id);
        $this->$games-> games::update($request->all());
@@ -80,6 +81,16 @@ class GamesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        {
+            $game = games::find($id);
+
+            if (!$game) {
+                abort(404); // Or handle the case when the game is not found
+            }
+
+            $game->delete();
+
+            return redirect()->route('games.index')->with('status', 'Game deleted successfully!');
+        }
     }
 }

@@ -1,15 +1,15 @@
 <?php
+// App\Models\Game.php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Games;
 
-
-class Games extends Model
+class games extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'Name',
         'Rules',
@@ -19,6 +19,5 @@ class Games extends Model
         'Season',
         'Governing_Body',
         'status',
-
     ];
 }
