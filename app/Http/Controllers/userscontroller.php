@@ -78,6 +78,7 @@ class userscontroller extends Controller
     return view('backend.users.analaysis', compact('userCountsByType'));
     return view('dashboard', compact('userCountsByType'));
 }
+
     public function destroy($id)
     {
         $user = User::find($id);

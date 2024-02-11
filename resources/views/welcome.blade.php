@@ -19,9 +19,15 @@
 
 <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
+        @if(session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+    @endif
         @include('frontend.nav')
 
+
         @yield('content')
+
+       @include('frontend.news')
 
         @include('common.footer')
         @include('common.script')

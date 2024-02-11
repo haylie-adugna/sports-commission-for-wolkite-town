@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <section class="content">
         <!-- Small boxes (Stat box) -->
@@ -68,4 +69,5 @@
         <!-- ./col -->
       </div>
       <!-- /.row -->
+    </section>
 @endsection

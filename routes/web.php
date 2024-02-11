@@ -91,5 +91,6 @@ Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('
 
 
 // contact
-Route::POST('/', [ContactController::class, 'submitForm'])->name('contactform');
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 require __DIR__.'/auth.php';
