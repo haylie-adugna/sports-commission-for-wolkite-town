@@ -61,11 +61,11 @@ class userscontroller extends Controller
         $users= User::find($id);
         return view('backend.users.update', compact('users'));
     }
-    public function updtate(UpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $users= User::find($id);
-       $this->$users-> User::update($request->all());
-        return redirect()->route('users.update')->with('status', 'update successful!');
+        $users->update($request->all());
+        return redirect()->route('users.edit',$id)->with('status', 'update successful!');
 
     }
     public function analaysis()

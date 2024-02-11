@@ -22,8 +22,10 @@
                 <h3 class="box-title">User Data managment Table</h3>
               </div>
               <!-- /.box-header -->
-              <div class="box-body table-responsive">
+              <div id="table-container" class="box-body table-responsive">
+                <div class="box-body table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
+                    <p class="pull-right">Date: <span id="currentDate" ></span></p>
                     <thead>
                         <tr>
                             <th>S/N</th>
@@ -99,5 +101,17 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
+         <!-- this row will not appear when printing -->
+         <div class="row no-print">
+            <div class="col-xs-12">
+                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Open Print Dialog</a>
+                <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                <button type="button" class="btn btn-primary" onclick="generatePDF()">
+                    <i class="fa fa-download"></i> Generate PDF
+                  </button>
+                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                <button type="button" class="btn btn-default" id="printTableButton"><i class="fa fa-print"></i> Print Table</button>
+            </div>
+        </div>
       </section>
 @endsection

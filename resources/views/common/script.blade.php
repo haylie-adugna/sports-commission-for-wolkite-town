@@ -57,11 +57,11 @@
       $("#example1").DataTable();
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
-        "autoWidth": false
+        "autoWidth": true
       });
     });
   </script>
@@ -202,3 +202,18 @@
           });
       });
   </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date (e.g., "YYYY-MM-DD")
+        var formattedDate = currentDate.toISOString().split('T')[0];
+
+        // Display the formatted date in an element with the id "currentDate"
+        var currentDateElement = document.getElementById('currentDate');
+        if (currentDateElement) {
+            currentDateElement.textContent = formattedDate;
+        }
+    });
+</script>

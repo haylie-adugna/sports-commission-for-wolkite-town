@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'middle_name' => 'Desalegn',
             'last_name' => 'mulualem',
             'email' => 'haylieadugna13@gmail.com',
-            'phone' => '123456789',
+            'phone_number' => '123456789',
             'password' => Hash::make('12345678'),
             'verified' => true,
             'email_verified_at' => now(),

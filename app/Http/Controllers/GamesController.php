@@ -4,17 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Games;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Games\Registered;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
 use App\Http\Requests\Games\CreateGamesRequest;
 use App\Http\Requests\Games\UpdateGameRequest;
-use Illuminate\Support\Facades\DB;
 
 class GamesController extends Controller
 {

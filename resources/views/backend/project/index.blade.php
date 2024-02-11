@@ -39,18 +39,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($games as $games)
+                        @foreach ($project as $project)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $games->Name }}</td>
-                            <td>{{ $games->Rules }}</td>
-                            <td>{{ $games->Equipment }}</td>
-                            <td>{{ $games->Duration }}</td>
-                            <td>{{ $games->Venue }}</td>
-                            <td>{{ $games->Season }}</td>
-                            <td>{{ $games->Created_by }}</td>
-                            <td>{{ $games->Governing_Body }}</td>
-                            <td>{{ $games->status }}</td>
+                            <td>{{ $project->Name }}</td>
+                            <td>{{ $project->Rules }}</td>
+                            <td>{{ $project->Equipment }}</td>
+                            <td>{{ $project->Duration }}</td>
+                            <td>{{ $project->Venue }}</td>
+                            <td>{{ $project->Season }}</td>
+                            <td>{{ $project->Created_by }}</td>
+                            <td>{{ $project->Governing_Body }}</td>
+                            <td>{{ $project->status }}</td>
                             <td class="text-center">
                                 <div class="fa fa-edit">
                                     <div class="btn-group">
@@ -62,13 +62,13 @@
                                          <div class="dropdown-menu pull-right" role="menu">
 
                                             {{--View Profile--}}
-                                            <a href="{{route('games.show', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> View Information</a><br><br>
+                                            <a href="{{route('project.show', $project->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> View Information</a><br><br>
                                             {{--Edit--}}
-                                            <a href="{{route('games.update', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit Information</a><br><br>
+                                            <a href="{{route('project.update', $project->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit Information</a><br><br>
                                             <i class="divider"></i>
 
                                             {{--Delete--}}
-                                            <a id="" href="{{route('games.destroy', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
+                                            <a id="" href="{{route('project.destroy', $project->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
                                             <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
 
                                         </div>

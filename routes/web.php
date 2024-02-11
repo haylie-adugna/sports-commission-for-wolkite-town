@@ -40,7 +40,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
 Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
 Route::get('/usersedit/{id}', [usersController::class, 'edit'])->name('users.edit');
-Route::get('/usersupdate/{id}', [usersController::class, 'update'])->name('users.update');
+Route::post('/usersupdate/{id}', [usersController::class, 'update'])->name('users.update');
 Route::get('/showalluser', [usersController::class, 'index'])->name('users.index');
 Route::get('/usersshow/{id}', [usersController::class, 'show'])->name('users.show');
 Route::get('/useranalaysis', [usersController::class, 'analaysis'])->name('users.analaysis');
