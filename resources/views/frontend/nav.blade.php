@@ -66,49 +66,8 @@
               </ul>
             </li>
 
-
-            <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-file-code-o"></i>
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </div>
-                  <!-- /.row -->
-                </li>
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="text-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  </div>
-                  <div class="text-center">
-                    <a href="#" class="btn btn-default btn-flat">contact</a>
-                  </div>
-                  <div class="text-right">
-                    <a href="#" class="btn btn-default btn-flat">about</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
             <li><a href="{{ route('login') }}" class="btn btn-block btn-success btn-lg">Log In</a></li>
-            <li><a  href="{{ route('register') }}"class="btn btn-block btn-success btn-lg">Join</a></li>
+            <li><a  href="{{ route('register') }}"class="btn btn-block btn-success btn-lg">Register</a></li>
 
 
           </ul>
