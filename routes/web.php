@@ -10,6 +10,7 @@ use App\Http\Controllers\Eventscontroller;
 use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\MatchController;
 
 
 
@@ -68,6 +69,15 @@ Route::get('/updategames/{id}', [GamesController::class, 'edit'])->name('games.u
 Route::get('/showallgames', [GamesController::class, 'index'])->name('games.index');
 Route::get('/gamesshow/{id}', [GamesController::class, 'show'])->name('games.show');
 Route::get('/deletegames/{id}', [GamesController::class, 'destroy'])->name('games.destroy');
+
+// match
+Route::get('/creatematch', [MatchController::class, 'create'])->name('matchs.create');
+Route::post('/addmatch', [MatchController::class, 'store'])->name('matchs.register');
+Route::get('/updatematch/{id}', [MatchController::class, 'edit'])->name('matchs.update');
+Route::get('/showallmatch', [MatchController::class, 'index'])->name('matchs.index');
+Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.show');
+Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
+
 
 
 

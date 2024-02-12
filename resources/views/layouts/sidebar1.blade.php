@@ -71,6 +71,31 @@
           @endif
 
         </li>
+        <li>
+            <a href="pages/widgets.html">
+              <i class="fa fa-fw fa-futbol-o"></i> <span>Match</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            @if (Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'commissioner')
+            <ul class="treeview-menu">
+                <li><a href="{{route('matchs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Match</a></li>
+                <li><a href="{{route('matchs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Matchs</a></li>
+                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add game stastics</a></li>
+                <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
+                <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
+            </ul>
+            @endif
+            @if (Auth::user()->user_type === 'gameofficer')
+            <ul class="treeview-menu">
+                <li><a href="{{route('matchs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Match</a></li>
+                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Manage Matchs</a></li>
+                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add game stastics</a></li>
+                <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
+                <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
+            </ul>
+            @endif
+
+          </li>
 
         <li class="treeview">
           <a href="pages/widgets.html">
