@@ -1,8 +1,8 @@
 <header class="main-header">
-    <nav class="navbar navbar-fixed-top">
-      <div class="container">
+    <nav class="navbar navbar-fixed-top" >
+      <div class="container" style="width: 97%;">
         <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand"><b>Wolkite</b>TSCMS</a>
+          <a href="/" class="navbar-brand"><b>Wolkite</b>TSC</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -25,6 +25,7 @@
                 <li><a href="#">Ethiopian league</a></li>
               </ul>
             </li>
+            <li id="google_translate_element"></li>
           </ul>
 
           <form action="#" method="get" class="navbar-form navbar-left">
@@ -41,7 +42,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <li id="google_translate_element"></li>
+
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
               <!-- Menu toggle button -->
@@ -66,8 +67,8 @@
               </ul>
             </li>
 
-            <li><a href="{{ route('login') }}" class="btn btn-block btn-success btn-lg">Log In</a></li>
-            <li><a  href="{{ route('register') }}"class="btn btn-block btn-success btn-lg">Register</a></li>
+            <li><a href="{{ route('login') }}" class="btn btn-block  btn-lg">Log In</a></li>
+            <li><a  href="{{ route('register') }}"class="btn btn-block  btn-lg">Register</a></li>
 
 
           </ul>

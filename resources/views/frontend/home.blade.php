@@ -25,6 +25,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Today's Sports News in Ethiopia</h3>
                                 </div>
+
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="box-group" id="accordion">
@@ -145,7 +146,7 @@
                     <!-- END ACCORDION & CAROUSEL-->
 
 
-
+                    @include('frontend.news')
 
 
 

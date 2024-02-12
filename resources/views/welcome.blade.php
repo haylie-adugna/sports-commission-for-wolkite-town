@@ -27,7 +27,7 @@
 
         @yield('content')
 
-       @include('frontend.news')
+
 
         @include('common.footer')
         @include('common.script')
