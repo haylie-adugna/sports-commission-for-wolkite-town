@@ -1,179 +1,70 @@
 @extends('layouts.app')
+
 @section('content')
-<section class="content">
-    <div class="rows">
-        <!-- right column -->
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h2 class="box-title">Add New Game</h2>
+    <div class="container">
+        <h2>Edit Match</h2>
+        <form method="POST" action="{{ route('matchs.edit', ['id' => $matchs->id]) }}">
+            @csrf
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="team1">Team 1:</label>
+                        <input type="text" class="form-control" name="Team1" value="{{ $matchs->Team1 }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team2">Team 2:</label>
+                        <input type="text" class="form-control" name="Team2" value="{{ $matchs->Team2 }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start_time">Match Start Time:</label>
+                        <input type="datetime-local" class="form-control" name="Start_time" value="{{ $matchs->Start_time }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_time">Match End Time:</label>
+                        <input type="datetime-local" class="form-control" name="End_time" value="{{ $matchs->End_time }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commentator">Commentator:</label>
+                        <input type="text" class="form-control" name="Commentator" value="{{ $matchs->Commentator }}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="referee">Referee:</label>
+                        <input type="text" class="form-control" name="Referee" value="{{ $matchs->Referee }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assistant_referee1">Assistant Referee 1:</label>
+                        <input type="text" class="form-control" name="Assistant_Referee1" value="{{ $matchs->Assistant_Referee1 }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assistant_referee2">Assistant Referee 2:</label>
+                        <input type="text" class="form-control" name="Assistant_Referee2" value="{{ $matchs->Assistant_Referee2 }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venue">Venue:</label>
+                        <input type="text" class="form-control" name="Venue" value="{{ $matchs->Venue }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medical_support">Medical Support:</label>
+                        <input type="text" class="form-control" name="Medical_Support" value="{{ $matchs->Medical_Support }}" required>
+                    </div>
+                </div>
             </div>
-            <form action="{{ route('games.update', ['id' => $games->id]) }}" method="post" method="post">
-                @csrf
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <div class="input-group">
-                                <label for="Title">Name:</label>
-                                <input type="text" class="form-control" name="Name" placeholder="Title" value="{{ $games->Name }}">
-                            </div>
-                        </div>
 
-                        <div class="col-xs-3">
-                            <div class="input-group">
-                                <label for="Description">Description:</label>
-                                <input type="text" class="form-control" name="description" placeholder="Description" value="{{ $games->description }}">
-                            </div>
-                        </div>
+            <!-- Add more fields based on all the columns in your matchs model -->
 
-                        <div class="col-xs-3">
-                            <label for="GameCategory">Game Category or Type</label>
-                            <select class="form-control select2" style="width: 100%;" name="game_category"
-                                data-insert-attribute="true" value="{{ $games->game_category }}">
-                                <option>Team Sport</option>
-                                <option>Individual Sport</option>
-                                <option>Doubles Sport </option>
-                                <option>Mixed Sport</option>
-                            </select>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <section class="content">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="box">
-                                            <div class="box-header">
-                                                <div></div>
-                                                <!-- tools box -->
-                                                <div class="pull-right box-tools">
-                                                    <button type="button" class="btn btn-default btn-sm"
-                                                        data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                                        <i class="fa fa-minus"></i></button>
-                                                    <button type="button" class="btn btn-default btn-sm"
-                                                        data-widget="remove" data-toggle="tooltip" title="Remove">
-                                                        <i class="fa fa-times"></i></button>
-                                                </div>
-                                                <!-- /. tools -->
-                                            </div>
-                                            <!-- /.box-header -->
-                                            <div class="box-body pad">
-                                                <label for="Rules">Rules:</label>
-                                                <textarea class="textarea" placeholder="Place some text here"
-                                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                                    name="rules" value="{{ $games->rules }}"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.col-->
-                                </div>
-                                <!-- ./row -->
-                            </section>
-                            <!-- /.content -->
-                        </div>
-
-                        <div class="col-xs-12">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="box">
-                                        <div class="box-header">
-                                            <!-- tools box -->
-                                            <div class="pull-right box-tools">
-                                                <button type="button" class="btn btn-default btn-sm"
-                                                    data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                                    <i class="fa fa-minus"></i></button>
-                                                <button type="button" class="btn btn-default btn-sm"
-                                                    data-widget="remove" data-toggle="tooltip" title="Remove">
-                                                    <i class="fa fa-times"></i></button>
-                                            </div>
-                                            <!-- /. tools -->
-                                        </div>
-                                        <!-- /.box-header -->
-                                        <div class="box-body pad">
-                                            <label for="Equipment">Equipment:</label>
-                                            <textarea class="textarea" placeholder="Place some text here"
-                                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                                name="equipment" value="{{ $games->equipment }}"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.col-->
-                            </div>
-                            <!-- ./row -->
-
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                <label for="Duration">Duration:</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-clock-o"></i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right" id="reservationtime"
-                                        name="duration" value="{{ $games->duration }}" placeholder="Duration">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3">
-                            <div class="input-group">
-                                <label for="Players">Players or Participants:</label>
-                                <input type="text" class="form-control" name="player" value="{{ $games->player }}" placeholder="Players or Participants">
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3">
-                            <label for="Venue">Venue:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="venue" placeholder="Venue" >
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                <label for="Season">Season:</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right" id="reservation" name="season" value="{{ $games->season }}"
-                                        placeholder="Season">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3">
-                            <div class="input-group">
-                                <label for="GoverningBody">Governing Body:</label>
-                                <input type="text" class="form-control" name="governing_body" value="{{ $games->governing_body }}" placeholder="Governing Body">
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.box-body -->
-
-                <div class="box-footer">
-                    <a href="{{ route('games.index') }}" class="btn btn-warning">Cancel</a>
-                    <button type="submit" class="btn btn-info pull-right">update Game</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="box-body pad">
-        <form>
-            <textarea id="editor1" name="editor1" rows="10" cols="80">
-        </textarea>
+            <button type="submit" class="btn btn-primary">Update Match</button>
+            <a href="{{ route('matchs.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
-</section>
-
 @endsection

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matchs;
-use App\Http\Requests\matchs\CreateMatchsRequest;
-use App\Http\Requests\UpdateMatchsRequest;
+use App\Http\Requests\Matchs\CreateMatchsRequest;
+use App\Http\Requests\Matchs\UpdateMatchsRequest;
+use Illuminate\Support\Facades\DB;
 
 class MatchController extends Controller
 {
@@ -51,24 +52,22 @@ class MatchController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function update($id)
     {
         $matchs = matchs::find($id);
-        return view('backend.matchs.edit', compact('matchs'));
+        return view('backend.matchs.update', compact('matchs'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMatchsRequest $request, $id)
-{
-    // Find and update the match record
-    $match = matchs::find($id);
-    $match->update($request->all());
+    public function edit(UpdateMatchsRequest $request, $id)
+    {
+        $matchs= matchs::find($id);
+        $matchs->update($request->all());
+        return redirect()->route('matchs.update',$id)->with('status', 'update successful!');
 
-    // Redirect to the index page with success message
-    return redirect()->route('matchs.index')->with('success', 'Match updated successfully');
-}
+    }
 
 
     /**
@@ -78,7 +77,7 @@ class MatchController extends Controller
     {
         // Find and delete the match record
         $matchs = Matchs::find($id);
-        $match->delete();
+        $matchs->delete();
 
         // Redirect to the index page with success message
         return redirect()->route('matchs.index')->with('success', 'Match deleted successfully');

@@ -22,6 +22,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
+            <a href="{{ route('games.create') }}" class="btn btn-success mb-3 pull-right">Add New Game</a>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>

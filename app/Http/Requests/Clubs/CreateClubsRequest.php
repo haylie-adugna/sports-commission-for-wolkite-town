@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Requests\Clubs;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class CreateClubsRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true; // Adjust authorization logic if needed
+    }
+
+    public function rules()
+    {
+        return [
+            'club_name' => 'required|string',
+            'club_manager' => 'required|string',
+            'coach_name' => 'nullable|string',
+            'contact_information' => 'required|string',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'social_media_link' => 'nullable|string',
+            'location' => 'nullable|string',
+            'game_category' => 'nullable|string',
+            'document' => 'nullable|string',
+            'description' => 'nullable|string',
+            'status' => 'nullable|in:active,inactive',
+        ];
+    }
+}

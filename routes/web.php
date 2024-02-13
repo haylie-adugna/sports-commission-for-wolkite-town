@@ -65,7 +65,7 @@ Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('ev
 //games
 Route::get('/creategames', [GamesController::class, 'create'])->name('games.create');
 Route::post('/addgames', [GamesController::class, 'store'])->name('games.register');
-Route::get('/updategames/{id}', [GamesController::class, 'edit'])->name('games.update');
+Route::post('/updategames/{id}', [GamesController::class, 'edit'])->name('games.update');
 Route::get('/showallgames', [GamesController::class, 'index'])->name('games.index');
 Route::get('/gamesshow/{id}', [GamesController::class, 'show'])->name('games.show');
 Route::get('/deletegames/{id}', [GamesController::class, 'destroy'])->name('games.destroy');
@@ -73,21 +73,25 @@ Route::get('/deletegames/{id}', [GamesController::class, 'destroy'])->name('game
 // match
 Route::get('/creatematch', [MatchController::class, 'create'])->name('matchs.create');
 Route::post('/addmatch', [MatchController::class, 'store'])->name('matchs.register');
-Route::get('/updatematch/{id}', [MatchController::class, 'edit'])->name('matchs.update');
+Route::get('/matchsedit/{id}', [MatchController::class, 'update'])->name('matchs.update');
+Route::post('/matchsupdate/{id}', [MatchController::class, 'edit'])->name('matchs.edit');
 Route::get('/showallmatch', [MatchController::class, 'index'])->name('matchs.index');
 Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.show');
 Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
 
 
 
+// club
+Route::get('/createclub', [ClubController::class, 'create'])->name('clubs.create');
+Route::post('/addclub', [ClubController::class, 'store'])->name('clubs.register');
+Route::get('/clubedit/{id}', [ClubController::class, 'update'])->name('clubs.update');
+Route::post('/clubupdate/{id}', [ClubController::class, 'edit'])->name('clubs.edit');
+Route::get('/showallclub', [ClubController::class, 'index'])->name('clubs.index');
+Route::get('/clubhow/{id}', [ClubController::class, 'show'])->name('clubs.show');
+Route::get('/deleteclub/{id}', [ClubController::class, 'destroy'])->name('clubs.destroy');
 
-Route::get('/create', [ClubController::class, 'create'])->name('club.create');
-Route::get('/update', [ClubController::class, 'edit'])->name('club.update');
-Route::get('/show', [ClubController::class, 'show'])->name('club.show');
-Route::delete('/delete', [ClubController::class, 'destroy'])->name('club.destroy');
 
-
-
+// project
 Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('project.create');
 Route::post('/addproject', [projectcontroller::class, 'store'])->name('project.register');
 Route::get('/projectupdate/{id}', [projectcontroller::class, 'edit'])->name('project.update');

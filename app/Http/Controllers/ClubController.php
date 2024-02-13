@@ -1,8 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Clubs;
+use App\Http\Requests\Clubs\CreateClubsRequest;
+use App\Http\Requests\Clubs\UpdateClubsRequest;
+use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
 {
@@ -21,24 +26,49 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function create()
-    {
-        return view('backend.club.create');
-    }
     public function index()
     {
-        return view('backend.club.index');
+        $clubs= clubs::all();
+        return view('backend.clubs.index', compact('clubs'));
     }
-    public function show()
+    public function create()
     {
-        return view('backend.club.show');
+        return view('backend.clubs.create');
     }
-    public function edit()
+    public function store(CreateClubsRequest $request)
     {
-        return view('backend.club.edit');
-    }
-    public function destroy()
-    {
+        // Create a new clubs record
 
+        clubs::create($request->all());
+
+        // Redirect to the index page with success message
+        return redirect()->route('clubs.index')->with('status', 'clubs created successfully');
+    }
+
+    public function show($id)
+    {
+        $clubs= clubs::find($id);
+        return view('backend.clubs.show', compact('clubs'));
+    }
+    public function update($id)
+    {
+        $clubs = clubs::find($id);
+        return view('backend.clubs.update', compact('clubs'));
+    }
+    public function edit(UpdateClubsRequest $request, $id)
+    {
+        $clubs= clubs::find($id);
+        $clubs->update($request->all());
+        return redirect()->route('clubs.update',$id)->with('status', 'update successful!');
+
+    }
+    public function destroy($id)
+    {
+        // Find and delete the match record
+        $clubs = clubs::find($id);
+        $clubs->delete();
+
+        // Redirect to the index page with success message
+        return redirect()->route('clubs.index')->with('status', 'clubs deleted successfully');
     }
 }

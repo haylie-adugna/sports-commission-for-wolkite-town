@@ -96,6 +96,19 @@
             @endif
 
           </li>
+          <li>
+            <a href="pages/widgets.html">
+              <i class="fa fa-fw fa-futbol-o"></i> <span>Clubs</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            @if (Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'commissioner')
+            <ul class="treeview-menu">
+                <li><a href="{{route('clubs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Clubs</a></li>
+                <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Clubs</a></li>
+                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Clubs stastics</a></li>
+            </ul>
+            @endif
+          </li>
 
         <li class="treeview">
           <a href="pages/widgets.html">

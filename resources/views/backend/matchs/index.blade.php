@@ -80,13 +80,8 @@
                                     <i class="divider"></i>
 
                                     {{-- Delete --}}
-                                    <a id="deleteMatch{{ $matchs->id }}" href="#" class="dropdown-item delete-match">
-                                        <i class="fa fa-fw fa-trash"></i> Delete Match
-                                    </a>
-                                    <form method="POST" id="deleteForm{{ $matchs->id }}" action="{{ route('matchs.destroy', $matchs->id) }}" class="hidden">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
+                                    <a id="" href="{{route('matchs.destroy',$matchs->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
+                                    <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
 
                                 </div>
                             </div>
