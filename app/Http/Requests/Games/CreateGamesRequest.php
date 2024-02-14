@@ -13,14 +13,16 @@ class CreateGamesRequest extends FormRequest
     public function rules()
 {
     return [
-        'Name' => 'required|string',
-        'Type' => 'nullable|string',
-        'Body' => 'nullable|string',
-        'photo' => 'nullable|string',
-        'video' => 'nullable|string', // Adjust the validation rule for video based on your requirements
-        'Created_by' => 'nullable|user_type',
-        'status' => 'nullable|in:active,inactive', // Adjust the valid statuses based on your requirements
-        'remember_token' => 'nullable|string',
+        'Name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'game_category' => 'required|string|max:255',
+        'rules' => 'required|string',
+        'duration' => 'required|string|max:255',
+        'player' => 'required|string|max:255',
+        'venue' => 'required|string|max:255',
+        'equipment' => 'required|string',
+        'season' => 'required|string|max:255',
+        'governing_body' => 'required|string|max:255',
     ];
 }
 

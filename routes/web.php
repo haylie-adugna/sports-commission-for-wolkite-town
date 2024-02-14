@@ -65,7 +65,8 @@ Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('ev
 //games
 Route::get('/creategames', [GamesController::class, 'create'])->name('games.create');
 Route::post('/addgames', [GamesController::class, 'store'])->name('games.register');
-Route::post('/updategames/{id}', [GamesController::class, 'edit'])->name('games.update');
+Route::get('/gameedit/{id}', [GamesController::class, 'update'])->name('games.update');
+Route::post('/gamesupdate/{id}', [GamesController::class, 'edit'])->name('games.edit');
 Route::get('/showallgames', [GamesController::class, 'index'])->name('games.index');
 Route::get('/gamesshow/{id}', [GamesController::class, 'show'])->name('games.show');
 Route::get('/deletegames/{id}', [GamesController::class, 'destroy'])->name('games.destroy');

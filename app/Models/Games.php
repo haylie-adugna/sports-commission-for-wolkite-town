@@ -12,12 +12,14 @@ class games extends Model
 
     protected $fillable = [
         'Name',
-        'Rules',
-        'Equipment',
-        'Duration',
-        'Venue',
-        'Season',
-        'Governing_Body',
-        'status',
+        'description',
+        'game_category',
+        'rules',
+        'duration',
+        'player',
+        'venue',
+        'equipment',
+        'season',
+        'governing_body',
     ];
 }

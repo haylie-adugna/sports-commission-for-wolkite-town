@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('Name')->nullable();
-            $table->string('Rules')->nullable();
-            $table->string('Equipment')->nullable();
-            $table->string('Duration')->nullable();
-            $table->string('Venue')->nullable();
-            $table->string('Season')->nullable();
-            $table->string('Governing_Body')->nullable();
-            $table->string('status')->default('active');
+            $table->string('Name');
+            $table->text('description')->nullable();
+            $table->string('game_category')->nullable();
+            $table->text('rules')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('player')->nullable();
+            $table->string('venue')->nullable();
+            $table->text('equipment')->nullable();
+            $table->string('season')->nullable();
+            $table->string('governing_body')->nullable();
             $table->timestamps();
         });
     }

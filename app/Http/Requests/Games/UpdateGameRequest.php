@@ -16,6 +16,7 @@ class UpdateGameRequest extends FormRequest
         return [
             'Name' => 'sometimes|required|string|max:255',
             'Rules' => 'sometimes|required|string',
+            'description' => 'sometimes|required|string',
             'Equipment' => 'sometimes|required|string',
             'Duration' => 'sometimes|required|string',
             'Venue' => 'sometimes|required|string|max:255',

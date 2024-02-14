@@ -9,7 +9,7 @@
                 <div class="box-header with-border">
                     <h2 class="box-title">Update Club Information</h2>
                 </div>
-                <form method="POST" action="{{ route('clubs.update', $clubs->id) }}">
+                <form method="POST" action="{{ route('clubs.edit', ['id' => $clubs->id]) }}">
                     @csrf
                     <div class="box-body">
 

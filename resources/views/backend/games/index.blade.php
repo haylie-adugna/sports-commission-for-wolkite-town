@@ -28,14 +28,18 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Rules</th>
-                        <th>Equipment</th>
-                        <th>Duration</th>
-                        <th>Venue</th>
-                        <th>Season</th>
-                        <th>Created_by</th>
                         <th>Governing_Body</th>
-                        <th>status</th>
+                        <th>game_category</th>
+
+                        <th>Description</th>
+                        <th>Rules</th>
+                        <th>Duration</th>
+
+                        <th>Player</th>
+                        <th>Vanue</th>
+                        <th>Season</th>
+                        <th>Equipment</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -44,14 +48,18 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $games->Name }}</td>
-                            <td>{{ $games->Rules }}</td>
-                            <td>{{ $games->Equipment }}</td>
-                            <td>{{ $games->Duration }}</td>
-                            <td>{{ $games->Venue }}</td>
-                            <td>{{ $games->Season }}</td>
-                            <td>{{ $games->Created_by }}</td>
                             <td>{{ $games->Governing_Body }}</td>
-                            <td>{{ $games->status }}</td>
+                            <td>{{ $games->game_category }}</td>
+
+                            <td>{{ $games->description }}</td>
+                            <td>{{ $games->rules }}</td>
+                            <td>{{ $games->duration }}</td>
+
+                            <td>{{ $games->player }}</td>
+                            <td>{{ $games->vanue }}</td>
+                            <td>{{ $games->season }}</td>
+                            <td>{{ $games->equipment }}</td>
+
                             <td class="text-center">
                                 <div class="fa fa-edit">
                                     <div class="btn-group">
@@ -65,7 +73,9 @@
                                             {{--View Profile--}}
                                             <a href="{{route('games.show', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> View Information</a><br><br>
                                             {{--Edit--}}
-                                            <a href="{{route('games.update', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit Information</a><br><br>
+                                            <a href="{{ route('games.update', $games->id) }}"
+                                                class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit
+                                                Information</a><br><br>
                                             <i class="divider"></i>
 
                                             {{--Delete--}}

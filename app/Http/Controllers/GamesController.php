@@ -50,20 +50,16 @@ class GamesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function update($id)
     {
-        $games= games::find($id);
+        $games = games::find($id);
         return view('backend.games.update', compact('games'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function updtate(UpdateGameRequest $request, $id)
+    public function edit(UpdateGameRequest $request, $id)
     {
         $games= games::find($id);
-       $this->$games-> games::update($request->all());
-        return redirect()->route('games.update')->with('status', 'update successful!');
+        $games->update($request->all());
+        return redirect()->route('games.update',$id)->with('status', 'update successful!');
 
     }
 

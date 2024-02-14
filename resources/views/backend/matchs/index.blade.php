@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Tables</a></li>
-      <li class="active">Event tables</li>
+      <li class="active">Machs tables</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -18,7 +18,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Games Data managment Table</h3>
+            <h3 class="box-title">Machs Data managment Table</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
