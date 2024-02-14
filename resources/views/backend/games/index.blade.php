@@ -39,7 +39,6 @@
                         <th>Vanue</th>
                         <th>Season</th>
                         <th>Equipment</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
