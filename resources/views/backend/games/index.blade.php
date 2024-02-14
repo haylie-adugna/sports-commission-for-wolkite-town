@@ -24,7 +24,7 @@
           <div class="box-body table-responsive">
             <a href="{{ route('games.create') }}" class="btn btn-success mb-3 pull-right">Add New Game</a>
             <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                  <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -66,7 +66,6 @@
                                         data-offset="-52">
                                         <i class="fas fa-bars"></i>
                                         </button>
-
                                          <div class="dropdown-menu pull-right" role="menu">
 
                                             {{--View Profile--}}
@@ -80,12 +79,10 @@
                                             {{--Delete--}}
                                             <a id="" href="{{route('games.destroy', $games->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
                                             <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
-
                                         </div>
                                     </div>
                                  </div>
                             </td>
-
                             <!-- Add more columns as needed -->
                         </tr>
                         @endforeach
