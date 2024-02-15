@@ -25,7 +25,7 @@ class GamesFactory extends Factory
     public function definition(): array
     {
         return [
-            'Name' => $this->faker->name,
+            'game_type' => $this->faker->name,
             'Rules' => $this->faker->sentence,
             'Equipment' => $this->faker->name,
             'Duration' => $this->faker->name,

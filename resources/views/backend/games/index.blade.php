@@ -46,7 +46,7 @@
                         @foreach ($games as $games)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $games->Name }}</td>
+                            <td>{{ $games->game_type }}</td>
                             <td>{{ $games->Governing_Body }}</td>
                             <td>{{ $games->game_category }}</td>
 

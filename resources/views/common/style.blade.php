@@ -130,3 +130,20 @@ display: none !important;
 
 
 </style>
+
+<style>
+    /* Add this style in your CSS or within a style tag in the HTML */
+    .colored-card {
+        display: inline-block;
+        width: 40px;
+        height: 30px;
+        border: 1px solid #000;
+    }
+    #yellowCard:checked + .colored-card {
+        background-color: yellow;
+    }
+
+    #redCard:checked + .colored-card {
+        background-color: red;
+    }
+</style>

@@ -22,8 +22,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="clubmanager">Club Manager:</label>
-                                    <select class="form-control" name="club_manager" id="club_manager">
-                                        <option value="referee_option1"> fasa</option>
+                                    <select class="form-control" name="club_manager_id" id="club_manager_id">
+                                        <option value="1"> fasa</option>
                                         <option value="referee_option1"> haylie</option>
                                         <option value="referee_option1"> woi</option>
                                         <option value="referee_option2">Hobby</option>
@@ -34,8 +34,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="coachName">Coach:</label>
-                                    <select class="form-control" name="coach_name" id="coach_name">
-                                        <option value="referee_option1"> fasa</option>
+                                    <select class="form-control" name="coach_name_id" id="coach_name_id">
+                                        <option value="1"> fasa</option>
                                         <option value="referee_option1"> haylie</option>
                                         <option value="referee_option1"> woi</option>
                                         <option value="referee_option2">Hobby</option>
@@ -78,9 +78,9 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="game_category">Game Category or type:</label>
-                                    <select class="form-control" name="game_category" id="game_category">
-                                        <option value="referee_option1"> Sports</option>
+                                    <label for="game_type_id">Game Category or type:</label>
+                                    <select class="form-control" name="game_type_id" id="game_type_id">
+                                        <option value="1"> Sports</option>
                                         <option value="referee_option1"> Academic</option>
                                         <option value="referee_option1"> Cultural</option>
                                         <option value="referee_option2">Hobby</option>

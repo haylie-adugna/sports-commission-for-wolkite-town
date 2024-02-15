@@ -55,7 +55,7 @@
                                         <td>{{ $clubs->contact_information }}</td>
                                         <td>{{ $clubs->social_media_link }}</td>
                                         <td>{{ $clubs->location }}</td>
-                                        <td>{{ $clubs->game_category }}</td>
+                                        <td>{{ $clubs->game_type_id }}</td>
                                         <td>{{ $clubs->document }}</td>
                                         <td>{{ $clubs->description }}</td>
                                         <td>{{ $clubs->status }}</td>

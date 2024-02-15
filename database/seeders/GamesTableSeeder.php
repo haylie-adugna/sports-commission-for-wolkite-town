@@ -16,7 +16,7 @@ class GamesTableSeeder extends Seeder
     {
         // Seed data for the 'news' type
         DB::table('games')->insert([
-            'Name' => 'Sample Game',
+            'game_type' => 'Sample Game',
             'description' => 'Sample game description.',
             'game_category' => 'Team Sport',
             'rules' => 'Sample game rules.',

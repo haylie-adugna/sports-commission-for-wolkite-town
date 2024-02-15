@@ -15,8 +15,8 @@ class CreateClubsRequest extends FormRequest
     {
         return [
             'club_name' => 'required|string',
-            'club_manager' => 'required|string',
-            'coach_name' => 'nullable|string',
+            'club_manager_id' => 'required|string',
+            'coach_name_id' => 'nullable|string',
             'contact_information' => 'required|string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'social_media_link' => 'nullable|string',

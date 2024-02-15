@@ -11,13 +11,13 @@ class Clubs extends Model
 
     protected $fillable = [
         'club_name',
-        'club_manager',
-        'coach_name',
+        'club_manager_id',
+        'coach_name_id',
         'contact_information',
         'logo',
         'social_media_link',
         'Location',
-        'game_category',
+        'game_type_id',
         'document',
         'description',
         'status',

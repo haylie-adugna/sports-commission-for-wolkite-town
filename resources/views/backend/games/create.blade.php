@@ -23,7 +23,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Title:</label>
-                                <input type="text" class="form-control" name="Name" placeholder="Title">
+                                <input type="text" class="form-control" name="game_type" placeholder="Title">
                             </div>
                             <div class="form-group">
                                 <label for="Description">Description:</label>

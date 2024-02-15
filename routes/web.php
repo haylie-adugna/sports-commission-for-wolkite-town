@@ -11,6 +11,7 @@ use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\MatchRecoredController;
 
 
 
@@ -99,6 +100,15 @@ Route::get('/projectupdate/{id}', [projectcontroller::class, 'edit'])->name('pro
 Route::get('/showallproject', [projectcontroller::class, 'index'])->name('project.index');
 Route::get('/projectshow/{id}', [projectcontroller::class, 'show'])->name('project.show');
 Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('project.destroy');
+
+// matchsrecored
+Route::get('/creatematchsrecored', [MatchRecoredController::class, 'create'])->name('matchsrecored.create');
+Route::post('/addmatchsrecored', [MatchRecoredController::class, 'store'])->name('matchsrecored.register');
+Route::get('/matchsrecorededit/{id}', [MatchRecoredController::class, 'update'])->name('matchsrecored.update');
+Route::post('/matchsrecoredupdate/{id}', [MatchRecoredController::class, 'edit'])->name('matchsrecored.edit');
+Route::get('/showallmatchsrecored', [MatchRecoredController::class, 'index'])->name('matchsrecored.index');
+Route::get('/matchsrecoredhow/{id}', [MatchRecoredController::class, 'show'])->name('matchsrecored.show');
+Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy'])->name('matchsrecored.destroy');
 
 });
 

@@ -125,6 +125,20 @@
           @endif
         </li>
         <li class="treeview">
+            <a href="#">
+              <i class="fa fa-laptop"></i>
+              <span>Match recored</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{route('matchsrecored.create')}}"><i class="fa fa-fw fa-plus-circle"></i> assigned match</a></li>
+              @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
+              <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-gear"></i> Manages</a></li>
+              @endif
+              <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
+            </ul>
+          </li>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Complain</span>

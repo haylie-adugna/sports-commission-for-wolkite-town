@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Title:</label>
-                            <input type="text" class="form-control" name="Name" placeholder="Title" value="{{ $games->Name }}">
+                            <input type="text" class="form-control" name="game_type" placeholder="Title" value="{{ $games->game_type }}">
                         </div>
                         <div class="form-group">
                             <label for="Description">Description:</label>

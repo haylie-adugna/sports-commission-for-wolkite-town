@@ -15,9 +15,7 @@ class CreatePlayerPerformanceTable extends Migration
     {
         Schema::create('player_performance', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('game_id');
-            $table->unsignedBigInteger('club_id');
+            $table->unsignedBigInteger('player_id');
             $table->date('match_date');
             $table->integer('goals_scored')->default(0);
             $table->integer('assists')->default(0);
@@ -30,9 +28,8 @@ class CreatePlayerPerformanceTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
-            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
+
         });
     }
 

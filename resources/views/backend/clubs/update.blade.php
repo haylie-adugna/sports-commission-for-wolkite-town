@@ -24,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="club_manager">{{ __('Club Manager') }}</label>
-                                    <input type="text" class="form-control" name="club_manager" value="{{ $clubs->club_manager }}" required>
+                                    <input type="text" class="form-control" name="club_manager_id" value="{{ $clubs->club_manager_id }}" required>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +84,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="game_category">{{ __('Game Category') }}</label>
-                                    <input type="text" class="form-control" name="game_category" value="{{ $clubs->game_category }}">
+                                    <label for="game_type_id">{{ __('Game Category') }}</label>
+                                    <input type="text" class="form-control" name="game_type_id" value="{{ $clubs->game_type_id }}">
                                 </div>
                             </div>
 

@@ -14,7 +14,7 @@ class UpdateGameRequest extends FormRequest
     public function rules()
     {
         return [
-            'Name' => 'sometimes|required|string|max:255',
+            'game_type' => 'sometimes|required|string|max:255',
             'Rules' => 'sometimes|required|string',
             'description' => 'sometimes|required|string',
             'Equipment' => 'sometimes|required|string',
