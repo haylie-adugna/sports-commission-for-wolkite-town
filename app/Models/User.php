@@ -2,45 +2,51 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $guarded=[];
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'first_name',
         'middle_name',
         'last_name',
         'email',
+        'phone_number',
         'password',
+        'verified',
+        'email_verified_at',
+        'user_type',
         'age',
         'gender',
-        'address',
-        'nationality',
-        'phone',
-        'behavioral_record',
-        'photo',
-        'assigned_game',
-        'language',
-        'experience',
         'date_of_birth',
-        'user_type',
+        'address',
+        'country',
+        'nationality',
+        'city',
+        'language',
+        'photo',
+        'experience',
+        'mother_full_name',
+        'status',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -50,12 +56,21 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'verified' => 'boolean',
     ];
+
+    /**
+     * Get the user type that owns the user.
+     */
+    public function user_type(): BelongsTo
+    {
+        // return $this->belongsTo(UserType::class, 'id');
+        return $this->belongsTo(UserType::class);
+    }
+
+    // Additional methods, relationships, or custom logic can be added here.
 }
-
-

@@ -122,12 +122,12 @@
                     <label for="club">User Type:</label>
                     <select class="form-control" name="user_type" placeholder="User Type">
                       <option value="" selected disabled>Select User Type</option>
-                      <option value="commissioner">Commissioner</option>
-                      <option value="gameofficer">Game Officer</option>
-                      <option value="clubmanager">Club Manager</option>
-                      <option value="projectmanager">Project Manager</option>
-                      <option value="player">Player</option>
-                      <option value="user">User</option>
+                      <option value="1">Commissioner</option>
+                      <option value="2">Game Officer</option>
+                      <option value="3">Club Manager</option>
+                      <option value="4">Project Manager</option>
+                      <option value="5">Player</option>
+                      <option value="6">User</option>
                     </select>
                   </div>
                   <div class="form-group">

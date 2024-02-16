@@ -103,14 +103,14 @@
                             <div class="col-xs-3">
                                 <label for="User_Type">User Type:</label>
                                 <select class="form-control" name="user_type" placeholder="User Type" >
-                                    <option value="" selected disabled>{{ $users->user_type }}</option>
-                                    <option value="couch">GameOfficer</option>
-                                    <option value="couch">couch</option>
-                                    <option value="gameofficer">commissioner</option>
-                                    <option value="clubmanager">ClubManager</option>
-                                    <option value="projectmanager">ProjectManager</option>
-                                    <option value="player">Player</option>
-                                    <option value="user">User</option>
+                                    <option value="{{ $users->user_type }}" selected disabled>{{ $users->user_type }}</option>
+                                    <option value="2">GameOfficer</option>
+                                    <option value="4">couch</option>
+                                    <option value="1">commissioner</option>
+                                    <option value="3">Club Manager</option>
+                                    <option value="4">ProjectManager</option>
+                                    <option value="5">Player</option>
+                                    <option value="6">User</option>
 
                                 </select>
                             </div>
@@ -126,8 +126,8 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="Language">Language:</label>
-                                <select class="form-control" name="languge" placeholder="languge" >
-                                    <option selected-value="{{ $users->languge }}" disabled>select languge</option>
+                                <select class="form-control" name="language" placeholder="languge" >
+                                    <option selected-value="{{ $users->language }}" disabled>select languge</option>
                                     <option value="English">English</option>
                                     <option value="Amharic">Amharic</option>
                                     <option value="guragie">guragie</option>
@@ -172,7 +172,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="Mother Name">Mother Name:</label>
-                                <input type="text" class="form-control" name="mother_name"
+                                <input type="text" class="form-control" name="mother_full_name"
                                     placeholder="Mother full name">
                             </div>
                         </div>

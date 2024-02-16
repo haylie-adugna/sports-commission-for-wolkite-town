@@ -31,7 +31,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager' || Auth::user()->user_type === 'projectmanager')
+        @if (Auth::user()->user_type === 1 || Auth::user()->user_type === 2 || Auth::user()->user_type === 3 || Auth::user()->user_type === 4)
         <li class="treeview">
           <a href="#">
             <i class="fa fa-fw fa-users"></i>

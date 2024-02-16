@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserType;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -47,7 +48,8 @@ class userscontroller extends Controller
     }
     public function index()
     {
-        $users= User::all();
+        $users= User::with(['user_type'])->get();
+        $user_type= UserType::all();
 
         return view('backend.users.index', compact('users'));
     }

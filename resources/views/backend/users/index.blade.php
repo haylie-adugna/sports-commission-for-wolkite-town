@@ -34,6 +34,7 @@
                             <th>father_Name</th>
                             <th>last_Name</th>
                             <th>Email</th>
+                            <th>User type</th>
                             <th>Phone_Number</th>
                             <th>Date_of_Birth</th>
                             <th>Age</th>
@@ -55,6 +56,7 @@
                                 <td>{{ $u1->middle_name }}</td>
                                 <td>{{ $u1->last_name }}</td>
                                 <td>{{$u1->email }}</td>
+                                <td>{{ $u1->user_type }}</td>
                                 <td>{{$u1->phone}}</td>
                                 <td>{{$u1->date_of_birth }}</td>
                                 <td>{{ $u1->age }}</td>
