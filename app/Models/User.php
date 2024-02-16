@@ -71,6 +71,11 @@ class User extends Authenticatable
         // return $this->belongsTo(UserType::class, 'id');
         return $this->belongsTo(UserType::class);
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+
+    }
 
     // Additional methods, relationships, or custom logic can be added here.
 }
