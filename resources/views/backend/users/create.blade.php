@@ -9,7 +9,7 @@
   <!-- Main content -->
   <section class="content">
     <div class="box box-info">
-        <form novalidate method="post" action="{{ route('users.register') }}">
+        <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
             @csrf
       <div class="box-body">
         <div class="row">
@@ -119,17 +119,21 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="club">User Type:</label>
-                    <select class="form-control" name="user_type" placeholder="User Type">
-                      <option value="" selected disabled>Select User Type</option>
-                      <option value="1">Commissioner</option>
-                      <option value="2">Game Officer</option>
-                      <option value="3">Club Manager</option>
-                      <option value="4">Project Manager</option>
-                      <option value="5">Player</option>
-                      <option value="6">User</option>
+                    <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+                    <div style="padding-bottom: 4px">
+                        <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                        <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                    </div>
+                    <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                        @foreach($roles as $id => $role)
+                            <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                        @endforeach
                     </select>
-                  </div>
+                    @if($errors->has('roles'))
+                        <span class="text-danger">{{ $errors->first('roles') }}</span>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+                </div>
                   <div class="form-group">
                     <label>Assigned game:</label>
                     <div class="input-group">
@@ -252,7 +256,7 @@
 
             <button type="submit" class="btn btn-primary pull-right">Register</button>
             <button type="submit" class="btn btn-warning pull-right">
-                <a href="{{ route('users.create') }}"
+                <a href="{{ route('admin.users.create') }}"
                     style="color: lightgray; text-decoration: none;">Cancel</a>
             </button>
         </div>

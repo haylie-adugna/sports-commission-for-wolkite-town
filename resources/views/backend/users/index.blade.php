@@ -48,46 +48,48 @@
                         </thead>
                         <tbody>
                     {{-- @if(Qs::userIsSuperAdmin()) --}}
-                        @foreach($users as $u1)
+                    @foreach($users as $key => $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img class="rounded-circle" style="height: 40px; width: 40px;" src="{{ $u1->photo }}" alt="photo"></td>
-                                <td>{{ $u1->first_name }}</td>
-                                <td>{{ $u1->middle_name }}</td>
-                                <td>{{ $u1->last_name }}</td>
-                                <td>{{$u1->email }}</td>
-                                <td>{{ $u1->user_type }}</td>
-                                <td>{{$u1->phone}}</td>
-                                <td>{{$u1->date_of_birth }}</td>
-                                <td>{{ $u1->age }}</td>
-                                <td>{{ $u1->gender }}</td>
-                                <td>{{ $u1->language }}</td>
-                                <td>{{ $u1->address }}</td>
-                                <td>{{$u1->nationality }}</td>
-                                <td>{{$u1->state }}</td>
-                                <td class="text-center">
-                                    <div class="fa fa-fw fa-edit" >
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown"
-                                            data-offset="-52">
-                                            <i class="fas fa-bars"></i>
-                                            </button>
+                                <td><img class="rounded-circle" style="height: 40px; width: 40px;" src="{{ $user->photo }}" alt="photo"></td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->middle_name }}</td>
+                                <td>{{ $user->last_name }}</td>
+                                <td>{{$user->email }}</td>
+                                <td>
+                                    @foreach($user->roles as $key => $item)
+                                        <span class="badge badge-info">{{ $item->title }}</span>
+                                    @endforeach
+                                </td>
+                                <td>{{$user->phone}}</td>
+                                <td>{{$user->date_of_birth }}</td>
+                                <td>{{ $user->age }}</td>
+                                <td>{{ $user->gender }}</td>
+                                <td>{{ $user->language }}</td>
+                                <td>{{ $user->address }}</td>
+                                <td>{{$user->nationality }}</td>
+                                <td>{{$user->state }}</td>
+                                <td>
+                                    @can('user_show')
+                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
+                                           view
+                                        </a>
+                                    @endcan
 
-                                             <div class="dropdown-menu pull-right" role="menu">
+                                    @can('user_edit')
+                                        <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
+                                           edit
+                                        </a>
+                                    @endcan
 
-                                                {{--View Profile--}}
-                                                <a href="{{route('users.show',$u1->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> View Information</a><br><br>
-                                                {{--Edit--}}
-                                                <a href="{{route('users.edit',$u1->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit Information</a><br><br>
-                                                <i class="divider"></i>
+                                    @can('user_delete')
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="submit" class="btn btn-xs btn-danger" value="delete">
+                                        </form>
+                                    @endcan
 
-                                                {{--Delete--}}
-                                                <a id="" href="{{route('users.destroy',$u1->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
-                                                <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
-
-                                            </div>
-                                        </div>
-                                     </div>
                                 </td>
                             </tr>
                         @endforeach

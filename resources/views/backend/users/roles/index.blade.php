@@ -1,43 +1,30 @@
 @extends('layouts.app')
 @section('content')
-
-     <!-- Content Header (Page header) -->
-     <section class="content-header">
-        <h1>
-          Data Tables
-          <small>advanced tables</small>
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data tables</li>
-        </ol>
-      </section>
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">User Data managment Table</h3>
-              </div>
-              <!-- /.box-header -->
-              <div id="table-container" class="box-body table-responsive">
-                <div class="box-body table-responsive">
-                <table id="example1" class="table table-bordered table-striped">
+@can('role_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.roles.create') }}">Add new role</a>
+        </div>
+    </div>
+@endcan
+<div class="card">
+    <div class="card-header">Role lists</div>
+    <div id="table-container" class="box-body table-responsive">
+        <div class="box-body table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.id') }}
+                            {{ trans('Role ID') }}
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.title') }}
+                            {{ trans('Role Name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.permissions') }}
+                            {{ trans('Role permissions') }}
                         </th>
                         <th>
                             &nbsp;
@@ -89,24 +76,59 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.box-body -->
-      </div>
-      <!-- /.box -->
     </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-   <!-- this row will not appear when printing -->
-   <div class="row no-print">
-      <div class="col-xs-12">
-          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Open Print Dialog</a>
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-          <button type="button" class="btn btn-primary" onclick="generatePDF()">
-              <i class="fa fa-download"></i> Generate PDF
-            </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-          <button type="button" class="btn btn-default" id="printTableButton"><i class="fa fa-print"></i> Print Table</button>
-      </div>
-  </div>
-</section>
+</div>
+
+
+
+@endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('role_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.roles.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'desc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-Role:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+
+})
+
+</script>
 @endsection

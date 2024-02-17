@@ -3,73 +3,73 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\UserType;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\User\CreateUserRequest;
-use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\MassDestroyUserRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
-use Webpatser\Countries\Countries;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Gate;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-
-class userscontroller extends Controller
+class UsersController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    protected $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function create()
-    {
-        return view('backend.users.create');
-    }
-    public function store(CreateUserRequest $request)
-    {
-       User::create($request->all());
-       return redirect()->route('users.create')->with('status', 'Registration successful!');
-    }
     public function index()
     {
-        $users= User::with(['user_type'])->get();
-        $user_type= UserType::all();
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $users = User::with(['roles'])->get();
 
         return view('backend.users.index', compact('users'));
     }
-    public function show($id)
-    {
-        $users= User::find($id);
-        return view('backend.users.show', compact('users'));
-    }
-    public function edit($id)
-    {
-        $users= User::find($id);
-        return view('backend.users.update', compact('users'));
-    }
-    public function update(UpdateUserRequest $request, $id)
-    {
-        $users= User::find($id);
-        $users->update($request->all());
-        return redirect()->route('users.edit',$id)->with('status', 'update successful!');
 
+    public function create()
+    {
+        abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $roles = Role::pluck('title', 'id');
+
+        return view('backend.users.create', compact('roles'));
     }
+
+    public function store(StoreUserRequest $request)
+    {
+        $user = User::create($request->all());
+        $user->roles()->sync($request->input('roles', []));
+
+        return redirect()->route('admin.users.index');
+    }
+
+    public function edit(User $user)
+    {
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $roles = Role::pluck('title', 'id');
+
+        $user->load('roles');
+
+        return view('backend.users.edit', compact('roles', 'user'));
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $user->update($request->all());
+        $user->roles()->sync($request->input('roles', []));
+
+        return redirect()->route('admin.users.index')->with('status', 'update successful!');
+    }
+
+    public function show(User $user)
+    {
+        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $user->load('roles');
+
+        return view('backend.users.show', compact('user'));
+    }
+
     public function analaysis()
 {
     $userCountsByType = DB::table('users')
@@ -81,23 +81,27 @@ class userscontroller extends Controller
     return view('dashboard', compact('userCountsByType'));
 }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
+        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // if ($user && $user->id === Auth::id()) {
+        //     // Render a confirmation view for the user to confirm account deletion
+        //     return view('backend.users.confirm-delete', compact('user'));
+        // }
 
-    // Check if the user is trying to delete their own account
-    if ($user && $user->id === Auth::id()) {
-        // Render a confirmation view for the user to confirm account deletion
-        return view('backend.users.confirm-delete', compact('user'));
-    }
-
-    // If the user is trying to delete another user account
-    if ($user) {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+
+        return back()->with('status', 'User deleted successfully.');;
     }
 
-    // If the user is not found
-    return redirect()->route('users.index')->with('error', 'User not found.');
-}
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        $users = User::find(request('ids'));
+
+        foreach ($users as $user) {
+            $user->delete();
+        }
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

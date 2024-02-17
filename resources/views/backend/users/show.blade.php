@@ -9,39 +9,44 @@
 
                 <div class="card-body">
                     <div>
-                        <strong>Name:</strong> {{ $users->first_name }}
+                        <strong>Name:</strong> {{ $user->first_name }}
                     </div>
                     <div>
-                        <strong>Email:</strong> {{ $users->email }}
+                        <strong>Email:</strong> {{ $user->email }}
                     </div>
                     <div>
-                        <strong>Age:</strong> {{ $users->age }}
+                        @foreach($user->roles as $key => $roles)
+                                <span class="label label-info">{{ $roles->title }}</span>
+                            @endforeach
                     </div>
                     <div>
-                        <strong>Gender:</strong> {{ $users->gender }}
+                        <strong>Age:</strong> {{ $user->age }}
+                    </div>
+                    <div>
+                        <strong>Gender:</strong> {{ $user->gender }}
                     </div>
                     <!-- Add more fields as needed -->
 
                     {{-- You can also check if a field is not null before displaying it --}}
-                    @if ($users->address)
+                    @if ($user->address)
                         <div>
-                            <strong>Address:</strong> {{ $users->address }}
+                            <strong>Address:</strong> {{ $user->address }}
                         </div>
                     @endif
 
                     {{-- Displaying an image if the 'photo' field is not null --}}
-                    @if ($users->photo)
+                    @if ($user->photo)
                         <div>
                             <strong>Photo:</strong>
-                            <img src="{{ asset('path/to/photos/' . $users->photo) }}" alt="User Photo">
+                            <img src="{{ asset('path/to/photos/' . $user->photo) }}" alt="User Photo">
                         </div>
                     @endif
 
                     {{-- Displaying a link to the assigned game if available --}}
-                    @if ($users->assigned_game)
+                    @if ($user->assigned_game)
                         <div>
                             <strong>Assigned Game:</strong>
-                            <a href="#">{{ $users->assigned_game }}</a>
+                            <a href="#">{{ $user->assigned_game }}</a>
                         </div>
                     @endif
 

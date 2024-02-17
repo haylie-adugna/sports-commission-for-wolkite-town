@@ -9,7 +9,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Upadte User Information</h3>
                 </div>
-                <form novalidate method="POST" action="{{ route('users.update', ['id' => $users->id]) }}">
+                <form method="POST" action="{{ route("admin.users.update", [$user->id]) }}" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="box-body">
                         <div class="row">
@@ -20,7 +21,7 @@
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                     </span>
                                     <input type="text" class="form-control" name="first_name" placeholder="First Name"
-                                        value="{{ $users->first_name }}">
+                                        value="{{ $user->first_name }}">
                                 </div>
                             </div>
                             <div class="col-xs-2">
@@ -30,7 +31,7 @@
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                     </span>
                                     <input type="text" class="form-control" name="middle_name" placeholder="middle Name"
-                                        value="{{ $users->middle_name }}">
+                                        value="{{ $user->middle_name }}">
                                 </div>
                             </div>
 
@@ -41,7 +42,7 @@
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                     </span>
                                     <input type="text" class="form-control" name="last_name" placeholder="Last Name"
-                                        value="{{ $users->last_name }}">
+                                        value="{{ $user->last_name }}">
                                 </div>
                             </div>
 
@@ -52,7 +53,7 @@
                                         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                                     </span>
                                     <input type="text" class="form-control" name="email" placeholder="Email"
-                                        value="{{ $users->email }}">
+                                        value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="col-xs-2">
@@ -62,7 +63,7 @@
                                         <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
                                     </span>
                                     <input type="text" class="form-control" name="phone_number"
-                                        placeholder="phone number" value="{{ $users->phone }}">
+                                        placeholder="phone number" value="{{ $user->phone }}">
                                 </div>
                             </div>
 
@@ -74,12 +75,12 @@
                             <div class="col-xs-2">
                                 <label for="Age">Age:</label>
                                 <input type="number" class="form-control" name="age" placeholder="Age"
-                                    value="{{ $users->age }}">
+                                    value="{{ $user->age }}">
                             </div>
                             <div class="col-xs-3">
                                 <label for="country">Country:</label>
                                 <select class="form-control" name="country">
-                                    <option value="" selected disabled>{{ $users->country }}</option>
+                                    <option value="" selected disabled>{{ $user->country }}</option>
                                     <option value="Ethiopia">Ethiopia</option>
                                     <option value="USA">USA</option>
                                     <option value="Kenya">Kenya</option>
@@ -100,19 +101,21 @@
                                 <label for="City">City:</label>
                                 <input type="text" class="form-control" name="city" placeholder="city">
                             </div>
-                            <div class="col-xs-3">
-                                <label for="User_Type">User Type:</label>
-                                <select class="form-control" name="user_type" placeholder="User Type" >
-                                    <option value="{{ $users->user_type }}" selected disabled>{{ $users->user_type }}</option>
-                                    <option value="2">GameOfficer</option>
-                                    <option value="4">couch</option>
-                                    <option value="1">commissioner</option>
-                                    <option value="3">Club Manager</option>
-                                    <option value="4">ProjectManager</option>
-                                    <option value="5">Player</option>
-                                    <option value="6">User</option>
-
+                            <div class="col-xs-2">
+                                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+                                <div style="padding-bottom: 4px">
+                                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                </div>
+                                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                                    @foreach($roles as $id => $role)
+                                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $role }}</option>
+                                    @endforeach
                                 </select>
+                                @if($errors->has('roles'))
+                                    <span class="text-danger">{{ $errors->first('roles') }}</span>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
                             </div>
                         </div>
                     </div>
@@ -122,12 +125,12 @@
                         <div class="row">
                             <div class="col-xs-3">
                                 <label for="Assigned_Game">Assigned Game:</label>
-                                <input type="text" class="form-control" name="assigned_game" placeholder="assigned game" value="{{ $users->assigned_game }}">
+                                <input type="text" class="form-control" name="assigned_game" placeholder="assigned game" value="{{ $user->assigned_game }}">
                             </div>
                             <div class="col-xs-3">
                                 <label for="Language">Language:</label>
                                 <select class="form-control" name="language" placeholder="languge" >
-                                    <option selected-value="{{ $users->language }}" disabled>select languge</option>
+                                    <option selected-value="{{ $user->language }}" disabled>select languge</option>
                                     <option value="English">English</option>
                                     <option value="Amharic">Amharic</option>
                                     <option value="guragie">guragie</option>
@@ -140,7 +143,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="Experience">Experience:</label>
-                                <input type="text" class="form-control" name="experience" placeholder="Experience" value="{{ $users->experience }}">
+                                <input type="text" class="form-control" name="experience" placeholder="Experience" value="{{ $user->experience }}">
                             </div>
                             <div class="col-xs-3">
                                 <label for="date_of_birth">Date of Birth:</label>
@@ -205,7 +208,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-warning"><a href="{{route('users.index')}}">Cancel</a></button>
+                        <button type="submit" class="btn btn-warning"><a href="{{route('admin.users.index')}}">Cancel</a></button>
                         <button type="submit"  class="btn btn-primary pull-right">Update</button>
                     </div>
             </div>

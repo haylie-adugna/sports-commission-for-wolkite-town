@@ -31,49 +31,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        @can('user_management_access')
-        <li class="nav-item nav-dropdown">
-            <a class="nav-link  nav-dropdown-toggle" href="#">
-                <i class="fa-fw fas fa-users nav-icon">
-
-                </i>
-                {{ trans('cruds.userManagement.title') }}
-            </a>
-            <ul class="nav-dropdown-items">
-                @can('permission_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-unlock-alt nav-icon">
-
-                            </i>
-                            {{ trans('cruds.permission.title') }}
-                        </a>
-                    </li>
-                @endcan
-                @can('role_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-briefcase nav-icon">
-
-                            </i>
-                            {{ trans('cruds.role.title') }}
-                        </a>
-                    </li>
-                @endcan
-                @can('user_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-user nav-icon">
-
-                            </i>
-                            {{ trans('cruds.user.title') }}
-                        </a>
-                    </li>
-                @endcan
-            </ul>
-        </li>
-    @endcan
-        @if (Auth::user()->user_type === 1 || Auth::user()->user_type === 2 || Auth::user()->user_type === 3 || Auth::user()->user_type === 4)
+    @can('user_management_access')
         <li class="treeview">
           <a href="#">
             <i class="fa fa-fw fa-users"></i>
@@ -81,36 +39,60 @@
             <span class="label label-primary pull-right bg-green">4</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('users.create')}}"><i class="fa fa-fw fa-user-plus"></i> Add new user</a></li>
-            <li><a href="{{route('users.index')}}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
+            @can('permission_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                            <i class="fa fa-fw fa-gear">
+
+                            </i>
+                            manage permission
+                        </a>
+                    </li>
+                @endcan
+                @can('role_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                            <i class="fa fa-fw fa-gear">
+
+                            </i>
+                            manage role
+                        </a>
+                    </li>
+                @endcan
+                @can('user_create')
+            <li><a href="{{ route('admin.users.create') }}"><i class="fa fa-fw fa-user-plus"></i> Add new user</a></li>
+            @endcan
+            @can('user_access')
+            <li><a href="{{ route("admin.users.index") }}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
+            @endcan
             <li><a href="{{route('users.analaysis')}}"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
-            @if (Auth::user()->user_type === 'commissioner')
+            @can('manage_staff_user')
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
-            @endif
+            @endcan
           </ul>
         </li>
-        @endif
+    @endcan
 
         <li>
           <a href="pages/widgets.html">
             <i class="fa fa-fw fa-futbol-o"></i> <span>Games</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          @if (Auth::user()->user_type === 'commissioner')
+          @can('manage_games')
           <ul class="treeview-menu">
             <li><a href="{{route('games.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Add new games</a></li>
             <li><a href="{{route('games.index')}}"><i class="fa fa-fw fa-gear"></i> Manage games</a></li>
             <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> Game Analysis</a></li>
             <li><a href="pages/charts/inline.html"><i class="fa fa-fw fa-info-circle"></i> About Games</a></li>
           </ul>
-          @endif
-          @if (Auth::user()->user_type === 'gameofficer')
+          @endcan
+          @can('add_game_stastics')
           <ul class="treeview-menu">
             <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add game stastics</a></li>
             <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
             <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
           </ul>
-          @endif
+          @endcan
 
         </li>
         <li>
@@ -118,7 +100,7 @@
               <i class="fa fa-fw fa-futbol-o"></i> <span>Match</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
-            @if (Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'commissioner')
+            @can('create_matchs')
             <ul class="treeview-menu">
                 <li><a href="{{route('matchs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Match</a></li>
                 <li><a href="{{route('matchs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Matchs</a></li>
@@ -126,30 +108,26 @@
                 <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
                 <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
             </ul>
-            @endif
-            @if (Auth::user()->user_type === 'gameofficer')
-            <ul class="treeview-menu">
-                <li><a href="{{route('matchs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Match</a></li>
-                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Manage Matchs</a></li>
-                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Add game stastics</a></li>
-                <li><a href="pages/charts/morris.html"><i class="fa fa-fw fa-gear"></i> Manage games stastics</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-fw fa-spinner"></i> See stastics</a></li>
-            </ul>
-            @endif
-
+            @endcan
           </li>
           <li>
             <a href="pages/widgets.html">
               <i class="fa fa-fw fa-futbol-o"></i> <span>Clubs</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
-            @if (Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'commissioner')
+            @can('create_clubs')
             <ul class="treeview-menu">
                 <li><a href="{{route('clubs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Clubs</a></li>
                 <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Clubs</a></li>
                 <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Clubs stastics</a></li>
             </ul>
-            @endif
+            @endcan
+            @can('manage_club')
+            <ul class="treeview-menu">
+                <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Club</a></li>
+                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Club stastics</a></li>
+            </ul>
+            @endcan
           </li>
 
         <li class="treeview">
@@ -158,14 +136,15 @@
             <span>Events</span>
             <small class="label pull-right bg-green">news</small>
           </a>
-          @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
+          @can('manage_events')
           <ul class="treeview-menu">
             <li><a href="{{route('events.create')}}"><i class="fa fa-fw fa-hacker-news"></i> Add Events</a></li>
             <li><a href="{{route('events.index')}}"><i class="fa fa-fw fa-gear"></i> Manage Events</a></li>
             <li><a href="{{route('events.index')}}"><i class="fa fa-fw fa-spinner"></i> Events Analaysis</a></li>
           </ul>
-          @endif
+          @endcan
         </li>
+        @can('manage_match_recored')
         <li class="treeview">
             <a href="#">
               <i class="fa fa-laptop"></i>
@@ -180,6 +159,7 @@
               <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
             </ul>
           </li>
+          @endcan
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>

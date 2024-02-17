@@ -30,35 +30,7 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
-  // Permissions
-  Route::get('permissions', 'PermissionsController@index')->name('admin.permissions.index');
-  Route::get('permissions/create', 'PermissionsController@create')->name('admin.permissions.create');
-  Route::post('permissions', 'PermissionsController@store')->name('admin.permissions.store');
-  Route::get('permissions/{permission}', 'PermissionsController@show')->name('admin.permissions.show');
-  Route::get('permissions/{permission}/edit', 'PermissionsController@edit')->name('admin.permissions.edit');
-  Route::put('permissions/{permission}', 'PermissionsController@update')->name('admin.permissions.update');
-  Route::delete('permissions/{permission}', 'PermissionsController@destroy')->name('admin.permissions.destroy');
-  Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('admin.permissions.massDestroy');
 
-  // Roles
-  Route::get('roles', 'RolesController@index')->name('admin.roles.index');
-  Route::get('roles/create', 'RolesController@create')->name('admin.roles.create');
-  Route::post('roles', 'RolesController@store')->name('admin.roles.store');
-  Route::get('roles/{role}', 'RolesController@show')->name('admin.roles.show');
-  Route::get('roles/{role}/edit', 'RolesController@edit')->name('admin.roles.edit');
-  Route::put('roles/{role}', 'RolesController@update')->name('admin.roles.update');
-  Route::delete('roles/{role}', 'RolesController@destroy')->name('admin.roles.destroy');
-  Route::delete('roles/destroy', 'RolesController@massDestroy')->name('admin.roles.massDestroy');
-
-  // Users
-  Route::get('users', 'UsersController@index')->name('admin.users.index');
-  Route::get('users/create', 'UsersController@create')->name('admin.users.create');
-  Route::post('users', 'UsersController@store')->name('admin.users.store');
-  Route::get('users/{user}', 'UsersController@show')->name('admin.users.show');
-  Route::get('users/{user}/edit', 'UsersController@edit')->name('admin.users.edit');
-  Route::put('users/{user}', 'UsersController@update')->name('admin.users.update');
-  Route::delete('users/{user}', 'UsersController@destroy')->name('admin.users.destroy');
-  Route::delete('users/destroy', 'UsersController@massDestroy')->name('admin.users.massDestroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/email_verfication', [VerifyEmailController::class, 'email_verfication'])->name('verify_email');
@@ -66,15 +38,41 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'VerifyUser'])->group(function () {
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-Route::get('/userscreate', [usersController::class, 'create'])->name('users.create');
-Route::post('/adduser', [usersController::class, 'store'])->name('users.register');
-Route::get('/usersedit/{id}', [usersController::class, 'edit'])->name('users.edit');
-Route::post('/usersupdate/{id}', [usersController::class, 'update'])->name('users.update');
-Route::get('/showalluser', [usersController::class, 'index'])->name('users.index');
-Route::get('/usersshow/{id}', [usersController::class, 'show'])->name('users.show');
+Route::get('/Dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+// Users
+Route::get('users', 'UsersController@index')->name('admin.users.index');
+Route::get('users/create', 'UsersController@create')->name('admin.users.create');
+Route::post('users', 'UsersController@store')->name('admin.users.store');
+Route::get('users/{user}', 'UsersController@show')->name('admin.users.show');
+Route::get('users/{user}/edit', 'UsersController@edit')->name('admin.users.edit');
+Route::put('users/{user}', 'UsersController@update')->name('admin.users.update');
 Route::get('/useranalaysis', [usersController::class, 'analaysis'])->name('users.analaysis');
-Route::get('/usersdelete/{id}', [usersController::class, 'destroy'])->name('users.destroy');
+Route::delete('users/{user}', 'UsersController@destroy')->name('admin.users.destroy');
+Route::delete('users/destroy', 'UsersController@massDestroy')->name('admin.users.massDestroy');
+
+
+// Permissions
+Route::get('permissions', 'PermissionsController@index')->name('admin.permissions.index');
+Route::get('permissions/create', 'PermissionsController@create')->name('admin.permissions.create');
+Route::post('permissions', 'PermissionsController@store')->name('admin.permissions.store');
+Route::get('permissions/{permission}', 'PermissionsController@show')->name('admin.permissions.show');
+Route::get('permissions/{permission}/edit', 'PermissionsController@edit')->name('admin.permissions.edit');
+Route::put('permissions/{permission}', 'PermissionsController@update')->name('admin.permissions.update');
+Route::delete('permissions/{permission}', 'PermissionsController@destroy')->name('admin.permissions.destroy');
+Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('admin.permissions.massDestroy');
+
+// Roles
+Route::get('roles', 'RolesController@index')->name('admin.roles.index');
+Route::get('roles/create', 'RolesController@create')->name('admin.roles.create');
+Route::post('roles', 'RolesController@store')->name('admin.roles.store');
+Route::get('roles/{role}', 'RolesController@show')->name('admin.roles.show');
+Route::get('roles/{role}/edit', 'RolesController@edit')->name('admin.roles.edit');
+Route::put('roles/{role}', 'RolesController@update')->name('admin.roles.update');
+Route::delete('roles/{role}', 'RolesController@destroy')->name('admin.roles.destroy');
+Route::delete('roles/destroy', 'RolesController@massDestroy')->name('admin.roles.massDestroy');
+
+
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
