@@ -76,6 +76,15 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
 
     }
+    public function __construct()
+    {
+        self::created(function (self $user) {
+            $registrationRole = '9';
+                if (! $user->roles()->get()->contains($registrationRole)) {
+                    $user->roles()->attach($registrationRole);
+                }
+        });
+    }
 
     // Additional methods, relationships, or custom logic can be added here.
 }

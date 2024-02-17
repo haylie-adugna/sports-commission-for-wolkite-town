@@ -27,7 +27,8 @@
                             {{ trans('Role permissions') }}
                         </th>
                         <th>
-                            &nbsp;
+                            {{ trans('Actions') }}
+                            {{-- &nbsp; --}}
                         </th>
                     </tr>
                 </thead>
@@ -51,13 +52,13 @@
                             <td>
                                 @can('role_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
-                                        {{ trans('global.view') }}
+                                        {{ trans('View') }}
                                     </a>
                                 @endcan
 
                                 @can('role_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
-                                        {{ trans('global.edit') }}
+                                        {{ trans('Edit') }}
                                     </a>
                                 @endcan
 
@@ -65,7 +66,7 @@
                                     <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('Delete') }}">
                                     </form>
                                 @endcan
 

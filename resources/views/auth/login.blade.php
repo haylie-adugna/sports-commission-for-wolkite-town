@@ -43,7 +43,7 @@
 
         <div class="col-xs-4 pull-left">
 
-                <input class="form-check-input bg-black" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <input class="form-check-input bg-black" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} >
                 <label class="form-check-label text-light" for="remember">Remember me</label>
 
           </div>
@@ -51,10 +51,19 @@
 
         <!-- /.col -->
         <div class="col-xs-4 pull-right">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat ">Sign In</button>
           </div>
+
         <!-- /.col -->
       </div>
+       @if (Route::has('password.request'))
+       <a href="{{ route('password.request') }}" style="font-size: 16px;">I forgot my password</a><br>
+
+            @endif
+          <p class="mt-4 text-sm text-center" style="font-size: 16px;">
+            Don't have an account?
+            <a href="{{ route('register') }}" class="text-primary text-gradient font-weight-bold">Sign up</a>
+          </p>
     </form>
 
     <div class="social-auth-links text-center">
@@ -65,14 +74,6 @@
         Google+</a>
     </div>
     <!-- /.social-auth-links -->
-
-    @if (Route::has('password.request'))
-        <a href="{{ route('password.request') }}">I forgot my password</a><br>
-            </a>
-
-            @endif
-            <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-
   </div>
   <!-- /.login-box-body -->
 </div>

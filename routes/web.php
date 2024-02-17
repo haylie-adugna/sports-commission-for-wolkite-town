@@ -11,6 +11,7 @@ use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\LineupController;
 use App\Http\Controllers\MatchRecoredController;
 
 
@@ -88,6 +89,16 @@ Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.i
 Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
 
+// events
+Route::get('/footballlineupcreate', [LineupController::class, 'createfootball'])->name('footballlineup.create');
+Route::get('/volleyballlineupcreate', [LineupController::class, 'createvolleyball'])->name('volleyballlineup.create');
+Route::get('/basketballlineupcreate', [LineupController::class, 'createbasketball'])->name('basketballlineup.create');
+Route::get('/tennislineupcreate', [LineupController::class, 'createtennis'])->name('tennislineup.create');
+Route::post('/addlineup', [LineupController::class, 'store'])->name('lineup.register');
+Route::get('/lineupupdate/{id}', [LineupController::class, 'edit'])->name('lineup.update');
+Route::get('/lineupallshow', [LineupController::class, 'index'])->name('lineup.index');
+Route::get('/lineupshow/{id}', [LineupController::class, 'show'])->name('lineup.show');
+Route::get('/lineupdelete/{id}', [LineupController::class, 'destroy'])->name('lineup.destroy');
 
 //games
 Route::get('/creategames', [GamesController::class, 'create'])->name('games.create');

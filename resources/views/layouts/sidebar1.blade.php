@@ -131,7 +131,7 @@
           </li>
 
         <li class="treeview">
-          <a href="pages/widgets.html">
+          <a href="#">
             <i class="fa fa-fw fa-newspaper-o"></i>
             <span>Events</span>
             <small class="label pull-right bg-green">news</small>
@@ -153,9 +153,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{route('matchsrecored.create')}}"><i class="fa fa-fw fa-plus-circle"></i> assigned match</a></li>
-              @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
               <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-gear"></i> Manages</a></li>
-              @endif
               <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
             </ul>
           </li>
@@ -168,9 +166,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="pages/UI/general.html"><i class="fa fa-fw fa-plus-circle"></i> Add Complain</a></li>
-            @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer')
+            @can('manage_complain')
             <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-gear"></i> Manages complain</a></li>
-            @endif
+            @endcan
             <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
           </ul>
         </li>
@@ -179,14 +177,38 @@
             <i class="fa fa-edit"></i> <span>projects</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          @if (Auth::user()->user_type === 'commissioner' || Auth::user()->user_type === 'gameofficer' || Auth::user()->user_type === 'clubmanager')
+          @can('manage_project')
           <ul class="treeview-menu">
             <li><a href="{{route('project.create')}}"><i class="fa fa-fw fa-plus-square"></i> Add New project</a></li>
             <li><a href="{{route('project.index')}}"><i class="fa fa-fw fa-gear"></i> Manage project</a></li>
             <li><a href="pages/forms/editors.html"><i class="fa fa-fw fa-gears"></i> project Analaysis</a></li>
           </ul>
-          @endif
+          @endcan
         </li>
+        <li class="treeview">
+            <a href="#">
+              <i class="fa fa-edit"></i> <span>Lineup</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            @can('lineup_football')
+            <ul class="treeview-menu">
+              <li><a href="{{route('footballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Football club lineup</a></li>
+              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+            </ul>
+            @endcan
+            @can('lineup_volleyball')
+            <ul class="treeview-menu">
+              <li><a href="{{route('volleyballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Volleyball club lineup</a></li>
+              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+            </ul>
+            @endcan
+            @can('lineup_basketball')
+            <ul class="treeview-menu">
+              <li><a href="{{route('basketballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Basketball club lineup</a></li>
+              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+            </ul>
+            @endcan
+          </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>

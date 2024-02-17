@@ -146,4 +146,22 @@ display: none !important;
     #redCard:checked + .colored-card {
         background-color: red;
     }
+    .layout-footer-fixed {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* Set your preferred background color */
+            border-top: 1px solid #ddd; /* Add a border if needed */
+            padding: 10px;
+            text-align: center;
+            z-index: 1000; /* Set a high z-index to ensure it appears on top */
+        }
+        .custombg {
+    background-image: url('{{ asset('assets/images/volleyball.jpg') }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Add more background properties as needed */
+}
+
+
 </style>

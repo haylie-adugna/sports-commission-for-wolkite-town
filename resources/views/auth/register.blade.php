@@ -61,7 +61,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> I agree to the <a href="#">terms</a>
+              <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} required> I agree to the <a href="#">terms</a>
             </label>
           </div>
         </div>
@@ -72,6 +72,7 @@
         </div>
         <!-- /.col -->
       </div>
+      <a href="{{ route('login') }}" class="text-center" style="font-size: 17px;">I already have account</a>
     </form>
 
     <div class="social-auth-links text-center">
@@ -82,7 +83,6 @@
         Google+</a>
     </div>
 
-    <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>

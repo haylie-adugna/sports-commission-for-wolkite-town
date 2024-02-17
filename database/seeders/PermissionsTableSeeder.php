@@ -75,11 +75,11 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '17',
-                'title' => 'asset_create',
+                'title' => 'manage_complain',
             ],
             [
                 'id'    => '18',
-                'title' => 'asset_edit',
+                'title' => 'manage_project',
             ],
             [
                 'id'    => '19',
@@ -115,31 +115,31 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '27',
-                'title' => 'stock_create',
+                'title' => 'manage_games',
             ],
             [
                 'id'    => '28',
-                'title' => 'stock_edit',
+                'title' => 'add_game_stastics',
             ],
             [
                 'id'    => '29',
-                'title' => 'stock_show',
+                'title' => 'create_matchs',
             ],
             [
                 'id'    => '30',
-                'title' => 'stock_delete',
+                'title' => 'create_clubs',
             ],
             [
                 'id'    => '31',
-                'title' => 'stock_access',
+                'title' => 'manage_club',
             ],
             [
                 'id'    => '32',
-                'title' => 'transaction_create',
+                'title' => 'manage_events',
             ],
             [
                 'id'    => '33',
-                'title' => 'transaction_edit',
+                'title' => 'manage_match_recored',
             ],
             [
                 'id'    => '34',
@@ -157,6 +157,62 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '37',
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => '38',
+                'title' => 'manage_staff_user',
+            ],
+            [
+                'id'    => '39',
+                'title' => 'lineup_football',
+            ],
+            [
+                'id'    => '40',
+                'title' => 'lineup_volleyball',
+            ],
+            [
+                'id'    => '41',
+                'title' => 'lineup_basketball',
+            ],
+            [
+                'id'    => '42',
+                'title' => 'lineup_tennis',
+            ],
+            [
+                'id'    => '43',
+                'title' => 'lineup_baseball',
+            ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
+            // [
+            //     'id'    => '40',
+            //     'title' => 'profile_password_edit',
+            // ],
         ];
 
         Permission::insert($permissions);
