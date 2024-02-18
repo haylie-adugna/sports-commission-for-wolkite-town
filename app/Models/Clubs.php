@@ -22,4 +22,17 @@ class Clubs extends Model
         'description',
         'status',
     ];
+    public function club_manager()
+    {
+        return $this->belongsTo(User::class, 'club_manager_id');
+    }
+
+    public function coach()
+    {
+        return $this->belongsTo(User::class, 'coach_name_id');
+    }
+    public function gameType()
+    {
+        return $this->belongsTo(Games::class, 'game_type_id');
+    }
 }

@@ -86,5 +86,15 @@ class User extends Authenticatable
         });
     }
 
+    public function clubsAsManager()
+    {
+        return $this->hasMany(Clubs::class, 'club_manager_id');
+    }
+
+    public function clubsAsCoach()
+    {
+        return $this->hasMany(Clubs::class, 'coach_name_id');
+    }
+
     // Additional methods, relationships, or custom logic can be added here.
 }

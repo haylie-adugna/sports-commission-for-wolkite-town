@@ -3,6 +3,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,4 +23,8 @@ class games extends Model
         'season',
         'governing_body',
     ];
+    public function clubs()
+    {
+        return $this->hasMany(Club::class, 'game_type_id');
+    }
 }

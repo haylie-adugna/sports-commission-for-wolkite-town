@@ -25,9 +25,11 @@ class RolesController extends Controller
 
     public function create()
     {
+
         abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::pluck('title', 'id');
+        
 
         return view('backend.users.roles.create', compact('permissions'));
     }

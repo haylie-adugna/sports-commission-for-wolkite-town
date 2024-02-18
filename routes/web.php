@@ -13,6 +13,7 @@ use App\Http\Controllers\GamesController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\LineupController;
 use App\Http\Controllers\MatchRecoredController;
+use App\Http\Controllers\VenueController;
 
 
 
@@ -89,7 +90,7 @@ Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.i
 Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
 
-// events
+// lineup
 Route::get('/footballlineupcreate', [LineupController::class, 'createfootball'])->name('footballlineup.create');
 Route::get('/volleyballlineupcreate', [LineupController::class, 'createvolleyball'])->name('volleyballlineup.create');
 Route::get('/basketballlineupcreate', [LineupController::class, 'createbasketball'])->name('basketballlineup.create');
@@ -118,6 +119,14 @@ Route::get('/showallmatch', [MatchController::class, 'index'])->name('matchs.ind
 Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.show');
 Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
 
+// venue
+Route::get('/createvenue', [VenueController::class, 'create'])->name('venue.create');
+Route::post('/addvenue', [VenueController::class, 'store'])->name('venue.register');
+Route::get('/venueedit/{id}', [VenueController::class, 'update'])->name('venue.update');
+Route::post('/venueupdate/{id}', [VenueController::class, 'edit'])->name('venue.edit');
+Route::get('/showallvenue', [VenueController::class, 'index'])->name('venue.index');
+Route::get('/venuehow/{id}', [VenueController::class, 'show'])->name('venue.show');
+Route::get('/deletevenue/{id}', [VenueController::class, 'destroy'])->name('venue.destroy');
 
 
 // club

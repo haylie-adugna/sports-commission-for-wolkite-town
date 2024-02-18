@@ -25,9 +25,7 @@ class CreatePlayerPerformanceTable extends Migration
             $table->integer('shots_on_target')->default(0);
             $table->integer('passes')->default(0);
             $table->integer('tackles')->default(0);
-
             $table->timestamps();
-
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
 
         });

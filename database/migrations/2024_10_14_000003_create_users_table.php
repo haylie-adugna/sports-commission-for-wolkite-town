@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
-            $table->unsignedBigInteger('user_type')->nullable();
-            $table->foreign('user_type')->references('id')->on('roles')->onDelete('cascade');
             $table->string('phone_number')->unique()->nullable();
             $table->string('password');
             $table->boolean('verified')->default(false);

@@ -5,14 +5,14 @@
     <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            @foreach($userCountsByType as $userType)
+            {{-- @foreach($userCountsByType as $userType) --}}
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>{{ $userType->count }}</h3>
+              {{-- <h3>{{ $userType->count }}</h3> --}}
 
-              <p>{{ $userType->user_type}}</p>
+              {{-- <p>{{ $userType->user_type}}</p> --}}
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -20,7 +20,7 @@
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        @endforeach
+        {{-- @endforeach --}}
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->

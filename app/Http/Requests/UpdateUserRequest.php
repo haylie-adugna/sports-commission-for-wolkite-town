@@ -26,11 +26,8 @@ class UpdateUserRequest extends FormRequest
             'date_of_birth' => ['sometimes', 'required', 'date'],
             'gender' => ['sometimes', 'required', 'string'],
             'phone_number' => ['sometimes', 'string', 'min:12', 'max:20', 'unique:users'],
-            'roles.*' => [
-                'integer'],
-            'roles'   => [
-                'required',
-                'array'],            'age' => ['sometimes', 'required', 'integer'],
+            'roles.*' => ['integer'],'roles'   => ['required','array'],
+            'age' => ['sometimes', 'required', 'integer'],
             'country' => ['sometimes', 'required'],
             'nationality' => ['sometimes', 'required'],
             'city' => ['sometimes', 'required'],

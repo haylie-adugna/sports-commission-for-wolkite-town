@@ -50,12 +50,29 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $clubs->club_name }}</td>
-                                        <td>{{ $clubs->club_manager }}</td>
-                                        <td>{{ $clubs->coach_name }}</td>
-                                        <td>{{ $clubs->contact_information }}</td>
+                                        <td>
+                                            @if ($clubs->club_manager)
+                                                {{ $clubs->club_manager->first_name }} {{ $clubs->club_manager->last_name }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($clubs->coach)
+                                                {{ $clubs->coach->first_name }} {{ $clubs->coach->last_name }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>                                        <td>{{ $clubs->contact_information }}</td>
                                         <td>{{ $clubs->social_media_link }}</td>
                                         <td>{{ $clubs->location }}</td>
-                                        <td>{{ $clubs->game_type_id }}</td>
+                                        <td>
+                                            @if ($clubs->gameType)
+                                                {{ $clubs->gameType->game_type }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
                                         <td>{{ $clubs->document }}</td>
                                         <td>{{ $clubs->description }}</td>
                                         <td>{{ $clubs->status }}</td>

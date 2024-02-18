@@ -147,7 +147,6 @@ display: none !important;
         background-color: red;
     }
     .layout-footer-fixed {
-            position: fixed;
             bottom: 0;
             width: 100%;
             background-color: #f8f9fa; /* Set your preferred background color */

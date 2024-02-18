@@ -24,6 +24,8 @@
               <!-- /.box-header -->
               <div id="table-container" class="box-body table-responsive">
                 <div class="box-body table-responsive">
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">Add New user</a>
+
                 <table id="example1" class="table table-bordered table-striped">
                     <p class="pull-right">Date: <span id="currentDate" ></span></p>
                     <thead>

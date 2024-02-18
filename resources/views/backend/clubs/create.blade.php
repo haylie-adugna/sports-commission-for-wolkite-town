@@ -22,12 +22,12 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="clubmanager">Club Manager:</label>
-                                    <select class="form-control" name="club_manager_id" id="club_manager_id">
-                                        <option value="1"> fasa</option>
-                                        <option value="referee_option1"> haylie</option>
-                                        <option value="referee_option1"> woi</option>
-                                        <option value="referee_option2">Hobby</option>
-                                        <option value="referee_option2">Professional</option>
+                                    <select class="form-control" name="club_manager_id" id="club_manager_id" required>
+                                        @forelse(\App\Models\Role::where('title', 'club_manager')->first()->users ?? [] as $clubManager)
+                                            <option value="{{ $clubManager->id }}">{{ $clubManager->first_name }}</option>
+                                        @empty
+                                            <option value="" disabled>No club managers available</option>
+                                        @endforelse
                                     </select>
                                 </div>
                             </div>
@@ -35,11 +35,11 @@
                                 <div class="form-group">
                                     <label for="coachName">Coach:</label>
                                     <select class="form-control" name="coach_name_id" id="coach_name_id">
-                                        <option value="1"> fasa</option>
-                                        <option value="referee_option1"> haylie</option>
-                                        <option value="referee_option1"> woi</option>
-                                        <option value="referee_option2">Hobby</option>
-                                        <option value="referee_option2">Professional</option>
+                                        @forelse(\App\Models\Role::where('title', 'coach')->first()->users ?? [] as $coach)
+                                            <option value="{{ $coach->id }}">{{ $coach->first_name }}</option>
+                                        @empty
+                                            <option value="" disabled>No available coach</option>
+                                        @endforelse
                                     </select>
                                 </div>
                             </div>
@@ -80,11 +80,12 @@
                                 <div class="form-group">
                                     <label for="game_type_id">Game Category or type:</label>
                                     <select class="form-control" name="game_type_id" id="game_type_id">
-                                        <option value="1"> Sports</option>
-                                        <option value="referee_option1"> Academic</option>
-                                        <option value="referee_option1"> Cultural</option>
-                                        <option value="referee_option2">Hobby</option>
-                                        <option value="referee_option2">Professional</option>
+                                        @foreach(DB::table('games')
+                                        ->select('id', 'game_type')
+                                        ->groupBy('game_type', 'id')
+                                        ->get() as $gameType)
+                                        <option value="{{ $gameType->id }}">{{ $gameType->game_type }}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>

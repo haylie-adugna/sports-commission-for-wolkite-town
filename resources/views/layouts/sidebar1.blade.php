@@ -112,6 +112,18 @@
           </li>
           <li>
             <a href="pages/widgets.html">
+              <i class="fa fa-fw fa-futbol-o"></i> <span>Venue</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            @can('manage_venues')
+            <ul class="treeview-menu">
+                <li><a href="{{route('venue.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create venue</a></li>
+                <li><a href="{{route('venue.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage venues</a></li>
+            </ul>
+            @endcan
+          </li>
+          <li>
+            <a href="pages/widgets.html">
               <i class="fa fa-fw fa-futbol-o"></i> <span>Clubs</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>

@@ -72,12 +72,12 @@ class UsersController extends Controller
 
     public function analaysis()
 {
-    $userCountsByType = DB::table('users')
-        ->select('user_type', DB::raw('count(*) as count'))
-        ->groupBy('user_type')
-        ->get();
+    // $userCountsByType = DB::table('users')
+    //     ->select('user_type', DB::raw('count(*) as count'))
+    //     ->groupBy('user_type')
+    //     ->get();
 
-    return view('backend.users.analaysis', compact('userCountsByType'));
+    return view('backend.users.analaysis');
     return view('dashboard', compact('userCountsByType'));
 }
 

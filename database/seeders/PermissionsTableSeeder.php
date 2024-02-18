@@ -181,14 +181,14 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '43',
                 'title' => 'lineup_baseball',
             ],
-            // [
-            //     'id'    => '40',
-            //     'title' => 'profile_password_edit',
-            // ],
-            // [
-            //     'id'    => '40',
-            //     'title' => 'profile_password_edit',
-            // ],
+            [
+                'id'    => '44',
+                'title' => 'has_referee',
+            ],
+            [
+                'id'    => '45',
+                'title' => 'manage_venues',
+            ],
             // [
             //     'id'    => '40',
             //     'title' => 'profile_password_edit',
