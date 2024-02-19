@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LineupController extends Controller
+class BasketballLineupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,25 +17,9 @@ class LineupController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createfootball()
+    public function create()
     {
         //
-        return view('backend.lineup.football.create');
-    }
-    public function createvolleyball()
-    {
-        //
-        return view('backend.lineup.volleyball.create');
-    }
-    public function createtennis()
-    {
-        //
-        return view('backend.lineup.tennis.create');
-    }
-    public function createbasketball()
-    {
-        //
-        return view('backend.lineup.basketball.create');
     }
 
     /**

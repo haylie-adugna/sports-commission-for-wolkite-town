@@ -204,20 +204,20 @@
             </a>
             @can('lineup_football')
             <ul class="treeview-menu">
-              <li><a href="{{route('footballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Football club lineup</a></li>
-              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+              <li><a href="{{route('football_lineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Football club lineup</a></li>
+              <li><a href="{{route('football_lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
             </ul>
             @endcan
             @can('lineup_volleyball')
             <ul class="treeview-menu">
-              <li><a href="{{route('volleyballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Volleyball club lineup</a></li>
-              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+              <li><a href="{{route('volleyball_lineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Volleyball club lineup</a></li>
+              <li><a href="{{route('volleyball_lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
             </ul>
             @endcan
             @can('lineup_basketball')
             <ul class="treeview-menu">
-              <li><a href="{{route('basketballlineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Basketball club lineup</a></li>
-              <li><a href="{{route('lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
+              <li><a href="{{route('basketball_lineup.create')}}"><i class="fa fa-fw fa-plus-square"></i> Basketball club lineup</a></li>
+              <li><a href="{{route('basketball_lineup.index')}}"><i class="fa fa-fw fa-gear"></i> Manage lineup</a></li>
             </ul>
             @endcan
           </li>

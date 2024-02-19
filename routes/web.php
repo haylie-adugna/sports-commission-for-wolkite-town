@@ -11,7 +11,9 @@ use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\MatchController;
-use App\Http\Controllers\LineupController;
+use App\Http\Controllers\FootballLineupController;
+use App\Http\Controllers\BasketballLineupController;
+
 use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
 
@@ -90,16 +92,33 @@ Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.i
 Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
 
-// lineup
-Route::get('/footballlineupcreate', [LineupController::class, 'createfootball'])->name('footballlineup.create');
-Route::get('/volleyballlineupcreate', [LineupController::class, 'createvolleyball'])->name('volleyballlineup.create');
-Route::get('/basketballlineupcreate', [LineupController::class, 'createbasketball'])->name('basketballlineup.create');
-Route::get('/tennislineupcreate', [LineupController::class, 'createtennis'])->name('tennislineup.create');
-Route::post('/addlineup', [LineupController::class, 'store'])->name('lineup.register');
-Route::get('/lineupupdate/{id}', [LineupController::class, 'edit'])->name('lineup.update');
-Route::get('/lineupallshow', [LineupController::class, 'index'])->name('lineup.index');
-Route::get('/lineupshow/{id}', [LineupController::class, 'show'])->name('lineup.show');
-Route::get('/lineupdelete/{id}', [LineupController::class, 'destroy'])->name('lineup.destroy');
+
+// football lineup
+Route::get('/football/lineup/create', [FootballLineupController::class, 'create'])->name('football_lineup.create');
+Route::post('/add/football/lineup', [FootballLineupController::class, 'store'])->name('football_lineup.register');
+Route::get('/footballlineup/{id}', [FootballLineupController::class, 'update'])->name('football_lineup.update');
+Route::post('/footballlineup/{id}', [FootballLineupController::class, 'edit'])->name('football_lineup.edit');
+Route::get('/footballlineupshow', [FootballLineupController::class, 'index'])->name('football_lineup.index');
+Route::get('/showfootballlineup/{id}', [FootballLineupController::class, 'show'])->name('football_lineup.show');
+Route::get('/footballlineupdelete/{id}', [FootballLineupController::class, 'destroy'])->name('football_lineup.destroy');
+
+// basketball lineup
+Route::get('/basketball/lineup/create', [BasketballLineupController::class, 'create'])->name('basketball_lineup.create');
+Route::post('/add/basketball/lineup', [BasketballLineupController::class, 'store'])->name('basketball_lineup.register');
+Route::get('/basketballlineup/{id}', [BasketballLineupController::class, 'update'])->name('basketball_lineup.update');
+Route::post('/basketballlineup/{id}', [BasketballLineupController::class, 'edit'])->name('basketball_lineup.edit');
+Route::get('/basketballlineupshow', [BasketballLineupController::class, 'index'])->name('basketball_lineup.index');
+Route::get('/showbasketballlineup/{id}', [BasketballLineupController::class, 'show'])->name('basketball_lineup.show');
+Route::get('/basketballlineupdelete/{id}', [BasketballLineupController::class, 'destroy'])->name('basketball_lineup.destroy');
+
+// volleyball lineup
+Route::get('/volleyball/lineup/create', [VolleyballLineupController::class, 'create'])->name('volleyball_lineup.create');
+Route::post('/add/volleyball/lineup', [VolleyballLineupController::class, 'store'])->name('volleyball_lineup.register');
+Route::get('/volleyballlineup/{id}', [VolleyballLineupController::class, 'update'])->name('volleyball_lineup.update');
+Route::post('/volleyballlineup/{id}', [VolleyballLineupController::class, 'edit'])->name('volleyball_lineup.edit');
+Route::get('/volleyballlineupshow', [VolleyballLineupController::class, 'index'])->name('volleyball_lineup.index');
+Route::get('/showvolleyballlineup/{id}', [VolleyballLineupController::class, 'show'])->name('volleyball_lineup.show');
+Route::get('/volleyballlineupdelete/{id}', [VolleyballLineupController::class, 'destroy'])->name('volleyball_lineup.destroy');
 
 //games
 Route::get('/creategames', [GamesController::class, 'create'])->name('games.create');
