@@ -119,7 +119,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+                    <label class="required" for="roles">Select Roles</label>
                     <div style="padding-bottom: 4px">
                         <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                         <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
@@ -132,7 +132,7 @@
                     @if($errors->has('roles'))
                         <span class="text-danger">{{ $errors->first('roles') }}</span>
                     @endif
-                    <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+                    <span class="help-block">{{ trans('You can give more than one role') }}</span>
                 </div>
                   <div class="form-group">
                     <label>Assigned game:</label>
@@ -214,17 +214,6 @@
                       </span>
                       <input type="text" class="form-control" name="mother_full_name"
                         placeholder="Mother Full Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="club">Behavioral Records:</label>
-                    <div class="form-group">
-                      <select name="behavioral_record" class="form-control select2" multiple="multiple"
-                        data-placeholder="Select Behavioral Records" style="width: 100%;">
-                        <option>Red card</option>
-                        <option>Yellow card</option>
-                        <option>Green card</option>
-                      </select>
                     </div>
                   </div>
                   <div class="form-group">

@@ -31,7 +31,7 @@ class CreateUserRequest extends FormRequest
         'email' => ['email', 'max:100', 'unique:users'],
         'phone_number' => ['string', 'min:12', 'max:20', 'unique:users'],
         'user_type' => ['required'],
-        'password' => ['required', Password::defaults(), 'confirmed'],
+        'password' => ['required', new BcryptPassword, 'confirmed'],
         'age' => ['required', 'integer'],
         'country' => ['required'],
         'nationality' => ['required'],

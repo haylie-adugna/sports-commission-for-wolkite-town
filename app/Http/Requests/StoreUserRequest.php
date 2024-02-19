@@ -6,6 +6,7 @@ use App\Models\User;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Response;
 
@@ -37,5 +38,14 @@ class StoreUserRequest extends FormRequest
         'address' => ['required', 'string', 'min:6', 'max:120'],
         'photo' => ['image', 'mimes:jpeg,gif,png,jpg', 'max:2048'],
         ];
+    }
+    protected function withValidator($validator)
+    {
+        // Hash the password before validation
+        $validator->after(function ($validator) {
+            $this->merge([
+                'password' => Hash::make($this->input('password')),
+            ]);
+        });
     }
 }
