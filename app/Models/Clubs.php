@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clubs extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     protected $fillable = [
         'club_name',
@@ -34,5 +35,17 @@ class Clubs extends Model
     public function gameType()
     {
         return $this->belongsTo(Games::class, 'game_type_id');
+    }
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the football lineups associated with the club.
+     */
+    public function footballLineups()
+    {
+        return $this->hasMany(FootballLineup::class);
     }
 }

@@ -66,11 +66,7 @@ class User extends Authenticatable
     /**
      * Get the user type that owns the user.
      */
-    public function user_type(): BelongsTo
-    {
-        // return $this->belongsTo(UserType::class, 'id');
-        return $this->belongsTo(UserType::class);
-    }
+   
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -95,6 +91,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Clubs::class, 'coach_name_id');
     }
+    public function club()
+    {
+        return $this->belongsTo(Clubs::class);
+    }
+
 
     // Additional methods, relationships, or custom logic can be added here.
 }

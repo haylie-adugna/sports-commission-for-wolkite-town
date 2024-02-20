@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\FootballLineup;
+namespace App\Http\Requests\Lineup;
 
 use Illuminate\Foundation\Http\FormRequest;
 

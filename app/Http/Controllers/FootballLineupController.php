@@ -7,6 +7,7 @@ use App\Http\Requests\Lineup\FootballLineupCreateRequest;
 use App\Models\FootballLineup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class FootballLineupController extends Controller
 {
@@ -24,25 +25,28 @@ class FootballLineupController extends Controller
     {
         // Validate the request using the FootballLineupCreateRequest
 
-        // Process the main squad players
-        for ($i = 1; $i <= 11; $i++) {
-            FootballLineup::create([
-                'jersey_number' => $request->input("jerseyNumber{$i}"),
-                'player_name' => $request->input("playerName{$i}"),
-                'position' => $request->input("position{$i}"),
-                'captain' => $request->input('captain') == $i,
-            ]);
-        }
+        // Get the authenticated user's club ID
 
-        // Process the substitute players
-        for ($i = 1; $i <= 3; $i++) {
-            FootballLineup::create([
-                'jersey_number' => $request->input("substituteJerseyNumber{$i}"),
-                'player_name' => $request->input("substitutePlayerName{$i}"),
-                'position' => $request->input("substitutePosition{$i}"),
-                'reason_for_substitution' => $request->input("substituteReason{$i}"),
-            ]);
-        }
+// Process the main squad players
+for ($i = 1; $i <= 11; $i++) {
+    FootballLineup::create([
+        'jersey_number' => $request->input("jerseyNumber{$i}"),
+        'player_name' => $request->input("playerName{$i}"),
+        'position' => $request->input("position{$i}"),
+        'captain' => $request->input('captain') == $i,
+    ]);
+}
+
+// Process the substitute players
+for ($i = 1; $i <= 3; $i++) {
+    FootballLineup::create([
+        'jersey_number' => $request->input("substituteJerseyNumber{$i}"),
+        'player_name' => $request->input("substitutePlayerName{$i}"),
+        'position' => $request->input("substitutePosition{$i}"),
+        'reason_for_substitution' => $request->input("substituteReason{$i}"),
+    ]);
+}
+
 
         // Redirect to a success page or route
         return redirect()->route('football_lineup.create')->with('status', 'Football lineup created successfully!');

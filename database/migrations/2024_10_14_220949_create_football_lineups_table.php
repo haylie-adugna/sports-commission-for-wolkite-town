@@ -15,6 +15,8 @@ class CreateFootballLineupsTable extends Migration
     {
         Schema::create('football_lineups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('club_id')->nullable();
+            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->integer('jersey_number');
             $table->string('player_name');
             $table->string('position');

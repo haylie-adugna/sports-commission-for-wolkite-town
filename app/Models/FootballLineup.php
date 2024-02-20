@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FootballLineup extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     protected $fillable = [
         'jersey_number',
@@ -15,7 +16,12 @@ class FootballLineup extends Model
         'position',
         'captain',
         'reason_for_substitution',
+        'club_id',
     ];
+    public function club()
+    {
+        return $this->belongsTo(Clubs::class, 'id');
+    }
 
     // Define any relationships or additional methods here
 }
