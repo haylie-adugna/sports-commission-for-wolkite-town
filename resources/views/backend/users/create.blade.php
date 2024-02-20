@@ -120,11 +120,7 @@
 
                   <div class="form-group">
                     <label class="required" for="roles">Select Roles</label>
-                    <div style="padding-bottom: 4px">
-                        <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                        <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                    </div>
-                    <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                    <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
                         @foreach($roles as $id => $role)
                             <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
                         @endforeach
@@ -134,15 +130,6 @@
                     @endif
                     <span class="help-block">{{ trans('You can give more than one role') }}</span>
                 </div>
-                  <div class="form-group">
-                    <label>Assigned game:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fas fa-check"></i>
-                      </span>
-                      <input type="text" class="form-control" name="assigned_game" placeholder="Assigned game">
-                    </div>
-                  </div>
                   <div class="form-group">
                     <label>language:</label>
                     <div class="input-group">
@@ -186,12 +173,12 @@
                         <span class="fa fa-flag" aria-hidden="true"></span>
                         <!-- Changed fa-building to fa-flag -->
                       </span>
-                      <input type="text" class="form-control" name="nationality" placeholder="nationality">
+                      <input type="text" class="form-control" name="nationality" placeholder="nationality" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="club">Gender:</label>
-                    <select class="form-control" name="gender" placeholder="Gender">
+                    <select class="form-control" name="gender" placeholder="Gender" required>
                       <option value="" selected disabled>Select Gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
@@ -203,11 +190,11 @@
                       <span class="input-group-addon">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                       </span>
-                      <input type="text" class="form-control" name="address" placeholder="address">
+                      <input type="text" class="form-control" name="address" required placeholder="address">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label> mothers full name:</label>
+                    <label> Mothers full name:</label>
                     <div class="input-group">
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -215,25 +202,6 @@
                       <input type="text" class="form-control" name="mother_full_name"
                         placeholder="Mother Full Name">
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label> Club:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <span class="fa fa-soccer-ball-o" aria-hidden="true"></span>
-                      </span>
-                      <input type="text" class="form-control" name="club" placeholder="Club">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>project:</label>
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <span class="fa fa-soccer-ball-o" aria-hidden="true"></span>
-                    </span>
-
-                    <input type="text" class="form-control" name="project" placeholder="project">
                   </div>
                 </div>
               </div>

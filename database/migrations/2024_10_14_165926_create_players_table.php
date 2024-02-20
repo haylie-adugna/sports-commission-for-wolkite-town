@@ -14,7 +14,6 @@ class CreatePlayersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->unique();
             $table->foreignId('club_id')->constrained(); // Foreign key referencing the clubs table
-            $table->string('player_name')->nullable();
             $table->integer('time');
             $table->timestamps();
         });

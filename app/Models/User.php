@@ -66,7 +66,7 @@ class User extends Authenticatable
     /**
      * Get the user type that owns the user.
      */
-   
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
     public function club()
     {
-        return $this->belongsTo(Clubs::class);
+        return $this->belongsTo(Clubs::class, 'club_id');
     }
 
 

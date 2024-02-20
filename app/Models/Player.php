@@ -10,7 +10,6 @@ class Player extends Model
     protected $fillable = [
         'user_id',
         'club_id',
-        'player_name',
         'time',
         // Add more fields as needed
     ];

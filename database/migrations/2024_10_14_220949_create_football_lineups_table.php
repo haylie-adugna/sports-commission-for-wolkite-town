@@ -18,7 +18,8 @@ class CreateFootballLineupsTable extends Migration
             $table->unsignedBigInteger('club_id')->nullable();
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->integer('jersey_number');
-            $table->string('player_name');
+            $table->unsignedBigInteger('player_id')->nullable();
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->string('position');
             $table->boolean('captain')->default(false);
             $table->string('reason_for_substitution')->nullable();
