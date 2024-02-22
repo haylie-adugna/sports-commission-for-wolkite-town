@@ -35,7 +35,7 @@ class GamesController extends Controller
     {
         //
         Games::create($request->all());
-       return redirect()->route('games.create')->with('status', 'New game Cteated successful!');
+       return redirect()->route('games.create')->with('success', 'New game Cteated successful!');
     }
 
     /**
@@ -59,7 +59,7 @@ class GamesController extends Controller
     {
         $games= games::find($id);
         $games->update($request->all());
-        return redirect()->route('games.update',$id)->with('status', 'update successful!');
+        return redirect()->route('games.index',$id)->with('success', 'update successful!');
 
     }
 

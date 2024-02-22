@@ -15,7 +15,7 @@ class VenueController extends Controller
     {
         //
         $venues= venues::all();
-        return view('backend.venue.index', compact('venues'));
+        return view('backend.venues.index', compact('venues'));
     }
 
     /**
@@ -24,7 +24,7 @@ class VenueController extends Controller
     public function create()
     {
         //
-        return view('backend.venue.create');
+        return view('backend.venues.create');
     }
 
     /**
@@ -34,38 +34,55 @@ class VenueController extends Controller
     {
         //
         venues::create($request->all());
-        return redirect()->route('venue.create')->with('status', 'Venue add successful!');
+        return redirect()->route('venue.index')->with('success', 'Venue add successful!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $venues= venues::find($id);
+        return view('backend.venues.show', compact('venues'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(VenueUpdateRequest $request, $id)
     {
-        //
+        $venues= venues::find($id);
+        $venues->update($request->all());
+        return redirect()->route('venue.index',$id)->with('success', 'update successful!');
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($id)
     {
-        //
+        $venues = venues::find($id);
+        return view('backend.venues.update', compact('venues'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        try {
+            $venues = venues::find($id); // Find the event by ID
+
+            // Perform any additional checks or authorization here
+
+            $venues->delete(); // Delete the event
+
+            return redirect()->route('venue.index')->with('success', 'Event deleted successfully');
+        } catch (\Exception $e) {
+            // Handle exceptions, e.g., if the event is not found
+            return redirect()->route('venue.index')->with('error', 'Failed to delete the event');
+        }
+
     }
 }

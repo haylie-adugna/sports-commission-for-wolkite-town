@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Events;
 
 use App\Http\Requests\Events\CreateEventRequest;
+use App\Http\Requests\Events\UpdateEventRequest;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -33,33 +35,38 @@ class EventsController extends Controller
         return view('backend.events.create');
     }
 
-public function store(CreateEventRequest $request)
+    public function store(CreateEventRequest $request)
     {
         $eventData = $request->except('file');
-        $data=[
-            'Tittle'=>$request->tittle,
-            'Type'=>$request->type,
-            'Body'=>$request->body,
-            'created_by'=>$request->created_by,
+        $data = [
+            'Tittle' => $request->tittle,
+            'Type' => $request->type,
+            'Body' => $request->body,
+            'created_by' => $request->created_by,
+        ];
 
-           ];
-
-        if($request->hasFile('image')){
-            $filenameWithExt= $request->file('image')->getClientOriginalName();
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $filename. '_'.time().'.'.$extension;
-            $path = $request->file('image')->storeAs('public/videos/',$fileNameToStore);
-            $data['image']=asset($path);
-        }else{
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $fileType = $request->file('image')->getClientMimeType(); // Get the file type (image or video)
+
+            if (strpos($fileType, 'image') !== false) {
+                $path = $request->file('image')->storeAs('public/image/', $fileNameToStore);
+                $data['photo'] = asset('storage/image/' . $fileNameToStore);
+            } elseif (strpos($fileType, 'video') !== false) {
+                $path = $request->file('image')->storeAs('public/video/', $fileNameToStore);
+                $data['video'] = asset('storage/video/' . $fileNameToStore);
+            }
+        } else {
             $fileNameToStore = 'noimage.jpg';
         }
 
         Events::create($data);
 
-        return redirect()->route('events.create')->with('status', 'Event posted successfully');
+        return redirect()->route('events.index')->with('success', 'New Event posted successfully');
     }
-
 
     public function index()
     {
@@ -67,13 +74,22 @@ public function store(CreateEventRequest $request)
 
         return view('backend.events.index', compact('events'));
     }
-    public function show()
+    public function show($id)
     {
-        return view('backend.events.show');
+        $events= events::find($id);
+        return view('backend.events.show', compact('events'));
     }
-    public function edit()
+    public function update($id)
     {
-        return view('backend.events.update');
+        $events = events::find($id);
+        return view('backend.events.update', compact('events'));
+    }
+    public function edit(UpdateEventRequest $request, $id)
+    {
+        $events= events::find($id);
+        $events->update($request->all());
+        return redirect()->route('events.index',$id)->with('success', 'update successful!');
+
     }
 
     public function destroy(string $id)

@@ -87,7 +87,8 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
     // events
 Route::get('/eventscreate', [Eventscontroller::class, 'create'])->name('events.create');
 Route::post('/addevent', [EventsController::class, 'store'])->name('events.register');
-Route::get('/eventsupdate/{id}', [Eventscontroller::class, 'edit'])->name('events.update');
+Route::get('/eventedit/{id}', [EventsController::class, 'update'])->name('events.update');
+Route::post('/eventsupdate/{id}', [EventsController::class, 'edit'])->name('events.edit');
 Route::get('/eventsallshow', [Eventscontroller::class, 'index'])->name('events.index');
 Route::get('/eventsshow/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');
@@ -139,13 +140,13 @@ Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.sh
 Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
 
 // venue
-Route::get('/createvenue', [VenueController::class, 'create'])->name('venue.create');
-Route::post('/addvenue', [VenueController::class, 'store'])->name('venue.register');
-Route::get('/venueedit/{id}', [VenueController::class, 'update'])->name('venue.update');
-Route::post('/venueupdate/{id}', [VenueController::class, 'edit'])->name('venue.edit');
-Route::get('/showallvenue', [VenueController::class, 'index'])->name('venue.index');
-Route::get('/venuehow/{id}', [VenueController::class, 'show'])->name('venue.show');
-Route::get('/deletevenue/{id}', [VenueController::class, 'destroy'])->name('venue.destroy');
+Route::get('/creat/evenue', [VenueController::class, 'create'])->name('venue.create');
+Route::post('/add/venue', [VenueController::class, 'store'])->name('venue.register');
+Route::get('/venue/edit/{id}', [VenueController::class, 'update'])->name('venue.update');
+Route::post('/venue/update/{id}', [VenueController::class, 'edit'])->name('venue.edit');
+Route::get('/show/all/venue', [VenueController::class, 'index'])->name('venue.index');
+Route::get('/venue/show/{id}', [VenueController::class, 'show'])->name('venue.show');
+Route::delete('/deletevenue/{id}', [VenueController::class, 'destroy'])->name('venue.destroy');
 
 
 // club

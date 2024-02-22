@@ -49,7 +49,7 @@
                             <tbody>
                                 @foreach ($venues as $venue)
                                     <tr>
-                                        <td>{{ $venue->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $venue->venue_name }}</td>
                                         <td>{{ $venue->description }}</td>
                                         <td>{{ $venue->address }}</td>

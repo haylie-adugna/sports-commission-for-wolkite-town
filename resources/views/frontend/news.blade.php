@@ -20,8 +20,12 @@
             </div>
         </div>
         @endforeach
-       
+
         <!-- ./col -->
+    </div>
+
+    <div>
+        
     </div>
     <!-- /.row -->
 </section>

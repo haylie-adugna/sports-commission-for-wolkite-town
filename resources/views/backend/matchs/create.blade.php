@@ -102,10 +102,18 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="venue">Venue:</label>
-                                <input type="text" class="form-control" name="venue" id="venue" placeholder="Venue">
+                            <label for="venue">Venue:</label>
+                            <select class="form-control" name="venue" id="venue">
+                                @foreach(DB::table('venues')
+                                ->select('id', 'venue_name')
+                                ->groupBy('venue_name', 'id')
+                                ->get() as $venue_name)
+                                <option value="{{ $venue_name->id }}">{{ $venue_name->venue_name }}</option>
+                            @endforeach
+                            </select>
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ticket">Ticket:</label>

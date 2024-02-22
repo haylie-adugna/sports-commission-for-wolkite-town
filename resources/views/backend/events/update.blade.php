@@ -1,21 +1,14 @@
 @extends('layouts.app')
 @section('content')
-  <!-- Main content -->
-  <section class="content">
-    <div class="rows">
-      <!-- right column -->
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h2 class="box-title">Insert Event</h2>
-        </div>
-        <form action="{{ route('events.register') }}" method="post" novalidate enctype="multipart/form-data">
-          @csrf
-          <div class="box-body">
+<div class="py-5">
+    <form method="POST" action="{{ route('events.edit', ['id' => $events->id]) }}">
+        @csrf
+        <div class="box-body">
             <div class="row">
               <div class="col-xs-3">
                 <label for="title">Event Title:</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="tittle" placeholder="Title" required>
+                  <input type="text" class="form-control" value="{{ $events->Tittle }}" name="Tittle" placeholder="Tittle" required>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                   </span>
@@ -25,10 +18,11 @@
               <div class="col-xs-3">
                 <label for="type">Events Type</label>
                 <div class="input-group">
-                  <select class="form-control select2" name="type" required>
-                    <option selected="selected">News</option>
-                    <option>Announcement</option>
-                    <option>Result</option>
+                  <select class="form-control select2" name="Type" value="{{ $events->Type }}" required>
+                    <option selected-value="{{ $events->Type }}" selected disabled >{{ $events->Type }}</option>
+                    <option value="News">News</option>
+                    <option value="Announcement">Announcement</option>
+                    <option value="Result">Result</option>
                   </select>
                 </div>
               </div>
@@ -36,7 +30,7 @@
               <div class="col-xs-3">
                 <label for="image">Images or Videos:</label>
                 <div class="input-group">
-                  <input type="file" accept="image/*, video/*" class="form-control" name="image" id="fileInput" required>
+                  <input type="file" accept="image/*, video/*" class="form-control" name="image" id="fileInput" value="{{ $events->Body }}">
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                   </span>
@@ -70,7 +64,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                          <textarea type="text" class="textarea" placeholder="Place some text here" name="body"
+                          <textarea class="textarea" placeholder="Place some text here" name="body" value="{{ $events->Body }}"
                             style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                             required></textarea>
                         </div>
@@ -95,12 +89,9 @@
             <a href="{{ route('events.index') }}" class="btn btn-warning">Cancel</a>
             <button type="submit" class="btn btn-info pull-right">Post</button>
           </div>
-        </form>
-      </div>
-    </div>
-    <div class="box-body pad">
-      <textarea id="editor1" name="editor1" rows="10" cols="80"></textarea>
-    </div>
-    <!-- /.box -->
-  </section>
+  </form>
+  <div class="box-body pad">
+    <textarea id="editor1" name="editor1" rows="10" cols="80"></textarea>
+  </div>
+</div>
 @endsection

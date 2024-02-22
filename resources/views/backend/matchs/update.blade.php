@@ -51,8 +51,15 @@
 
                     <div class="form-group">
                         <label for="venue">Venue:</label>
-                        <input type="text" class="form-control" name="Venue" value="{{ $matchs->Venue }}" required>
-                    </div>
+                        <select class="form-control" name="venue" id="venue">
+                            @foreach(DB::table('venues')
+                            ->select('id', 'venue_name')
+                            ->groupBy('venue_name', 'id')
+                            ->get() as $venue_name)
+                            <option selected-value="{{ $venue_name->id }}" selected >{{ $venue_name->venue_name }}</option>
+                        @endforeach
+                        </select>
+                        </div>
 
                     <div class="form-group">
                         <label for="medical_support">Medical Support:</label>

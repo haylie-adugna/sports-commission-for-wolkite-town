@@ -117,7 +117,6 @@
                       <input type="text" class="form-control" name="city" placeholder="city">
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label class="required" for="roles">Select Roles</label>
                     <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>

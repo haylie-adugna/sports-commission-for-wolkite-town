@@ -67,7 +67,7 @@
 
                                                 {{--Delete--}}
                                                 <a id="" href="{{route('events.destroy', $events->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
-                                                <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
+                                                <form method="HEAD" id="" action="" class="hidden">@csrf</form>
 
                                             </div>
                                         </div>

@@ -9,45 +9,30 @@
 
                 <div class="card-body">
                     <div>
-                        <strong>Name:</strong> {{ $user->name }}
+                        <strong>Tittle:</strong> {{ $events->Tittle }}
                     </div>
                     <div>
-                        <strong>Email:</strong> {{ $user->email }}
+                        <strong>Type:</strong> {{ $events->Type }}
                     </div>
                     <div>
-                        <strong>Age:</strong> {{ $user->age }}
+                        <strong>Body:</strong> {{ $events->Body }}
                     </div>
                     <div>
-                        <strong>Gender:</strong> {{ $user->gender }}
+                        <strong>Photo:</strong> {{ $events->Photo }}
                     </div>
-                    <!-- Add more fields as needed -->
+                    <div>
+                        <strong>video:</strong> {{ $events->video }}
+                    </div>
 
-                    {{-- You can also check if a field is not null before displaying it --}}
-                    @if ($user->address)
-                        <div>
-                            <strong>Address:</strong> {{ $user->address }}
-                        </div>
-                    @endif
-
-                    {{-- Displaying an image if the 'photo' field is not null --}}
-                    @if ($user->photo)
-                        <div>
-                            <strong>Photo:</strong>
-                            <img src="{{ asset('path/to/photos/' . $user->photo) }}" alt="User Photo">
-                        </div>
-                    @endif
-
-                    {{-- Displaying a link to the assigned game if available --}}
-                    @if ($user->assigned_game)
-                        <div>
-                            <strong>Assigned Game:</strong>
-                            <a href="{{ route('game.show', $user->assigned_game) }}">{{ $user->assigned_game }}</a>
-                        </div>
-                    @endif
 
                     {{-- Add more fields and customize as needed --}}
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ route('events.index') }}" class="btn btn-primary">Back to Matches</a>
         </div>
     </div>
 </div>

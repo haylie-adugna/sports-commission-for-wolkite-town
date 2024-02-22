@@ -58,13 +58,17 @@
                                         <input type="text" class="form-control" name="player"
                                             placeholder="Players or Participants" value="{{ $games->player }}">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="Venue">Venue:</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="venue"
-                                                placeholder="Venue" value="{{ $games->vanue }}">
+                                        <div class="form-group">
+                                        <label for="venue">Venue:</label>
+                                        <select class="form-control" name="venue" id="venue">
+                                            @foreach(DB::table('venues')
+                                            ->select('id', 'venue_name')
+                                            ->groupBy('venue_name', 'id')
+                                            ->get() as $venue_name)
+                                            <option selected-value="{{ $venue_name->id }}" selected >{{ $venue_name->venue_name }}</option>
+                                        @endforeach
+                                        </select>
                                         </div>
-                                    </div>
                                     <div class="form-group">
                                         <label for="Equipment">Equipment:</label>
                                         <textarea class="textarea" placeholder="Place some text here"

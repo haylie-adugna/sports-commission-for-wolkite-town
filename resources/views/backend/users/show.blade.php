@@ -55,5 +55,10 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Back to Matches</a>
+        </div>
+    </div>
 </div>
 @endsection
