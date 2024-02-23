@@ -44,9 +44,9 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $events->Tittle }}</td>
                                 <td>{{ $events->Type }}</td>
-                                <td>{{ $events->Body }}</td>
-                                <td> <img width="320" height="240" src="{{asset('upload/event/image')}}/{{$events->image}}" alt="event"> </td>
-                                <td><video width="320" height="240" autoplay muted>
+                                <td>{!! $events->Body !!}</td>
+                                <td> <img width="150" height="150" src="{{asset('upload/event/image')}}/{{$events->image}}" alt="event"> </td>
+                                <td><video width="220" height="140" autoplay muted>
                                     <source src="{{asset('upload/event/video')}}/{{$events->video}}" type="video/mp4">
                                   </video></td>
                                 <td>{{ $events->Created_by }}</td>

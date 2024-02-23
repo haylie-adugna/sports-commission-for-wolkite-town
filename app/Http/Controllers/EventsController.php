@@ -39,7 +39,7 @@ class EventsController extends Controller
     {
         $eventData = $request->except('file');
         $data = [
-            'Tittle' => $request->tittle,
+            'Tittle' => $request->Tittle,
             'Type' => $request->type,
             'Body' => $request->body,
             'created_by' => $request->created_by,
@@ -49,14 +49,15 @@ class EventsController extends Controller
             $imageFile = $request->file('image');
             $imageFileName = $imageFile->getClientOriginalName();
             $image = $imageFile->move('public/upload/event/image', $imageFileName);
-            $data['image'] = asset('upload/event/image' . $imageFileName, '');        }
+            $data['image'] = $imageFileName;
+           }
 
         // Handle video upload
         if ($request->hasFile('video')) {
             $videoFile = $request->file('video');
             $videoFileName = $videoFile->getClientOriginalName();
             $video =  $videoFile->move('public/upload/event/video', $videoFileName);
-            $data['video'] = asset('upload/event/video' . $videoFileName, '');
+            $data['video'] = $videoFileName;
         }
 
         Events::create($data);

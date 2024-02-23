@@ -212,13 +212,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{asset('upload/user/image')}}/{{Auth::user()->photo}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{asset('upload/user/image')}}/{{Auth::user()->photo}}" class="img-circle" alt="User Image">
 
                 <p>
                     {{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}

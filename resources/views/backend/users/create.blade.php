@@ -202,6 +202,18 @@
                         placeholder="Mother Full Name">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="image">Images</label>
+                    <div class="input-group">
+                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                        </span>
+                    </div>
+                    <div id="imagePreviewContainer"></div>
+                </div>
+
                 </div>
               </div>
 

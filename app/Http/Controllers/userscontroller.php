@@ -37,7 +37,16 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->all());
+        $data = $request->all();
+
+
+        if ($request->hasFile('image')) {
+        $imageFile = $request->file('image');
+        $imageFileName = $imageFile->getClientOriginalName();
+        $image = $imageFile->move('public/upload/user/image', $imageFileName);
+        $data['photo'] = $imageFileName;
+       }
+        $user = User::create($data);
 
         $user->roles()->sync($request->input('roles', []));
 

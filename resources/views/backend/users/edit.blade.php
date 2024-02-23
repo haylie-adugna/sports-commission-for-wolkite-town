@@ -102,11 +102,7 @@
                                 <input type="text" class="form-control" name="city" placeholder="city">
                             </div>
                             <div class="col-xs-2">
-                                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-                                <div style="padding-bottom: 4px">
-                                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                                </div>
+                                <label class="required" for="roles">user roles</label>
                                 <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
                                     @foreach($roles as $id => $role)
                                         <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $role }}</option>
@@ -115,7 +111,7 @@
                                 @if($errors->has('roles'))
                                     <span class="text-danger">{{ $errors->first('roles') }}</span>
                                 @endif
-                                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+                                <span class="help-block">{{ trans('you can select all') }}</span>
                             </div>
                         </div>
                     </div>
@@ -138,7 +134,6 @@
                                     <option value="Afanoromo">Afan oromo</option>
                                     <option value="somali">somali</option>
                                     <option value="Other">Other</option>
-
                                 </select>
                             </div>
                             <div class="col-xs-3">
@@ -186,14 +181,15 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <label for="Behavioral Records">Behavioral Records:</label>
+                                <label for="Behavioral Records">Images:</label>
                                 <div class="form-group">
-                                    <select class="form-control select2" multiple="multiple"
-                                        data-placeholder="Select Behavioral Records" style="width: 100%;">
-                                        <option>Red card</option>
-                                        <option>Yellow card</option>
-                                        <option>Green card</option>
-                                    </select>
+                                    <div class="input-group">
+                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div id="imagePreviewContainer"></div>
                                 </div>
                             </div>
 

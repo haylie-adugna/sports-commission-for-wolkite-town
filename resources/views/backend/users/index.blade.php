@@ -53,7 +53,7 @@
                     @foreach($users as $key => $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img class="rounded-circle" style="height: 40px; width: 40px;" src="{{ $user->photo }}" alt="photo"></td>
+                                <td><img class="img-circle" style="height: 100px; width: 100px;" src="{{asset('upload/user/image')}}/{{$user->photo}}" alt="event"></td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->middle_name }}</td>
                                 <td>{{ $user->last_name }}</td>
