@@ -16,9 +16,9 @@ class CreateEventRequest extends FormRequest
         'Tittle' => 'nullable|string',
         'Type' => 'nullable|string',
         'Body' => 'nullable|string',
-        'photo' => 'nullable|string',
-        'video' => 'nullable|string', // Adjust the validation rule for video based on your requirements
-        'Created_by' => 'nullable|user_type',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Adjust the image types based on your requirements
+        'video' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm',
+        'Created_by' => 'nullable|your_custom_user_type_rule', // Replace with your specific user type rule
         'status' => 'nullable|in:active,inactive', // Adjust the valid statuses based on your requirements
         'remember_token' => 'nullable|string',
     ];

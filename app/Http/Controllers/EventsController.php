@@ -46,21 +46,17 @@ class EventsController extends Controller
         ];
 
         if ($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            $fileType = $request->file('image')->getClientMimeType(); // Get the file type (image or video)
+            $imageFile = $request->file('image');
+            $imageFileName = $imageFile->getClientOriginalName();
+            $image = $imageFile->move('public/upload/event/image', $imageFileName);
+            $data['image'] = asset('upload/event/image' . $imageFileName, '');        }
 
-            if (strpos($fileType, 'image') !== false) {
-                $path = $request->file('image')->storeAs('public/image/', $fileNameToStore);
-                $data['photo'] = asset('storage/image/' . $fileNameToStore);
-            } elseif (strpos($fileType, 'video') !== false) {
-                $path = $request->file('image')->storeAs('public/video/', $fileNameToStore);
-                $data['video'] = asset('storage/video/' . $fileNameToStore);
-            }
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+        // Handle video upload
+        if ($request->hasFile('video')) {
+            $videoFile = $request->file('video');
+            $videoFileName = $videoFile->getClientOriginalName();
+            $video =  $videoFile->move('public/upload/event/video', $videoFileName);
+            $data['video'] = asset('upload/event/video' . $videoFileName, '');
         }
 
         Events::create($data);

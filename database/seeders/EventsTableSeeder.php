@@ -19,7 +19,7 @@ class EventsTableSeeder extends Seeder
             'Tittle' => 'Sample News Title',
             'Type' => 'news',
             'Body' => 'news body content.',
-            'photo' => 'news_photo.jpg',
+            'image' => 'news_photo.jpg',
             'video' => null, // Add video if applicable
             'Created_by' => 'admin@example.com',
             'status' => 'active',

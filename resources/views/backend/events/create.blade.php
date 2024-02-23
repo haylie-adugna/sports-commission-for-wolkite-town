@@ -15,7 +15,7 @@
               <div class="col-xs-3">
                 <label for="title">Event Title:</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="tittle" placeholder="Title" required>
+                  <input type="text" class="form-control" name="Tittle" placeholder="Title" required>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                   </span>
@@ -34,15 +34,27 @@
               </div>
 
               <div class="col-xs-3">
-                <label for="image">Images or Videos:</label>
+                <label for="image">Images</label>
                 <div class="input-group">
-                  <input type="file" accept="image/*, video/*" class="form-control" name="image" id="fileInput" required>
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-                  </span>
+                    <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                    </span>
                 </div>
-                <div id="previewContainer"></div>
-              </div>
+                <div id="imagePreviewContainer"></div>
+            </div>
+
+            <div class="col-xs-3">
+                <label for="video">Videos</label>
+                <div class="input-group">
+                    <input type="file" accept="video/*" class="form-control" name="video" id="videoInput" required>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                    </span>
+                </div>
+                <div id="videoPreviewContainer"></div>
+            </div>
+
             </div>
           </div>
           <!-- /.box-body -->

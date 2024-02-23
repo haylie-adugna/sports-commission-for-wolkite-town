@@ -35,7 +35,9 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
 {{-- <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> --}}
+
+<script src="asset('dist/js/pages/dashboard.js') }}"></script> --}}
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
@@ -83,39 +85,44 @@
       $(".textarea").wysihtml5();
     });
   </script>
+<style>
+    #videoPreviewContainer video {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+
 <script>
-    document.getElementById('fileInput').addEventListener('change', function () {
-        var fileInput = this;
-        var previewContainer = document.getElementById('previewContainer');
-        previewContainer.innerHTML = ''; // Clear previous previews
+    $(document).ready(function() {
+        // Image preview
+        $('#imageInput').change(function() {
+            previewImage(this, '#imagePreviewContainer');
+        });
 
-        var file = fileInput.files[0];
+        // Video preview
+        $('#videoInput').change(function() {
+            previewVideo(this, '#videoPreviewContainer');
+        });
 
-        if (file) {
-            var fileType = file.type.split('/')[0]; // Get the file type (image or video)
+        function previewImage(input, previewContainer) {
+            $(previewContainer).empty();
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(previewContainer).html('<img src="' + e.target.result + '" class="img-thumbnail" />');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-            if (fileType === 'image') {
-                // Display image preview
-                var img = document.createElement('img');
-                img.src = URL.createObjectURL(file);
-                img.classList.add('preview-image');
-                previewContainer.appendChild(img);
-
-                // Assign the file to the 'photo' input
-                document.getElementsByName('photo')[0].value = file.name;
-            } else if (fileType === 'video') {
-                // Display video preview
-                var video = document.createElement('video');
-                video.src = URL.createObjectURL(file);
-                video.classList.add('preview-video');
-                video.setAttribute('controls', 'controls');
-                previewContainer.appendChild(video);
-
-                // Assign the file to the 'video' input
-                document.getElementsByName('video')[0].value = file.name;
-            } else {
-                // Unsupported file type
-                alert('Unsupported file type. Please upload an image or video.');
+        function previewVideo(input, previewContainer) {
+            $(previewContainer).empty();
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(previewContainer).html('<video controls><source src="' + e.target.result + '" type="video/mp4"></video>');
+                };
+                reader.readAsDataURL(input.files[0]);
             }
         }
     });

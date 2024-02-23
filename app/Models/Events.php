@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Events extends Model
 {
     use HasFactory;
+    protected $table="Events";
     protected $fillable = [
         'Tittle',
         'Type',
         'Body',
-        'photo',
+        'image',
         'video',
         'created_by',
         'status',

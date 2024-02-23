@@ -27,7 +27,7 @@ class EventsFactory extends Factory
             'Tittle' => $this->faker->sentence,
             'Type' => $this->faker->word,
             'Body' => $this->faker->paragraph,
-            'photo' => $this->faker->imageUrl(),
+            'image' => $this->faker->imageUrl(),
             'video' => $this->faker->url,
             'Created_by' => $this->faker->unique()->userName,
             'status' => $this->faker->randomElement(['active', 'inactive']),
