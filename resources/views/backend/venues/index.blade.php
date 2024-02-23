@@ -55,7 +55,7 @@
                                         <td>{{ $venue->address }}</td>
                                         <td>{{ $venue->capacity }}</td>
                                         <td>{{ $venue->facilities }}</td>
-                                        <td>{{ $venue->layout }}</td>
+                                        <td><img style="height: 100px; width: 100px;" src="{{asset('upload/venue/layout')}}/{{$venue->layout}}" alt="event"></td>
                                         <td>{{ $venue->availability }}</td>
                                         <td>{{ $venue->contact_information }}</td>
                                         <td>{{ $venue->accessibility }}</td>

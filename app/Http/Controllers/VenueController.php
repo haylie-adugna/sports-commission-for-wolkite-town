@@ -33,7 +33,15 @@ class VenueController extends Controller
     public function store(VenueCreateRequest $request)
     {
         //
-        venues::create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('layout')) {
+            $imageFile = $request->file('layout');
+            $imageFileName = $imageFile->getClientOriginalName();
+            $image = $imageFile->move('public/upload/venue/layout', $imageFileName);
+            $data['layout'] = $imageFileName;
+           }
+        $venue = venues::create($data);
         return redirect()->route('venue.index')->with('success', 'Venue add successful!');
     }
 

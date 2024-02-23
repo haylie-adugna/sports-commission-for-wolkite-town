@@ -64,16 +64,17 @@
                                         placeholder="Location">
                                 </div>
                             </div>
-                            <div class="col-xs-3">
-                                <label for="image">logo:</label>
-                                <div class="input-group">
-                                    <input type="file" accept="image/jpeg, image/png" class="form-control" name="logo"
-                                        id="fileInput" >
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-                                    </span>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="image">Logo</label>
+                                    <div class="input-group">
+                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div id="imagePreviewContainer"></div>
                                 </div>
-                                <div id="previewContainer"></div>
                             </div>
 
                             <div class="col-md-4">

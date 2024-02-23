@@ -212,17 +212,24 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('upload/user/image')}}/{{Auth::user()->photo}}" class="user-image" alt="User Image">
+                @if(Auth::user()->photo)
+                <img src="{{ asset('upload/user/image') }}/{{ Auth::user()->photo }}" class="user-image" alt="User Image">
+            @else
+                <img src="{{ asset('dist/img/avatar.png') }}" class="user-image" alt="User Image">
+            @endif
               <span class="hidden-xs">{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
+                @if(Auth::user()->photo)
                 <img src="{{asset('upload/user/image')}}/{{Auth::user()->photo}}" class="img-circle" alt="User Image">
-
+                @else
+                <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+                @endif
                 <p>
                     {{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}
-                  <small>Member since Nov. 2012</small>
+                    <small>Member since {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('M. Y') }}</small>
                 </p>
               </li>
               <!-- Menu Body -->

@@ -30,7 +30,7 @@ class VenueCreateRequest extends FormRequest
             'address' => 'required|string',
             'capacity' => 'required|integer',
             'facilities' => 'required|string',
-            'layout' => 'nullable|string', // Assuming it's a string, change if necessary
+            'layout' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Assuming it's a string, change if necessary
             'availability' => 'required|string',
             'contact_information' => 'required|string',
             'accessibility' => 'required|string',

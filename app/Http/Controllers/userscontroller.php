@@ -68,7 +68,16 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $data = $request->all();
+
+
+        if ($request->hasFile('image')) {
+        $imageFile = $request->file('image');
+        $imageFileName = $imageFile->getClientOriginalName();
+        $image = $imageFile->move('public/upload/user/image', $imageFileName);
+        $data['photo'] = $imageFileName;
+       }
+        $user->update($data);
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index')->with('status', 'update successful!');

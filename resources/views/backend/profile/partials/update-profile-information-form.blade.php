@@ -16,6 +16,7 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+        <div class="box-body">
 
         <div>
             <x-input-label for="first_name" :value="__('First Name')" />
@@ -56,19 +57,26 @@
                 </div>
             @endif
         </div>
-
+        <div class="col-xs-3">
+            <label for="Behavioral Records">Images:</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" :value="{{asset('upload/user/image')}}/{{$user->photo}}">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                    </span>
+                </div>
+                <div id="imagePreviewContainer"></div>
+            </div>
+        </div>
+        <br>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                <p>updated</p>
             @endif
         </div>
+    </div>
     </form>
 </section>

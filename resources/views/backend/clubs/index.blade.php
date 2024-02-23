@@ -74,9 +74,9 @@
                                             @endif
                                         </td>
                                         <td>{{ $clubs->document }}</td>
-                                        <td>{{ $clubs->description }}</td>
+                                        <td>{!! $clubs->description !!}</td>
                                         <td>{{ $clubs->status }}</td>
-                                        <td><img src="{{ asset($clubs->logo) }}" alt="Club Logo" width="50"></td>
+                                        <td><img style="height: 100px; width: 100px;" src="{{asset('upload/clubs/logo')}}/{{$clubs->logo}}" alt="logo"></td>
                                         <td><a href="{{ asset($clubs->pdf) }}" target="_blank">View PDF</a></td>
                                         <td class="text-center">
                                             <div class="fa fa-edit">

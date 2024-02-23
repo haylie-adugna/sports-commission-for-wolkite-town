@@ -41,7 +41,7 @@
 
                         <div class="form-group">
                             <label for="layout">Layout:</label>
-                            <p>{{ $venues->layout }}</p>
+                            <img style="height: 100px; width: 100px;" src="{{asset('upload/venue/layout')}}/{{$venues->layout}}" alt="event">
                         </div>
 
                         <div class="form-group">

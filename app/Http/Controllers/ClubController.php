@@ -37,12 +37,19 @@ class ClubController extends Controller
     }
     public function store(CreateClubsRequest $request)
     {
-        // Create a new clubs record
+        $data = $request->all();
 
-        clubs::create($request->all());
+        if ($request->hasFile('logo')) {
+            $logoFile = $request->file('logo');
+            $logoFileName = $logoFile->getClientOriginalName();
+            $logo = $logoFile->move('public/upload/clubs/logo', $logoFileName);
+            $data['logo'] = $logoFileName;
+        }
+
+        $club = clubs::create($data);
 
         // Redirect to the index page with success message
-        return redirect()->route('clubs.index')->with('status', 'clubs created successfully');
+        return redirect()->route('clubs.index')->with('success', 'Club created successfully');
     }
 
     public function show($id)
