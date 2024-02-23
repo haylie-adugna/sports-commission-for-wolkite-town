@@ -36,21 +36,27 @@ class ClubController extends Controller
         return view('backend.clubs.create');
     }
     public function store(CreateClubsRequest $request)
-    {
+{
+    try {
         $data = $request->all();
 
         if ($request->hasFile('logo')) {
-            $logoFile = $request->file('logo');
-            $logoFileName = $logoFile->getClientOriginalName();
-            $logo = $logoFile->move('public/upload/clubs/logo', $logoFileName);
-            $data['logo'] = $logoFileName;
+            $imageFile = $request->file('logo');
+            $imageFileName = $imageFile->getClientOriginalName();
+            $image = $imageFile->move('public/upload/club/logo', $imageFileName);
+            $data['logo'] = $imageFileName;
         }
 
-        $club = clubs::create($data);
+        $clubs = clubs::create($data);
 
         // Redirect to the index page with success message
         return redirect()->route('clubs.index')->with('success', 'Club created successfully');
+    } catch (\Exception $e) {
+        // Log the exception or handle it as needed
+        return redirect()->route('clubs.index')->with('error', 'Error creating club: ' . $e->getMessage());
     }
+}
+
 
     public function show($id)
     {

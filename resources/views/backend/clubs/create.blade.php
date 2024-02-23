@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label for="image">Logo</label>
                                     <div class="input-group">
-                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                                        <input type="file" accept="image/*" class="form-control" name="logo" id="imageInput" required>
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                                         </span>
