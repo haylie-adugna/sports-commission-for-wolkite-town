@@ -56,15 +56,16 @@
                                         value="{{ $user->email }}">
                                 </div>
                             </div>
+
                             <div class="col-xs-2">
-                                <label for="phone Number">phone Number:</label>
+                                <label>Phone Number:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                        <span class="fa fa-phone" aria-hidden="true"></span>
                                     </span>
-                                    <input type="text" class="form-control" name="phone_number"
-                                        placeholder="phone number" value="{{ $user->phone }}">
+                                    <input type="tel" class="form-control" name="phone_number" value="{{ $user->phone_number }}" placeholder="Phone Number" pattern="[0-9]{10}" required>
                                 </div>
+                                <small class="text-muted">Enter a 10-digit phone number.</small>
                             </div>
 
                         </div>
@@ -99,7 +100,7 @@
 
                             <div class="col-xs-3">
                                 <label for="City">City:</label>
-                                <input type="text" class="form-control" name="city" placeholder="city">
+                                <input type="text" class="form-control" name="city" placeholder="city" value="{{ $user->city }}">
                             </div>
                             <div class="col-xs-2">
                                 <label class="required" for="roles">user roles</label>
@@ -151,26 +152,37 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <label for="Nationality">Nationality:</label>
-                                <input type="text" class="form-control" name="nationality" placeholder="nationality">
+                                <label for="nationality">Nationality:</label>
+                                <select class="form-control select2" name="nationality" placeholder="Nationality">
+                                    <option value="Ethiopian" {{ $user->nationality === 'Ethiopian' ? 'selected' : '' }}>Ethiopian</option>
+                                    <option value="USA" {{ $user->nationality === 'USA' ? 'selected' : '' }}>USA</option>
+                                    <option value="British" {{ $user->nationality === 'British' ? 'selected' : '' }}>British</option>
+                                    <option value="Chinese" {{ $user->nationality === 'Chinese' ? 'selected' : '' }}>Chinese</option>
+                                    <option value="Indian" {{ $user->nationality === 'Indian' ? 'selected' : '' }}>Indian</option>
+                                    <option value="French" {{ $user->nationality === 'French' ? 'selected' : '' }}>French</option>
+                                    <option value="German" {{ $user->nationality === 'German' ? 'selected' : '' }}>German</option>
+                                    <option value="Japanese" {{ $user->nationality === 'Japanese' ? 'selected' : '' }}>Japanese</option>
+                                    <option value="Brazilian" {{ $user->nationality === 'Brazilian' ? 'selected' : '' }}>Brazilian</option>
+                                    <option value="Other" {{ $user->nationality === 'Other' ? 'selected' : '' }}>Other</option>
+                                </select>
                             </div>
+
                             <div class="col-xs-3">
                                 <label for="Gender">Gender:</label>
                                 <select class="form-control" name="gender" placeholder="Gender">
-                                    <option value="" selected disabled>Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="male" {{ $user->gender === 'male' ? 'selected' : '' }}>Male</option>
+                                    <option value="female" {{ $user->gender === 'female' ? 'selected' : '' }}>Female</option>
                                 </select>
-
                             </div>
+
 
                             <div class="col-xs-3">
                                 <label for="Address">Address:</label>
-                                <input type="text" class="form-control" name="address" placeholder="Address">
+                                <input type="text" class="form-control" name="address" placeholder="Address" value="{{ $user->address}}">
                             </div>
                             <div class="col-xs-3">
                                 <label for="Mother Name">Mother Name:</label>
-                                <input type="text" class="form-control" name="mother_full_name"
+                                <input type="text" class="form-control" name="mother_full_name" value="{{ $user->mother_full_name}}"
                                     placeholder="Mother full name">
                             </div>
                         </div>
@@ -184,7 +196,7 @@
                                 <label for="Behavioral Records">Images:</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required>
+                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required value="{{asset('upload/user/image')}}/{{$user->photo}}">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                                         </span>

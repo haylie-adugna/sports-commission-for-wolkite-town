@@ -82,15 +82,16 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Phone number:</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-phone"></i>
+                    <label>Phone Number:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="fa fa-phone" aria-hidden="true"></span>
+                        </span>
+                        <input type="tel" class="form-control" name="phone_number" value="0912345678" placeholder="Phone Number" pattern="[0-9]{10}" required>
                     </div>
-                    <input type="text" class="form-control" value="0912345678"
-                      data-inputmask='"mask": "+999 99 999 9999"' data-mask placeholder="Enter phone number">
-                  </div>
+                    <small class="text-muted">Enter a 10-digit phone number.</small>
                 </div>
+
               </div>
             </div>
           </div>
@@ -99,24 +100,31 @@
             <div class="">
               <div class="box-body">
                 <div class="box-body">
-                  <div class="form-group">
-                    <label>country:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <span class="fa fa-globe" aria-hidden="true"></span>
-                      </span>
-                      <input type="text" class="form-control" name="country" placeholder="country">
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-globe" aria-hidden="true"></span>
+                            </span>
+                            <select class="form-control" name="country">
+                                <option value="Ethiopia">Ethiopia</option>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <!-- Add more countries as needed -->
+                            </select>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label>city:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <span class="fa fa-building" aria-hidden="true"></span>
-                      </span>
-                      <input type="text" class="form-control" name="city" placeholder="city">
+
+                    <div class="form-group">
+                        <label>city:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-building" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" name="city" placeholder="city">
+                        </div>
                     </div>
-                  </div>
+
                   <div class="form-group">
                     <label class="required" for="roles">Select Roles</label>
                     <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
@@ -129,15 +137,26 @@
                     @endif
                     <span class="help-block">{{ trans('You can give more than one role') }}</span>
                 </div>
-                  <div class="form-group">
-                    <label>language:</label>
+                <div class="form-group">
+                    <label>Language:</label>
                     <div class="input-group">
-                      <span class="input-group-addon">
-                        <span class="fa fa-language" aria-hidden="true"></span>
-                      </span>
-                      <input type="text" class="form-control" name="language" placeholder="Language">
+                        <span class="input-group-addon">
+                            <span class="fa fa-language" aria-hidden="true"></span>
+                        </span>
+                        <select class="form-control" name="language">
+                            <option value="amharic">Amharic</option>
+                            <option value="english">English</option>
+                            <option value="arabic">Arabic</option>
+                            <option value="africaans">Africaans</option>
+                            <option value="irish">Irish</option>
+                            <option value="guragie">Guragie</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="other">other</option>
+                        </select>
                     </div>
-                  </div>
+                </div>
+
                   <div class="form-group">
                     <label>experience:</label>
                     <div class="input-group">
@@ -165,33 +184,39 @@
             <div class="">
               <div class="box-body">
                 <div class="box-body">
-                  <div class="form-group">
-                    <label>nationality:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <span class="fa fa-flag" aria-hidden="true"></span>
-                        <!-- Changed fa-building to fa-flag -->
-                      </span>
-                      <input type="text" class="form-control" name="nationality" placeholder="nationality" required>
+                    <div class="form-group">
+                        <label for="nationality">Nationality:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fa fa-flag" aria-hidden="true"></span>
+                            </span>
+                            <select class="form-control" name="nationality">
+                                <option value="Ethiopian">Ethiopian</option>
+                                <option value="American">American</option>
+                                <option value="Canadian">Canadian</option>
+                            </select>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="club">Gender:</label>
-                    <select class="form-control" name="gender" placeholder="Gender" required>
-                      <option value="" selected disabled>Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label> address:</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                      </span>
-                      <input type="text" class="form-control" name="address" required placeholder="address">
+
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select class="form-control" name="gender" required>
+                            <option value="" selected disabled>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
                     </div>
-                  </div>
+
+                  <div class="form-group">
+                    <label for="address">Address:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="fa fa-map-marker" aria-hidden="true"></span>
+                        </span>
+                        <input type="text" class="form-control" name="address" placeholder="Enter your address">
+                    </div>
+                </div>
+
                   <div class="form-group">
                     <label> Mothers full name:</label>
                     <div class="input-group">

@@ -35,7 +35,7 @@ class GamesController extends Controller
     {
         //
         Games::create($request->all());
-       return redirect()->route('games.create')->with('success', 'New game Cteated successful!');
+       return redirect()->route('games.index')->with('success', 'New game Cteated successful!');
     }
 
     /**

@@ -54,6 +54,8 @@ Route::put('users/{user}', 'UsersController@update')->name('admin.users.update')
 Route::get('/useranalaysis', [usersController::class, 'analaysis'])->name('users.analaysis');
 Route::delete('users/{user}', 'UsersController@destroy')->name('admin.users.destroy');
 Route::delete('users/destroy', 'UsersController@massDestroy')->name('admin.users.massDestroy');
+Route::post('/admin/users/{user}/toggle-status', 'UsersController@toggleUserStatus')->name('admin.users.toggle-status');
+
 
 
 // Permissions
@@ -184,4 +186,6 @@ Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy
 // contact
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/aboutAs', [ContactController::class, 'aboutAs'])->name('aboutas');
+
 require __DIR__.'/auth.php';

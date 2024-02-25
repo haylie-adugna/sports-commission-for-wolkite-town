@@ -91,6 +91,14 @@ class UsersController extends Controller
 
         return view('backend.users.show', compact('user'));
     }
+    public function toggleUserStatus(User $user)
+    {
+        // Toggle the user status
+        $user->status = $user->status === 'active' ? 'inactive' : 'active';
+        $user->save();
+
+        return redirect()->back()->with('success', 'User status updated successfully');
+    }
 
     public function analaysis()
 {

@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="{{ route('aboutas') }}">About Us</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sports <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

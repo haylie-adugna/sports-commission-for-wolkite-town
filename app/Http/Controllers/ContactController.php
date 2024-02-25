@@ -12,7 +12,11 @@ class ContactController extends Controller
      */
     public function showForm()
     {
-        return view('common.contact.create');
+        return view('common.contact');
+    }
+    public function aboutAs()
+    {
+        return view('frontend.aboutas');
     }
 
     /**

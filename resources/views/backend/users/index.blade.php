@@ -44,7 +44,7 @@
                             <th>Language</th>
                             <th>Address</th>
                             <th>Nationality</th>
-                            <th>State</th>
+                            <th>status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -63,14 +63,14 @@
                                         <span class="badge badge-info">{{ $item->title }}</span>
                                     @endforeach
                                 </td>
-                                <td>{{$user->phone}}</td>
+                                <td>{{$user->phone_number}}</td>
                                 <td>{{$user->date_of_birth }}</td>
                                 <td>{{ $user->age }}</td>
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->language }}</td>
                                 <td>{{ $user->address }}</td>
                                 <td>{{$user->nationality }}</td>
-                                <td>{{$user->state }}</td>
+                                <td>{{$user->status }}</td>
                                 <td>
                                     @can('user_show')
                                         <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
@@ -91,6 +91,14 @@
                                             <input type="submit" class="btn btn-xs btn-danger" value="delete">
                                         </form>
                                     @endcan
+                                    {{-- @can('user_status') --}}
+                                    <form action="{{ route('admin.users.toggle-status', $user->id) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-xs {{ $user->status === 'active' ? 'btn-danger' : 'btn-success' }}">
+                                            {{ $user->status === 'active' ? 'Make Inactive' : 'Make Active' }}
+                                        </button>
+                                    </form>
+                                    {{-- @endcan --}}
 
                                 </td>
                             </tr>
