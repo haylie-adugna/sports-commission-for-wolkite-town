@@ -46,9 +46,13 @@
                                 <td>{{ $events->Type }}</td>
                                 <td>{!! $events->Body !!}</td>
                                 <td> <img width="150" height="150" src="{{asset('upload/event/image')}}/{{$events->image}}" alt="event"> </td>
-                                <td><video width="220" height="140" autoplay muted>
-                                    <source src="{{asset('upload/event/video')}}/{{$events->video}}" type="video/mp4">
-                                  </video></td>
+                                <td>
+                                    <a href="{{ asset('upload/event/video/' . $events->video) }}" target="_blank">
+                                        <video width="220" height="140" autoplay muted>
+                                            <source src="{{ asset('upload/event/video/' . $events->video) }}" type="video/mp4">
+                                        </video>
+                                    </a>
+                                </td>
                                 <td>{{ $events->Created_by }}</td>
                                 <td>{{ $events->status }}</td>
                                 <td class="text-center">

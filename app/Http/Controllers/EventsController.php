@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Events;
 use App\Models\User;
@@ -11,8 +12,6 @@ use Illuminate\Http\Exceptions\PostTooLargeException;
 
 use App\Http\Requests\Events\CreateEventRequest;
 use App\Http\Requests\Events\UpdateEventRequest;
-
-use Illuminate\Support\Facades\DB;
 
 
 class EventsController extends Controller
