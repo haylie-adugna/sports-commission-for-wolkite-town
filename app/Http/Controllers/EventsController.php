@@ -33,42 +33,45 @@ class EventsController extends Controller
         return view('backend.events.create');
     }
 
-    public function store(CreateEventRequest $request)
-{
-    try {
-        // Your existing code for handling file uploads and form submission
-        $user = User::all();
-        $data = $request->all();
+        public function store(CreateEventRequest $request)
+    {
+        try {
+            // Your existing code for handling file uploads and form submission
+            $user = User::all();
+            $data = $request->all();
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            // ... your image upload code ...
-        }
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $imageFile = $request->file('image');
+                $imageFileName = $imageFile->getClientOriginalName();
+                $image = $imageFile->move('public/upload/event/image', $imageFileName);
+                $data['image'] = $imageFileName;
+               }
 
-        // Handle video upload
-        if ($request->hasFile('video')) {
-            try {
-                $videoFile = $request->file('video');
-                $videoFileName = $videoFile->getClientOriginalName();
-                $video = $videoFile->move('public/upload/event/video', $videoFileName);
-                $data['video'] = $videoFileName;
-            } catch (PostTooLargeException $e) {
-                // Handle the exception by redirecting back with an error message
-                return redirect()->back()->with('error', 'The video file size exceeds the maximum allowed limit.');
+            // Handle video upload
+            if ($request->hasFile('video')) {
+                try {
+                    $videoFile = $request->file('video');
+                    $videoFileName = $videoFile->getClientOriginalName();
+                    $video = $videoFile->move('public/upload/event/video', $videoFileName);
+                    $data['video'] = $videoFileName;
+                } catch (PostTooLargeException $e) {
+                    // Handle the exception by redirecting back with an error message
+                    return redirect()->back()->with('error', 'The video file size exceeds the maximum allowed limit.');
+                }
             }
+
+            $newEvent = Events::create($data);
+
+            // Notify users
+            Notification::send($user, new EventsNotification($data['Tittle']));
+
+            return redirect()->route('events.index')->with('success', 'New Event posted successfully');
+        } catch (\Exception $e) {
+            // Handle other exceptions if needed
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
-
-        $newEvent = Events::create($data);
-
-        // Notify users
-        Notification::send($user, new EventsNotification($data['Tittle']));
-
-        return redirect()->route('events.index')->with('success', 'New Event posted successfully');
-    } catch (\Exception $e) {
-        // Handle other exceptions if needed
-        return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
     }
-}
 
     public function index()
     {
@@ -88,11 +91,46 @@ class EventsController extends Controller
     }
     public function edit(UpdateEventRequest $request, $id)
     {
-        $events= events::find($id);
-        $events->update($request->all());
-        return redirect()->route('events.index',$id)->with('success', 'update successful!');
+        try {
+            $events = Events::find($id);
+            $data = $request->all();
 
+            // Handle image update
+            if ($request->hasFile('image')) {
+                $imageFile = $request->file('image');
+                $imageFileName = $imageFile->getClientOriginalName();
+                $newImageFileName = $imageFile->move('public/upload/event/image', $imageFileName);
+                $data['image'] = $imageFileName;
+
+                // Delete the old image if it exists
+                if ($events->image && file_exists(public_path('upload/event/image/' . $events->image))) {
+                    unlink(public_path('upload/event/image/' . $events->image));
+                }
+            }
+
+            // Handle video update
+            if ($request->hasFile('video')) {
+                $videoFile = $request->file('video');
+                $videoFileName = $videoFile->getClientOriginalName();
+                $newVideoFileName = $videoFile->move('public/upload/event/video', $videoFileName);
+                $data['video'] = $videoFileName;
+
+                // Delete the old video if it exists
+                if ($events->video && file_exists(public_path('upload/event/video/' . $events->video))) {
+                    unlink(public_path('upload/event/video/' . $events->video));
+                }
+            }
+
+            $events->update($data);
+
+            return redirect()->route('events.index')->with('success', 'Event updated successfully');
+        } catch (\Exception $e) {
+            // Handle other exceptions if needed
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
+        }
     }
+
+
 
     public function destroy(string $id)
     {

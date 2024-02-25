@@ -25,7 +25,7 @@
               <div class="col-xs-3">
                 <label for="type">Events Type</label>
                 <div class="input-group">
-                  <select class="form-control select2" name="type" required>
+                  <select class="form-control select2" name="Type" required>
                     <option selected="selected">News</option>
                     <option>Announcement</option>
                     <option>Result</option>
@@ -82,7 +82,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                          <textarea type="text" class="textarea" placeholder="Place some text here" name="body"
+                          <textarea type="text" class="textarea" placeholder="Place some text here" name="Body"
                             style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                             required></textarea>
                         </div>

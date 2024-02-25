@@ -15,14 +15,18 @@
                         <strong>Type:</strong> {{ $events->Type }}
                     </div>
                     <div>
-                        <strong>Body:</strong> {{ $events->Body }}
+                        <strong>Body:</strong> {!! $events->Body !!}
                     </div>
                     <div>
-                        <strong>Photo:</strong> {{ $events->Photo }}
+                        <strong>Photo:</strong> <img width="150" height="150" src="{{asset('upload/event/image')}}/{{$events->image}}" alt="event">
                     </div>
-                    <div>
-                        <strong>video:</strong> {{ $events->video }}
+                    <div class="col-xs-3">
+                        <label for="video">Videos</label>
+                        <video width="1000" height="400" autoplay controls>
+                            <source src="{{ asset('upload/event/video/' . $events->video) }}" type="video/mp4">
+                        </video>
                     </div>
+
 
 
                     {{-- Add more fields and customize as needed --}}
