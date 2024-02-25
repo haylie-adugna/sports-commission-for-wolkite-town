@@ -40,7 +40,7 @@
                                     <th>Contact Information</th>
                                     <th>Accessibility</th>
                                     <th>Cost</th>
-                                    <th>Booking/Reservation Status</th>
+                                    <th>{{ trans('Booking/Reservation Status') }}</th>
                                     <th>Technical Specifications</th>
                                     <th>Rules and Regulations</th>
                                     <th>Actions</th>

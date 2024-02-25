@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Events extends Model
+class Notification extends Model
 {
     use HasFactory;
-    protected $table="events";
     protected $fillable = [
         'Tittle',
         'Type',
@@ -20,12 +19,12 @@ class Events extends Model
         'status',
 
     ];
-    public function user()
+    public function event()
 {
-    return $this->belongsTo(user::class); // Adjust accordingly based on your implementation
+    return $this->belongsTo(Events::class); // Adjust accordingly based on your implementation
 }
-public function notification()
+public function user()
 {
-    return $this->hasMany(notification::class); // Adjust accordingly based on your implementation
+    return $this->belongsTo(User::class); // Adjust accordingly based on your implementation
 }
 }

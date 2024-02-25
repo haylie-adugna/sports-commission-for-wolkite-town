@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Events;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\EventsNotification;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 
 use App\Http\Requests\Events\CreateEventRequest;
 use App\Http\Requests\Events\UpdateEventRequest;
@@ -18,12 +22,6 @@ class EventsController extends Controller
      *
      * @return void
      */
-    protected $events;
-
-    public function __construct(Events $events)
-    {
-        $this->events = $events;
-    }
 
     /**
      * Show the application dashboard.
@@ -36,34 +34,41 @@ class EventsController extends Controller
     }
 
     public function store(CreateEventRequest $request)
-    {
-        $eventData = $request->except('file');
-        $data = [
-            'Tittle' => $request->Tittle,
-            'Type' => $request->type,
-            'Body' => $request->body,
-            'created_by' => $request->created_by,
-        ];
+{
+    try {
+        // Your existing code for handling file uploads and form submission
+        $user = User::all();
+        $data = $request->all();
 
+        // Handle image upload
         if ($request->hasFile('image')) {
-            $imageFile = $request->file('image');
-            $imageFileName = $imageFile->getClientOriginalName();
-            $image = $imageFile->move('public/upload/event/image', $imageFileName);
-            $data['image'] = $imageFileName;
-           }
+            // ... your image upload code ...
+        }
 
         // Handle video upload
         if ($request->hasFile('video')) {
-            $videoFile = $request->file('video');
-            $videoFileName = $videoFile->getClientOriginalName();
-            $video =  $videoFile->move('public/upload/event/video', $videoFileName);
-            $data['video'] = $videoFileName;
+            try {
+                $videoFile = $request->file('video');
+                $videoFileName = $videoFile->getClientOriginalName();
+                $video = $videoFile->move('public/upload/event/video', $videoFileName);
+                $data['video'] = $videoFileName;
+            } catch (PostTooLargeException $e) {
+                // Handle the exception by redirecting back with an error message
+                return redirect()->back()->with('error', 'The video file size exceeds the maximum allowed limit.');
+            }
         }
 
-        Events::create($data);
+        $newEvent = Events::create($data);
+
+        // Notify users
+        Notification::send($user, new EventsNotification($data['Tittle']));
 
         return redirect()->route('events.index')->with('success', 'New Event posted successfully');
+    } catch (\Exception $e) {
+        // Handle other exceptions if needed
+        return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
     }
+}
 
     public function index()
     {

@@ -95,7 +95,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Clubs::class, 'club_id');
     }
-
-
-    // Additional methods, relationships, or custom logic can be added here.
+    public function notification()
+{
+    return $this->hasMany(notification::class); // Adjust accordingly based on your implementation
+}
 }

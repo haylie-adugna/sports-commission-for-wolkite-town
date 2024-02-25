@@ -105,9 +105,16 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
+                    @forelse (App\models\User::find(1)->notifications as $notification)
                     <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                      <i class="fa fa-users text-aqua"></i>{{$notification->data['Tittle']}}
                     </a>
+                    @empty
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> no notification
+                    </a>
+
+                    @endforelse
                   </li>
                   <li>
                     <a href="#">

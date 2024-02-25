@@ -37,13 +37,19 @@ class ClubController extends Controller
     }
     public function store(CreateClubsRequest $request)
 {
-    try {
         $data = $request->all();
 
-        if ($request->hasFile('logo')) {
-            $imageFile = $request->file('logo');
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
             $imageFileName = $imageFile->getClientOriginalName();
-            $image = $imageFile->move('public/upload/club/logo', $imageFileName);
+
+            // Ensure the destination directory exists
+            $destinationPath = public_path('upload/clubs/image');
+
+            // Move the file to the specified path
+            $imageFile->move($destinationPath, $imageFileName);
+
+            // Update the data with the correct field name
             $data['logo'] = $imageFileName;
         }
 
@@ -51,10 +57,7 @@ class ClubController extends Controller
 
         // Redirect to the index page with success message
         return redirect()->route('clubs.index')->with('success', 'Club created successfully');
-    } catch (\Exception $e) {
-        // Log the exception or handle it as needed
-        return redirect()->route('clubs.index')->with('error', 'Error creating club: ' . $e->getMessage());
-    }
+
 }
 
 
