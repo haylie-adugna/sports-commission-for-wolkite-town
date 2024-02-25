@@ -13,8 +13,7 @@
         width: 100%;
         max-height: 100vh; /* Set maximum height to the viewport height */
     }
-
-    .carousel-inner .item {
+       .carousel-inner .item {
         height: 100vh; /* Set each item's height to the viewport height */
     }
 </style>
@@ -31,22 +30,36 @@
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
                     <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4" class=""></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="{{ asset('assets/images/background1.jpg') }}" alt="First slide">
+                        <img src="{{ asset('assets/images/owners/photo_2024-01-29_15-52-38.jpg') }}" alt="First slide">
                         <div class="carousel-caption">
                             First Slide
                         </div>
                     </div>
                     <div class="item">
-                        <img src="{{ asset('assets/images/background2.jpg') }}" alt="Second slide">
+                        <img src="{{ asset('assets/images/owners/photo_2024-01-29_15-53-09.jpg') }}" alt="Second slide">
                         <div class="carousel-caption">
                             Second Slide
                         </div>
                     </div>
                     <div class="item">
-                        <img src="{{ asset('assets/images/background3.jpg') }}" alt="Third slide">
+                        <img src="{{ asset('assets/images/owners/photo_2024-01-29_15-53-19.jpg') }}" alt="Third slide">
+                        <div class="carousel-caption">
+                            Third Slide
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('assets/images/owners/photo_2024-01-29_15-53-30.jpg') }}" alt="Third slide">
+                        <div class="carousel-caption">
+                            Third Slide
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ asset('assets/images/owners/photo_2024-01-29_15-53-37.jpg') }}" alt="Third slide">
                         <div class="carousel-caption">
                             Third Slide
                         </div>
