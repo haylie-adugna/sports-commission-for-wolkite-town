@@ -50,7 +50,7 @@ class UsersController extends Controller
 
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index')->with('status', 'User created successful!');
+        return redirect()->route('admin.users.index')->with('success', 'User created successful!');
 
 
     }
@@ -80,7 +80,7 @@ class UsersController extends Controller
         $user->update($data);
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index')->with('status', 'update successful!');
+        return redirect()->route('admin.users.index')->with('success', 'update successful!');
     }
 
     public function show(User $user)
@@ -121,7 +121,7 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return back()->with('status', 'User deleted successfully.');;
+        return back()->with('success', 'User deleted successfully.');;
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

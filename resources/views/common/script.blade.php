@@ -34,9 +34,9 @@
 <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
-{{-- <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
-<script src="asset('dist/js/pages/dashboard.js') }}"></script> --}}
+<script src="asset('dist/js/pages/dashboard.js') }}"></script>
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
@@ -224,3 +224,66 @@
         }
     });
 </script>
+<!-- Include your version of jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{{ asset('dist/js/sweetalert2@10.js') }}"></script>
+
+
+<!-- Your existing script using $ -->
+<script>
+    $(document).ready(function () {
+        // Your existing code here
+        $(".sidebar-form").submit(function (e) {
+            e.preventDefault();
+            var query = $("input[name='q']").val().toLowerCase();
+            $("#sidebar-menu li").each(function () {
+                var text = $(this).text().toLowerCase();
+                if (text.includes(query)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!-- Use jQuery.noConflict() to avoid conflicts with other versions of jQuery -->
+<script>
+    $.noConflict();
+    jQuery(document).ready(function ($) {
+        // Your new script using jQuery with $ as an alias
+        // Add your new code here
+    });
+</script>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- JavaScript to handle the search functionality -->
+<script>
+    // Use jQuery.noConflict() to avoid conflicts with other versions of jQuery
+    var jq = jQuery.noConflict();
+
+    jq(document).ready(function ($) {
+        // Handle form submission
+        jq("#search-form").submit(function (e) {
+            e.preventDefault();
+
+            // Get the search query
+            var query = jq("input[name='q']").val().toLowerCase();
+
+            // Perform your search logic here
+            // For example, you can filter elements based on the query
+            jq("body").find("*").each(function () {
+                var text = jq(this).text().toLowerCase();
+                if (text.includes(query)) {
+                    jq(this).show();
+                } else {
+                    jq(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+

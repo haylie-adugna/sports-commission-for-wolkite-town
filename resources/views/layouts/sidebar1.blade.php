@@ -5,10 +5,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('assets/images/logo.png') }}" class="img-circle" alt="User Image">
+          @if(Auth::user()->photo)
+                <img src="{{ asset('upload/user/image') }}/{{ Auth::user()->photo }}" class="img-circle" alt="User Image">
+            @else
+                <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+            @endif
         </div>
         <div class="pull-left info">
-          <p>{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}</p>
+          <p><b>{{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}</b></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -24,7 +28,7 @@
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu" id="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
           <a href="{{ route('dashboard') }}">
@@ -289,6 +293,7 @@
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
+      
     </section>
     <!-- /.sidebar -->
   </aside>

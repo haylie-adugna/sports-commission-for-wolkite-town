@@ -28,15 +28,16 @@
             <li id="google_translate_element"></li>
           </ul>
 
-          <form action="#" method="get" class="navbar-form navbar-left">
+          <form action="#" method="get" class="navbar-form navbar-left" id="search-form">
             <div class="form-group">
-              <input type="text" name="q" class="form-control" placeholder="Search...">
-                  <span class="form-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="form-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
                     </button>
-                  </span>
+                </span>
             </div>
-          </form>
+        </form>
         </div>
         <!-- /.navbar-collapse -->
         <!-- Navbar Right Menu -->

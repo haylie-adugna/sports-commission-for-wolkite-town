@@ -12,7 +12,7 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->unique();
+            $table->foreignId('user_id')->constrained()->unique()->onDelete('cascade');
             $table->foreignId('club_id')->constrained(); // Foreign key referencing the clubs table
             $table->integer('time');
             $table->timestamps();

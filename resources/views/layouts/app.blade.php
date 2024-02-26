@@ -40,10 +40,19 @@
     </div>
 @endif
 @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 15000
+            });
+        });
+    </script>
 @endif
+
 
         {{--end error check--}}
 
