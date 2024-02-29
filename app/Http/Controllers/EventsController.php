@@ -74,14 +74,19 @@ class EventsController extends Controller
 
     public function index()
     {
-        $events= events::all();
+        $events = events::all();
 
         return view('backend.events.index', compact('events'));
     }
     public function show($id)
     {
-        $events= events::find($id);
+        $events = events::find($id);
         return view('backend.events.show', compact('events'));
+    }
+    public function detail()
+    {
+        $events = events::all();
+        return view('backend.events.detail', compact('events'));
     }
     public function update($id)
     {

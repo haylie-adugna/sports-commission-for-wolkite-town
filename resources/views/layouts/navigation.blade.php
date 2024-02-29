@@ -106,7 +106,7 @@
                 <ul class="menu">
                   <li>
                      @forelse (App\models\User::find(1)->notifications as $notification)
-                  <a href="#">
+                    <a href="{{route('events.detail')}}" class="dropdown-item">
                     <i class="fa fa-users text-aqua"></i>{{$notification->data['Tittle']}}
                   </a>
                   @empty

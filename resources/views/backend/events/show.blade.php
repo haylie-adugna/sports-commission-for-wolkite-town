@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('events.index') }}" class="btn btn-primary">Back to Matches</a>
+            <a href="{{ route('events.index') }}" class="btn btn-primary">Back to Events</a>
         </div>
     </div>
 </div>

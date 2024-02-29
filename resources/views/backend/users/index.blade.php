@@ -53,7 +53,7 @@
                     @foreach($users as $key => $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img class="img-circle" style="height: 100px; width: 100px;" src="{{asset('upload/user/image')}}/{{$user->photo}}" alt="event"></td>
+                                <td><img class="img-circle" style="height: 100px; width: 100px;" src="{{asset('upload/user/image')}}/{{$user->photo}}" alt="User photo"></td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->middle_name }}</td>
                                 <td>{{ $user->last_name }}</td>
@@ -83,7 +83,6 @@
                                            edit
                                         </a>
                                     @endcan
-
                                     @can('user_delete')
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
