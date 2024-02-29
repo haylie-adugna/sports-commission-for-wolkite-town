@@ -47,7 +47,7 @@
                 icon: "success",
                 title: "{{ session('success') }}",
                 showConfirmButton: false,
-                timer: 15000
+                timer: 5000
             });
         });
     </script>
