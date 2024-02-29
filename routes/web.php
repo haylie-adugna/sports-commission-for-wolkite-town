@@ -13,6 +13,7 @@ use App\Http\Controllers\GamesController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\FootballLineupController;
 use App\Http\Controllers\BasketballLineupController;
+use App\Http\Controllers\VolleyballLineupController;
 
 use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
@@ -30,9 +31,7 @@ use App\Http\Controllers\VenueController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 
 
@@ -42,7 +41,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'VerifyUser'])->group(function () {
-Route::get('/Dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/Dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
 // Users
 Route::get('users', 'UsersController@index')->name('admin.users.index');
@@ -109,9 +108,9 @@ Route::get('/footballlineupdelete/{id}', [FootballLineupController::class, 'dest
 Route::get('/basketball/lineup/create', [BasketballLineupController::class, 'create'])->name('basketball_lineup.create');
 Route::post('/add/basketball/lineup', [BasketballLineupController::class, 'store'])->name('basketball_lineup.register');
 Route::get('/basketballlineup/{id}', [BasketballLineupController::class, 'update'])->name('basketball_lineup.update');
-Route::post('/basketballlineup/{id}', [BasketballLineupController::class, 'edit'])->name('basketball_lineup.edit');
-Route::get('/basketballlineupshow', [BasketballLineupController::class, 'index'])->name('basketball_lineup.index');
-Route::get('/showbasketballlineup/{id}', [BasketballLineupController::class, 'show'])->name('basketball_lineup.show');
+Route::post('/basketball/lineup/{id}', [BasketballLineupController::class, 'edit'])->name('basketball_lineup.edit');
+Route::get('/basketball/lineup/shows', [BasketballLineupController::class, 'index'])->name('basketball_lineup.index');
+Route::get('/basketball/lineup/show/{id}', [BasketballLineupController::class, 'show'])->name('basketball_lineup.show');
 Route::get('/basketballlineupdelete/{id}', [BasketballLineupController::class, 'destroy'])->name('basketball_lineup.destroy');
 
 // volleyball lineup
@@ -119,7 +118,7 @@ Route::get('/volleyball/lineup/create', [VolleyballLineupController::class, 'cre
 Route::post('/add/volleyball/lineup', [VolleyballLineupController::class, 'store'])->name('volleyball_lineup.register');
 Route::get('/volleyballlineup/{id}', [VolleyballLineupController::class, 'update'])->name('volleyball_lineup.update');
 Route::post('/volleyballlineup/{id}', [VolleyballLineupController::class, 'edit'])->name('volleyball_lineup.edit');
-Route::get('/volleyballlineupshow', [VolleyballLineupController::class, 'index'])->name('volleyball_lineup.index');
+Route::get('/volleyball/lineup/show', [VolleyballLineupController::class, 'index'])->name('volleyball_lineup.index');
 Route::get('/showvolleyballlineup/{id}', [VolleyballLineupController::class, 'show'])->name('volleyball_lineup.show');
 Route::get('/volleyballlineupdelete/{id}', [VolleyballLineupController::class, 'destroy'])->name('volleyball_lineup.destroy');
 
@@ -164,7 +163,8 @@ Route::get('/deleteclub/{id}', [ClubController::class, 'destroy'])->name('clubs.
 // project
 Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('project.create');
 Route::post('/addproject', [projectcontroller::class, 'store'])->name('project.register');
-Route::get('/projectupdate/{id}', [projectcontroller::class, 'edit'])->name('project.update');
+Route::get('/projectupdate/{id}', [projectcontroller::class, 'update'])->name('project.update');
+Route::post('/projectedit/{id}', [projectcontroller::class, 'edit'])->name('project.edit');
 Route::get('/showallproject', [projectcontroller::class, 'index'])->name('project.index');
 Route::get('/projectshow/{id}', [projectcontroller::class, 'show'])->name('project.show');
 Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('project.destroy');

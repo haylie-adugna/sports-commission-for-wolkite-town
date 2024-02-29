@@ -27,4 +27,8 @@ class matchs extends Model
         'Recored_Keeping',
 
     ];
+    public function clubs()
+    {
+        return $this->belongsToMany(Clubs::class);
+    }
 }

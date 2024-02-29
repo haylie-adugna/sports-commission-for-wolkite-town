@@ -65,7 +65,7 @@ class MatchController extends Controller
     {
         $matchs= matchs::find($id);
         $matchs->update($request->all());
-        return redirect()->route('matchs.update',$id)->with('status', 'update successful!');
+        return redirect()->route('matchs.update',$id)->with('success', 'update successful!');
 
     }
 

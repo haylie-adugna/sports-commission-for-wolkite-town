@@ -10,7 +10,7 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('club_name');
-            $table->foreignId('club_manager_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('club_manager_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('coach_name_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('contact_information');
             $table->string('logo')->nullable();

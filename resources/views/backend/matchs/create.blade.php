@@ -15,15 +15,29 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="team1">Team 1:</label>
-                                <input type="text" class="form-control" name="Team1" id="team1" placeholder="Team 1">
+                                <label for="Team1">Team 1:</label>
+                                <select class="form-control" name="Team1" id="Team1">
+                                    @foreach(DB::table('clubs')
+                                    ->select('id', 'club_name')
+                                    ->groupBy('club_name', 'id')
+                                    ->get() as $clubname)
+                                        <option value="{{ $clubname->id }}">{{ $clubname->club_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="team2">Team 2:</label>
-                                <input type="text" class="form-control" name="Team2" id="team2" placeholder="Team 2">
+                                <label for="Team2">Team 2:</label>
+                                <select class="form-control" name="Team2" id="Team2">
+                                    @foreach(DB::table('clubs')
+                                    ->select('id', 'club_name')
+                                    ->groupBy('club_name', 'id')
+                                    ->get() as $clubname)
+                                        <option value="{{ $clubname->id }}">{{ $clubname->club_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -48,8 +62,8 @@
                             <div class="form-group">
                                 <label for="referee">Referee:</label>
                                 <select class="form-control" name="referee" id="referee">
-                                    <option value="referee_option1">Referee Option 1</option>
-                                    <option value="referee_option2">Referee Option 2</option>
+                                    <option value="1">Referee Option 1</option>
+                                    <option value="2">Referee Option 2</option>
                                 </select>
                             </div>
                         </div>
@@ -57,7 +71,7 @@
                             <div class="form-group">
                                 <label for="assistant_referee2">Assistant Referee 1:</label>
                                 <select class="form-control" name="assistant_referee1" id="assistant_referee1">
-                                    <option value="">Select Assistant Referee 1</option>
+                                    <option value="1">Select Assistant Referee 1</option>
                                     <!-- Add options dynamically here -->
                                 </select>
                             </div>
@@ -75,7 +89,7 @@
                             <div class="form-group">
                                 <label for="assistant_referee2">Assistant Referee 2:</label>
                                 <select class="form-control" name="assistant_referee2" id="assistant_referee2">
-                                    <option value="">Select Assistant Referee 2</option>
+                                    <option value="2">Select Assistant Referee 2</option>
                                     <!-- Add options dynamically here -->
                                 </select>
                             </div>
@@ -85,14 +99,14 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="medical_support">Medical support</label>
-                                <input type="text" class="form-control" name="medical_support" id="medical_support" placeholder="Team 1">
+                                <input type="text" class="form-control" value="1" name="medical_support" id="medical_support" placeholder="Team 1">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="Commentator"> Commentator</label>
-                                <input type="text" class="form-control" name="Commentator" id="Commentator" placeholder="Commentator">
+                                <input type="text" class="form-control" value="2" name="Commentator" id="Commentator" placeholder="Commentator">
                             </div>
                         </div>
 
@@ -124,14 +138,14 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="promoter">Promoter:</label>
-                                <input type="text" class="form-control" name="promoter" id="promoter" placeholder="Promoter">
+                                <input type="text" class="form-control" value="1" name="promoter" id="promoter" placeholder="Promoter">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="Recored_keeping"> Recored keeping</label>
-                                <input type="text" class="form-control" name="recored_keeping" id="Recored keeping" placeholder="Recored keeping">
+                                <input type="text" class="form-control" value="2" name="recored_keeping" id="Recored keeping" placeholder="Recored keeping">
                             </div>
                         </div>
                     </div>

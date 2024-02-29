@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Club Lineup</h2>
+        <h2>Football Club Lineup</h2>
 
         <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($clubLineup as $player)
+                @foreach ($footballclubLineup as $player)
                     <tr>
                         <td>{{ $player->jersey_number }}</td>
                         <td>{{ $player->user->first_name }} {{ $player->user->last_name }}</td>

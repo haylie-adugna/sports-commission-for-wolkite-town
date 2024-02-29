@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('matchs', function (Blueprint $table) {
             $table->id();
-            $table->string('Team1');
-            $table->string('Team2');
-            $table->string('Referee')->nullable();
-            $table->string('Assistant_Referee1')->nullable();
-            $table->string('Assistant_Referee2')->nullable();
+            $table->string('Team1')->nullable()->constrained('clubs')->onDelete('set null');
+            $table->string('Team2')->nullable()->constrained('clubs')->onDelete('set null');
+            $table->string('Referee')->nullable()->constrained('users')->onDelete('set null');
+            $table->string('Assistant_Referee1')->nullable()->constrained('users')->onDelete('set null');
+            $table->string('Assistant_Referee2')->nullable()->constrained('users')->onDelete('set null');
             $table->string('Start_time')->nullable();
             $table->string('End_time')->nullable();
             $table->string('Venue')->nullable();
-            $table->string('Medical_Support')->nullable();
-            $table->string('Commentator')->nullable();
-            $table->string('Promoter')->nullable();
+            $table->string('Medical_Support')->nullable()->constrained('users')->onDelete('set null');
+            $table->string('Commentator')->nullable()->constrained('users')->onDelete('set null');
+            $table->string('Promoter')->nullable()->constrained('users')->onDelete('set null');
             $table->string('Ticket')->nullable();
             $table->string('Recored_Keeping')->nullable();
             $table->string('status')->default('active');

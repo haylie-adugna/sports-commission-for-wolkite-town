@@ -48,4 +48,9 @@ class Clubs extends Model
     {
         return $this->hasMany(FootballLineup::class);
     }
+    public function matchs()
+    {
+        return $this->belongsTo(Matchs::class);
+    }
+
 }
