@@ -20,9 +20,47 @@
 
 <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
-        @if(session('status'))
-        <div class="alert alert-success">{{ session('status') }}</div>
+        @if(session('error'))
+        <div class="alert alert-warning">{{ session('error') }}</div>
     @endif
+
+    @if(session('verification'))
+    <style>
+        .center-swal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "{{ session('verification') }}",
+                showCancelButton: true,
+                showConfirmButton: true,
+                timer: 15000,
+                customClass: {
+                    popup: 'center-swal'
+                },
+                confirmButtonText: 'Open Gmail',
+                cancelButtonText: 'Cancel',
+                confirmButtonHref: 'https://mail.google.com/', // Custom Gmail link
+                cancelButtonHref: '/', // Custom cancel link
+                allowOutsideClick: false, // Prevent closing on outside click
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'https://mail.google.com/'; // Handle Gmail button click
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    window.location.href = '/'; // Handle cancel button click
+                }
+            });
+        });
+    </script>
+
+@endif
         @include('frontend.nav')
 
 
