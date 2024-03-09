@@ -55,6 +55,8 @@ Route::delete('users/{user}', 'UsersController@destroy')->name('admin.users.dest
 Route::delete('users/destroy', 'UsersController@massDestroy')->name('admin.users.massDestroy');
 Route::post('/admin/users/{user}/toggle-status', 'UsersController@toggleUserStatus')->name('admin.users.toggle-status');
 
+// messages
+Route::get('/Search_Contact', 'MessageController@SearchContact')->name('Search_Contact');
 
 
 // Permissions

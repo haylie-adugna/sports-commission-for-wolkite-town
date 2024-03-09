@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class MessageController extends Controller
 {
@@ -28,6 +29,15 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function SearchContact(Request $request){
+        $search = $request->input('search');
+
+        $members = User::where('first_name', 'like', "$search%")
+           ->orWhere('middle_name', 'like', "$search%")
+           ->get();
+
+        return view('Backend.Message.SearchContact')->with('members', $members);
     }
 
     /**

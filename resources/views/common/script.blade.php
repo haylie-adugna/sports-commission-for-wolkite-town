@@ -286,6 +286,23 @@
             });
         });
     });
+    $('#search').keyup(function() {
+        var search = $('#search').val();
+        if (search == "") {
+            $("#memList").html("");
+            $('#result').hide();
+        } else {
+            $.get("{{ route('Search_Contact') }}", {
+                search: search
+            }, function(data) {
+                $('#memList').empty().html(data);
+                $('#result').show();
+            })
+        }
+    });
+    function showChat(username) {
+        // Code to dynamically load and display chat content for the selected user
+        document.getElementById('chatContainer').style.display = 'block';
+        // You can fetch and display chat messages for the selected user here
+    }
 </script>
-
-

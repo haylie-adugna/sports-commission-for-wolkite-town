@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{ route('dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
@@ -18,179 +18,53 @@
 
                 <li id="google_translate_element"></li>
                 <!-- Messages Dropdown Menu -->
+                <!-- Messages Dropdown Menu -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link displayChatbox" >
+                    <a href="#" class="nav-link displayChatbox">
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-success">4</span>
-                      </a>
-                </li>
-                <div id="sidebar" class="users p-chat-user showChat">
-                    <div class="card-header text-center">
-                        <h3 class="card-title">Messages</h3>
-                        <div class="card-tools pull-right">
-                            <span title="3 New Messages" class="badge bg-danger">3</span>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                                <a href="#" title="Notification preferences"
-                                    aria-label="Notification preferences">
-                                    <i class="icon fa fa-cog fa-fw " aria-hidden="true"></i>
-                                </a>
-                            </button>
-                            <button type="button" class="btn btn-tool back_friendlist"
-                                data-drawer-hide="displayChatbox" aria-controls="sidebar">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div><br>
-                    </div><br>
-                    <div class="had-container">
-                        <div class="p-fixed users-main">
-                            <div class="user-box">
+                    </a>
+                    <div id="sidebar" class="users p-chat-user showChat  bg-white dark:bg-gray-800">
+                        <div class="card-header">
+                            <h3 class="card-title">Messages</h3>
+                            <div class="card-tools">
+                                <span title="3 New Messages" class="badge bg-danger">3</span>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" title="Contacts"
+                                    data-widget="chat-pane-toggle">
+                                    <a href="#" title="Notification preferences"
+                                        aria-label="Notification preferences">
+                                        <i class="icon fa fa-cog fa-fw " aria-hidden="true"></i>
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-tool back_friendlist"
+                                    data-drawer-hide="displayChatbox" aria-controls="sidebar">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chat-search-box">
+                            <form class="d-md-inline-block form-inline" action="{{ URL::to('find') }}" method="POST">
                                 <div class="input-group">
-                                    <input type="text" id="search-friends" name="q" class="form-control" placeholder="Search...">
+                                    <input type="text" id="search" name="search" class="form-control"
+                                        placeholder="Search Friend">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-flat btn-primary waves-effect waves-light" type="button">
-                                            <i class="fa fa-search"></i>
+                                        <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i>
                                         </button>
                                     </span>
                                 </div>
+                            </form>
+                        </div>
+                        <div id="result" class="panel panel-default">
+                            <ul class="list-group" id="memList">
 
-                                <div class="main-friend-list">
-                                    <div class="media userlist-box waves-effect waves-light" data-id="1"
-                                        data-status="online" data-username="Josephin Doe">
-                                        <a class="media-left" href="#!">
-                                            <img class="media-object img-radius img-radius" src="{{ asset('dist/img/avatar.png') }}"
-                                                alt="Generic placeholder image ">
-                                            <div class="live-status bg-success"></div>
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="chat-header">Josephin Doe</div>
-                                        </div>
-                                    </div>
-                                    <div class="media userlist-box waves-effect waves-light" data-id="2"
-                                        data-status="online" data-username="Lary Doe">
-                                        <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
-                                                alt="Generic placeholder image">
-                                            <div class="live-status bg-success"></div>
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="f-13 chat-header">Lary Doe</div>
-                                        </div>
-                                    </div>
-                                    <div class="media userlist-box waves-effect waves-light" data-id="3"
-                                        data-status="online" data-username="Alice">
-                                        <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
-                                                alt="Generic placeholder image">
-                                            <div class="live-status bg-success"></div>
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="f-13 chat-header">Alice</div>
-                                        </div>
-                                    </div>
-                                    <div class="media userlist-box waves-effect waves-light" data-id="4"
-                                        data-status="offline" data-username="Alia">
-                                        <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
-                                                alt="Generic placeholder image">
-                                            <div class="live-status bg-default"></div>
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="f-13 chat-header">Alia<small class="d-block text-muted">10 min
-                                                    ago</small></div>
-                                        </div>
-                                    </div>
-                                    <div class="media userlist-box waves-effect waves-light" data-id="5"
-                                        data-status="offline" data-username="Suzen">
-                                        <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
-                                                alt="Generic placeholder image">
-                                            <div class="live-status bg-default"></div>
-                                        </a>
-                                        <div class="media-body">
-                                            <div class="f-13 chat-header">Suzen<small class="d-block text-muted">15
-                                                    min ago</small></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div class="showChat_inner">
-                    <div class="card-header text-center">
-                        <h3 class="card-title">Messages</h3>
-                        <div class="card-tools pull-right">
-                            <span title="3 New Messages" class="label label-danger">3</span>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" title="Contacts"
-                                data-widget="chat-pane-toggle">
-                                <a href="#" title="Notification preferences"
-                                    aria-label="Notification preferences">
-                                    <i class="icon fa fa-cog fa-fw " aria-hidden="true"></i>
-                                </a>
-                            </button>
-                            <button type="button" class="btn btn-tool back_chatBox">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="media chat-inner-header">
-                        <button type="button" class="btn btn-tool back_chatBox">
-                            <i class="feather icon-x"></i> Josephin Doe
-                        </button>
-                    </div>
-                    <div class="main-friend-chat">
-                        <div class="media chat-messages">
-                            <a class="media-left photo-table" href="#!">
-                                <img class="media-object img-radius img-radius m-t-5" src="jpg/avatar-2.jpg"
-                                    alt="Generic placeholder image">
-                            </a>
-                            <div class="media-body chat-menu-content">
-                                <div class="">
-                                    <p class="chat-cont">I'm just looking around. Will you tell me something about
-                                        yourself?</p>
-                                </div>
-                                <p class="chat-time">8:20 a.m.</p>
-                            </div>
-                        </div>
-                        <div class="media chat-messages">
-                            <div class="media-body chat-menu-reply">
-                                <div class="">
-                                    <p class="chat-cont">Ohh! very nice</p>
-                                </div>
-                                <p class="chat-time">8:22 a.m.</p>
-                            </div>
-                        </div>
-                        <div class="media chat-messages">
-                            <a class="media-left photo-table" href="#!">
-                                <img class="media-object img-radius img-radius m-t-5" src="jpg/avatar-2.jpg"
-                                    alt="Generic placeholder image">
-                            </a>
-                            <div class="media-body chat-menu-content">
-                                <div class="">
-                                    <p class="chat-cont">can you come with me?</p>
-                                </div>
-                                <p class="chat-time">8:20 a.m.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-reply-box">
-                        <div class="right-icon-control">
-                            <div class="input-group input-group-button">
-                                <input type="text" class="form-control" placeholder="Write hear . . ">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary waves-effect waves-light" type="button"><i
-                                            class="feather icon-message-circle"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </li>
+
                 <!-- Notifications: style can be found in dropdown.less -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
