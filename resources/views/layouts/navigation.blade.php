@@ -25,9 +25,9 @@
                       </a>
                 </li>
                 <div id="sidebar" class="users p-chat-user showChat">
-                    <div class="card-header">
+                    <div class="card-header text-center">
                         <h3 class="card-title">Messages</h3>
-                        <div class="card-tools">
+                        <div class="card-tools pull-right">
                             <span title="3 New Messages" class="badge bg-danger">3</span>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -42,28 +42,25 @@
                                 data-drawer-hide="displayChatbox" aria-controls="sidebar">
                                 <i class="fa fa-times"></i>
                             </button>
-                        </div>
-                    </div>
+                        </div><br>
+                    </div><br>
                     <div class="had-container">
                         <div class="p-fixed users-main">
                             <div class="user-box">
-                                <div class="chat-search-box">
-                                    <div class="right-icon-control">
-                                        <div class="input-group input-group-button">
-                                            <input type="text" id="search-friends" name="footer-email"
-                                                class="form-control" placeholder="Search Friend">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary waves-effect waves-light"
-                                                    type="button"><i class="feather icon-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="input-group">
+                                    <input type="text" id="search-friends" name="q" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-flat btn-primary waves-effect waves-light" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
+
                                 <div class="main-friend-list">
                                     <div class="media userlist-box waves-effect waves-light" data-id="1"
                                         data-status="online" data-username="Josephin Doe">
                                         <a class="media-left" href="#!">
-                                            <img class="media-object img-radius img-radius" src="jpg/avatar-3.jpg"
+                                            <img class="media-object img-radius img-radius" src="{{ asset('dist/img/avatar.png') }}"
                                                 alt="Generic placeholder image ">
                                             <div class="live-status bg-success"></div>
                                         </a>
@@ -74,7 +71,7 @@
                                     <div class="media userlist-box waves-effect waves-light" data-id="2"
                                         data-status="online" data-username="Lary Doe">
                                         <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="jpg/avatar-2.jpg"
+                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
                                                 alt="Generic placeholder image">
                                             <div class="live-status bg-success"></div>
                                         </a>
@@ -85,7 +82,7 @@
                                     <div class="media userlist-box waves-effect waves-light" data-id="3"
                                         data-status="online" data-username="Alice">
                                         <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="jpg/avatar-4.jpg"
+                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
                                                 alt="Generic placeholder image">
                                             <div class="live-status bg-success"></div>
                                         </a>
@@ -96,7 +93,7 @@
                                     <div class="media userlist-box waves-effect waves-light" data-id="4"
                                         data-status="offline" data-username="Alia">
                                         <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="jpg/avatar-3.jpg"
+                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
                                                 alt="Generic placeholder image">
                                             <div class="live-status bg-default"></div>
                                         </a>
@@ -108,7 +105,7 @@
                                     <div class="media userlist-box waves-effect waves-light" data-id="5"
                                         data-status="offline" data-username="Suzen">
                                         <a class="media-left" href="#!">
-                                            <img class="media-object img-radius" src="jpg/avatar-2.jpg"
+                                            <img class="media-object img-radius" src="{{ asset('dist/img/avatar.png') }}"
                                                 alt="Generic placeholder image">
                                             <div class="live-status bg-default"></div>
                                         </a>
@@ -123,12 +120,12 @@
                     </div>
                 </div>
                 <div class="showChat_inner">
-                    <div class="card-header">
+                    <div class="card-header text-center">
                         <h3 class="card-title">Messages</h3>
-                        <div class="card-tools">
-                            <span title="3 New Messages" class="badge bg-danger">3</span>
+                        <div class="card-tools pull-right">
+                            <span title="3 New Messages" class="label label-danger">3</span>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
+                                <i class="fa fa-minus"></i>
                             </button>
                             <button type="button" class="btn btn-tool" title="Contacts"
                                 data-widget="chat-pane-toggle">
@@ -138,7 +135,7 @@
                                 </a>
                             </button>
                             <button type="button" class="btn btn-tool back_chatBox">
-                                <i class="fas fa-times"></i>
+                                <i class="fa fa-times"></i>
                             </button>
                         </div>
                     </div>
