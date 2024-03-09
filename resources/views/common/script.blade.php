@@ -21,6 +21,7 @@
 <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>
+{{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -52,7 +53,8 @@
 <script src="{{ asset('plugins/select2/select2.full.min.js') }}"></script>
 <script src="{{ asset('plugins/input-mask/jquery.inputmask.js') }}"></script>
 
-
+<script type="text/javascript" src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/script.min.js') }}"></script>
 
 <script>
     $(function () {

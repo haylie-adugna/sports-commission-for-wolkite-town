@@ -39,6 +39,12 @@
 
 <![endif]-->
 <style>
+    #app {
+    height: 100vh; /* Adjust as needed */
+    overflow-y: auto;
+}
+  </style>
+<style>
     #previewContainer img,
     #previewContainer video {
         max-width: 100%;
@@ -161,6 +167,182 @@ display: none !important;
     background-repeat: no-repeat;
     /* Add more background properties as needed */
 }
+</style>
+<style>
+    .user-box {
+        height: 100%
+    }
+
+    .user-box .media-object {
+        height: 45px;
+        width: 45px;
+        display: inline-block
+    }
+
+    .p-chat-user {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100%;
+        z-index: 1030;
+        background-color: #fff;
+        -webkit-box-shadow: -2px 0 11px -2px rgba(0, 0, 0, .3);
+        box-shadow: -2px 0 11px -2px rgba(0, 0, 0, .3)
+    }
+
+    .p-chat-user .chat-search-box {
+        padding: 20px
+    }
+
+    .p-chat-user .userlist-box {
+        cursor: pointer;
+        border-bottom: 1px solid #efefef
+    }
+
+    .p-chat-user .userlist-box .media-left {
+        padding-right: 10px
+    }
+
+    .showChat_inner {
+        position: fixed;
+        top: 0;
+        background-color: #fff;
+        right: 0;
+        display: none;
+        width: 280px;
+        height: 100%;
+        z-index: 1032
+    }
+
+    .showChat_inner .chat-reply-box {
+        background-color: #fff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 20px 0;
+        border-top: 1px solid #ccc
+    }
+
+    .showChat_inner .chat-inner-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 20px
+    }
+
+    .showChat_inner .chat-messages {
+        padding-bottom: 20px;
+        padding-left: 15px;
+        padding-right: 15px
+    }
+
+    .showChat_inner .chat-messages .chat-menu-content>div,
+    .showChat_inner .chat-messages .chat-menu-reply>div {
+        position: relative;
+        overflow: visible;
+        display: inline-block
+    }
+
+    .showChat_inner .chat-messages .chat-menu-content>div .chat-cont,
+    .showChat_inner .chat-messages .chat-menu-reply>div .chat-cont {
+        padding: 10px;
+        margin-bottom: 0
+    }
+
+    .showChat_inner .chat-messages .chat-menu-content .chat-time,
+    .showChat_inner .chat-messages .chat-menu-reply .chat-time {
+        margin: 9px 8px 0 10px
+    }
+
+    .showChat_inner .chat-messages .chat-menu-reply {
+        text-align: right;
+        padding-right: 10px
+    }
+
+    .showChat_inner .chat-messages .chat-menu-reply>div {
+        border-radius: 10px 10px 0;
+        background: #f2f7fb
+    }
+
+    .showChat_inner .chat-messages .chat-menu-reply>div:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: -10px;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-left-color: #f2f7fb;
+        border-bottom-color: #f2f7fb
+    }
+
+    .showChat_inner .chat-messages .chat-menu-content>div {
+        background: #d9ebff;
+        border-radius: 0 10px 10px
+    }
+
+    .showChat_inner .chat-messages .chat-menu-content>div:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -14px;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-right-color: #d9ebff;
+        border-top-color: #d9ebff
+    }
 
 
+    .users-main {
+        height: 100%;
+        width: 280px;
+        position: fixed;
+        border-radius: 0
+    }
+
+    .users-main .media {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: relative
+    }
+
+    .users-main .media .chat-header {
+        font-size: 14px;
+        font-weight: 600
+    }
+
+    .users-main .media-body div+div {
+        font-size: 12px
+    }
+
+    .photo-table img {
+        display: inline-block;
+        width: 40px;
+        margin-bottom: 5px
+    }
+
+    .live-status {
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 100%;
+        border: 1px solid
+    }
+
+    .showChat {
+        display: none
+    }
 </style>
