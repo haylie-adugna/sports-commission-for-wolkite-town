@@ -37,10 +37,28 @@
 
 <div class="showChat_inner" id="chatContainer">
     <div class="media chat-inner-header">
+        <div class="card-tools">
+            <span title="3 New Messages" class="badge bg-danger">3</span>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" title="Contacts"
+                data-widget="chat-pane-toggle">
+                <a href="#" title="Notification preferences"
+                    aria-label="Notification preferences">
+                    <i class="icon fa fa-cog fa-fw " aria-hidden="true"></i>
+                </a>
+            </button>
+            <button type="button" class="btn btn-tool back_friendlist"
+                data-drawer-hide="displayChatbox" onclick="closeChatboxAndHide()" aria-controls="sidebar">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
         <button type="button" class="btn btn-tool back_chatBox">
-            <i class="feather icon-x"></i> Josephin Doe
+            <i class="feather icon-x"></i> Member Name
         </button>
     </div>
+
     <div class="main-friend-chat">
         <div class="media chat-messages">
             <a class="media-left photo-table" href="#!">
@@ -88,12 +106,44 @@
     <div class="chat-reply-box">
         <div class="right-icon-control">
             <div class="input-group input-group-button">
-                <input type="text" class="form-control" placeholder="Write hear . . ">
+                <input type="text" class="form-control" placeholder="Write here . . ">
                 <div class="input-group-append">
-                    <button class="btn btn-primary waves-effect waves-light" type="button"><i
-                            class="feather icon-message-circle"></i></button>
+                    <button class="btn btn-primary waves-effect waves-light" type="button">
+                        <i class="fa fa-comment"></i> Send <!-- Replace with your text -->
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
+<script>
+
+    function closeChatboxAndHide() {
+        // Hide the chatbox container
+        document.getElementById('chatContainer').style.display = 'none';
+    }
+
+   // Handle button click event
+$('.input-group-button button').click(function () {
+    sendMessage();
+});
+
+// Handle Enter key press event in the input field
+$('.input-group-button input').keypress(function (e) {
+    if (e.which === 13) {
+        sendMessage();
+    }
+});
+
+function sendMessage() {
+    var message = $('.input-group-button input').val();
+
+    // Add your logic to send the message (e.g., AJAX request, etc.)
+
+    // Clear the input field after sending the message
+    $('.input-group-button input').val('');
+}
+
+
+</script>
