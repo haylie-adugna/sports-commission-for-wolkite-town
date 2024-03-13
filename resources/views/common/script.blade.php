@@ -54,6 +54,7 @@
 <script src="{{ asset('plugins/input-mask/jquery.inputmask.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('assets/js/script.min.js') }}"></script>
 
 <script>
@@ -249,7 +250,7 @@
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
 
 <!-- Use jQuery.noConflict() to avoid conflicts with other versions of jQuery -->
 <script>
@@ -306,3 +307,4 @@
         // You can fetch and display chat messages for the selected user here
     }
 </script>
+

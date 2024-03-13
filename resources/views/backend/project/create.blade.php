@@ -120,10 +120,6 @@
                                         <!-- /.col-->
 
 
-
-
-
-
                                 <div class="box-footer">
                                     <a href="{{ route('project.index') }}" class="btn btn-warning">Cancel</a>
                                     <button type="submit" class="btn btn-info pull-right">Add Game</button>
