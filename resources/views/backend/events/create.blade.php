@@ -54,18 +54,6 @@
                 </div>
                 <div id="videoPreviewContainer"></div>
             </div>
-            <div class="card-block">
-                <form action="https://colorlib.com/polygon/admindek/files/assets/pages/file-upload/file-upload.php" class="dropzone">
-                <div class="fallback">
-                <input name="file" type="file" multiple />
-                </div>
-                </form>
-                <div class="text-center m-t-20">
-                <button class="btn btn-primary">Upload Now</button>
-                </div>
-                </div>
-
-            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-body">

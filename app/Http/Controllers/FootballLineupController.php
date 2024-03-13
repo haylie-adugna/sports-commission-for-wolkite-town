@@ -15,11 +15,7 @@ class FootballLineupController extends Controller
 {
     public function index()
 {
-    $footballclubLineup = FootballLineup::with(['user', 'club'])
-        ->whereHas('user', function ($query) {
-            $query->where('club_id', Auth::user()->id);
-        })
-        ->get();
+    $footballclubLineup = FootballLineup::with(['user', 'club']) ->get();
 
     return view('backend.lineup.football.index', compact('footballclubLineup'));
 }

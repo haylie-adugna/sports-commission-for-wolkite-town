@@ -20,7 +20,7 @@ class FootballLineup extends Model
     ];
     public function club()
     {
-        return $this->belongsTo(Clubs::class, 'id');
+        return $this->belongsTo(Clubs::class, 'club_id');
     }
     public function user()
 {
