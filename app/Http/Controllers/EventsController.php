@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\EventsNotification;
 use Illuminate\Http\Exceptions\PostTooLargeException;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\Events\CreateEventRequest;
 use App\Http\Requests\Events\UpdateEventRequest;
 
@@ -78,6 +78,13 @@ class EventsController extends Controller
 
         return view('backend.events.index', compact('events'));
     }
+    public function eventdisplay()
+{
+    $events = Events::latest()->take(5)->get();
+    dd($events); // Check if the data is retrieved correctly
+    return view('backend.events.newevent', compact('events'));
+}
+
     public function show($id)
     {
         $events = events::find($id);

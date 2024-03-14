@@ -93,6 +93,7 @@ Route::post('/addevent', [EventsController::class, 'store'])->name('events.regis
 Route::get('/eventedit/{id}', [EventsController::class, 'update'])->name('events.update');
 Route::post('/eventsupdate/{id}', [EventsController::class, 'edit'])->name('events.edit');
 Route::get('/events/allshow', [Eventscontroller::class, 'index'])->name('events.index');
+Route::get('/events/new/show', [EventsController::class, 'eventdisplay'])->name('events.newevent');
 Route::get('/events/show/detail', [Eventscontroller::class, 'detail'])->name('events.detail');
 Route::get('/events/show/{id}', [Eventscontroller::class, 'show'])->name('events.show');
 Route::get('/eventsdelete/{id}', [Eventscontroller::class, 'destroy'])->name('events.destroy');

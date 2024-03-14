@@ -1,6 +1,8 @@
 
 <section class="content bg-white">
     <!-- Small boxes (Stat box) -->
+
+
     <div class="row">
         @foreach(DB::table('roles')
             ->select('title', DB::raw('count(*) as count'))

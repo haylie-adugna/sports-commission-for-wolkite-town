@@ -1,21 +1,19 @@
-@if (count($members) > 0)
+@if(count($members) > 0)
     <div class="had-container">
         <div class="p-fixed users-main">
             <div class="user-box">
                 <div class="main-friend-list">
-                    @foreach ($members as $member)
+                    @foreach($members as $member)
                         <li class="media userlist-box waves-effect waves-light">
                             <a class="media-left" href="#!" onclick="showChat('{{ $member->first_name }} {{ $member->middle_name }}')">
-                                <img class="media-object img-radius img-radius"
-                                    src="{{ asset('upload/user/image/'.$member->photo) }}"
-                                    alt="image">
+                                <img class="media-object img-radius img-radius" src="{{ asset('upload/user/image/'.$member->photo) }}" alt="image">
                                 <div class="live-status bg-success"></div>
                             </a>
                             <div class="media-body">
-                                <div class="f-13 chat-header">{{ $member->first_name }}
-                                    {{ $member->middle_name }}<small
-                                        class="d-block text-muted">10 min
-                                        ago</small></div>
+                                <div class="f-13 chat-header">
+                                    {{ $member->first_name }} {{ $member->middle_name }}
+                                    <small class="d-block text-muted">10 min ago</small>
+                                </div>
                             </div>
                         </li>
                     @endforeach
@@ -28,12 +26,13 @@
         <div class="p-fixed users-main">
             <div class="user-box">
                 <div class="main-friend-list">
-                    <li class="media userlist-box waves-effect waves-light">No Results Found</li>
+                    <div class="media userlist-box waves-effect waves-light">No Results Found</div>
                 </div>
             </div>
         </div>
     </div>
 @endif
+
 
 <div class="showChat_inner" id="chatContainer">
     <div class="media chat-inner-header">
@@ -62,7 +61,7 @@
     <div class="main-friend-chat">
         <div class="media chat-messages">
             <a class="media-left photo-table" href="#!">
-                <img class="media-object img-circle" style="height: 60px; width: 60px;"
+                <img class="media-object img-circle" style="height: 40px; width: 40px;"
                                     src="{{ asset('upload/user/image/'.$member->photo) }}"
                                     alt="image">
             </a>
@@ -84,14 +83,14 @@
                 <p class="chat-time">8:22 a.m.</p>
             </div>
             <a class="media-left photo-table" href="#!">
-                <img class="media-object img-circle" style="height: 60px; width: 60px;"
+                <img class="media-object img-circle" style="height: 40px; width: 40px;"
                 src="{{ asset('upload/user/image/'.$member->photo) }}"
                 alt="image">
             </a>
         </div>
         <div class="media chat-messages">
             <a class="media-left photo-table" href="#!">
-                <img class="media-object img-circle" style="height: 60px; width: 60px;"
+                <img class="media-object img-circle" style="height: 40px; width: 40px;"
                 src="{{ asset('upload/user/image/'.$member->photo) }}"
                 alt="image">
             </a>
