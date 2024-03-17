@@ -6,18 +6,30 @@
                 <div class="container.pt-0.pl-1.pb-0.pr-1">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-                        <h1>
-                            Welcome
-                            <small>Wokite Town sport commition</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                            {{-- <li><a href="#">Layout</a></li>
-                  <li class="active">Top Navigation</li> --}}
-                        </ol>
-                    </section>
+                        <div class="animation-container">
+                            <h2 class="page-header text-center">wolkite town sport commission</h2>
+                        </div>
+<style>.animation-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.page-header {
+    display: inline-block;
+    animation: moveLeft 10s linear infinite; /* Adjust timing and animation as needed */
+}
+
+@keyframes moveLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+</style>   </section>
                     <!-- START ACCORDION & CAROUSEL-->
-                    <h2 class="page-header">wolkite town sport commission</h2>
 
                     <div class="row">
                         <div class="col-md-6">
