@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'nationality' => 'Ethiopian',
             'city' => 'Wolkitie',
             'language' => 'Amharic',
-            'photo' => 'user_photo.jpg',
+            'photo' => '',
             'experience' => '3 years',
             'mother_full_name' => 'ayehu anteneh',
             'status' => 'active',

@@ -19,13 +19,20 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
+        $userId = $this->route('user')->id;
         return [
             'first_name' => ['sometimes', 'required', 'string', 'min:3', 'max:150'],
             'middle_name' => ['sometimes', 'required', 'string', 'min:3', 'max:150'],
             'last_name' => ['sometimes', 'required', 'string', 'min:3', 'max:150'],
             'date_of_birth' => ['sometimes', 'required', 'date'],
             'gender' => ['sometimes', 'required', 'string'],
-            'phone_number' => ['sometimes', 'string', 'min:12', 'max:20', 'unique:users'],
+            'phone_number' => [
+                'required',
+                'string',
+                'min:12',
+                'max:20',
+                'unique:users,phone_number,' . $userId,
+            ],
             'user_type' => ['sometimes', 'required'],
             'age' => ['sometimes', 'required', 'integer'],
             'country' => ['sometimes', 'required'],
