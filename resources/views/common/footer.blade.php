@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-4 text-center">
-                <strong>Copyright &copy; 2024 <a href="http://almsaeedstudio.com">WKU IT GROUP 3</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; 2024 <a href="#!" target="_blank">WKU IT GROUP 3</a>.</strong> All rights reserved.
             </div>
         </div>
     </div>

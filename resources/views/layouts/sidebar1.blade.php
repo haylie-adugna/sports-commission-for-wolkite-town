@@ -30,6 +30,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" id="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+        <li id="google_translate_element"></li>
         <li class="active treeview">
           <a href="{{ route('dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -293,7 +294,7 @@
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
-      
+
     </section>
     <!-- /.sidebar -->
   </aside>

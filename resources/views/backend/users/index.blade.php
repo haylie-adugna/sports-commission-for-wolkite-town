@@ -4,12 +4,12 @@
      <!-- Content Header (Page header) -->
      <section class="content-header">
         <h1>
-          Data Tables
-          <small>advanced tables</small>
+          Manage user information
+          <small>tables</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
+          <li><a href="#">users</a></li>
           <li class="active">Data tables</li>
         </ol>
       </section>
@@ -27,6 +27,9 @@
                     <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">Add New user</a>
 
                 <table id="example1" class="table table-bordered table-striped">
+                    {{-- class="table  table-striped table-bordered nowrap"
+                    <table id="footer-search" class="table table-striped table-bordered nowrap">
+                        --}}
                     <p class="pull-right">Date: <span id="currentDate" ></span></p>
                     <thead>
                         <tr>
@@ -53,7 +56,7 @@
                     @foreach($users as $key => $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><img class="img-circle" style="height: 100px; width: 100px;" src="{{asset('upload/user/image')}}/{{$user->photo}}" alt="User photo"></td>
+                                <td><img class="img-circle" style="height: 50px; width: 40px;" src="{{asset('upload/user/image')}}/{{$user->photo}}" alt="User photo"></td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->middle_name }}</td>
                                 <td>{{ $user->last_name }}</td>

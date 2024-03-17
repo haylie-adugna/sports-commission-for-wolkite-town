@@ -13,10 +13,9 @@
             <span class="sr-only">Toggle navigation</span>
         </a>
 
+
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
-                <li id="google_translate_element"></li>
                 <!-- Messages Dropdown Menu -->
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item">
@@ -243,7 +242,7 @@
                                 <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat text-light"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                                     out</a>
                             </div>
