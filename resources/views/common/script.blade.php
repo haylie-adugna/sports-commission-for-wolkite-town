@@ -56,6 +56,12 @@
 <script type="text/javascript" src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('assets/js/script.min.js') }}"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="056f2f602b6a56e0b714edf4-|49" defer=""></script>
+<script type="056f2f602b6a56e0b714edf4-text/javascript">function ctSetCookie(c_name, value, def_value){document.cookie = c_name + '=' + escape(value) + '; path=/';}ctSetCookie('ct_checkjs', 'accfcf663e5dcc20e4aeeeb73d10863f2d5d2a0ddcf62cb47df77e27072e3e66', '0');</script>
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://colorlib.com/#website","url":"https://colorlib.com/","name":"Colorlib","description":"Free WordPress Themes","potentialAction":{"@type":"SearchAction","target":"https://colorlib.com/?s={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<script type="056f2f602b6a56e0b714edf4-text/javascript" src='https://colorlib.com/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503'></script>
+
 
 <script>
     $(function () {

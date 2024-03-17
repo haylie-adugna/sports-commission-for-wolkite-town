@@ -1,7 +1,7 @@
-<footer class="main-footer layout-footer-fixed fixed-bottom">
+    <footer id="colophon" class="main-footer layout-footer-fixed fixed-bottom" role="contentinfo">
     <div class="container">
-
-
+        <nav role="navigation" class="col-md-6">
+        </nav>
         <div class="row mt-3">
             <div class="col-xs-12 col-md-4 text-center">
                 <h5>Connect with us</h5>
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
+    <div class="scroll-to-top"><i class="fa fa-angle-up"></i></div>
     <!-- /.container -->
 </footer>
-
 

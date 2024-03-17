@@ -40,12 +40,9 @@
 
 
 <![endif]-->
-<style>
-    #app {
-    height: 100vh; /* Adjust as needed */
-    overflow-y: auto;
-}
-  </style>
+<link rel='stylesheet' id='sparkling-style-css' href='https://colorlib.com/wp-content/themes/sparkling-child/style.css?ver=2.4.2' type='text/css' media='all' />
+
+
 <style>
     #previewContainer img,
     #previewContainer video {
