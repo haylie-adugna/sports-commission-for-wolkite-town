@@ -29,9 +29,8 @@ class Handler extends ExceptionHandler
     }
     public function render($request, Throwable $exception)
     {if ($exception) {
-        return back()->with('error', 'something error');
+        return back()->with('exception', 'check input may be dublicate entry email or phone used');
     }
-
     return parent::render($request, $exception);
     }
 
