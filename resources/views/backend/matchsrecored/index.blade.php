@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($matchs as $matchs)
+                    @foreach ($leagues as $matchs)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $matchs->Team1 }}</td>

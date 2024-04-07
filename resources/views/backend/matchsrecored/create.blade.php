@@ -1,22 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="content-header">
+        <h1>
+            Match Information
+            <small>Preview</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li class="active">Match Information</li>
+        </ol>
+    </section>
 
-        <section class="content-header">
-            <h1>
-                Match Information
-                <small>Preview</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Forms</a></li>
-                <li class="active">Match Information</li>
-            </ol>
-        </section>
+    <!-- Main content -->
+    <section class="content">
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
+
+        <div class="row">
+            <form action="{{ route('matchsrecored.register') }}" method="post">
+                @csrf
                 <!-- left column -->
                 <div class="col-md-6">
                     <!-- general form elements -->
@@ -27,31 +30,43 @@
 
                         <div class="box-body">
                             <div class="form-group">
+                                <label for="match_name">Select Club:</label>
+                                <select class="form-control" name="match_id" id="match_id" required>
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                        <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                    @empty
+                                        <option value="" disabled>No club managers available</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="goal">goal number</label>
                                 <input type="number" class="form-control" id="goal" min="1" max="100"
-                                    placeholder="Enter goal">
+                                    placeholder="Enter goal" name="team1_goal">
                             </div>
                             <div class="form-group">
                                 <label for="playerSelect">Player:</label>
-                                <select class="form-control" id="playerSelect">
-                                    <option value="Player 1">Player 1</option>
-                                    <option value="Player 2">Player 2</option>
-                                    <option value="Player 3">Player 3</option>
-                                    <!-- Add more players as needed -->
+                                <select class="form-control" id="playerSelect" name="team1_player">
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                        <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                    @empty
+                                        <option value="" disabled>No club managers available</option>
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="assistantSelect">Name of Assistant:</label>
-                                <select class="form-control" id="assistantSelect">
-                                    <option value="Fasil">Fasil</option>
-                                    <option value="Haylie">Haylie</option>
-                                    <option value="Hana">Hana</option>
-                                    <!-- Add more assistants as needed -->
+                                <select class="form-control" id="assistantSelect" name="team1_assistant">
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                    <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                @empty
+                                    <option value="" disabled>No club managers available</option>
+                                @endforelse
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="timeInput">Time:</label>
-                                <input type="time" class="form-control" id="timeInput">
+                                <input type="datetime-local" class="form-control" id="timeInput" name="team1_time">
                             </div>
                         </div>
                     </div>
@@ -67,37 +82,43 @@
                             <div class="form-group">
                                 <label for="goal">goal number</label>
                                 <input type="number" class="form-control" id="goal" min="1" max="100"
-                                    placeholder="Enter goal">
+                                    placeholder="Enter goal" name="team2_goal">
                             </div>
                             <div class="form-group">
                                 <label for="playerSelect">Player:</label>
-                                <select class="form-control" id="playerSelect">
-                                    <option value="Player 1">Player 1</option>
-                                    <option value="Player 2">Player 2</option>
-                                    <option value="Player 3">Player 3</option>
+                                <select class="form-control" id="playerSelect" name="team2_player">
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                        <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                    @empty
+                                        <option value="" disabled>No club managers available</option>
+                                    @endforelse
                                     <!-- Add more players as needed -->
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="assistantSelect">Name of Assistant:</label>
-                                <select class="form-control" id="assistantSelect">
-                                    <option value="Fasil">Fasil</option>
-                                    <option value="Haylie">Haylie</option>
-                                    <option value="Hana">Hana</option>
-                                    <!-- Add more assistants as needed -->
+                                <select class="form-control" id="assistantSelect" name="team2_assistant">
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                    <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                @empty
+                                    <option value="" disabled>No club managers available</option>
+                                @endforelse
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="timeInput">Time:</label>
-                                <input type="time" class="form-control" id="timeInput">
+                                <input type="datetime-local" class="form-control" id="timeInput" name="team2_time">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-info pull-right">Submit</button>
-                </div> </br>
-
+                </div>
+            </form>
+            </br>
+            <form action="{{ route('matchsrecored.register') }}" method="post">
+                @csrf
                 <div class="col-md-12">
                     <div class="box box-primary ">
                         <div class="box-header with-border">
@@ -109,18 +130,11 @@
                             <div class="col-md-3">
                                 <label for="team1_player_1">Player:</label>
                                 <select class="form-control" id="both_team_player_1" name="both_team_player_1">
-                                    <option value="Player 1">Player 1</option>
-                                    <option value="Player 2">Player 2</option>
-                                    <option value="Player 3">Player 3</option>
-                                    <option value="Player 4">Player 4</option>
-                                    <option value="Player 5">Player 5</option>
-                                    <option value="Player 6">Player 6</option>
-                                    <option value="Player 7">Player 7</option>
-                                    <option value="Player 8">Player 8</option>
-                                    <option value="Player 9">Player 9</option>
-                                    <option value="Player 10">Player 10</option>
-                                    <option value="Player 11">Player 11</option>
-
+                                    @forelse(\App\Models\Matchs::all() as $clubManager)
+                                        <option value="{{ $clubManager->id }}">ID:- {{$clubManager->id }}| Name:- {{$clubManager->match_name }}</option>
+                                    @empty
+                                        <option value="" disabled>No club managers available</option>
+                                    @endforelse
                                 </select>
                             </div>
                             <h3 class="box-title">Cards</h3>
@@ -143,8 +157,8 @@
                         </div>
                     </div>
                 </div>
+            </form>
+        </div>
 
-            </div>
     </section>
-
 @endsection

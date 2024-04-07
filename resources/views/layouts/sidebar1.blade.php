@@ -64,12 +64,7 @@
                         </a>
                     </li>
                 @endcan
-                @can('user_create')
-            <li><a href="{{ route('admin.users.create') }}"><i class="fa fa-fw fa-user-plus"></i> Add new user</a></li>
-            @endcan
-            @can('user_access')
             <li><a href="{{ route("admin.users.index") }}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
-            @endcan
             <li><a href="{{route('users.analaysis')}}"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
             @can('manage_staff_user')
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
@@ -142,10 +137,12 @@
             @can('manage_club')
             <ul class="treeview-menu">
                 <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Club</a></li>
+                <li><a href="{{route('players.index')}}"><i class="fa fa-fw fa-futbol-o"></i> Player Managment</a></li>
                 <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Club stastics</a></li>
             </ul>
             @endcan
           </li>
+
 
         <li class="treeview">
           <a href="#">
@@ -170,7 +167,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{route('matchsrecored.create')}}"><i class="fa fa-fw fa-plus-circle"></i> assigned match</a></li>
-              <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-gear"></i> Manages</a></li>
+              <li><a href="{{route('matchsrecored.index')}}"><i class="fa fa-fw fa-gear"></i> Manages</a></li>
               <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
             </ul>
           </li>

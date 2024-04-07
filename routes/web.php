@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\Eventscontroller;
 use App\Http\Controllers\projectcontroller;
@@ -14,7 +15,6 @@ use App\Http\Controllers\MatchController;
 use App\Http\Controllers\FootballLineupController;
 use App\Http\Controllers\BasketballLineupController;
 use App\Http\Controllers\VolleyballLineupController;
-
 use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
 
@@ -162,6 +162,11 @@ Route::post('/clubupdate/{id}', [ClubController::class, 'edit'])->name('clubs.ed
 Route::get('/showallclub', [ClubController::class, 'index'])->name('clubs.index');
 Route::get('/clubhow/{id}', [ClubController::class, 'show'])->name('clubs.show');
 Route::get('/deleteclub/{id}', [ClubController::class, 'destroy'])->name('clubs.destroy');
+
+//Players Route
+Route::get('/showallplayer', [PlayerController::class, 'index'])->name('players.index');
+Route::get('/assignplayer', [PlayerController::class, 'assign'])->name('players.assign');
+Route::post('/storeplayer', [PlayerController::class, 'store'])->name('players.store');
 
 
 // project

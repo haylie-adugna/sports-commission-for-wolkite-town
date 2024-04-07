@@ -21,7 +21,7 @@ class Player extends Model
 
     public function club()
     {
-        return $this->belongsTo(Club::class);
+        return $this->belongsTo(Clubs::class);
     }
 
     public function contracts()

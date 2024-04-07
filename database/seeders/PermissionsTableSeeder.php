@@ -54,10 +54,6 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'role_access',
             ],
             [
-                'id'    => '12',
-                'title' => 'user_create',
-            ],
-            [
                 'id'    => '13',
                 'title' => 'user_edit',
             ],
@@ -189,10 +185,10 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '45',
                 'title' => 'manage_venues',
             ],
-            // [
-            //     'id'    => '40',
-            //     'title' => 'profile_password_edit',
-            // ],
+            [
+                'id'    => '40',
+                'title' => 'user_create',
+            ],
             // [
             //     'id'    => '40',
             //     'title' => 'profile_password_edit',

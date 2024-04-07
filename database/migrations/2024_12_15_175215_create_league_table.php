@@ -15,22 +15,24 @@ class CreateLeagueTable extends Migration
     {
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('start_date');
-            $table->date('end_date');
-            // Additional attributes
-            $table->unsignedBigInteger('club_id');
-            $table->integer('points')->default(0);
-            $table->integer('goals')->default(0);
-            $table->integer('matches_played')->default(0);
-            $table->integer('wins')->default(0);
-            $table->integer('draws')->default(0);
-            $table->integer('losses')->default(0);
+            $table->unsignedBigInteger('match_id');
+            $table->integer('team1_point')->default(0);
+            $table->integer('team2_point')->default(0);
+            $table->integer('team1_goal')->default(0);
+            $table->integer('team2_goal')->default(0);
+            $table->integer('team1_played')->default(0);
+            $table->integer('team2_played')->default(0);
+            $table->integer('team1_win')->default(0);
+            $table->integer('team2_win')->default(0);
+            $table->integer('team1_draw')->default(0);
+            $table->integer('team2_draw')->default(0);
+            $table->integer('team1_losse')->default(0);
+            $table->integer('team2_losse')->default(0);
             $table->integer('rank')->nullable();
             $table->integer('point_difference')->nullable();
             $table->timestamps();
 
-            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
+            $table->foreign('match_id')->references('id')->on('matchs')->onDelete('cascade');
         });
     }
 

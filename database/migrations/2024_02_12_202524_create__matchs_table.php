@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('matchs', function (Blueprint $table) {
             $table->id();
+            $table->string('match_name')->nullable();
             $table->string('Team1')->nullable()->constrained('clubs')->onDelete('set null');
             $table->string('Team2')->nullable()->constrained('clubs')->onDelete('set null');
             $table->string('Referee')->nullable()->constrained('users')->onDelete('set null');

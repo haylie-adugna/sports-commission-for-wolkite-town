@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clubs;
-use App\Http\Requests\Clubs\CreateRecoredRequest;
-use App\Http\Requests\Clubs\UpdateRecoredRequest;
+use App\Models\MatchRecored;
+use App\Http\Requests\matchsrecored\CreateMatchRecoredRequest;
+use App\Http\Requests\matchsrecored\UpdateMatchRecoredRequest;
 use Illuminate\Support\Facades\DB;
 
 class MatchRecoredController extends Controller
@@ -28,18 +29,18 @@ class MatchRecoredController extends Controller
      */
     public function index()
     {
-        $leagues= leagues::all();
-        return view('backend.matchsrecored.index', compact('player_performance'));
+        $leagues= MatchRecored::all();
+        return view('backend.matchsrecored.index', compact('leagues'));
     }
     public function create()
     {
         return view('backend.matchsrecored.create');
     }
-    public function store(CreateRecoredRequest $request)
+    public function store(CreateMatchRecoredRequest $request)
     {
         // Create a new clubs record
 
-        leagues::create($request->all());
+        MatchRecored::create($request->all());
 
         // Redirect to the index page with success message
         return redirect()->route('matchsrecored.index')->with('status', 'clubs created successfully');
@@ -47,17 +48,17 @@ class MatchRecoredController extends Controller
 
     public function show($id)
     {
-        $leagues= leagues::find($id);
+        $leagues= MatchRecored::find($id);
         return view('backend.matchsrecored.show', compact('leagues'));
     }
     public function update($id)
     {
-        $leagues = leagues::find($id);
+        $leagues = MatchRecored::find($id);
         return view('backend.matchsrecored.update', compact('leagues'));
     }
-    public function edit(UpdateRecoredRequest $request, $id)
+    public function edit(UpdateMatchRecoredRequest $request, $id)
     {
-        $leagues= leagues::find($id);
+        $leagues= MatchRecored::find($id);
         $leagues->update($request->all());
         return redirect()->route('matchsrecored.update',$id)->with('status', 'update successful!');
 
@@ -65,7 +66,7 @@ class MatchRecoredController extends Controller
     public function destroy($id)
     {
         // Find and delete the match record
-        $leagues = leagues::find($id);
+        $leagues = MatchRecored::find($id);
         $leagues->delete();
 
         // Redirect to the index page with success message

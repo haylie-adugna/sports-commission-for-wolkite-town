@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class matchs extends Model
+class Matchs extends Model
 {
     use HasFactory;
 

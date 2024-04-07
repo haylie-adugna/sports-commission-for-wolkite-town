@@ -19,7 +19,8 @@
         @csrf
       <div class="form-group has-feedback">
         <label for="email">Email Address</label>
-        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required autocomplete="email" autofocus value="{{ old('email') }}">
+        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required autocomplete="email" autofocus {{--value="{{ old('email') }}"--}}
+        value="haylieadugna13@gmail.com">
         @error('email')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -29,7 +30,7 @@
       </div>
       <div class="form-group has-feedback">
         <label for="email">Password</label>
-        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" value="12345678" required autocomplete="current-password">
         @error('password')
             <div class="invalid-feedback">
               <strong>{{ $message }}</strong>

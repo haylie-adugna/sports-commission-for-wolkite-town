@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Matchs;
+namespace App\Http\Requests\matchsrecored;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,17 +14,15 @@ class CreateMatchRecoredRequest extends FormRequest
     public function rules()
     {
         return [
-            'team1' => 'required|string',
-            'team2' => 'required|string',
-            'result' => 'required|string',
-            'team1_goals' => 'required|integer|min:0',
-            'team2_goals' => 'required|integer|min:0',
-            'team1_players.*.name' => 'required|string',
-            'team1_players.*.assistant' => 'nullable|string',
-            'team1_players.*.time' => 'required|integer|min:0',
-            'team2_players.*.name' => 'required|string',
-            'team2_players.*.assistant' => 'nullable|string',
-            'team2_players.*.time' => 'required|integer|min:0',
+            'match_id' => 'required|string',
+            'team1_goal' => 'required|integer|min:0',
+            'team2_goal' => 'required|integer|min:0',
+            'team1_player' => 'required|string',
+            'team2_player' => 'nullable|string',
+            'team1_assistant' => 'required|string',
+            'team2_assistant' => 'required|string',
+            'team1_time' => 'required|date',
+            'team2_time' => 'required|date',
         ];
     }
 }

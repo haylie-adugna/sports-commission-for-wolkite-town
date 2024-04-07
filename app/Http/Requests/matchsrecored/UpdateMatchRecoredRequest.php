@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\matchs;
+namespace App\Http\Requests\matchsrecored;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateMatchsRequest extends FormRequest
+class UpdateMatchRecoredRequest extends FormRequest
 {
     public function authorize()
     {

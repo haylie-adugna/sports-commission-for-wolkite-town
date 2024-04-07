@@ -3,18 +3,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class League extends Model
+class MatchRecored extends Model
 {
     protected $fillable = [
-        'name',
-        'points',
-        'goals',
-        'matches_played',
-        'wins',
-        'draws',
-        'losses',
-        'rank',
-        'point_difference',
+        'match_id',
+        'team1_goal',
+        'team2_goal',
+        'team1_player',
+        'team2_player',
+        'team1_assistant',
+        'team2_assistant',
+        'team1_time',
+        'team2_time',
         // Add more attributes as per your requirements
     ];
 
