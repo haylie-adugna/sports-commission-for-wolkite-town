@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('match_recored', function (Blueprint $table) {
+        Schema::create('match_recoreds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('matchs_id')->constrained('matchs')->onDelete('cascade');
+            $table->foreignId('match_id')->constrained('matchs')->onDelete('cascade');
             $table->integer('team1_goal');
             $table->integer('team2_goal');
             $table->foreignId('team1_player')->constrained('players')->onDelete('cascade');
@@ -28,6 +28,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('match_recored');
+        Schema::dropIfExists('matchs_recoreds');
     }
 };

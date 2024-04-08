@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="goal">goal number</label>
-                                <input type="number" class="form-control" id="goal" min="1" max="100"
+                                <input type="number" class="form-control" id="goal"
                                     placeholder="Enter goal" name="team1_goal">
                             </div>
                             <div class="form-group">
@@ -81,7 +81,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="goal">goal number</label>
-                                <input type="number" class="form-control" id="goal" min="1" max="100"
+                                <input type="number" class="form-control" id="goal"
                                     placeholder="Enter goal" name="team2_goal">
                             </div>
                             <div class="form-group">

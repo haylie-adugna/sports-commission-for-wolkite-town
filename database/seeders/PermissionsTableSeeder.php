@@ -186,7 +186,7 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'manage_venues',
             ],
             [
-                'id'    => '40',
+                'id'    => '46',
                 'title' => 'user_create',
             ],
             // [
