@@ -15,14 +15,10 @@ class CreateMatchRecoredRequest extends FormRequest
     {
         return [
             'match_id' => 'required|string',
-            'team1_goal' => 'required|integer|min:0',
-            'team2_goal' => 'required|integer|min:0',
-            'team1_player' => 'required|string',
-            'team2_player' => 'nullable|string',
-            'team1_assistant' => 'required|string',
-            'team2_assistant' => 'required|string',
-            'team1_time' => 'required|date',
-            'team2_time' => 'required|date',
+            'club_id'=> 'required|string',
+            'number_of_goal' => 'required|integer|min:0',
+            'goal_scorer' => 'required|string',
+            'goal_assistant' => 'required|string',
         ];
     }
 }

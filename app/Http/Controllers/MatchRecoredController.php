@@ -59,62 +59,46 @@ class MatchRecoredController extends Controller
     }
 
     if ($isMatchAvailable) {
-        $matchRecord = MatchRecored::create($request->all());
+        $data = $request->all();
+        $data['goal_time'] = $currentTime;
+        $matchRecord = MatchRecored::create($data);
         $match_id = $request->input("match_id");
-
+        $club_id = $request->input("club_id");
     // Retrieve all match records
-    $matches_recored = MatchRecored::all();
+    $matches_recored = MatchRecored::all()->where('club_id', $club_id);
 
     // Initialize variables to calculate league table statistics
-    $team1_points = 0;
-    $team2_points = 0;
-    $team1_goals = 0;
-    $team2_goals = 0;
-    $team1_wins = 0;
-    $team2_wins = 0;
-    $draws = 0;
-    $team1_losses = 0;
-    $team2_losses = 0;
+    $total_points = 0;
+    $total_goals = 0;
+    $total_wins = 0;
+    $total_draws = 0;
+    $total_losses = 0;
+    $point_difference = 0;
 
     // Calculate league table statistics based on match results
     foreach ($matches_recored as $match_recored) {
         if ($endTime <= $currentTime) {
-        if ($match_recored->team1_goal > $match_recored->team2_goal) {
-            $team1_points += 3;
-            $team1_wins++;
-            $team2_losses++;
-        } elseif ($match_recored->team1_goal < $match_recored->team2_goal) {
-            $team2_points += 3;
-            $team2_wins++;
-            $team1_losses++;
-        } else {
-            $team1_points++;
-            $team2_points++;
-            $draws++;
-        }
+            $total_points += 3;
+            $total_wins++;
+            $total_losses++;
      }
-        $team1_goals += $match_recored->team1_goal;
-        $team2_goals += $match_recored->team2_goal;
+
+     $total_goals++;
     }
 
     // Update the league table with calculated values
     League::updateOrCreate(
-    ['match_id' => $match_id], // Search condition: Find or create a league entry with this match_id
+    ['club_id' => $club_id], // Search condition: Find or create a league entry with this match_id
     [
-        'team1_point' => $team1_points,
-        'team2_point' => $team2_points,
-        'team1_goal' => $team1_goals,
-        'team2_goal' => $team2_goals,
-        'team1_played' => count($matches),
-        'team2_played' => count($matches),
-        'team1_win' => $team1_wins,
-        'team2_win' => $team2_wins,
-        'team1_draw' => $draws,
-        'team2_draw' => $draws,
-        'team1_losse' => $team1_losses,
-        'team2_losse' => $team2_losses,
+        'match_id' => $match_id,
+        'total_point' => $total_points,
+        'total_goal' => $total_goals,
+        'total_played' => count($matches),
+        'total_win' => $total_wins,
+        'total_draw' => $total_draws,
+        'total_losse' => $total_losses,
         'rank' => 0, // You may want to calculate the rank based on the points
-        'point_difference' => abs($team1_goals - $team2_goals),
+        'point_difference' => $point_difference,
     ]);
 
     // Redirect to the index page with success message

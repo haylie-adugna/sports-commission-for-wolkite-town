@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('match_recoreds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('match_id')->constrained('matchs')->onDelete('cascade');
-            $table->integer('team1_goal');
-            $table->integer('team2_goal');
-            $table->foreignId('team1_player')->constrained('players')->onDelete('cascade');
-            $table->foreignId('team2_player')->constrained('players')->onDelete('cascade');
-            $table->foreignId('team1_assistant')->constrained('users')->onDelete('cascade');
-            $table->foreignId('team2_assistant')->constrained('users')->onDelete('cascade');
-            $table->time('team1_time');
-            $table->time('team2_time');
+            $table->foreignId('club_id')->constrained('clubs')->onDelete('cascade');
+            $table->integer('number_of_goal');
+            $table->foreignId('goal_scorer')->constrained('players')->onDelete('cascade');
+            $table->foreignId('goal_assistant')->constrained('users')->onDelete('cascade');
+            $table->time('goal_time');
             $table->timestamps();
         });
     }

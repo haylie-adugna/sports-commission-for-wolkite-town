@@ -10,14 +10,12 @@ class MatchRecored extends Model
 
     protected $fillable = [
         'match_id',
+        'club_id',
         'team1_goal',
-        'team2_goal',
-        'team1_player',
-        'team2_player',
-        'team1_assistant',
-        'team2_assistant',
-        'team1_time',
-        'team2_time',
+        'number_of_goal',
+        'goal_scorer',
+        'goal_assistant',
+        'goal_time',
         // Add more attributes as per your requirements
     ];
 

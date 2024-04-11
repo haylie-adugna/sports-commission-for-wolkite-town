@@ -1,5 +1,4 @@
-    <footer id="colophon" class="main-footer layout-footer-fixed fixed-bottom" role="contentinfo">
-    <div class="container">
+<footer id="colophon" class="main-footer layout-footer-fixed fixed-bottom" role="contentinfo" style="color: white;">    <div class="container">
         <nav role="navigation" class="col-md-6">
         </nav>
         <div class="row mt-3">
