@@ -17,8 +17,9 @@
   @include('layouts.sidebar1')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="overflow:scroll;">
+  <div class="content-wrapper">
     <div class="content" >
+
         {{--Error Alert Area--}}
         @if($errors->any())
         <div class="box box-danger">

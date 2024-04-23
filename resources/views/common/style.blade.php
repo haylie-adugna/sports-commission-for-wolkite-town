@@ -122,7 +122,6 @@ display: none !important;
    color:#383ffa;
    border: none;
    border-radius:3px;
-   padding:6px 8px
 }
 .goog-te-combo{
     width: 100%;
@@ -345,3 +344,22 @@ display: none !important;
         display: none
     }
 </style>
+
+
+<link rel="stylesheet" href="{{ asset('assets/css/csss/waves.min.css') }}" type="text/css" media="all">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/feather.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/themify-icons.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/icofont.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/font-awesome.min.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/datatables.bootstrap4.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/buttons.datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/buttons.datatables.min-2.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/pages.css') }}">

@@ -16,7 +16,7 @@
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages Dropdown Menu -->
+                <li id="google_translate_element"></li>
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item">
                     <a href="#" class="nav-link displayChatbox">

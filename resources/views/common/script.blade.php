@@ -314,3 +314,50 @@
     }
 </script>
 
+
+
+
+
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/jquery.min.js') }}"></script>
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/jquery-ui.min.js') }}"></script>
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/popper.min.js') }}"></script>
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/jss/waves.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/jquery.slimscroll.js') }}"></script>
+
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/modernizr.js') }}"></script>
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/css-scrollbars.js') }}"></script>
+
+<script src="{{ asset('assets/js/jss/jquery.datatables.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/datatables.buttons.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/jszip.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/pdfmake.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/vfs_fonts.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/datatables.buttons.min-2.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/buttons.flash.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/jszip.min-2.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/vfs_fonts-2.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/buttons.colvis.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/buttons.print.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/buttons.html5.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/datatables.bootstrap4.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/datatables.responsive.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/responsive.bootstrap4.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+
+<script src="{{ asset('assets/js/jss/extension-btns-custom.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/pcoded.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/vertical-layout.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script src="{{ asset('assets/js/jss/jquery.mcustomscrollbar.concat.min.js') }}" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/script.js') }}"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="46fdda76826106b979343b7a-text/javascript"></script>
+<script type="46fdda76826106b979343b7a-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script src="{{ asset('assets/js/jss/rocket-loader.min.js') }}" data-cf-settings="46fdda76826106b979343b7a-|49" defer=""></script>
