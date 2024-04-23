@@ -44,6 +44,7 @@
             <span class="label label-primary pull-right bg-green">4</span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="{{ route("admin.users.index") }}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
             @can('permission_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
@@ -64,7 +65,6 @@
                         </a>
                     </li>
                 @endcan
-            <li><a href="{{ route("admin.users.index") }}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
             <li><a href="{{route('users.analaysis')}}"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
             @can('manage_staff_user')
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
@@ -188,7 +188,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>projects</span>
+            <i class="fa fa-edit"></i> <span>Manage project</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           @can('manage_project')
