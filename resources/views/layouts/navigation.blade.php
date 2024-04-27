@@ -208,15 +208,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
-                        <li class="user-header">
-                            @if (Auth::user()->photo)
-                                <img src="{{ asset('upload/user/image') }}/{{ Auth::user()->photo }}"
-                                    class="img-circle" alt="User Image">
-                            @else
-                                <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle" alt="User Image">
-                            @endif
-                            <p>
-                                {{ Auth::user()->first_name }} {{ Auth::user()->middle_name }}
+                        <li class="user-profile">
+                            <p class="text-primary">
                                 <small>Member since
                                     {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('M. Y') }}</small>
                             </p>
@@ -225,13 +218,13 @@
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
+                                    <a href="#"><i class="feather icon-settings"></i>Setting</a>
+                                </div>
+                                <div class="col-xs-4 text-center text-primary">
+                                    <a href="{{ route('profile.edit') }}" class="text-primary"><i class="feather icon-user"></i>Profile</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
+                                    <a href="#"><i class="feather icon-users"></i>Friends</a>
                                 </div>
                             </div>
                             <!-- /.row -->
@@ -239,12 +232,13 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat">Profile</a>
+                                <a href="auth-lock-screen.html">
+                                    <i class="feather icon-lock"></i> Lock Screen
+                                    </a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat text-light"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
-                                    out</a>
+                                <a href="{{ route('logout') }}" class="btn btn-danger text-danger"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-log-out"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
