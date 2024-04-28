@@ -45,16 +45,39 @@ class League extends Model
     }
     public static function calculateRank()
 {
-    $leagues = self::orderByDesc('total_point')->get();
-    $rank = 1;
-    $prevPoint = null;
+    $clubs = League::orderByDesc('total_point')
+                   ->orderByDesc('total_goal')
+                   ->get();
 
-    foreach ($leagues as $league) {
-        if ($prevPoint !== null && $league->total_point < $prevPoint) {
+    // Find the maximum total goals and total points among all clubs
+    $maxTotalGoals = $clubs->max('total_goal');
+    $maxTotalPoints = $clubs->max('total_point');
+
+    // Initialize variables
+    $rank = 1;
+    $previousClub = null;
+
+    // Update ranks and store them in the database
+    foreach ($clubs as $club) {
+        // Check if this club has the same total points and total goals as the previous club
+        if ($previousClub !== null && $club->total_point === $previousClub->total_point && $club->total_goal === $previousClub->total_goal) {
+            // If yes, assign the same rank as the previous club
+            $club->rank = $previousClub->rank;
+        } else {
+            // If no, assign the current rank
+            $club->rank = $rank;
+            // Update rank for the next club
             $rank++;
         }
-        $league->update(['rank' => $rank]);
-        $prevPoint = $league->total_point;
+
+        // Calculate goal difference and point difference
+        $club->goal_difference = $maxTotalGoals - $club->total_goal;
+        $club->point_difference = $maxTotalPoints - $club->total_point;
+
+        $club->save();
+        // Update previous club for the next iteration
+        $previousClub = $club;
     }
 }
+
 }

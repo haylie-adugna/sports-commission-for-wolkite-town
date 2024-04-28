@@ -1,15 +1,10 @@
 <?php
-
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Leagues\UpdateTeamRequest;
+use App\Models\League;
 use App\Models\Clubs;
-use App\Models\Player;
-use App\Models\User;
-use App\Http\Requests\Player\AssignPlayerRequest;
-use App\Http\Requests\Clubs\UpdateClubsRequest;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class LeagueController extends Controller
 {
@@ -18,61 +13,35 @@ class LeagueController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        $players = Player::all();
-        return view('backend.players.index', compact('players'));
+        $leagues = League::with(['clubs'])->get();
+        return view('backend.leagues.index', compact('leagues'));
     }
-    public function assign()
+    public function create()
     {
-        return view('backend.players.assign');
+        return view('backend.leagues.create');
     }
-    public function store(AssignPlayerRequest $request)
-{
-        $data = $request->all();
-
-        $clubs = Player::create($data);
-
-        // Redirect to the index page with success message
-        return redirect()->route('players.index')->with('success', 'A player is Assigned to Club successfully');
-
-}
-
-
-    public function show($id)
+    public function update(League $leagues)
     {
-        $clubs= clubs::find($id);
-        return view('backend.clubs.show', compact('clubs'));
+        return view('backend.leagues.update', compact('leagues'));
     }
-    public function update($id)
+    public function edit(UpdateTeamRequest $request, League $leagues)
     {
-        $clubs = clubs::find($id);
-        return view('backend.clubs.update', compact('clubs'));
-    }
-    public function edit(UpdateClubsRequest $request, $id)
-    {
-        $clubs= clubs::find($id);
-        $clubs->update($request->all());
-        return redirect()->route('clubs.update',$id)->with('status', 'update successful!');
+        $requestData = $request->safe()->except('matches_played');
+        $leagues->update($requestData);
+        League::calculateRank();
 
+        return redirect()->route('leagues.index')->with('success', 'update successful!');
     }
+
     public function destroy($id)
     {
         // Find and delete the match record
-        $clubs = clubs::find($id);
-        $clubs->delete();
+        $leagues = League::find($id);
+        $leagues->delete();
 
         // Redirect to the index page with success message
-        return redirect()->route('clubs.index')->with('status', 'clubs deleted successfully');
+        return back()->with('success', 'leagues deleted successfully');
     }
 }

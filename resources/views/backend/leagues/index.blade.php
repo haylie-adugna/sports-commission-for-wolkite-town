@@ -42,7 +42,7 @@
                                     <th>Total Point</th>
                                     <th>point Difference</th>
                                     <th>rank</th>
-                                    <th>rank</th>
+                                    <th>Action</th>
 
                                 </tr>
                             </thead>
@@ -59,8 +59,8 @@
                                         <td>{{ $league->total_goal }}</td>
                                         <td>{{ $league->total_goal_against }}</td>
                                         <td>{{ $league->goal_difference }}</td>
-                                        <td>{{ $league->point_difference }}</td>
                                         <td>{{ $league->total_point }}</td>
+                                        <td>{{ $league->point_difference }}</td>
                                         <td>{{ $league->rank }}</td>
                                         <td class="text-center">
                                             <div class="fa fa-edit">
