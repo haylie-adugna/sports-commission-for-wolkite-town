@@ -52,5 +52,8 @@ class Clubs extends Model
     {
         return $this->belongsTo(Matchs::class);
     }
-
+    public function leagues()
+    {
+        return $this->hasMany(League::class, 'club_id');
+}
 }

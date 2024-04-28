@@ -17,6 +17,8 @@ use App\Http\Controllers\BasketballLineupController;
 use App\Http\Controllers\VolleyballLineupController;
 use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
+use App\Http\Controllers\WorldCupController;
+
 
 
 
@@ -143,6 +145,14 @@ Route::post('/matchsupdate/{id}', [MatchController::class, 'edit'])->name('match
 Route::get('/showallmatch', [MatchController::class, 'index'])->name('matchs.index');
 Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.show');
 Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
+
+//leagues
+Route::get('/manage/league', [WorldCupController::class, 'index'])->name('leagues.index');
+Route::get('/create/league', [WorldCupController::class, 'create'])->name('leagues.create');
+Route::get('update-league/{leagues}', [WorldCupController::class,'update'])->name('leagues.update');
+Route::post('update-league/{leagues}', [WorldCupController::class, 'edit'])->name('leagues.edit');
+Route::get('/show/league/{id}', [WorldCupController::class, 'show'])->name('leagues.show');
+Route::get('/deleteleagues/{id}', [WorldCupController::class, 'destroy'])->name('leagues.destroy');
 
 // venue
 Route::get('/creat/evenue', [VenueController::class, 'create'])->name('venue.create');

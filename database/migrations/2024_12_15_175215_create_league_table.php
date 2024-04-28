@@ -15,19 +15,18 @@ class CreateLeagueTable extends Migration
     {
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('match_id');
             $table->unsignedBigInteger('club_id');
-            $table->integer('total_point')->default(0);
             $table->integer('total_goal')->default(0);
             $table->integer('total_played')->default(0);
             $table->integer('total_win')->default(0);
             $table->integer('total_draw')->default(0);
-            $table->integer('total_losse')->default(0);
-            $table->integer('rank')->nullable();
+            $table->integer('total_lost')->default(0);
+            $table->integer('total_goal_against')->default(0);
+            $table->integer('goal_difference')->default(0);
+            $table->integer('total_point')->default(0);
             $table->integer('point_difference')->nullable();
+            $table->integer('rank')->nullable();
             $table->timestamps();
-
-            $table->foreign('match_id')->references('id')->on('matchs')->onDelete('cascade');
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });
     }

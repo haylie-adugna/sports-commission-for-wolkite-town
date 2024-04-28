@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clubs;
+use App\Models\League;
 use App\Http\Requests\Clubs\CreateClubsRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
 use Illuminate\Support\Facades\DB;
@@ -52,8 +53,19 @@ class ClubController extends Controller
             // Update the data with the correct field name
             $data['logo'] = $imageFileName;
         }
-
         $clubs = clubs::create($data);
+        $leagues = League::create([
+            'club_id'=>$clubs->id,
+            'total_goal'=>0,
+            'total_played'=>0,
+            'total_win'=>0,
+            'total_draw'=>0,
+            'total_lost'=>0,
+            'total_goal_against'=>0,
+            'goal_difference'=>0,
+            'total_point'=>0,
+            'point_difference'=>0,
+        ]);
 
         // Redirect to the index page with success message
         return redirect()->route('clubs.index')->with('success', 'Club created successfully');

@@ -186,6 +186,11 @@
             <li><a href="#{{--{{route('events.index')}}--}}"><i class="fa fa-fw fa-commenting"></i> comment</a></li>
           </ul>
         </li>
+        @can('manage_league')
+        <li class="treeview">
+            <a href="{{route('leagues.index')}}">Manage League</a>
+          </li>
+          @endcan
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Manage project</span>

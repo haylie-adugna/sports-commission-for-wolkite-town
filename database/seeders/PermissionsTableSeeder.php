@@ -189,10 +189,10 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '46',
                 'title' => 'user_create',
             ],
-            // [
-            //     'id'    => '40',
-            //     'title' => 'profile_password_edit',
-            // ],
+            [
+                'id'    => '47',
+                'title' => 'manage_league',
+            ],
             // [
             //     'id'    => '40',
             //     'title' => 'profile_password_edit',
