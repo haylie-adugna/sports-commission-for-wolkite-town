@@ -35,16 +35,14 @@ class League extends Model
         return $this->total_goal - $this->total_goal_against;
     }
 
-    protected static function boot()
-{
-    parent::boot();
+    public  static function boot()
+    {
+        parent::boot();
 
-    static::saving(function ($league) {
-        $league->total_point = ($league->total_win * 3) + ($league->total_draw);
-        self::calculateRank(); // Call calculateRank() whenever a league is saved
-    });
-}
-
+        static::saving(function($leagues){
+            $leagues->total_point = ($leagues->total_win * 3) + ($leagues->total_draw);
+        });
+    }
     public static function calculateRank()
 {
     $leagues = self::orderByDesc('total_point')->get();
@@ -59,5 +57,4 @@ class League extends Model
         $prevPoint = $league->total_point;
     }
 }
-
 }
