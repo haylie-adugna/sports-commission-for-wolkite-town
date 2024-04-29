@@ -5,8 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Players Data Management Table
-            <small>advanced tables</small>
+            Players Data Management
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,13 +19,11 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Players Data Management Table</h3>
-                    </div>
+                    
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <a href="{{ route('players.assign') }}" class="btn btn-success mb-3">Assign Player to Club</a>
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="cbtn-selectors" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>

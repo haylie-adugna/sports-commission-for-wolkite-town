@@ -10,7 +10,7 @@
                 <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">Add New user</a>
                 <br>
                 <table id="basic-btn" class="table table-striped table-bordered nowrap">
-                    {{-- class="table  table-striped table-bordered nowrap"
+                    {{-- class="table  table-striped table-bordered nowrap" "cbtn-selectors" "basic-btn" "multilevel-btn"
                     <table id="footer-search" class="table table-striped table-bordered nowrap">
                         --}}
                     <p class="pull-right">Date: <span id="currentDate"></span></p>

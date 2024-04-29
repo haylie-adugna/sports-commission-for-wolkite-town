@@ -127,13 +127,6 @@
               <i class="fa fa-fw fa-futbol-o"></i> <span>Clubs</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
-            @can('create_clubs')
-            <ul class="treeview-menu">
-                <li><a href="{{route('clubs.create')}}"><i class="fa fa-fw fa-life-bouy"></i> Create Clubs</a></li>
-                <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Clubs</a></li>
-                <li><a href="pages/charts/chartjs.html"><i class="fa fa-fw fa-life-bouy"></i> Clubs stastics</a></li>
-            </ul>
-            @endcan
             @can('manage_club')
             <ul class="treeview-menu">
                 <li><a href="{{route('clubs.index')}}"><i class="fa fa-fw fa-life-bouy"></i> Manage Club</a></li>

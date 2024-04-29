@@ -23,7 +23,7 @@ class StoreUserRequest extends FormRequest
             'mother_full_name' => ['required', 'string', 'min:6', 'max:150', 'regex:/^[a-zA-Z]+(\s[a-zA-Z]+)+$/'],
             'date_of_birth' => ['required', 'date'],
             'gender' => ['required', 'string'],
-            'email' => ['email', 'max:100', 'unique:users,id'],
+            'email' => ['email', 'max:100', 'unique:users,email,id'],
             'roles.*' => ['integer'],
             'roles' => ['required', 'array'],
             'phone_number' => ['string', 'min:10', 'max:20', 'unique:users,id'],

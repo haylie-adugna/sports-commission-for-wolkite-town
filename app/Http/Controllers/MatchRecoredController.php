@@ -37,7 +37,8 @@ class MatchRecoredController extends Controller
     }
     public function create()
     {
-        return view('backend.matchsrecored.create');
+        $matchs= Matchs::all();
+        return view('backend.matchsrecored.create', compact('matchs'));
     }
     public function store(CreateMatchRecoredRequest $request)
     {

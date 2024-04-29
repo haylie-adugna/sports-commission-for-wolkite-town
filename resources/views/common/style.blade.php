@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
 <!-- iCheck -->
 <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
-<!-- Morris chart -->
+<!-- Morris chart --> 
 <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
 <!-- jvectormap -->
 <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
@@ -24,7 +24,7 @@
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/pace/pace.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/sweetalert2@10.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2@10.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">

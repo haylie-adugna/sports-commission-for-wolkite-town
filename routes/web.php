@@ -196,7 +196,6 @@ Route::post('/matchsrecoredupdate/{id}', [MatchRecoredController::class, 'edit']
 Route::get('/showallmatchsrecored', [MatchRecoredController::class, 'index'])->name('matchsrecored.index');
 Route::get('/matchsrecoredhow/{id}', [MatchRecoredController::class, 'show'])->name('matchsrecored.show');
 Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy'])->name('matchsrecored.destroy');
-
 });
 
 

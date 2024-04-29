@@ -15,12 +15,11 @@ class UpdateGameRequest extends FormRequest
     {
         return [
             'game_type' => 'sometimes|required|string|max:255',
+            'number_of_player' => 'sometimes|required|string',
             'Rules' => 'sometimes|required|string',
             'description' => 'sometimes|required|string',
-            'Equipment' => 'sometimes|required|string',
-            'Duration' => 'sometimes|required|string',
-            'Venue' => 'sometimes|required|string|max:255',
-            'Season' => 'sometimes|required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'Governing_Body' => 'sometimes|required|string|max:255',
             'status' => 'sometimes|required|in:active,inactive', // Assuming 'status' should be one of these values
         ];

@@ -4,7 +4,6 @@
     <section class="content-header">
         <h1>
             Add New game
-            <small>game table</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -27,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Description">Description:</label>
-                                <input type="text" class="form-control" name="description" placeholder="Description">
+                                <input type="textarea" class="form-control" name="description" placeholder="Descriptions">
                             </div>
                             <div class="form-group">
                                 <label for="GameCategory">Game Category or Type</label>
@@ -53,73 +52,51 @@
                                 <div class="box-body">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="Duration">Duration:</label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                                <input type="text" class="form-control pull-right" id="reservationtime"
-                                                    name="duration" placeholder="Duration">
-                                            </div>
-                                            <!-- /.input group -->
+                                            <label for="start_date">Start Date and Time:</label>
+                                            <input type="datetime-local" class="form-control" id="start_date"
+                                                name="start_date">
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="Players">Players or Participants:</label>
-                                            <input type="text" class="form-control" name="player"
+                                            <label for="end_date">End Date and Time:</label>
+                                            <input type="datetime-local" class="form-control" id="end_date"
+                                                name="end_date">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="number_of_player">Players or Participants:</label>
+                                            <input type="number" class="form-control" name="number_of_player"
                                                 placeholder="Players or Participants">
                                         </div>
-                                            <div class="form-group">
-                                            <label for="venue">Venue:</label>
-                                            <select class="form-control" name="venue" id="venue">
-                                                @foreach(DB::table('venues')
-                                                ->select('id', 'venue_name')
-                                                ->groupBy('venue_name', 'id')
-                                                ->get() as $venue_name)
-                                                <option value="{{ $venue_name->id }}">{{ $venue_name->venue_name }}</option>
-                                            @endforeach
-                                            </select>
-                                            </div>
-
-                                        <div class="form-group">
-                                            <label for="Equipment">Equipment:</label>
-                                            <textarea class="textarea" placeholder="Place some text here"
-                                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                                name="equipment"></textarea>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /.col-md-4 -->
                         <div class="col-md-4">
-                            <div class="">
-                                <div class="box-body">
-                                        <div class="form-group">
-
-                                        <div class="form-group">
-                                            <label for="Players">Select Season or event</label>
-                                            <input type="text" class="form-control" name="season"
-                                                placeholder="Players or Participants">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="GoverningBody">Governing Body:</label>
-                                            <input type="text" class="form-control" name="governing_body"
-                                                placeholder="Governing Body">
-                                        </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="GoverningBody">Governing Body:</label>
+                                    <input type="text" class="form-control" name="governing_body"
+                                        placeholder="Governing Body">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Equipment">Equipment:</label>
+                                    <textarea class="textarea" placeholder="Place some text here"
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+                                        name="equipment"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div class="box-footer">
-                        <a href="{{ route('events.index') }}" class="btn btn-warning">Cancel</a>
-                        <button type="submit" class="btn btn-info pull-right">Add Game</button>
-                    </div>
             </div>
-            </form>
-            <!-- /.col-md-4 -->
+            <div class="box-footer">
+                <a href="{{ route('events.index') }}" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-info pull-right">Add Game</button>
+            </div>
+        </div>
+        </form>
+        <!-- /.col-md-4 -->
 
         </div>
         <div class="box-body pad">

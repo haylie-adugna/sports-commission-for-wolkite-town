@@ -16,11 +16,10 @@ class games extends Model
         'description',
         'game_category',
         'rules',
-        'duration',
-        'player',
-        'venue',
+        'start_date',
+        'end_date',
+        'number_of_player',
         'equipment',
-        'season',
         'governing_body',
     ];
     public function clubs()

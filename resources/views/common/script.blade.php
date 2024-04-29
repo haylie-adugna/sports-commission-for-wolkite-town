@@ -353,7 +353,7 @@
 <script type="46fdda76826106b979343b7a-text/javascript" src="{{ asset('assets/js/jss/script.js') }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="46fdda76826106b979343b7a-text/javascript"></script>
-<script type="46fdda76826106b979343b7a-text/javascript">
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

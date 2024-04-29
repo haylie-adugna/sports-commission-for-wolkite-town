@@ -17,9 +17,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('game_category')->nullable();
             $table->text('rules')->nullable();
-            $table->string('duration')->nullable();
-            $table->string('player')->nullable();
-            $table->string('venue')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+            $table->string('number_of_player')->nullable();
             $table->text('equipment')->nullable();
             $table->string('season')->nullable();
             $table->string('governing_body')->nullable();
