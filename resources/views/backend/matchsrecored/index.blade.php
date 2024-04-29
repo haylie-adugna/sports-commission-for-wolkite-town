@@ -22,7 +22,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="cbtn-selectors" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
