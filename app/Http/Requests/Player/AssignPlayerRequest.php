@@ -17,6 +17,5 @@ class AssignPlayerRequest extends FormRequest
         'user_id' => 'nullable|string',
     ];
 }
-
 }
 

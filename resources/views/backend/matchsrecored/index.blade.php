@@ -18,7 +18,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Machs Data managment Table</h3>
+            <h3 class="box-title">Machs Recored Data managment </h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -28,11 +28,12 @@
                         <th>ID</th>
                         <th>Team 1</th>
                         <th>Team 2</th>
+                        <th>Time</th>
                         <th>Referee</th>
                         <th>Assistant Referee 1</th>
                         <th>Assistant Referee 2</th>
                         <th>Start Time</th>
-                        <th>End Time</th>
+                        <th>Start Time</th>
                         <th>Venue</th>
                         <th>Medical Support</th>
                         <th>Commentator</th>
@@ -48,6 +49,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $matchs->Team1 }}</td>
                         <td>{{ $matchs->Team2 }}</td>
+                        <td>{{ $matchs->goal_time }}</td>
                         <td>{{ $matchs->Referee }}</td>
                         <td>{{ $matchs->Assistant_Referee1 }}</td>
                         <td>{{ $matchs->Assistant_Referee2 }}</td>
