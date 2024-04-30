@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header table-card-header">
-            <h5>HTML5 Export Buttons</h5>
+            <h5>User managment</h5>
         </div>
         <div class="card-block">
             <div class="dt-responsive table-responsive">
