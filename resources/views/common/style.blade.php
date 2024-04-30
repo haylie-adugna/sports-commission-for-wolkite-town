@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
 <!-- iCheck -->
 <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
-<!-- Morris chart --> 
+<!-- Morris chart -->
 <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
 <!-- jvectormap -->
 <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
@@ -363,3 +363,8 @@ display: none !important;
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/pages.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/owl.carousel.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/owl.theme.default.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/swiper.min.css') }}">

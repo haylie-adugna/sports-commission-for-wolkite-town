@@ -361,3 +361,26 @@
   gtag('config', 'UA-23581568-13');
 </script>
 <script src="{{ asset('assets/js/jss/rocket-loader.min.js') }}" data-cf-settings="46fdda76826106b979343b7a-|49" defer=""></script>
+
+
+
+<script src="{{ asset('assets/js/jss/waves.min.js') }}" type="c7bcae0684be40f056d5ef21-text/javascript"></script>
+
+
+<script type="c7bcae0684be40f056d5ef21-text/javascript" src="{{ asset('assets/js/jss/owl.carousel.min.js') }}"></script>
+<script type="c7bcae0684be40f056d5ef21-text/javascript" src="{{ asset('assets/js/jss/owl-custom.js') }}"></script>
+
+<script type="c7bcae0684be40f056d5ef21-text/javascript" src="{{ asset('assets/js/jss/swiper.min.js') }}"></script>
+<script type="c7bcae0684be40f056d5ef21-text/javascript" src="{{ asset('assets/js/jss/swiper-custom.js') }}"></script>
+<script src="{{ asset('assets/js/jss/jquery.mcustomscrollbar.concat.min.js') }}" type="c7bcae0684be40f056d5ef21-text/javascript"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="c7bcae0684be40f056d5ef21-text/javascript"></script>
+<script type="c7bcae0684be40f056d5ef21-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script src="{{ asset('assets/js/jss/rocket-loader.min.js') }}" data-cf-settings="c7bcae0684be40f056d5ef21-|49" defer=""></script></body>

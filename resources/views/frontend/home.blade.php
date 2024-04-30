@@ -154,6 +154,9 @@
                         </div>
                         <!-- /.col -->
                     </div>
+                    @include('frontend.footballl_league')
+                    @include('frontend.video')
+
                     <!-- /.row -->
                     <!-- END ACCORDION & CAROUSEL-->
 
@@ -198,4 +201,6 @@
             </div>
 
             <!-- /.content-wrapper -->
+            <div id="styleSelector">
+            </div>
 @endsection

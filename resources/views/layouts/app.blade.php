@@ -73,6 +73,7 @@
 <!-- ./wrapper -->
 @include('common.script')
 <!-- page script -->
-
+<div id="styleSelector">
+</div>
 </body>
 </html>

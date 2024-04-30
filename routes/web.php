@@ -204,6 +204,7 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
+
 // contact
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
