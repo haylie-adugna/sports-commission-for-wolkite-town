@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
             'email' => ['email', 'max:100', 'unique:users,email,id'],
             'roles.*' => ['integer'],
             'roles' => ['required', 'array'],
-            'phone_number' => ['string', 'min:10', 'max:20', 'unique:users,id'],
+            'phone_number' => ['string', 'min:10', 'max:20', 'unique:users,phone_number'],
             'password' => ['required', Password::defaults(), 'confirmed'],
             'age' => ['required', 'integer'],
             'country' => ['required'],

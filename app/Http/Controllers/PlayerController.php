@@ -6,9 +6,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clubs;
 use App\Models\Player;
+use App\Models\PlayerPerformance;
 use App\Models\User;
 use App\Http\Requests\Player\AssignPlayerRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
+use App\Http\Requests\Player\PlayerPerformanceRequest;
 use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
@@ -40,8 +42,18 @@ class PlayerController extends Controller
     public function store(AssignPlayerRequest $request)
 {
         $data = $request->all();
-
         $clubs = Player::create($data);
+        $PlayerPerformance = PlayerPerformance::create([
+            'player_id'=>$clubs->user_id,
+            'club_id'=>$clubs->club_id,
+            'total_goal'=>0,
+            'total_assist'=>0,
+            'total_yellow_card'=>0,
+            'total_red_card'=>0,
+            'total_shot'=>0,
+            'total_pass'=>0,
+            'total_tackle'=>0,
+        ]);
 
         // Redirect to the index page with success message
         return redirect()->route('players.index')->with('success', 'A player is Assigned to Club successfully');

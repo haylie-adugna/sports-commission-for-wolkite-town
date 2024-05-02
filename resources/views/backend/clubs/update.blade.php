@@ -1,14 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-
+<section class="content-header">
+    <h1>
+        Update Club Information
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">upadate</a></li>
+        <li class="active">Club: {{ $clubs->club_name }}</li>
+    </ol>
+</section>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="box box-info">
-                <div class="box-header with-border">
-                    <h2 class="box-title">Update Club Information</h2>
-                </div>
+
                 <form method="POST" action="{{ route('clubs.edit', ['id' => $clubs->id]) }}">
                     @csrf
                     <div class="box-body">

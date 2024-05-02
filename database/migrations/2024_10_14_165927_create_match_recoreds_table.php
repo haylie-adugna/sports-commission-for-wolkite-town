@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('match_id')->constrained('matchs')->onDelete('cascade');
             $table->foreignId('club_id')->constrained('clubs')->onDelete('cascade');
-            $table->integer('number_of_goal');
-            $table->foreignId('goal_scorer')->constrained('players')->onDelete('cascade');
-            $table->foreignId('goal_assistant')->constrained('users')->onDelete('cascade');
-            $table->time('goal_time');
+            $table->unsignedBigInteger('player_id');
+            $table->string('action')->nullable();
+            $table->foreign('player_id')->references('user_id')->on('players')->onDelete('cascade');
             $table->timestamps();
         });
     }

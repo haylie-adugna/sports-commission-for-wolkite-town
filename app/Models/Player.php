@@ -28,4 +28,8 @@ class Player extends Model
     {
         return $this->morphMany(Contract::class, 'contractable');
     }
+    public function playerperformance()
+    {
+        return $this->belongsTo(playerperformance::class, 'player_id');
+    }
 }

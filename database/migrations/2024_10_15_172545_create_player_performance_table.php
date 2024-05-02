@@ -13,20 +13,20 @@ class CreatePlayerPerformanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('player_performance', function (Blueprint $table) {
+        Schema::create('player_performances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('player_id');
-            $table->date('match_date');
-            $table->integer('goals_scored')->default(0);
-            $table->integer('assists')->default(0);
-            $table->integer('cards')->default(0);
-            $table->integer('red_cards')->default(0);
-            // Add more columns as per your requirements
-            $table->integer('shots_on_target')->default(0);
-            $table->integer('passes')->default(0);
-            $table->integer('tackles')->default(0);
+            $table->unsignedBigInteger('club_id');
+            $table->integer('total_goal')->default(0);
+            $table->integer('total_assist')->default(0);
+            $table->integer('total_yellow_card')->default(0);
+            $table->integer('total_red_card')->default(0);
+            $table->integer('total_shot')->default(0);
+            $table->integer('total_pass')->default(0);
+            $table->integer('total_tackle')->default(0);
             $table->timestamps();
-            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
+            $table->foreign('player_id')->references('user_id')->on('players')->onDelete('cascade');
+            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
 
         });
     }
@@ -38,6 +38,6 @@ class CreatePlayerPerformanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('player_performance');
+        Schema::dropIfExists('player_performances');
     }
 }

@@ -16,9 +16,8 @@ class CreateMatchRecoredRequest extends FormRequest
         return [
             'match_id' => 'required|string',
             'club_id'=> 'required|string',
-            'number_of_goal' => 'required|integer|min:0',
-            'goal_scorer' => 'required|string',
-            'goal_assistant' => 'required|string',
+            'player_id' => 'required|string',
+            'action' => 'required|string',
         ];
     }
 }

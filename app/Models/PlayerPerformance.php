@@ -1,20 +1,20 @@
 <?php
+namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 class PlayerPerformance extends Model
 {
     protected $fillable = [
         'player_id',
-        'league_id',
-        'goals',
-        'assists',
-        'yellow_cards',
-        'red_cards',
-        'minutes_played',
-        'shots',
-        'passes',
-        'tackles',
-        // Add more attributes as per your requirements
+        'club_id',
+        'total_goal',
+        'total_assist',
+        'total_yellow_card',
+        'total_red_card',
+        'total_shot',
+        'total_pass',
+        'total_tackle',
     ];
 
     public function player()

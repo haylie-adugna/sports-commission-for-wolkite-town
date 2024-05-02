@@ -6,7 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Clubs;
+use App\Models\Player;
 use App\Models\MatchRecored;
+use App\Models\PlayerPerformance;
 use App\Models\League;
 use App\Models\Matchs;
 use App\Http\Requests\matchsrecored\CreateMatchRecoredRequest;
@@ -38,79 +40,65 @@ class MatchRecoredController extends Controller
     public function create()
     {
         $matchs= Matchs::all();
-        return view('backend.matchsrecored.create', compact('matchs'));
+        $players= Player::all();
+        $clubs= Clubs::all();
+        return view('backend.matchsrecored.create', compact('matchs', 'players', 'clubs'));
     }
     public function store(CreateMatchRecoredRequest $request)
     {
-    $time = Carbon::now();
-    $currentTime = Carbon::parse($time)->format('Y-m-d\TH:i');
-    // Fetch all matches
-    $matches = Matchs::all();
+        $time = Carbon::now();
+        $currentTime = Carbon::parse($time)->format('Y-m-d\TH:i');
+        // Fetch all matches
+        $matches = Matchs::all();
 
-    // Check if there are matches available
-    $isMatchAvailable = false;
-    foreach ($matches as $match) {
-        $startTime = Carbon::parse($match->Start_time)->format('Y-m-d\TH:i');
-        $endTime = Carbon::parse($match->End_time)->format('Y-m-d\TH:i');
-        // dd($startTime.$endTime.$currentTime);
-        if ($startTime <= $currentTime && $endTime >= $currentTime) {
-            $isMatchAvailable = true;
-            break;
+        // Check if there are matches available
+        $isMatchAvailable = false;
+        foreach ($matches as $match) {
+            $startTime = Carbon::parse($match->Start_time)->format('Y-m-d\TH:i');
+            $endTime = Carbon::parse($match->End_time)->format('Y-m-d\TH:i');
+            // dd($startTime.$endTime.$currentTime);
+            if ($startTime <= $currentTime && $endTime >= $currentTime) {
+                $isMatchAvailable = true;
+                break;
+            }
         }
-    }
 
-    if ($isMatchAvailable) {
-        $data = $request->all();
-        $data['goal_time'] = $currentTime;
-        $matchRecord = MatchRecored::create($data);
-        $match_id = $request->input("match_id");
-        $club_id = $request->input("club_id");
-    // Retrieve all match records
-    $matches_recored = MatchRecored::all()->where('club_id', $club_id);
+        if ($isMatchAvailable) {
+            $data = $request->all();
+            $matchRecord = MatchRecored::create($data);
+            $player_id = $request->player_id;
+            $matches_recored_goal = MatchRecored::all()->where('player_id', $player_id)->where('action', "goal");
+            $matches_recored_assist = MatchRecored::all()->where('player_id', $player_id)->where('action', "assist");
+            $matches_recored_shoter = MatchRecored::all()->where('player_id', $player_id)->where('action', "shoter");
+            $matches_recored_passer = MatchRecored::all()->where('player_id', $player_id)->where('action', "passer");
+            $matches_recored_tackler = MatchRecored::all()->where('player_id', $player_id)->where('action', "tackler");
+            $matches_recored_yellow_card = MatchRecored::all()->where('player_id', $player_id)->where('action', "yellow_card");
+            $matches_recored_red_card = MatchRecored::all()->where('player_id', $player_id)->where('action', "red_card");
+        // Initialize variables to calculate league table statistics
 
-    // Initialize variables to calculate league table statistics
-    $total_points = 0;
-    $total_goals = 0;
-    $total_wins = 0;
-    $total_draws = 0;
-    $total_losses = 0;
-    $point_difference = 0;
+            $PlayerPerformance = PlayerPerformance::updateOrCreate(
+                ['player_id' => $player_id], // Search condition: Find or create a league entry with this match_id
+                [
+                'player_id'=>$player_id,
+                'club_id'=>$request->club_id,
+                'total_goal'=>$matches_recored_goal->count(),
+                'total_assist'=>$matches_recored_assist->count(),
+                'total_shot'=>$matches_recored_shoter->count(),
+                'total_pass'=>$matches_recored_tackler->count(),
+                'total_tackle'=>$matches_recored_passer->count(),
+                'total_yellow_card'=>$matches_recored_yellow_card->count(),
+                'total_red_card'=>$matches_recored_red_card->count(),
 
-    // Calculate league table statistics based on match results
-    foreach ($matches_recored as $match_recored) {
-        if ($endTime <= $currentTime) {
-            $total_points += 3;
-            $total_wins++;
-            $total_losses++;
-     }
 
-     $total_goals++;
-    }
+            ]);
+        // Redirect to the index page with success message
+        return redirect()->route('matchsrecored.index')->with('status', 'Match record created successfully');
+        } else {
+            // If match is not available, redirect back with error message
+            return back()->with('error', 'Match not available');
+        }
 
-    // Update the league table with calculated values
-    League::updateOrCreate(
-    ['club_id' => $club_id], // Search condition: Find or create a league entry with this match_id
-    [
-        'match_id' => $match_id,
-        'total_point' => $total_points,
-        'total_goal' => $total_goals,
-        'total_played' => count($matches),
-        'total_win' => $total_wins,
-        'total_draw' => $total_draws,
-        'total_losse' => $total_losses,
-        'rank' => 0, // You may want to calculate the rank based on the points
-        'point_difference' => $point_difference,
-    ]);
-
-    // Redirect to the index page with success message
-    return redirect()->route('matchsrecored.index')->with('status', 'Match record created successfully');
-    } else {
-        // If match is not available, redirect back with error message
-        return back()->with('error', 'Match not available');
-    }
    }
-
-
     public function show($id)
     {
         $leagues= MatchRecored::find($id);

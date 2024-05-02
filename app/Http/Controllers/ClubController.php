@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clubs;
+use App\Models\User;
 use App\Models\League;
 use App\Http\Requests\Clubs\CreateClubsRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
@@ -81,7 +82,8 @@ class ClubController extends Controller
     public function update($id)
     {
         $clubs = clubs::find($id);
-        return view('backend.clubs.update', compact('clubs'));
+        $users = User::where('id', $clubs->club_manager_id)->first();
+        return view('backend.clubs.update', compact('users', 'clubs'));
     }
     public function edit(UpdateClubsRequest $request, $id)
     {
