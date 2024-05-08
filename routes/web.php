@@ -18,6 +18,7 @@ use App\Http\Controllers\VolleyballLineupController;
 use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\LeagueController;
+use App\Http\Controllers\TwilioSMSController;
 
 
 
@@ -207,6 +208,7 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
+Route::get('sendSMS', [TwilioSMSController::class, 'index']);
 
 // contact
 

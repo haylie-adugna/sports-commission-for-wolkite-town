@@ -17,27 +17,45 @@
                 <div class="col-md-6">
                     <div class="box box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Today's Sports News in Ethiopia</h3>
+                            <h3 class="box-title">Today's five latest Sports News</h3>
                         </div>
                         @include('backend.events.newevent')
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="box-group" id="accordion">
                                 <!-- Example News 1 -->
-                                <div class="panel box box-primary">
-                                    <div class="box-header with-border">
-                                        <h4 class="box-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                Today Sport news in wolite town
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                        <div class="box-body">
-                                            This is the content of News 1.
+                                @foreach ($events as $event)
+                                    <div class="panel box box-primary">
+                                        <div class="box-header with-border">
+                                            <h4 class="box-title">
+                                                <a data-toggle="collapse" data-parent="#accordion"
+                                                    href="#collapse{{ $loop->iteration }}">
+                                                    {{ $event->Tittle }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse{{ $loop->iteration }}" class="panel-collapse collapse">
+                                            <div class="box-body">
+                                                <p><strong>Title:</strong> {{ $event->Tittle }}</p>
+                                                <p><strong>Type:</strong> {{ $event->Type }}</p>
+                                                <p><strong>Body:</strong> {{ $event->Body }}</p>
+                                                @if ($event->image)
+                                                    <p><strong>Image:</strong> <img
+                                                            src="{{ asset('upload/event/image') }}/{{ $event->image }}"
+                                                            alt="Event Image"></p>
+                                                @endif
+                                                @if ($event->video)
+                                                    <p><strong>Video:</strong> <iframe width="560" height="315"
+                                                            src="{{ asset('upload/event/video/' . $event->video) }}"
+                                                            frameborder="0" allowfullscreen></iframe></p>
+                                                @endif
+                                                <p><strong>Created by:</strong> {{ $event->Created_by }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
+
+
 
                                 <!-- Example News 2 -->
                                 <div class="panel box box-danger">

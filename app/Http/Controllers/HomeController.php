@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $leagues = League::with(['clubs'])->get();
         $matchs = Matchs::with(['clubs'])->get();
-        $events = events::all();
+        $events = events::latest()->take(5)->get();
 
 
         return view('frontend.home', compact('matchs', 'leagues', 'events'));
