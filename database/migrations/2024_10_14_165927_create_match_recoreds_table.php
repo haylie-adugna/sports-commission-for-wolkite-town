@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('club_id')->constrained('clubs')->onDelete('cascade');
             $table->unsignedBigInteger('player_id');
             $table->string('action')->nullable();
+            $table->Datetime('expires_at')->nullable();
             $table->foreign('player_id')->references('user_id')->on('players')->onDelete('cascade');
             $table->timestamps();
         });

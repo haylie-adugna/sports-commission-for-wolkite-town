@@ -46,17 +46,19 @@ class MatchRecoredController extends Controller
     }
     public function store(CreateMatchRecoredRequest $request)
     {
-        $time = Carbon::now();
-        $currentTime = Carbon::parse($time)->format('Y-m-d\TH:i');
+        // Set the timezone to Africa/Addis_Ababa
+        $timezone = 'Africa/Addis_Ababa';
+        $currentTime = Carbon::now($timezone)->format('Y-m-d\TH:i');
+
         // Fetch all matches
         $matches = Matchs::all();
 
         // Check if there are matches available
         $isMatchAvailable = false;
         foreach ($matches as $match) {
-            $startTime = Carbon::parse($match->Start_time)->format('Y-m-d\TH:i');
-            $endTime = Carbon::parse($match->End_time)->format('Y-m-d\TH:i');
-            // dd($startTime.$endTime.$currentTime);
+            $startTime = Carbon::parse($match->Start_time)->setTimezone($timezone)->format('Y-m-d\TH:i');
+            $endTime = Carbon::parse($match->End_time)->setTimezone($timezone)->format('Y-m-d\TH:i');
+
             if ($startTime <= $currentTime && $endTime >= $currentTime) {
                 $isMatchAvailable = true;
                 break;
@@ -64,41 +66,43 @@ class MatchRecoredController extends Controller
         }
 
         if ($isMatchAvailable) {
+            // Proceed with storing match record
+
             $data = $request->all();
             $matchRecord = MatchRecored::create($data);
             $player_id = $request->player_id;
-            $matches_recored_goal = MatchRecored::all()->where('player_id', $player_id)->where('action', "goal");
-            $matches_recored_assist = MatchRecored::all()->where('player_id', $player_id)->where('action', "assist");
-            $matches_recored_shoter = MatchRecored::all()->where('player_id', $player_id)->where('action', "shoter");
-            $matches_recored_passer = MatchRecored::all()->where('player_id', $player_id)->where('action', "passer");
-            $matches_recored_tackler = MatchRecored::all()->where('player_id', $player_id)->where('action', "tackler");
-            $matches_recored_yellow_card = MatchRecored::all()->where('player_id', $player_id)->where('action', "yellow_card");
-            $matches_recored_red_card = MatchRecored::all()->where('player_id', $player_id)->where('action', "red_card");
-        // Initialize variables to calculate league table statistics
+            $matches_recored_goal = MatchRecored::where('player_id', $player_id)->where('action', "goal")->get();
+            $matches_recored_assist = MatchRecored::where('player_id', $player_id)->where('action', "assist")->get();
+            $matches_recored_shoter = MatchRecored::where('player_id', $player_id)->where('action', "shoter")->get();
+            $matches_recored_passer = MatchRecored::where('player_id', $player_id)->where('action', "passer")->get();
+            $matches_recored_tackler = MatchRecored::where('player_id', $player_id)->where('action', "tackler")->get();
+            $matches_recored_yellow_card = MatchRecored::where('player_id', $player_id)->where('action', "yellow_card")->get();
+            $matches_recored_red_card = MatchRecored::where('player_id', $player_id)->where('action', "red_card")->get();
 
             $PlayerPerformance = PlayerPerformance::updateOrCreate(
-                ['player_id' => $player_id], // Search condition: Find or create a league entry with this match_id
+                ['player_id' => $player_id],
                 [
-                'player_id'=>$player_id,
-                'club_id'=>$request->club_id,
-                'total_goal'=>$matches_recored_goal->count(),
-                'total_assist'=>$matches_recored_assist->count(),
-                'total_shot'=>$matches_recored_shoter->count(),
-                'total_pass'=>$matches_recored_tackler->count(),
-                'total_tackle'=>$matches_recored_passer->count(),
-                'total_yellow_card'=>$matches_recored_yellow_card->count(),
-                'total_red_card'=>$matches_recored_red_card->count(),
-
-
-            ]);
-        // Redirect to the index page with success message
-        return redirect()->route('matchsrecored.index')->with('status', 'Match record created successfully');
+                    'player_id'=>$player_id,
+                    'club_id'=>$request->club_id,
+                    'total_goal'=>$matches_recored_goal->count(),
+                    'total_assist'=>$matches_recored_assist->count(),
+                    'total_shot'=>$matches_recored_shoter->count(),
+                    'total_pass'=>$matches_recored_tackler->count(),
+                    'total_tackle'=>$matches_recored_passer->count(),
+                    'total_yellow_card'=>$matches_recored_yellow_card->count(),
+                    'total_red_card'=>$matches_recored_red_card->count(),
+                ]
+            );
+            // Redirect to the index page with success message
+            return redirect()->route('matchsrecored.index')->with('status', 'Match record created successfully');
         } else {
             // If match is not available, redirect back with error message
             return back()->with('error', 'Match not available');
         }
+    }
 
-   }
+
+
     public function show($id)
     {
         $leagues= MatchRecored::find($id);

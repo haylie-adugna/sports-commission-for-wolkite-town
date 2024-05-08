@@ -196,6 +196,9 @@ Route::post('/matchsrecoredupdate/{id}', [MatchRecoredController::class, 'edit']
 Route::get('/showallmatchsrecored', [MatchRecoredController::class, 'index'])->name('matchsrecored.index');
 Route::get('/matchsrecoredhow/{id}', [MatchRecoredController::class, 'show'])->name('matchsrecored.show');
 Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy'])->name('matchsrecored.destroy');
+
+Route::get('contact-us', [ContactController::class, 'index']);
+
 });
 
 
@@ -206,8 +209,9 @@ Route::fallback(function () {
 
 
 // contact
-Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 Route::get('/aboutAs', [ContactController::class, 'aboutAs'])->name('aboutas');
+
+Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 
 require __DIR__.'/auth.php';

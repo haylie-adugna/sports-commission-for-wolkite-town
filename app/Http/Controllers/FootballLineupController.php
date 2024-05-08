@@ -7,6 +7,8 @@ use App\Http\Requests\Lineup\FootballLineupCreateRequest;
 use App\Models\FootballLineup;
 use Illuminate\Http\Request;
 use App\Models\Clubs;
+use App\Models\MatchRecored;
+use App\Models\Player;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -20,10 +22,27 @@ class FootballLineupController extends Controller
     return view('backend.lineup.football.index', compact('footballclubLineup'));
 }
 
-    public function create()
-    {
-        return view('backend.lineup.football.create');
+public function create()
+{
+    $currentDate = now();
+    // Fetch all match records where action is 'red_card'
+    $matchRecords = MatchRecored::where('action', 'red_card')->where('expires_at', '>=', $currentDate)->get();
+
+    // Initialize an empty array to store player IDs with red card
+    $playerIdsWithRedCard = [];
+
+    // Extract player IDs from match records
+    foreach ($matchRecords as $matchRecord) {
+        $playerIdsWithRedCard[] = $matchRecord->player_id;
     }
+
+    // Fetch players who haven't received a red card
+    $players = Player::whereNotIn('id', $playerIdsWithRedCard)->get();
+
+    // Return the view with players data
+    return view('backend.lineup.football.create', compact('players'));
+}
+
 
     public function store(FootballLineupCreateRequest $request)
     {

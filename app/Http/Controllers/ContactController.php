@@ -1,38 +1,39 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\contact;
+use App\Models\Contact;
 
 use Illuminate\Http\Request;
-
 
 class ContactController extends Controller
 {
     /**
-     * Show the contact form.
+     * Write code on Method
+     *
+     * @return response()
      */
-    public function showForm()
+    public function index()
     {
         return view('common.contact');
     }
-    public function aboutAs()
-    {
-        return view('frontend.aboutas');
-    }
 
     /**
-     * Store the contact form submission.
+     * Write code on Method
+     *
+     * @return response()
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'message' => 'required|max:500',
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits:10|numeric',
+            'subject' => 'required',
+            'message' => 'required'
         ]);
 
-        // Process the validated data (e.g., send email, save to database, etc.)
+        Contact::create($request->all());
 
-        // Redirect the user back with a success message
-        return redirect()->back()->with('status', 'Your message has been sent successfully!');
+        return redirect()->back()
+                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
     }
 }

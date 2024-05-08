@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <section class="content">
     <div class="row">
@@ -9,20 +8,17 @@
                     <h3 class="box-title">Football club lineup preparation</h3>
                 </div>
                 <div class="box-body">
-
                     <div class="box-body">
                         <div class="pull-left">
                             <img src="{{ asset('assets/images/footballlineup.png') }}" alt="footbal lineup"
                                 style="width: 1160px; height: 400px;">
                         </div>
                     </div>
-
                     <form action="{{ route('football_lineup.register') }}" method="POST">
                         @csrf
-
                         <!-- Lineup Table -->
                         <label>Main Squad:</label>
-                        <table class="table">
+                        <table class="table responsive">
                             <thead>
                                 <tr>
                                     <th>Jersey Number</th>
@@ -38,15 +34,9 @@
                                                 type="number" name="jerseyNumber{{ $i }}" class="form-control"></td>
                                         <td class="col-md-3">
                                             <select class="form-control" name="playerName{{ $i }}" id="game_type_id">
-                                                @foreach(DB::table('players')
-                                                ->select('user_id')
-                                                ->groupBy('user_id')
-                                                ->get() as $player)
-                                                @php
-                                                    $user = \App\Models\User::find($player->user_id);
-                                                @endphp
-                                                <option value="{{ $user->id }}">
-                                                    {{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}
+                                                @foreach($players as $player)
+                                                <option value="{{ $player->user->id }}">
+                                                    {{ $player->user->first_name }} {{ $player->user->middle_name }} {{ $player->user->last_name }}
                                                 </option>
                                             @endforeach
                                             </select>
@@ -54,8 +44,16 @@
                                         <td class="col-md-3">
                                             <select name="position{{ $i }}" class="form-control">
                                                 <option value="GK">Goalkeeper</option>
-                                                <option value="CB">Center Back</option>
+                                                <option value="RB">Right Back</option>
                                                 <option value="LB">Left Back</option>
+                                                <option value="CB">Center Back (or Central Defender)</option>
+                                                <option value="SW">Sweeper (less common in modern formations)</option>
+                                                <option value="DM">Defensive Midfielder (or Holding Midfielder)</option>
+                                                <option value="CM">Central Midfielder (or Box-to-Box Midfielder)</option>
+                                                <option value="AM">Attacking Midfielder (or Playmaker)</option>
+                                                <option value="RM">Right Midfielder (or Right Winger)</option>
+                                                <option value="LM">Left Midfielder (or Left Winger)</option>
+                                                <option value="ST">Striker (or Center Forward)</option>
                                                 <!-- Add more positions as needed -->
                                             </select>
                                         </td>
@@ -97,22 +95,33 @@
                                             </select>
 
                                         </td>
-                                        <td><input value="{{ old('substitutePosition'.$i, '') }}" type="text" name="substitutePosition{{ $i }}"
-                                                class="form-control"></td>
+                                        <td>
+                                            <select name="substitutePosition{{ $i }}" class="form-control">
+                                                <option value="">Select Position</option>
+                                                <option value="GK" {{ old('substitutePosition'.$i) == 'GK' ? 'selected' : '' }}>Goalkeeper</option>
+                                                <option value="RB" {{ old('substitutePosition'.$i) == 'RB' ? 'selected' : '' }}>Right Back</option>
+                                                <option value="LB" {{ old('substitutePosition'.$i) == 'LB' ? 'selected' : '' }}>Left Back</option>
+                                                <option value="CB" {{ old('substitutePosition'.$i) == 'CB' ? 'selected' : '' }}>Center Back (or Central Defender)</option>
+                                                <option value="SW" {{ old('substitutePosition'.$i) == 'SW' ? 'selected' : '' }}>Sweeper (less common in modern formations)</option>
+                                                <option value="DM" {{ old('substitutePosition'.$i) == 'DM' ? 'selected' : '' }}>Defensive Midfielder (or Holding Midfielder)</option>
+                                                <option value="CM" {{ old('substitutePosition'.$i) == 'CM' ? 'selected' : '' }}>Central Midfielder (or Box-to-Box Midfielder)</option>
+                                                <option value="AM" {{ old('substitutePosition'.$i) == 'AM' ? 'selected' : '' }}>Attacking Midfielder (or Playmaker)</option>
+                                                <option value="RM" {{ old('substitutePosition'.$i) == 'RM' ? 'selected' : '' }}>Right Midfielder (or Right Winger)</option>
+                                                <option value="LM" {{ old('substitutePosition'.$i) == 'LM' ? 'selected' : '' }}>Left Midfielder (or Left Winger)</option>
+                                                <option value="ST" {{ old('substitutePosition'.$i) == 'ST' ? 'selected' : '' }}>Striker (or Center Forward)</option>
+                                            </select>
+                                        </td>
+
                                         <td><input value="{{ old('substituteReason'.$i, '') }}" type="text" name="substituteReason{{ $i }}"
                                                 class="form-control"></td>
                                     </tr>
                                 @endfor
                             </tbody>
-
                         </table>
-
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>
