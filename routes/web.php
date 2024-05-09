@@ -209,6 +209,11 @@ Route::fallback(function () {
 
 // sms varification
 Route::get('sendSMS', [TwilioSMSController::class, 'index']);
+// games
+Route::get('detail/football', [HomeController::class, 'football'])->name('football');
+Route::get('detail/vollyball', [HomeController::class, 'vollyball'])->name('vollyball');
+Route::get('detail/basketball', [HomeController::class, 'basketball'])->name('basketball');
+Route::get('detail/culturalgames', [HomeController::class, 'culturalgames'])->name('culturalgames');
 
 // contact
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');

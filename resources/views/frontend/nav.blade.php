@@ -17,11 +17,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sports <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Football</a></li>
-                <li><a href="#">Vollyball</a></li>
-                <li><a href="#">BasketBall</a></li>
+                <li><a href="{{ route('football') }}">Football</a></li>
+                <li><a href="{{ route('vollyball') }}">Vollyball</a></li>
+                <li><a href="{{ route('basketball') }}">BasketBall</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Cultural Games</a></li>
+                <li><a href="{{ route('culturalgames') }}">Cultural Games</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Ethiopian league</a></li>
               </ul>
