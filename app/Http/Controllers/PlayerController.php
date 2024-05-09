@@ -8,6 +8,7 @@ use App\Models\Clubs;
 use App\Models\Player;
 use App\Models\PlayerPerformance;
 use App\Models\User;
+use App\Models\Role;
 use App\Http\Requests\Player\AssignPlayerRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
 use App\Http\Requests\Player\PlayerPerformanceRequest;
@@ -37,7 +38,11 @@ class PlayerController extends Controller
     }
     public function assign()
     {
-        return view('backend.players.assign');
+        $clubs = Clubs::pluck('club_name', 'id');
+        $role = Role::where('title', 'player')->firstOrFail();
+        $players = $role->users()->get();
+
+        return view('backend.players.assign', compact('players', 'clubs'));
     }
     public function store(AssignPlayerRequest $request)
 {

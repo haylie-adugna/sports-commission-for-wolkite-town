@@ -13,13 +13,12 @@
             <li class="active">Clubs tables</li>
         </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <a href="{{ route('players.assign') }}" class="btn btn-success mb-3">Assign Player to Club</a>

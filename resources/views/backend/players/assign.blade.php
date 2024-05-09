@@ -15,20 +15,21 @@
                                 <div class="form-group">
                                     <label for="coach_name_id">Select Player:</label>
                                     <select class="form-control" name="user_id" id="coach_name_id">
-                                        @forelse(\App\Models\Role::where('title', 'player')->first()->users ?? [] as $coach)
-                                            <option value="{{ $coach->id }}">{{ $coach->first_name }}</option>
+                                        @forelse($players as $player)
+                                            <option value="{{ $player->id }}">{{ $player->first_name }} {{ $player->last_name }}</option>
                                         @empty
-                                            <option value="" disabled>No available coach</option>
+                                            <option value="" disabled>No available player</option>
                                         @endforelse
                                     </select>
+
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="club_manager_id">Select Club:</label>
                                     <select class="form-control" name="club_id" id="club_manager_id" required>
-                                        @forelse(\App\Models\Clubs::all() as $clubManager)
-                                            <option value="{{ $clubManager->id }}">{{ $clubManager->club_name }}</option>
+                                        @forelse($clubs as $id => $clubName)
+                                            <option value="{{ $id }}">{{ $clubName }}</option>
                                         @empty
                                             <option value="" disabled>No club managers available</option>
                                         @endforelse
