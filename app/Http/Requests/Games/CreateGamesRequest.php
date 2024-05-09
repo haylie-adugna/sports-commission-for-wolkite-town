@@ -13,7 +13,7 @@ class CreateGamesRequest extends FormRequest
     public function rules()
 {
     return [
-        'game_type' => 'required|string|max:255',
+        'game_type' => 'required|string|max:255|unique:games,game_type',
         'description' => 'required|string',
         'game_category' => 'required|string|max:255',
         'rules' => 'required|string',

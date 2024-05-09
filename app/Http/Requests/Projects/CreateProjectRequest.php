@@ -16,7 +16,7 @@ class CreateProjectRequest extends FormRequest
         'project_name' => 'required|string',
         'project_manager_id' => 'required|string|unique:projects,project_manager_id',
         'coach_name_id' => 'nullable|string|unique:projects,coach_name_id',
-        'contact_information' => 'required|string',
+        'contact_information' => 'required|string|unique:projects,contact_information',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         'social_media_link' => 'nullable|string',
         'Location' => 'nullable|string', // Changed from 'location' to 'Location' to match the form

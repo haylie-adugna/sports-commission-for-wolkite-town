@@ -198,7 +198,6 @@ Route::get('/showallmatchsrecored', [MatchRecoredController::class, 'index'])->n
 Route::get('/matchsrecoredhow/{id}', [MatchRecoredController::class, 'show'])->name('matchsrecored.show');
 Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy'])->name('matchsrecored.destroy');
 
-Route::get('contact-us', [ContactController::class, 'index']);
 
 });
 
@@ -208,12 +207,12 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
+// sms varification
 Route::get('sendSMS', [TwilioSMSController::class, 'index']);
 
 // contact
-
+Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::get('/aboutAs', [ContactController::class, 'aboutAs'])->name('aboutas');
-
 Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 
 require __DIR__.'/auth.php';

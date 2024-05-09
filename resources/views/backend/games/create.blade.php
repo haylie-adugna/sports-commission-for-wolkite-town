@@ -22,15 +22,15 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Title:</label>
-                                <input type="text" class="form-control" name="game_type" placeholder="Title">
+                                <input type="text" class="form-control" name="game_type" value="{{ old('game_type') }}" placeholder="Title">
                             </div>
                             <div class="form-group">
                                 <label for="Description">Description:</label>
-                                <input type="textarea" class="form-control" name="description" placeholder="Descriptions">
+                                <input type="textarea" class="form-control" name="description" value="{{ old('description') }}" placeholder="Descriptions">
                             </div>
                             <div class="form-group">
                                 <label for="GameCategory">Game Category or Type</label>
-                                <select class="form-control select2" style="width: 100%;" name="game_category"
+                                <select class="form-control select2" style="width: 100%;" value="{{ old('game_category') }}" name="game_category"
                                     data-insert-attribute="true">
                                     <option>Team Sport</option>
                                     <option>Individual Sport</option>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Rules">Rules:</label>
-                                <textarea class="textarea" placeholder="Place some text here"
+                                <textarea class="textarea" placeholder="Place some text here" value="{{ old('rules') }}"
                                     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                                     name="rules"></textarea>
                             </div>
@@ -53,19 +53,19 @@
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="start_date">Start Date and Time:</label>
-                                            <input type="datetime-local" class="form-control" id="start_date"
+                                            <input type="datetime-local" class="form-control" value="{{ old('start_date') }}" id="start_date"
                                                 name="start_date">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="end_date">End Date and Time:</label>
-                                            <input type="datetime-local" class="form-control" id="end_date"
+                                            <input type="datetime-local" value="{{ old('end_date') }}" class="form-control" id="end_date"
                                                 name="end_date">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="number_of_player">Players or Participants:</label>
-                                            <input type="number" class="form-control" name="number_of_player"
+                                            <input type="number" value="{{ old('number_of_player') }}" class="form-control" name="number_of_player"
                                                 placeholder="Players or Participants">
                                         </div>
                                     </div>
@@ -77,14 +77,14 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="GoverningBody">Governing Body:</label>
-                                    <input type="text" class="form-control" name="governing_body"
+                                    <input type="text" class="form-control" name="governing_body" value="{{ old('governing_body') }}"
                                         placeholder="Governing Body">
                                 </div>
                                 <div class="form-group">
                                     <label for="Equipment">Equipment:</label>
                                     <textarea class="textarea" placeholder="Place some text here"
                                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                        name="equipment"></textarea>
+                                        name="equipment" value="{{ old('equipment') }}"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -13,6 +13,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
             <li><a href="{{ route('aboutas') }}">About Us</a></li>
+            <li><a href="{{ route('contact-us') }}">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sports <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

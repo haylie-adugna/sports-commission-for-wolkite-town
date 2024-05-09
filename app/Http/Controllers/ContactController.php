@@ -13,7 +13,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('common.contact');
+        return view('common.contactpage');
+    }
+    public function aboutAs()
+    {
+        return view('frontend.aboutas');
     }
 
     /**

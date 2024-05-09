@@ -15,7 +15,7 @@
               <div class="col-xs-3">
                 <label for="title">Event Title:</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="Tittle" placeholder="Title" required>
+                  <input type="text" class="form-control" name="Tittle" value="{{ old('Tittle') }}" placeholder="Title" required>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                   </span>
