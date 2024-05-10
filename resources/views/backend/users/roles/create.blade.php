@@ -6,7 +6,7 @@
         {{ trans('Create New Role') }}
     </div>
 
-    <div class="card-body">
+    <div class="card">
         <form method="POST" action="{{ route("admin.roles.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -19,10 +19,12 @@
             <div class="form-group">
                 <label class="required" for="permissions">{{ trans('Assign permissions for Roles You want to Create') }}</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                    <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='select-all'>select all
+                    </button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='deselect-all'>deselect all
+                    </button>
                 </div>
-                <select class="form-control select2 {{ $errors->has('permissions') ? 'is-invalid' : '' }}" name="permissions[]" id="permissions" multiple="multiple" required>
+                <select class="form-control select2 {{ $errors->has('permissions') ? 'is-invalid' : '' }}" name="permissions[]"  id='public-methods' multiple='multiple' required>
                     @foreach($permissions as $id => $permission)
                         <option value="{{ $id }}" {{ in_array($id, old('permissions', [])) ? 'selected' : '' }}>{{ $permission }}</option>
                     @endforeach
@@ -34,7 +36,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
+                    {{ trans('Save') }}
                 </button>
             </div>
         </form>

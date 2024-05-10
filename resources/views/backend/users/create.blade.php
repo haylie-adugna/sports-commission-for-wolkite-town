@@ -127,7 +127,11 @@
 
                   <div class="form-group">
                     <label class="required" for="roles">Select Roles</label>
-                    <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                    <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='select-all'>select all
+                    </button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='deselect-all'>deselect all
+                    </button>
+                    <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id='public-methods' multiple required>
                         @foreach($roles as $id => $role)
                             <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
                         @endforeach

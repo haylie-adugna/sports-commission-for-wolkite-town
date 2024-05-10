@@ -102,11 +102,15 @@
                                 <label for="City">City:</label>
                                 <input type="text" class="form-control" name="city" placeholder="city" value="{{ $user->city }}">
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-4">
                                 <label class="required" for="roles">user roles</label>
-                                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='select-all'>select all
+                                </button>
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='deselect-all'>deselect all
+                                </button>
+                                <select style="height: 150px; border: 3px solid #4d8ae4;" class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id='public-methods' multiple='multiple'required>
                                     @foreach($roles as $id => $role)
-                                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $role }}</option>
+                                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('roles'))

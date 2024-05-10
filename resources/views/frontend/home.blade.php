@@ -4,20 +4,25 @@
     <div class="content-wrapper">
         <div class="container.pt-0.pl-1.pb-0.pr-1">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="animation-container">
-                    <marquee behavior="scroll" direction="left" class="page-header text-center">wolkite town sport commission
-                    </marquee>
-                </div>
+            <div class="shaper">
+                <marquee behavior="slide" direction="left"><h1 style="color: black">Welcome To wolkite town sport commission
+                </h1></marquee>
 
-            </section>
+                <h2 style="color: rgb(186, 0, 0)">wolkite town sport commission
+                </h2>
+              </div>
+            <section class="content-header">
+
+
+            </section >
+
             <!-- START ACCORDION & CAROUSEL-->
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="box box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Today's five latest Sports News</h3>
+                            <h3 class="box-title">Five latest Sports News</h3>
                         </div>
                         @include('backend.events.newevent')
                         <!-- /.box-header -->

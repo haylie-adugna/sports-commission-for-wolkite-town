@@ -362,9 +362,16 @@ display: none !important;
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/buttons.datatables.min-2.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/pages.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/owl.theme.default.css') }}">
 
+
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/swiper.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/css/csss/select2.min.css') }}" />
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/bootstrap-multiselect.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/multi-select.css') }}" />
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/csss/pages.css') }}">

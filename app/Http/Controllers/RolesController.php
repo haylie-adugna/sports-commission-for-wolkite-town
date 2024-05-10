@@ -16,7 +16,7 @@ class RolesController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::with(['permissions'])->get();
 
@@ -26,10 +26,10 @@ class RolesController extends Controller
     public function create()
     {
 
-        abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::pluck('title', 'id');
-        
+
 
         return view('backend.users.roles.create', compact('permissions'));
     }
@@ -44,7 +44,7 @@ class RolesController extends Controller
 
     public function edit(Role $role)
     {
-        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::pluck('title', 'id');
 
@@ -63,7 +63,7 @@ class RolesController extends Controller
 
     public function show(Role $role)
     {
-        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $role->load('permissions');
 
@@ -72,7 +72,7 @@ class RolesController extends Controller
 
     public function destroy(Role $role)
     {
-        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $role->delete();
 

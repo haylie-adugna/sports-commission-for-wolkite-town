@@ -148,7 +148,7 @@ Route::get('/matchshow/{id}', [MatchController::class, 'show'])->name('matchs.sh
 Route::get('/deletematch/{id}', [MatchController::class, 'destroy'])->name('matchs.destroy');
 
 //leagues
-Route::get('/manage/league', [LeagueController::class, 'index'])->name('leagues.index');
+Route::get('/manage/league/football', [LeagueController::class, 'index'])->name('leagues.index');
 Route::get('/create/league', [LeagueController::class, 'create'])->name('leagues.create');
 Route::get('update-league/{leagues}', [LeagueController::class,'update'])->name('leagues.update');
 Route::post('update-league/{leagues}', [LeagueController::class, 'edit'])->name('leagues.edit');

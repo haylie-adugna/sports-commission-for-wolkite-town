@@ -4,13 +4,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Clubs Data Management Table
+            Leagues Data Management Table
             <small>advanced tables</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Tables</a></li>
-            <li class="active">Clubs tables</li>
+            <li class="active">Leagues tables</li>
         </ol>
     </section>
 
@@ -20,17 +20,17 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Clubs Data Management Table</h3>
+                        <h3 class="box-title">Leagues Data Management Table</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <a href="{{ route('leagues.create') }}" class="btn btn-success mb-3">Add New Club</a>
+                        <a href="{{ route('clubs.create') }}" class="btn btn-success mb-3">Add New Club</a>
                         </br>
                         <table id="basic-btn" class="table table-striped table-bordered nowrap">
                             <thead>
                                 <tr>
-                                    <th>League ID</th>
-                                    <th>Club ID</th>
+                                    {{-- <th>League ID</th>
+                                    <th>Club ID</th> --}}
                                     <th>Club Name</th>
                                     <th>Total played</th>
                                     <th>Won</th>
@@ -49,8 +49,8 @@
                             <tbody>
                                 @foreach ($leagues as $league)
                                     <tr>
-                                        <td>{{ $league->id }}</td>
-                                        <td>{{ $league->club_id }}</td>
+                                        {{-- <td>{{ $league->id }}</td>
+                                        <td>{{ $league->club_id }}</td> --}}
                                         <td>{{ $league->clubs->club_name }}</td> <!-- corrected line -->
                                         <td>{{ $league->total_played }}</td>
                                         <td>{{ $league->total_win }}</td>

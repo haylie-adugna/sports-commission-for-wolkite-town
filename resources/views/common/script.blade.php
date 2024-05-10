@@ -376,7 +376,7 @@
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="c7bcae0684be40f056d5ef21-text/javascript"></script>
-<script type="c7bcae0684be40f056d5ef21-text/javascript">
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -384,3 +384,18 @@
   gtag('config', 'UA-23581568-13');
 </script>
 <script src="{{ asset('assets/js/jss/rocket-loader.min.js') }}" data-cf-settings="c7bcae0684be40f056d5ef21-|49" defer=""></script></body>
+
+
+
+<script src="{{ asset('assets/js/jss/waves.min.js') }}" type="88add89075ed2b878b934720-text/javascript"></script>
+<script type="88add89075ed2b878b934720-text/javascript" src="{{ asset('assets/js/jss/select2.full.min.js') }}"></script>
+<script type="88add89075ed2b878b934720-text/javascript" src="{{ asset('assets/js/jss/jquery.multi-select.js') }}"></script>
+<script type="88add89075ed2b878b934720-text/javascript" src="{{ asset('assets/js/jss/select2-custom.js') }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script src="{{ asset('assets/js/jss/rocket-loader.min.js') }}" data-cf-settings="88add89075ed2b878b934720-|49" defer=""></script></body>

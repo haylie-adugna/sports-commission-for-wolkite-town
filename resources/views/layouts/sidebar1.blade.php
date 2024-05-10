@@ -36,7 +36,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-    @can('user_management_access')
+    {{-- @can('user_management_access') --}}
         <li class="treeview">
           <a href="#">
             <i class="fa fa-fw fa-users"></i>
@@ -45,7 +45,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route("admin.users.index") }}"><i class="fa fa-fw fa-gear"></i> User managment</a></li>
-            @can('permission_access')
+            {{-- @can('permission_access') --}}
                     <li class="nav-item">
                         <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                             <i class="fa fa-fw fa-gear">
@@ -54,8 +54,8 @@
                             manage permission
                         </a>
                     </li>
-                @endcan
-                @can('role_access')
+                {{-- @endcan --}}
+                {{-- @can('role_access') --}}
                     <li class="nav-item">
                         <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                             <i class="fa fa-fw fa-gear">
@@ -64,14 +64,14 @@
                             manage role
                         </a>
                     </li>
-                @endcan
+                {{-- @endcan --}}
             <li><a href="{{route('users.analaysis')}}"><i class="fa fa-fw fa-spinner"></i> User Analysis</a></li>
-            @can('manage_staff_user')
+            {{-- @can('manage_staff_user') --}}
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-fw fa-user-secret"></i> Staff user</a></li>
-            @endcan
+            {{-- @endcan --}}
           </ul>
         </li>
-    @endcan
+    {{-- @endcan --}}
 
         <li>
           <a href="pages/widgets.html">
