@@ -19,6 +19,8 @@ use App\Http\Controllers\MatchRecoredController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\LeagueController;
 use App\Http\Controllers\TwilioSMSController;
+use App\Http\Controllers\UsersViewController;
+use App\Http\Controllers\GuessResultController;
 
 
 
@@ -188,6 +190,16 @@ Route::post('/projectedit/{id}', [projectcontroller::class, 'edit'])->name('proj
 Route::get('/showallproject', [projectcontroller::class, 'index'])->name('project.index');
 Route::get('/projectshow/{id}', [projectcontroller::class, 'show'])->name('project.show');
 Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('project.destroy');
+// un uthorized users view
+Route::get('/view/clubs', [UsersViewController::class, 'clubs'])->name('view.clubs');
+Route::get('/view/events', [UsersViewController::class, 'events'])->name('view.events');
+Route::get('/view/games', [UsersViewController::class, 'games'])->name('view.games');
+Route::get('/view/leagues', [UsersViewController::class, 'leagues'])->name('view.leagues');
+Route::get('/view/matchs', [UsersViewController::class, 'matchs'])->name('view.matchs');
+Route::get('/view/players', [UsersViewController::class, 'players'])->name('view.players');
+Route::get('/view/venue', [UsersViewController::class, 'venue'])->name('view.venue');
+Route::get('/view/news', [UsersViewController::class, 'news'])->name('view.news');
+Route::get('/view/news', [UsersViewController::class, 'news'])->name('guess_result');
 
 // matchsrecored
 Route::get('/creatematchsrecored', [MatchRecoredController::class, 'create'])->name('matchsrecored.create');
@@ -198,10 +210,14 @@ Route::get('/showallmatchsrecored', [MatchRecoredController::class, 'index'])->n
 Route::get('/matchsrecoredhow/{id}', [MatchRecoredController::class, 'show'])->name('matchsrecored.show');
 Route::get('/deletematchsrecored/{id}', [MatchRecoredController::class, 'destroy'])->name('matchsrecored.destroy');
 
+Route::get('/view/my-guess-results', [GuessResultController::class, 'index'])->name('guess.result.index');
+Route::get('guess-result/{match_id}', [GuessResultController::class, 'show'])->name('guess_result');
+Route::post('guess-results/{match_id}', [GuessResultController::class, 'store'])->name('guess_result.store');
+
 
 });
 
-
+// ->middleware('checkPermission')
 
 Route::fallback(function () {
     return view('errors.404');

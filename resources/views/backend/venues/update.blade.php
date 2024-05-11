@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h2 class="box-title">Update Club Information</h2>
+                    <h2 class="box-title">Update Venue Information</h2>
                 </div>
                 <form method="POST" action="{{ route('venue.edit', ['id' => $venues->id]) }}">
                     @csrf

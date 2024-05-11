@@ -29,7 +29,7 @@ class VenueUpdateRequest extends FormRequest
             'address' => 'sometimes|required|string',
             'capacity' => 'sometimes|required|integer',
             'facilities' => 'sometimes|required|string',
-            'layout' => 'nullable|image|mimes:jpeg,png,jpg,gif',  // Assuming it's a string, change if necessary
+            'layout' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Assuming it's a string, change if necessary
             'availability' => 'sometimes|required|string',
             'contact_information' => 'sometimes|required|string',
             'accessibility' => 'sometimes|required|string',

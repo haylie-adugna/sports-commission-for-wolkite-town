@@ -47,8 +47,8 @@
                     @foreach ($matchs as $matchs)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $matchs->Team1 }}</td>
-                        <td>{{ $matchs->Team2 }}</td>
+                        <td>{{ $matchs->team1->club_name }}</td>
+                        <td>{{ $matchs->team2->club_name }}</td>
                         <td>{{ $matchs->Referee }}</td>
                         <td>{{ $matchs->Assistant_Referee1 }}</td>
                         <td>{{ $matchs->Assistant_Referee2 }}</td>
@@ -56,7 +56,7 @@
                         <td>{{ $matchs->End_time }}</td>
                         <td>{{ $matchs->Venue }}</td>
                         <td>{{ $matchs->Medical_Support }}</td>
-                        <td>{{ $matchs->Commentator }}</td>
+                        <td>{{ $matchs->commentator->first_name }}</td>
                         <td>{{ $matchs->Promoter }}</td>
                         <td>{{ $matchs->Ticket }}</td>
                         <td>{{ $matchs->Recored_Keeping }}</td>

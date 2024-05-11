@@ -1,6 +1,7 @@
 @extends('welcome')
 <section>
-    <div class="col-md-12">
+    <div class="loader"></div>
+    <div class="col-md-12 bg-blue">
         <!-- Contact Form -->
         <div class="box box-primary">
             <div class="box-header">
@@ -82,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group text-center pull-right">
+                    <div class="form-group text-center">
                         <button class="btn btn-success btn-submit">Submit</button>
                     </div>
                 </form>
