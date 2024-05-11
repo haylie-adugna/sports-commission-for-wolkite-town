@@ -15,9 +15,11 @@
 
   @include('layouts.navigation')
   @include('layouts.sidebar1')
-
+ 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <div class="loaders"></div>
+
     <div class="content" >
 
         {{--Error Alert Area--}}
