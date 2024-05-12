@@ -12,6 +12,7 @@ class MatchRecored extends Model
         'match_id',
         'club_id',
         'player_id',
+        'expires_at',
         'action',
         // Add more attributes as per your requirements
     ];

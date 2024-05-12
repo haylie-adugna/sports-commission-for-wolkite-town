@@ -4,14 +4,9 @@
      <!-- Content Header (Page header) -->
      <section class="content-header">
         <h1>
-          Data Tables
-          <small>advanced tables</small>
+          Events
+          <small>wolkite town</small>
         </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Event tables</li>
-        </ol>
       </section>
       <!-- Main content -->
       <section class="content">
@@ -23,12 +18,10 @@
             @foreach ($events as $index => $event)
             <div class="col-md-4">
                 <div class="card {{ $colors[$index % count($colors)] }}">
-                    <div class="card-header">
-                        <h3 class="card-title">Event ID: {{ $loop->iteration }}</h3>
-                    </div>
+
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="bg-black text-center">
+                        <div class="bg-black text-center" style="height: 50px;">
                             <p><strong>{{ $event->Type }}</strong> </p>
                         </div>
 
@@ -45,6 +38,29 @@
                         <p><strong>Created By:</strong> {{ $event->Created_by }}</p>
                     </div>
                     <!-- /.card-body -->
+
+                    <!-- Like, Share, Comment section -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->
             </div>
@@ -53,6 +69,7 @@
         </div>
         <!-- /.row -->
     </section>
+
 
 @endsection
 

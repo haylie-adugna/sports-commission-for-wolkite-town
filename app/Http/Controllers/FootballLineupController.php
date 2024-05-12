@@ -24,7 +24,7 @@ class FootballLineupController extends Controller
 
 public function create()
 {
-    $currentDate = now();
+    $currentDate = now()->format('Y-m-d H:i:s');
     // Fetch all match records where action is 'red_card'
     $matchRecords = MatchRecored::where('action', 'red_card')->where('expires_at', '>=', $currentDate)->get();
 

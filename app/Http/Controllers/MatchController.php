@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matchs;
+use App\Models\MatchRecored;
 use App\Http\Requests\Matchs\CreateMatchsRequest;
 use App\Http\Requests\Matchs\UpdateMatchsRequest;
 use Illuminate\Support\Facades\DB;
@@ -33,8 +34,30 @@ class MatchController extends Controller
     public function store(CreateMatchsRequest $request)
     {
         // Create a new match record
-
-        matchs::create($request->all());
+        $match = Matchs::create($request->all());
+        $team1_club_id = $request->input('Team1');//1
+        $team2_club_id = $request->input('Team2');//2
+        // Fetch single player record instead of collection
+        $team1_player_red_card = MatchRecored::where('club_id', $team1_club_id)
+            ->where('action', 'red_card')
+            ->first(); // Use first() instead of get()
+        $team2_player_red_card = MatchRecored::where('club_id', $team2_club_id)
+            ->where('action', 'red_card')
+            ->first(); // Use first() instead of get()
+        if ($team1_player_red_card) {
+            // Update the single player record
+           $match_record_expires_at= MatchRecored::find($team1_player_red_card->id);
+            $match_record_expires_at->update([
+                'expires_at' => $match->End_time
+            ]);
+        }
+        if ($team2_player_red_card) {
+            // Update the single player record
+            $match_record_expires_at= MatchRecored::find($team2_player_red_card->id);
+            $match_record_expires_at->update([
+                'expires_at' => $match->End_time
+            ]);
+        }
 
         // Redirect to the index page with success message
         return redirect()->route('matchs.index')->with('success', 'Match created successfully');
@@ -68,7 +91,6 @@ class MatchController extends Controller
         return redirect()->route('matchs.update',$id)->with('success', 'update successful!');
 
     }
-
 
     /**
      * Remove the specified resource from storage.
