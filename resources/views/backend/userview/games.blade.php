@@ -22,12 +22,11 @@
             @foreach ($games as $index => $game)
             <div class="col-md-4">
                 <div class="card {{ $colors[$index % count($colors)] }}">
-                    <div class="card-header">
-                        <h3 class="card-title">Game ID: {{ $loop->iteration }}</h3>
+                    <div class="card-header text-center">
+                        <h3 class="card-title bg-black">{{ $game->game_type }}</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <p><strong>Game Type:</strong> {{ $game->game_type }}</p>
                         <p><strong>Start Date and Time:</strong> {{ $game->start_date }}</p>
                         <p><strong>End Date and Time:</strong> {{ $game->end_date }}</p>
                         <p><strong>Governing Body:</strong> {{ $game->governing_body }}</p>

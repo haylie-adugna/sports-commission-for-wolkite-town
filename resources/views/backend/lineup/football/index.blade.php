@@ -4,27 +4,31 @@
     <div class="container">
         <h2>Football Club Lineup</h2>
 
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="cbtn-selectors" class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Jersey Number</th>
                     <th>Player Name</th>
                     <th>Position</th>
                     <th>Captain</th>
-                    <th>club_name</th>
+                    <th>Club Name</th> <!-- Updated column header -->
                 </tr>
             </thead>
             <tbody>
                 @foreach ($footballclubLineup as $player)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $player->jersey_number }}</td>
-                        <td>{{ $player->user->first_name }} {{ $player->user->last_name }}</td>
+                        <td>{{ $player->player->user->first_name }} {{ $player->player->user->last_name }}</td> <!-- Access player through the player relationship -->
                         <td>{{ $player->position }}</td>
                         <td>{{ $player->captain ? 'Yes' : 'No' }}</td>
-                        <td>{{ $player->clubs->club_name }}</td>
+                        <td>{{ $player->player->club->club_name }}</td> <!-- Access club_name through the player's club relationship -->
                     </tr>
                 @endforeach
             </tbody>
+        </table>
+
 
 
         </table>

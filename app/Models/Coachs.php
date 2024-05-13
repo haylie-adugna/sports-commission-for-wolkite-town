@@ -1,16 +1,15 @@
 <?php
-// app\Models\Coach.php
+// app\Models\Player.php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Coach extends Model
+class Coachs extends Model
 {
     protected $fillable = [
         'user_id',
         'club_id',
-        'coach_name',
         'time',
         // Add more fields as needed
     ];
@@ -22,7 +21,7 @@ class Coach extends Model
 
     public function club()
     {
-        return $this->belongsTo(Club::class);
+        return $this->belongsTo(Clubs::class);
     }
 
     public function contracts()

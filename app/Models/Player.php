@@ -32,4 +32,8 @@ class Player extends Model
     {
         return $this->belongsTo(playerperformance::class, 'player_id');
     }
+    public function footballLineups()
+    {
+        return $this->hasMany(FootballLineup::class);
+    }
 }

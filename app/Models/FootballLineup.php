@@ -32,6 +32,10 @@ public function clubs()
 {
     return $this->belongsTo(Clubs::class, 'club_id');
 }
+public function player()
+    {
+        return $this->belongsTo(Player::class);
+    }
 
 
     // Define any relationships or additional methods here

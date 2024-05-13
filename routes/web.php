@@ -21,6 +21,7 @@ use App\Http\Controllers\LeagueController;
 use App\Http\Controllers\TwilioSMSController;
 use App\Http\Controllers\UsersViewController;
 use App\Http\Controllers\GuessResultController;
+use App\Http\Controllers\CoachController;
 
 
 
@@ -181,6 +182,11 @@ Route::get('/showallplayer', [PlayerController::class, 'index'])->name('players.
 Route::get('/assignplayer', [PlayerController::class, 'assign'])->name('players.assign');
 Route::post('/storeplayer', [PlayerController::class, 'store'])->name('players.store');
 
+//Coachs Route
+Route::get('/showallcoachs', [CoachController::class, 'index'])->name('coachs.index');
+Route::get('/assigncoachs', [CoachController::class, 'assign'])->name('coachs.assign');
+Route::post('/storecoachs', [CoachController::class, 'store'])->name('coachs.store');
+
 
 // project
 Route::get('/projectcreate', [projectcontroller::class, 'create'])->name('project.create');
@@ -219,9 +225,9 @@ Route::post('guess-results/{match_id}', [GuessResultController::class, 'store'])
 
 // ->middleware('checkPermission')
 
-Route::fallback(function () {
-    return view('errors.404');
-});
+// Route::fallback(function () {
+//     return view('errors.404');
+// });
 
 // sms varification
 Route::get('sendSMS', [TwilioSMSController::class, 'index']);

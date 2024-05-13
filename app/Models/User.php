@@ -99,4 +99,8 @@ class User extends Authenticatable
 {
     return $this->hasMany(notification::class); // Adjust accordingly based on your implementation
 }
+public function coach()
+{
+    return $this->hasOne(Coachs::class);
+}
 }

@@ -30,7 +30,7 @@
       </div>
       <div class="form-group has-feedback">
         <label for="email">Password</label>
-        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" value="12345678" required autocomplete="current-password">
+        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" value="1234567" required autocomplete="current-password">
         @error('password')
             <div class="invalid-feedback">
               <strong>{{ $message }}</strong>

@@ -56,4 +56,8 @@ class Clubs extends Model
     {
         return $this->hasMany(League::class, 'club_id');
 }
+public function coachs()
+{
+    return $this->hasMany(Coachs::class);
+}
 }

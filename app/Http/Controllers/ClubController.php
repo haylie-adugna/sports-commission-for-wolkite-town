@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Clubs;
 use App\Models\User;
 use App\Models\League;
+use App\Models\Coachs;
 use App\Http\Requests\Clubs\CreateClubsRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
 use Illuminate\Support\Facades\DB;
@@ -55,6 +56,10 @@ class ClubController extends Controller
             $data['logo'] = $imageFileName;
         }
         $clubs = clubs::create($data);
+        $Coachs = Coachs::create([
+            'club_id'=>$clubs->id,
+            'user_id'=>$clubs->coach_name_id,
+        ]);
         $leagues = League::create([
             'club_id'=>$clubs->id,
             'total_goal'=>0,

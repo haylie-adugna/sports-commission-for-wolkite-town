@@ -5,8 +5,13 @@
         <div class="col-md-12">
             <div class="box box-warning">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Football club lineup preparation</h3>
-                </div>
+                    @if(Auth::user()->coach && Auth::user()->coach->club)
+                    <h3 class="box-title">{{ Auth::user()->coach->club->club_name }} Football club lineup preparation</h3>
+                @else
+                    <p>No club assigned</p>
+                @endif
+
+                                </div>
                 <div class="box-body">
                     <div class="box-body">
                         <div class="pull-left">
@@ -33,12 +38,12 @@
                                         <td class="col-md-2"><input value="{{ old('jerseyNumber'.$i, 12) }}"
                                                 type="number" name="jerseyNumber{{ $i }}" class="form-control"></td>
                                         <td class="col-md-3">
-                                            <select class="form-control" name="playerName{{ $i }}" id="game_type_id">
+                                            <select class="form-control" name="playerName{{ $i }}" id="playerName{{ $i }}">
                                                 @foreach($players as $player)
-                                                <option value="{{ $player->user->id }}">
-                                                    {{ $player->user->first_name }} {{ $player->user->middle_name }} {{ $player->user->last_name }}
-                                                </option>
-                                            @endforeach
+                                                    <option value="{{ $player->id }}">
+                                                        {{ $player->user->first_name }} {{ $player->user->middle_name }} {{ $player->user->last_name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </td>
                                         <td class="col-md-3">
@@ -80,18 +85,12 @@
                                         <td class="col-md-2"><input value="{{ old('substituteJerseyNumber'.$i, '') }}" type="number"
                                                 name="substituteJerseyNumber{{ $i }}" class="form-control"></td>
                                         <td>
-                                            <select class="form-control" name="substitutePlayerName{{ $i }}" id="game_type_id">
-                                                @foreach(DB::table('players')
-                                                ->select('user_id')
-                                                ->groupBy('user_id')
-                                                ->get() as $player)
-                                                @php
-                                                    $user = \App\Models\User::find($player->user_id);
-                                                @endphp
-                                                <option value="{{ $user->id }}">
-                                                    {{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}
-                                                </option>
-                                            @endforeach
+                                            <select class="form-control" name="substitutePlayerName{{ $i }}" id="substitutePlayerName{{ $i }}">
+                                                @foreach($players as $player)
+                                                    <option value="{{ $player->id }}">
+                                                        {{ $player->user->first_name }} {{ $player->user->middle_name }} {{ $player->user->last_name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
 
                                         </td>

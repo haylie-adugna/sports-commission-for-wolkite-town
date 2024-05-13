@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\models\matchs;
 use App\models\Events;
 use App\Models\League;
+use App\Models\Clubs;
 class HomeController extends Controller
 {
 
@@ -14,12 +15,12 @@ class HomeController extends Controller
     }
     public function home()
     {
-        $leagues = League::with(['clubs'])->get();
+        $clubs = Clubs::with(['leagues'])->get();
         $matchs = Matchs::with(['clubs'])->get();
         $events = events::latest()->take(5)->get();
 
 
-        return view('frontend.home', compact('matchs', 'leagues', 'events'));
+        return view('frontend.home', compact('matchs', 'clubs', 'events'));
     }
     public function football()
     {
