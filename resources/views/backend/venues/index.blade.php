@@ -25,7 +25,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <a href="{{ route('venue.create') }}" class="btn btn-success mb-3">Add New Venue</a>
+                        <a href="{{ route('venue.create') }}" class="btn btn-success mb-3"><i class="fa fa-plus"></i>Add New Venue</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>

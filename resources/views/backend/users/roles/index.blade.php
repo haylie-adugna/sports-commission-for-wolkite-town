@@ -3,7 +3,7 @@
 @can('role_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.roles.create') }}">Add new role</a>
+            <a class="btn btn-success" href="{{ route('admin.roles.create') }}"><i class="fa fa-plus"></i>Add new role</a>
         </div>
     </div>
 @endcan

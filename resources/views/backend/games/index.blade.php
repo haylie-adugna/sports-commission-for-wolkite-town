@@ -22,7 +22,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <a href="{{ route('games.create') }}" class="btn btn-success mb-3 pull-right">Add New Game</a>
+                        <a href="{{ route('games.create') }}" class="btn btn-success mb-3 pull-right"><i class="fa fa-plus"></i>Add New Game</a>
                         <table id="cbtn-selectors" class="table table-bordered table-striped">
                             <thead>
                                 <tr>

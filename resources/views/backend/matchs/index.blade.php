@@ -22,7 +22,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
-            <a href="{{ route('matchs.create') }}" class="btn btn-success mb-3">Add New match</a>
+            <a href="{{ route('matchs.create') }}" class="btn btn-success mb-3"><i class="fa fa-plus"></i>Add New match</a>
             <table id="cbtn-selectors" class="table table-bordered table-striped">
                 <thead>
                     <tr>

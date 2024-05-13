@@ -23,7 +23,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body table-responsive">
-                <a href="{{ route('events.create') }}" class="btn btn-success mb-3">Add New Event</a>
+                <a href="{{ route('events.create') }}" class="btn btn-success mb-3"><i class="fa fa-plus"></i>Add New Event</a>
                 <table id="basic-btn" class="table table-bordered table-striped">
                     <thead>
                         <tr>

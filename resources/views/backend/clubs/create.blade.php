@@ -22,12 +22,13 @@
                                 <div class="form-group">
                                     <label for="club_manager_id">Club Manager:</label>
                                     <select class="form-control" name="club_manager_id" id="club_manager_id" required>
-                                        @forelse(\App\Models\Role::where('title', 'club_manager')->first()->users ?? [] as $clubManager)
+                                        @forelse($clubManagers as $clubManager)
                                             <option value="{{ $clubManager->id }}">{{ $clubManager->first_name }}</option>
                                         @empty
                                             <option value="" disabled>No club managers available</option>
                                         @endforelse
                                     </select>
+
                                 </div>
                             </div>
 
@@ -35,12 +36,13 @@
                                 <div class="form-group">
                                     <label for="coach_name_id">Coach:</label>
                                     <select class="form-control" name="coach_name_id" id="coach_name_id">
-                                        @forelse(\App\Models\Role::where('title', 'coach')->first()->users ?? [] as $coach)
+                                        @forelse($coachs as $coach)
                                             <option value="{{ $coach->id }}">{{ $coach->first_name }}</option>
                                         @empty
                                             <option value="" disabled>No available coach</option>
                                         @endforelse
                                     </select>
+
                                 </div>
                             </div>
 

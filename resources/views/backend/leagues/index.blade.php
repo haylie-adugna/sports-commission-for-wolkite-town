@@ -24,7 +24,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <a href="{{ route('clubs.create') }}" class="btn btn-success mb-3">Add New Club</a>
+                        <a href="{{ route('clubs.create') }}" class="btn btn-success mb-3"><i class="fa fa-plus"></i>Add New Club</a>
                         </br>
                         <table id="basic-btn" class="table table-striped table-bordered nowrap">
                             <thead>

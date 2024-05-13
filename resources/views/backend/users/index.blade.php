@@ -7,7 +7,7 @@
         <div class="card-block">
             <div class="dt-responsive table-responsive">
 
-                <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">Add New user</a>
+                <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3"><i class="fa fa-plus"></i>Add New user</a>
                 <br>
                 <table id="basic-btn" class="table table-striped table-bordered nowrap">
                     {{-- class="table  table-striped table-bordered nowrap" "cbtn-selectors" "basic-btn" "multilevel-btn"

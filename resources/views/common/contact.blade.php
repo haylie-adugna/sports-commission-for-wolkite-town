@@ -35,6 +35,8 @@
             <!-- Contact Form -->
             <div class="box box-primary">
                 <div class="box-header">
+                    <i class="fa fa-envelope"></i>
+
                     <h3 class="box-title">Contact Us</h3>
                 </div>
 
@@ -112,9 +114,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group text-center pull-right">
-                            <button class="btn btn-success btn-submit">Submit</button>
+                            <button class="btn btn-success btn-submit" id="sendEmail">Submit
+                            <i class="fa fa-arrow-circle-right"></i></button>
+
                         </div>
                     </form>
                 </div>

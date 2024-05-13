@@ -181,11 +181,15 @@ Route::get('/deleteclub/{id}', [ClubController::class, 'destroy'])->name('clubs.
 Route::get('/showallplayer', [PlayerController::class, 'index'])->name('players.index');
 Route::get('/assignplayer', [PlayerController::class, 'assign'])->name('players.assign');
 Route::post('/storeplayer', [PlayerController::class, 'store'])->name('players.store');
+Route::delete('/delete/players/{id}', [PlayerController::class, 'destroy'])->name('players.destroy');
 
 //Coachs Route
 Route::get('/showallcoachs', [CoachController::class, 'index'])->name('coachs.index');
 Route::get('/assigncoachs', [CoachController::class, 'assign'])->name('coachs.assign');
 Route::post('/storecoachs', [CoachController::class, 'store'])->name('coachs.store');
+Route::get('/coachsedit/{id}', [CoachController::class, 'update'])->name('coachs.update');
+Route::get('/coachshow/{id}', [CoachController::class, 'show'])->name('coachs.show');
+Route::delete('/deletecoachs/{id}', [CoachController::class, 'destroy'])->name('coachs.destroy');
 
 
 // project
@@ -196,6 +200,7 @@ Route::post('/projectedit/{id}', [projectcontroller::class, 'edit'])->name('proj
 Route::get('/showallproject', [projectcontroller::class, 'index'])->name('project.index');
 Route::get('/projectshow/{id}', [projectcontroller::class, 'show'])->name('project.show');
 Route::get('/deleteproject/{id}', [projectcontroller::class, 'destroy'])->name('project.destroy');
+
 // un uthorized users view
 Route::get('/view/clubs', [UsersViewController::class, 'clubs'])->name('view.clubs');
 Route::get('/view/events', [UsersViewController::class, 'events'])->name('view.events');

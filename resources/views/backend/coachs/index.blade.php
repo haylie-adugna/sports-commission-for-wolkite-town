@@ -81,32 +81,13 @@
                                         <td><img style="height: 100px; width: 100px;" src="{{asset('upload/clubs/image')}}/{{$coach->logo}}" alt="logo"></td>
                                         <td><a href="{{ asset($coach->pdf) }}" target="_blank">View PDF</a></td>
                                         <td class="text-center">
-                                            <div class="fa fa-edit">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm dropdown-toggle"
-                                                        data-toggle="dropdown" data-offset="-52">
-                                                        <i class="fas fa-bars"></i>
-                                                    </button>
+                                            <form method="POST" action="{{ route('coachs.destroy', $coach->id) }}" class="d-inline">
+                                                @csrf @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this coach?')">
+                                                    <i class="fa fa-fw fa-trash"></i> Delete Coach
+                                                </button>
+                                            </form>
 
-                                                    <div class="dropdown-menu pull-right" role="menu">
-                                                        {{--View Profile--}}
-                                                        <a href="{{ route('clubs.show', $coach->id) }}"
-                                                            class="dropdown-item"><i class="fa fa-fw fa-edit"></i> View
-                                                            Information</a><br><br>
-                                                        {{--Edit--}}
-                                                        <a href="{{ route('clubs.update', $coach->id) }}"
-                                                            class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Edit
-                                                            Information</a><br><br>
-                                                        <i class="divider"></i>
-                                                        {{--Delete--}}
-                                                        <a id="" href="{{ route('clubs.destroy', $coach->id) }}"
-                                                            class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete
-                                                            Club</a>
-                                                        <form method="HEAD" id="" action=""
-                                                            class="hidden">@csrf @method('delete')</form>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

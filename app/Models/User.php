@@ -102,5 +102,8 @@ class User extends Authenticatable
 public function coach()
 {
     return $this->hasOne(Coachs::class);
+}public function coachs()
+{
+    return $this->hasMany(Coachs::class);
 }
 }

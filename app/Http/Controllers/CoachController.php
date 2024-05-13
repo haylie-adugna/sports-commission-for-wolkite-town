@@ -74,10 +74,10 @@ class CoachController extends Controller
     public function destroy($id)
     {
         // Find and delete the match record
-        $clubs = clubs::find($id);
-        $clubs->delete();
+        $coachs = Coachs::find($id);
+        $coachs->delete();
 
         // Redirect to the index page with success message
-        return redirect()->route('clubs.index')->with('status', 'clubs deleted successfully');
+        return redirect()->route('coachs.index')->with('status', 'clubs deleted successfully');
     }
 }

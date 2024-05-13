@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label for="project_manager_id">project Manager:</label>
                                     <select class="form-control" name="project_manager_id" id="project_manager_id" required>
-                                        @forelse(\App\Models\Role::where('title', 'project_manager')->first()->users ?? [] as $projectManager)
+                                        @forelse($projectManagers as $projectManager)
                                             <option value="{{ $projectManager->id }}">{{ $projectManager->first_name }}</option>
                                         @empty
                                             <option value="" disabled>No project managers available</option>
@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="coach_name_id">Coach:</label>
                                     <select class="form-control" name="coach_name_id" id="coach_name_id">
-                                        @forelse(\App\Models\Role::where('title', 'coach')->first()->users ?? [] as $coach)
+                                        @forelse($coachs as $coach)
                                             <option value="{{ $coach->id }}">{{ $coach->first_name }}</option>
                                         @empty
                                             <option value="" disabled>No available coach</option>
@@ -128,7 +128,7 @@
 
         </div>
         </div>
-        
+
 
     </section>
 @endsection

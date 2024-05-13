@@ -5,7 +5,7 @@
             <!-- right column -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Assign coach to Club</h3>
+                    <h3 class="box-title"><i class="fa fa-plus"></i>Assign coach to Club</h3>
                 </div>
                 <form action="{{ route('coachs.store') }}" method="post" enctype="multipart/form-data">
                     @csrf

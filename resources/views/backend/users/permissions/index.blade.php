@@ -3,9 +3,7 @@
 @can('permission_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.permissions.create') }}">
-                Add permission
-            </a>
+            <a class="btn btn-success" href="{{ route('admin.permissions.create') }}"><i class="fa fa-plus"></i>Add permission</a>
         </div>
     </div>
 @endcan

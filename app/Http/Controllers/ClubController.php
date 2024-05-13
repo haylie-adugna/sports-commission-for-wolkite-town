@@ -8,6 +8,7 @@ use App\Models\Clubs;
 use App\Models\User;
 use App\Models\League;
 use App\Models\Coachs;
+use App\Models\Role;
 use App\Http\Requests\Clubs\CreateClubsRequest;
 use App\Http\Requests\Clubs\UpdateClubsRequest;
 use Illuminate\Support\Facades\DB;
@@ -35,9 +36,21 @@ class ClubController extends Controller
         return view('backend.clubs.index', compact('clubs'));
     }
     public function create()
-    {
-        return view('backend.clubs.create');
-    }
+{
+    // Retrieve club managers
+    $clubManagers = Role::where('title', 'club_manager')->first()->users ?? [];
+
+    // Retrieve users who have the role of coach but are not associated with a coach
+    $coachs = User::whereHas('roles', function ($query) {
+            $query->where('title', 'coach');
+        })
+        ->whereDoesntHave('coachs') // Filter out users who are already associated with a coach
+        ->get();
+
+    return view('backend.clubs.create', compact('clubManagers', 'coachs'));
+}
+
+
     public function store(CreateClubsRequest $request)
 {
         $data = $request->all();

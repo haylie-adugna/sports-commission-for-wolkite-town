@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Projects;
+use App\Models\Role;
+use App\Models\User;
 use App\Http\Requests\Projects\CreateProjectRequest;
 use App\Http\Requests\Projects\UpdateProjectRequest;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +30,16 @@ class projectcontroller extends Controller
      */
     public function create()
     {
-        return view('backend.project.create');
+        $projectManagers = Role::where('title', 'project_manager')->first()->users ?? [];
+
+    // Retrieve users who have the role of coach but are not associated with a coach
+    $coachs = User::whereHas('roles', function ($query) {
+            $query->where('title', 'coach');
+        })
+        ->whereDoesntHave('coachs') // Filter out users who are already associated with a coach
+        ->get();
+
+    return view('backend.project.create', compact('projectManagers', 'coachs'));
     }
     public function store(CreateProjectRequest $request)
 {
