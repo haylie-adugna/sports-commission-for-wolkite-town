@@ -15,24 +15,11 @@ class LeagueController extends Controller
      */
     public function index()
     {
-        // Retrieve all leagues along with their associated clubs
-        $leagues = League::with(['clubs'])->get();
+        $clubs = Clubs::with(['leagues'])->get();
 
-        // Loop through each league to handle null club associations
-        foreach ($leagues as $league) {
-            // Check if the league has an associated club
-            if ($league->clubs) {
-                // Access club properties safely
-                $clubName = $league->clubs->club_name;
-                // You can do other operations with $clubName or other club properties
-            } else {
-                // Handle the case where the league doesn't have an associated club
-                // You can set default values or skip processing, depending on your requirements
-            }
-        }
 
         // Pass the leagues data to the view
-        return view('backend.leagues.index', compact('leagues'));
+        return view('backend.leagues.index', compact('clubs'));
     }
 
     public function create()

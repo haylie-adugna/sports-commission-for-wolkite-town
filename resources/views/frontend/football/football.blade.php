@@ -34,9 +34,10 @@
                                     <th>rank</th>
                                 </tr>
                             <tbody>
-                                @foreach ($leagues as $league)
+                                @foreach ($clubs as $club)
+                                @foreach ($club->leagues as $league)
                                     <tr>
-                                        <td>{{ $league->clubs->club_name }}</td> <!-- corrected line -->
+                                        <td>{{ $club->club_name }}</td> <!-- corrected line -->
                                         <td>{{ $league->total_played }}</td>
                                         <td>{{ $league->total_win }}</td>
                                         <td>{{ $league->total_draw }}</td>
@@ -48,8 +49,9 @@
                                         <td>{{ $league->point_difference }}</td>
                                         <td>{{ $league->rank }}</td>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
                         </table>
                     </div>
 

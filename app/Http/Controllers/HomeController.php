@@ -24,12 +24,12 @@ class HomeController extends Controller
     }
     public function football()
     {
-        $leagues = League::with(['clubs'])->get();
+        $clubs = Clubs::with(['leagues'])->get();
         $matchs = Matchs::with(['clubs'])->get();
         $events = events::latest()->take(5)->get();
 
 
-        return view('frontend.football.football', compact('matchs', 'leagues', 'events'));
+        return view('frontend.football.football', compact('matchs', 'clubs', 'events'));
     }
     public function vollyball()
     {

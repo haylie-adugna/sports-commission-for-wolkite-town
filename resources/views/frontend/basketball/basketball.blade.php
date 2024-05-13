@@ -37,7 +37,8 @@
                             <tbody>
                                 @foreach ($leagues as $league)
                                     <tr>
-                                        <td>{{ $league->clubs->club_name }}</td> <!-- corrected line -->
+                                        {{-- <td>{{ $league->clubs->club_name }}</td> <!-- corrected line --> --}}
+                                        <td>wolkite</td> <!-- corrected line -->
                                         <td>{{ $league->total_played }}</td>
                                         <td>{{ $league->total_win }}</td>
                                         <td>{{ $league->total_draw }}</td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matchs;
+use App\Models\Clubs;
 use App\Models\MatchRecored;
 use App\Http\Requests\Matchs\CreateMatchsRequest;
 use App\Http\Requests\Matchs\UpdateMatchsRequest;
@@ -15,10 +16,21 @@ class MatchController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $matchs= matchs::all();
-        return view('backend.matchs.index', compact('matchs'));
+{
+    $clubs = Clubs::all();
+    $matchs = [];
+
+    foreach ($clubs as $club) {
+        // Retrieve matches where either Team1 or Team2 matches the club's ID
+        $matchs = Matchs::where('Team1', $club->id)
+                             ->orWhere('Team2', $club->id)
+                             ->get();
+
     }
+
+    return view('backend.matchs.index', compact('matchs'));
+}
+
 
     /**
      * Show the form for creating a new resource.
