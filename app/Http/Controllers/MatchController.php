@@ -31,38 +31,40 @@ class MatchController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateMatchsRequest $request)
-    {
-        // Create a new match record
-        $match = Matchs::create($request->all());
-        $team1_club_id = $request->input('Team1');//1
-        $team2_club_id = $request->input('Team2');//2
-        // Fetch single player record instead of collection
-        $team1_player_red_card = MatchRecored::where('club_id', $team1_club_id)
-            ->where('action', 'red_card')
-            ->first(); // Use first() instead of get()
-        $team2_player_red_card = MatchRecored::where('club_id', $team2_club_id)
-            ->where('action', 'red_card')
-            ->first(); // Use first() instead of get()
-        if ($team1_player_red_card) {
-            // Update the single player record
-           $match_record_expires_at= MatchRecored::find($team1_player_red_card->id);
-            $match_record_expires_at->update([
-                'expires_at' => $match->End_time
-            ]);
-        }
-        if ($team2_player_red_card) {
-            // Update the single player record
-            $match_record_expires_at= MatchRecored::find($team2_player_red_card->id);
-            $match_record_expires_at->update([
-                'expires_at' => $match->End_time
-            ]);
-        }
 
-        // Redirect to the index page with success message
-        return redirect()->route('matchs.index')->with('success', 'Match created successfully');
+public function store(CreateMatchsRequest $request)
+{
+    // Create a new match record
+    $match = Matchs::create($request->all());
+
+    // Fetch team IDs from the request
+    $team1_club_id = $request->input('Team1');
+    $team2_club_id = $request->input('Team2');
+
+    // Update red card expiry for team 1
+    $this->updateRedCardExpiry($team1_club_id, $match->End_time);
+
+    // Update red card expiry for team 2
+    $this->updateRedCardExpiry($team2_club_id, $match->End_time);
+
+    // Redirect to the index page with success message
+    return redirect()->route('matchs.index')->with('success', 'Match created successfully');
+}
+
+private function updateRedCardExpiry($club_id, $expiry_time)
+{
+    // Find the red card record for the club
+    $player_red_card = MatchRecored::where('club_id', $club_id)
+        ->where('action', 'red_card')
+        ->first();
+
+    // If red card record exists, update expiry time
+    if ($player_red_card) {
+        $player_red_card->update([
+            'expires_at' => $expiry_time
+        ]);
     }
-
+}
     /**
      * Display the specified resource.
      */

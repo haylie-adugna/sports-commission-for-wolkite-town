@@ -31,15 +31,16 @@ class Matchs extends Model
     {
         return $this->belongsToMany(Clubs::class);
     }
-    public function Team1()
-    {
-        return $this->belongsTo(Clubs::class, 'Team1');
-    }
+    public function team1()
+{
+    return $this->belongsTo(Clubs::class, 'Team1');
+}
 
-    public function Team2()
-    {
-        return $this->belongsTo(Clubs::class, 'Team2');
-    }
+public function team2()
+{
+    return $this->belongsTo(Clubs::class, 'Team2');
+}
+
     public function commentator()
     {
         return $this->belongsTo(User::class, 'Commentator');

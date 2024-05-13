@@ -44,22 +44,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($matchs as $matchs)
+                    @foreach ($matchs as $match)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $matchs->team1->club_name }}</td>
-                        <td>{{ $matchs->team2->club_name }}</td>
-                        <td>{{ $matchs->Referee }}</td>
-                        <td>{{ $matchs->Assistant_Referee1 }}</td>
-                        <td>{{ $matchs->Assistant_Referee2 }}</td>
-                        <td>{{ $matchs->Start_time }}</td>
-                        <td>{{ $matchs->End_time }}</td>
-                        <td>{{ $matchs->Venue }}</td>
-                        <td>{{ $matchs->Medical_Support }}</td>
-                        <td>{{ $matchs->commentator->first_name }}</td>
-                        <td>{{ $matchs->Promoter }}</td>
-                        <td>{{ $matchs->Ticket }}</td>
-                        <td>{{ $matchs->Recored_Keeping }}</td>
+                        <td>{{ $match->team1->club_name }}</td>
+                        <td>{{ $match->team2->club_name }}</td>
+                        <td>{{ $match->Referee }}</td>
+                        <td>{{ $match->Assistant_Referee1 }}</td>
+                        <td>{{ $match->Assistant_Referee2 }}</td>
+                        <td>{{ $match->Start_time }}</td>
+                        <td>{{ $match->End_time }}</td>
+                        <td>{{ $match->Venue }}</td>
+                        <td>{{ $match->Medical_Support }}</td>
+                        <td>{{ $match->commentator->first_name }}</td>
+                        <td>{{ $match->Promoter }}</td>
+                        <td>{{ $match->Ticket }}</td>
+                        <td>{{ $match->Recored_Keeping }}</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
@@ -69,19 +69,19 @@
                                 <div class="dropdown-menu pull-right" role="menu">
 
                                     {{-- View Profile --}}
-                                    <a href="{{ route('matchs.show', $matchs->id) }}" class="dropdown-item">
+                                    <a href="{{ route('matchs.show', $match->id) }}" class="dropdown-item">
                                         <i class="fa fa-fw fa-eye"></i> View Information
                                     </a><br><br>
 
                                     {{-- Edit --}}
-                                    <a href="{{ route('matchs.update', $matchs->id) }}" class="dropdown-item">
+                                    <a href="{{ route('matchs.update', $match->id) }}" class="dropdown-item">
                                         <i class="fa fa-fw fa-edit"></i> Edit Information
                                     </a><br><br>
 
                                     <i class="divider"></i>
 
                                     {{-- Delete --}}
-                                    <a id="" href="{{route('matchs.destroy',$matchs->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
+                                    <a id="" href="{{route('matchs.destroy',$match->id)}}" class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete User</a>
                                     <form method="HEAD" id="" action="" class="hidden">@csrf @method('delete')</form>
 
                                 </div>

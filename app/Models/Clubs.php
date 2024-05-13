@@ -40,6 +40,15 @@ class Clubs extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function homeMatches()
+    {
+        return $this->hasMany(Matchs::class, 'Team1');
+    }
+
+    public function awayMatches()
+    {
+        return $this->hasMany(Matchs::class, 'Team2');
+    }
 
     /**
      * Get the football lineups associated with the club.
