@@ -20,7 +20,6 @@ class games extends Model
         'end_date',
         'number_of_player',
         'equipment',
-        'governing_body',
     ];
     public function clubs()
     {

@@ -73,11 +73,7 @@
                     <!-- /.box-body -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-xs-2">
-                                <label for="Age">Age:</label>
-                                <input type="number" class="form-control" name="age" placeholder="Age"
-                                    value="{{ $user->age }}">
-                            </div>
+
                             <div class="col-xs-3">
                                 <label for="country">Country:</label>
                                 <select class="form-control" name="country">
@@ -200,7 +196,7 @@
                                 <label for="Behavioral Records">Images:</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput" required value="{{asset('upload/user/image')}}/{{$user->photo}}">
+                                        <input type="file" accept="image/*" class="form-control" name="image" id="imageInput"  value="{{asset('upload/user/image')}}/{{$user->photo}}">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                                         </span>

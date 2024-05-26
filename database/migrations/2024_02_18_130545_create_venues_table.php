@@ -19,11 +19,11 @@ class CreateVenuesTable extends Migration
             $table->text('description')->nullable();
             $table->string('address')->nullable();
             $table->integer('capacity')->nullable();
-            $table->string('facilities')->nullable();
-            $table->string('layout')->nullable(); // Assuming it's a string, change if necessary
+            $table->json('facilities')->nullable();
             $table->string('availability')->nullable();
             $table->string('contact_information')->nullable();
-            $table->string('accessibility')->nullable();
+            $table->json('accessibility')->nullable();
+            $table->string('layout')->nullable(); // Assuming it's a string, change if necessary
             $table->decimal('cost', 10, 2)->nullable(); // Adjust precision and scale as needed
             $table->string('booking')->nullable();
             $table->text('technical_specifications')->nullable();

@@ -26,20 +26,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Team 1</th>
-                        <th>Team 2</th>
-                        <th>Time</th>
-                        <th>Referee</th>
-                        <th>Assistant Referee 1</th>
-                        <th>Assistant Referee 2</th>
-                        <th>Start Time</th>
-                        <th>Start Time</th>
-                        <th>Venue</th>
-                        <th>Medical Support</th>
-                        <th>Commentator</th>
-                        <th>Promoter</th>
-                        <th>Ticket</th>
-                        <th>Record Keeping</th>
+                        <th>match_id</th>
+                        <th>club</th>
+                        <th>player</th>
+                        <th>activity</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -47,20 +37,11 @@
                     @foreach ($leagues as $matchs)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $matchs->Team1 }}</td>
-                        <td>{{ $matchs->Team2 }}</td>
-                        <td>{{ $matchs->goal_time }}</td>
-                        <td>{{ $matchs->Referee }}</td>
-                        <td>{{ $matchs->Assistant_Referee1 }}</td>
-                        <td>{{ $matchs->Assistant_Referee2 }}</td>
-                        <td>{{ $matchs->Start_time }}</td>
-                        <td>{{ $matchs->End_time }}</td>
-                        <td>{{ $matchs->Venue }}</td>
-                        <td>{{ $matchs->Medical_Support }}</td>
-                        <td>{{ $matchs->Commentator }}</td>
-                        <td>{{ $matchs->Promoter }}</td>
-                        <td>{{ $matchs->Ticket }}</td>
-                        <td>{{ $matchs->Recored_Keeping }}</td>
+                        <td>{{ $matchs->match_id }}</td>
+                        <td>{{ $matchs->club_id }}</td>
+                        <td>{{ $matchs->player_id }}</td>
+                        <td>{{ $matchs->action }}</td>
+
                         <td class="text-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">

@@ -21,4 +21,5 @@ class MatchRecored extends Model
     {
         return $this->hasMany(PlayerPerformance::class);
     }
+    
 }

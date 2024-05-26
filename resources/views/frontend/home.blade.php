@@ -7,9 +7,6 @@
             <div class="shaper">
                 <marquee behavior="slide" direction="left"><h1 style="color: black">Welcome To wolkite town sport commission
                 </h1></marquee>
-
-                <h2 style="color: rgb(186, 0, 0)">wolkite town sport commission
-                </h2>
               </div>
             <section class="content-header">
 

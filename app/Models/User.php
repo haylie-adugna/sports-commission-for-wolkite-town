@@ -66,7 +66,10 @@ class User extends Authenticatable
     /**
      * Get the user type that owns the user.
      */
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
     public function roles()
     {
         return $this->belongsToMany(Role::class);

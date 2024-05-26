@@ -5,67 +5,32 @@
   <!-- Main content -->
   <section class="content">
     <!-- Small boxes (Stat box) -->
+
     <div class="row">
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-aqua">
-          <div class="inner">
-            <h3>150</h3>
 
-            <p>New Orders</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-          <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-            <p>Bounce Rate</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-          <div class="inner">
-            <h3>44</h3>
+        @foreach($usersByRole as $role)
+        @php
+            // Define an array of background color classes
+            $bgColors = ['bg-aqua', 'bg-green', 'bg-yellow', 'bg-red', 'bg-blue', 'bg-purple', 'bg-fuchsia', 'bg-maroon'];
+            // Select a random color from the array
+            $randomColor = $bgColors[array_rand($bgColors)];
+        @endphp
 
-            <p>User Registrations</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-person-add"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box {{ $randomColor }}">
+                <div class="inner">
+                    <h3>{{ $role->count }}</h3>
+                    <p>{{ $role->role }}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
         </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-red">
-          <div class="inner">
-            <h3>65</h3>
+    @endforeach
 
-            <p>Unique Visitors</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
     </div>
     <!-- /.row -->
     <!-- Main row -->
@@ -73,7 +38,7 @@
       <!-- Left col -->
       <section class="col-lg-7 connectedSortable">
         <!-- Custom tabs (Charts with tabs)-->
-        <div class="nav-tabs-custom">
+        {{-- <div class="nav-tabs-custom">
           <!-- Tabs within a box -->
           <ul class="nav nav-tabs pull-right">
             <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
@@ -85,11 +50,11 @@
             <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
             <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
           </div>
-        </div>
+        </div> --}}
         <!-- /.nav-tabs-custom -->
 
         <!-- Chat box -->
-        <div class="box box-success">
+        {{-- <div class="box box-success">
           <div class="box-header">
             <i class="fa fa-comments-o"></i>
 
@@ -172,11 +137,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <!-- /.box (chat box) -->
 
         <!-- TO DO List -->
-        <div class="box box-primary">
+        {{-- <div class="box box-primary">
           <div class="box-header">
             <i class="ion ion-clipboard"></i>
 
@@ -284,10 +249,10 @@
           <div class="box-footer clearfix no-border">
             <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
           </div>
-        </div>
+        </div> --}}
         <!-- /.box -->
 
-        <!-- quick email widget -->
+        {{-- <!-- quick email widget -->
         <div class="box box-info">
           <div class="box-header">
             <i class="fa fa-envelope"></i>
@@ -317,12 +282,12 @@
             <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
               <i class="fa fa-arrow-circle-right"></i></button>
           </div>
-        </div>
+        </div> --}}
 
       </section>
       <!-- /.Left col -->
       <!-- right col (We are only adding the ID to make the widgets sortable)-->
-      <section class="col-lg-5 connectedSortable">
+      {{-- <section class="col-lg-5 connectedSortable">
 
         <!-- Map box -->
         <div class="box box-solid bg-light-blue-gradient">
@@ -491,7 +456,7 @@
         </div>
         <!-- /.box -->
 
-      </section>
+      </section> --}}
       <!-- right col -->
     </div>
     <!-- /.row (main row) -->

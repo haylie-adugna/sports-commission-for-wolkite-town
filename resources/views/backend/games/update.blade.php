@@ -43,47 +43,38 @@
                         <div class="col-md-4">
                             <div class="">
                                 <div class="box-body">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="start_date">Start Date and Time:</label>
-                                                <input type="datetime-local" class="form-control" id="start_date"
-                                                    name="start_date" value="{{ $games->start_date }}">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="end_date">End Date and Time:</label>
-                                                <input type="datetime-local" class="form-control" id="end_date"
-                                                    name="end_date" value="{{ $games->end_date }}">
-                                            </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="number_of_player">Players or Participants:</label>
-                                            <input type="number" class="form-control" name="number_of_player"
-                                                placeholder="number of Players or Participants" value="{{ $games->number_of_player }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Equipment">Equipment:</label>
-                                            <textarea class="textarea" placeholder="Place some text here"
-                                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                                name="equipment" value="{!! $games->equipment !!}"></textarea>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="">
-                                <div class="box-body">
                                     <div class="form-group">
-                                        <label for="GoverningBody">Governing Body:</label>
-                                        <input type="text" class="form-control" name="governing_body"
-                                            placeholder="Governing Body" value="{{ $games->governing_body }}">
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date and Time:</label>
+                                            <input type="datetime-local" class="form-control" id="start_date"
+                                                name="start_date" value="{{ $games->start_date }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date">End Date and Time:</label>
+                                            <input type="datetime-local" class="form-control" id="end_date" name="end_date"
+                                                value="{{ $games->end_date }}">
+                                        </div>
+                                        <!-- /.input group -->
                                     </div>
+                                    <div class="form-group">
+                                        <label for="number_of_player">Players or Participants:</label>
+                                        <input type="number" class="form-control" name="number_of_player"
+                                            placeholder="number of Players or Participants"
+                                            value="{{ $games->number_of_player }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Equipment">Equipment:</label>
+                                        <textarea class="textarea" placeholder="Place some text here"
+                                            style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+                                            name="equipment" value="{!! $games->equipment !!}"></textarea>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+                        <!-- /.col-md-4 -->
+
                     </div>
             </div>
             <!-- /.box-body -->

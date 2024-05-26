@@ -55,9 +55,9 @@ return [
     |
     */
 
-     'url' => env('APP_URL', 'http://10.194.111.50'),
+     'url' => env('APP_URL', 'http://10.194.52.12'),
 
-     'asset_url' => env('ASSET_URL', 'http://10.194.111.50/module/Wolkite-town-sport-commission/public'),
+     'asset_url' => env('ASSET_URL', 'http://10.194.52.12/module/Wolkite-town-sport-commission/public'),
 
     //  'url' => env('APP_URL', 'http://localhost'),
 

@@ -31,7 +31,7 @@
                                 <select class="form-control" name="match_id" id="match_id" required>
                                     @forelse($matchs as $match)
                                         <option value="{{ $match->id }}">ID:- {{ $match->id }}| Name:-
-                                            {{ $match->match_name }}</option>
+                                            {{ $match->match_name }} {{ $match->team1->club_name }} VS {{ $match->team2->club_name }}</option>
                                     @empty
                                         <option value="" disabled>No club managers available</option>
                                     @endforelse

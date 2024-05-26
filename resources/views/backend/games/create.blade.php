@@ -76,11 +76,6 @@
                         <div class="col-md-4">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="GoverningBody">Governing Body:</label>
-                                    <input type="text" class="form-control" name="governing_body" value="{{ old('governing_body') }}"
-                                        placeholder="Governing Body">
-                                </div>
-                                <div class="form-group">
                                     <label for="Equipment">Equipment:</label>
                                     <textarea class="textarea" placeholder="Place some text here"
                                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"

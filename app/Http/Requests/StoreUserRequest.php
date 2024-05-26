@@ -28,7 +28,6 @@ class StoreUserRequest extends FormRequest
             'roles' => ['required', 'array'],
             'phone_number' => ['string', 'min:10', 'max:20', 'unique:users,phone_number'],
             'password' => ['required', Password::defaults(), 'confirmed'],
-            'age' => ['required', 'integer'],
             'country' => ['required'],
             'nationality' => ['required'],
             'city' => ['required'],

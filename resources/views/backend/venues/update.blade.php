@@ -56,8 +56,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="facilities">Facilities:</label>
-                                    <input type="text" class="form-control" name="facilities" id="facilities"
-                                        placeholder="Facilities" value="{{ $venues->facilities }}">
+                                    <select class="form-control" name="facilities[]" id='public-methods' multiple>
+                                        <option value="VIP lounges" {{ in_array('VIP lounges', explode(',', $venues->facilities)) ? 'selected' : '' }}>VIP Lounges</option>
+                                        <option value="press room" {{ in_array('press room', explode(',', $venues->facilities)) ? 'selected' : '' }}>Press Room</option>
+                                        <!-- Add other options as needed -->
+                                    </select>
                                     @error('facilities')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -95,8 +98,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="accessibility">Accessibility:</label>
-                                    <input type="text" class="form-control" name="accessibility" id="accessibility"
-                                        placeholder="Accessibility" value="{{ $venues->accessibility }}">
+                                    <select class="form-control" name="accessibility[]" id='public-methods' multiple>
+                                        <option value="Wilcher Accessibility setting" {{ in_array('Wilcher Accessibility setting', explode(',', $venues->accessibility)) ? 'selected' : '' }}>Wilcher Accessibility setting</option>
+                                        <option value="elevators" {{ in_array('elevators', explode(',', $venues->accessibility)) ? 'selected' : '' }}>Elevators</option>
+                                        <!-- Add other options as needed -->
+                                    </select>
                                     @error('accessibility')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -152,7 +158,7 @@
                     </div>
                     <div class="box-footer">
                         <a href="{{ route('venue.index') }}" class="btn btn-warning">Cancel</a>
-                        <button type="submit" class="btn btn-info pull-right">Add Venue</button>
+                        <button type="submit" class="btn btn-info pull-right">Update Venue</button>
                     </div>
                 </form>
             </div>

@@ -55,13 +55,26 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="facilities">Facilities:</label>
-                                <input type="text" class="form-control" name="facilities" id="facilities"
-                                    placeholder="Facilities" value="{{ old('facilities') }}">
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='select-all'>select all
+                                </button>
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-b-10" id='deselect-all'>deselect all
+                                </button>
+                                <select class="form-control" name="facilities[]" id='public-methods' multiple>
+                                    <option value="VIP lounges" {{ in_array('VIP lounges', old('facilities', [])) ? 'selected' : '' }}>VIP Lounges</option>
+                                    <option value="press room" {{ in_array('press room', old('facilities', [])) ? 'selected' : '' }}>Press Room</option>
+                                    <option value="medical facility" {{ in_array('medical facility', old('facilities', [])) ? 'selected' : '' }}>Medical Facility</option>
+                                    <option value="training room" {{ in_array('training room', old('facilities', [])) ? 'selected' : '' }}>Training Room</option>
+                                    <option value="locker room" {{ in_array('locker room', old('facilities', [])) ? 'selected' : '' }}>Locker Room</option>
+                                    <option value="restaurant" {{ in_array('restaurant', old('facilities', [])) ? 'selected' : '' }}>Restaurant</option>
+                                    <option value="parking space" {{ in_array('parking space', old('facilities', [])) ? 'selected' : '' }}>Parking Space</option>
+                                    <option value="wifi access" {{ in_array('wifi access', old('facilities', [])) ? 'selected' : '' }}>WiFi Access</option>
+                                </select>
                                 @error('facilities')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <label for="layout">Layout:</label>
                             <div class="form-group">
@@ -74,13 +87,17 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="availability">Availability:</label>
-                                <input type="text" class="form-control" name="availability" id="availability"
-                                    placeholder="Availability" value="{{ old('availability') }}">
+                                <select class="form-control" name="availability" id="availability">
+                                    <option value="">Select Availability</option>
+                                    <option value="available" {{ old('availability') == 'available' ? 'selected' : '' }}>Available</option>
+                                    <option value="unavailable" {{ old('availability') == 'unavailable' ? 'selected' : '' }}>Unavailable</option>
+                                </select>
                                 @error('availability')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="contact_information">Contact Information:</label>
@@ -94,13 +111,20 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="accessibility">Accessibility:</label>
-                                <input type="text" class="form-control" name="accessibility" id="accessibility"
-                                    placeholder="Accessibility" value="{{ old('accessibility') }}">
+                                <select class="form-control" name="accessibility[]" id='custom-headers' multiple='multiple'>
+                                    <option value="Wilcher Accessibility setting" {{ in_array('Wilcher Accessibility setting', old('accessibility', [])) ? 'selected' : '' }}>Wilcher Accessibility setting</option>
+                                    <option value="elevators" {{ in_array('elevators', old('accessibility', [])) ? 'selected' : '' }}>Elevators</option>
+                                    <option value="ramps" {{ in_array('ramps', old('accessibility', [])) ? 'selected' : '' }}>Ramps</option>
+                                    <option value="Accessibility restroom" {{ in_array('Accessibility restroom', old('accessibility', [])) ? 'selected' : '' }}>Accessibility Restroom</option>
+                                    <option value="audio assistant system" {{ in_array('audio assistant system', old('accessibility', [])) ? 'selected' : '' }}>Audio Assistant System</option>
+                                    <!-- Add more options as needed -->
+                                </select>
                                 @error('accessibility')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="cost">Cost:</label>
@@ -114,13 +138,18 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="booking">Booking/Reservation Status:</label>
-                                <input type="text" class="form-control" name="booking" id="booking"
-                                    placeholder="Booking/Reservation Status" value="{{ old('booking') }}">
+                                <select class="form-control" name="booking" id="booking">
+                                    <option value="">Select Booking/Reservation Status</option>
+                                    <option value="booked" {{ old('booking') == 'booked' ? 'selected' : '' }}>Booked</option>
+                                    <option value="reserved" {{ old('booking') == 'reserved' ? 'selected' : '' }}>Reserved</option>
+                                    <option value="available" {{ old('booking') == 'available' ? 'selected' : '' }}>Available</option>
+                                </select>
                                 @error('booking')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="technical_specifications">Technical Specifications:</label>

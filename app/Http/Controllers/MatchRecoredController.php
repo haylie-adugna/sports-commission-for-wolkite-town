@@ -39,7 +39,10 @@ class MatchRecoredController extends Controller
     }
     public function create()
     {
-        $matchs= Matchs::all();
+        $matchs = Matchs::with(['Team1', 'Team2', 'Commentator', 'Promoter'])
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
         $players= Player::all();
         $clubs= Clubs::all();
         return view('backend.matchsrecored.create', compact('matchs', 'players', 'clubs'));

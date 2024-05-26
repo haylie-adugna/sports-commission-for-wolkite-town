@@ -32,7 +32,6 @@ class CreateUserRequest extends FormRequest
         'phone_number' => ['string', 'min:12', 'max:20', 'unique:users'],
         'user_type' => ['required'],
         'password' => ['required', new BcryptPassword, 'confirmed'],
-        'age' => ['required', 'integer'],
         'country' => ['required'],
         'nationality' => ['required'],
         'city' => ['required'],

@@ -6,13 +6,23 @@ use App\models\matchs;
 use App\models\Events;
 use App\Models\League;
 use App\Models\Clubs;
+use App\Models\Role;
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
 
     public function dashboard()
     {
-        return view('dashboard');
+        $usersByRole = Role::leftJoin('role_user', 'roles.id', '=', 'role_user.role_id')
+                        ->leftJoin('users', 'role_user.user_id', '=', 'users.id')
+                        ->select('roles.title as role', DB::raw('COUNT(users.id) as count'))
+                        ->groupBy('roles.title')
+                        ->get();
+
+    return view('dashboard', compact('usersByRole'));
     }
+
     public function home()
     {
         $clubs = Clubs::with(['leagues'])->get();

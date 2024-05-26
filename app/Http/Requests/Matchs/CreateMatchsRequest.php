@@ -15,7 +15,7 @@ class CreateMatchsRequest extends FormRequest
     {
         return [
             'Team1' => 'required|string',
-            'Team2' => 'required|string',
+            'Team2' => 'required|string|different:Team1',
             'Referee' => 'nullable|string',
             'Assistant_Referee1' => 'nullable|string',
             'Assistant_Referee2' => 'nullable|string',

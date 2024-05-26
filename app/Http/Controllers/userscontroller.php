@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Gate;
 use Illuminate\Http\Request;
@@ -35,36 +36,56 @@ class UsersController extends Controller
         return view('backend.users.create', compact('roles'));
     }
 
-    public function store(StoreUserRequest $request)
-    {
-        $data = $request->all();
 
+public function store(StoreUserRequest $request)
+{
+    $data = $request->all();
 
-        if ($request->hasFile('image')) {
+    // Calculate age from date of birth
+    $dateOfBirth = Carbon::parse($request->input('date_of_birth'));
+    $now = Carbon::now();
+    $age = $dateOfBirth->diffInYears($now);
+
+    // Add calculated age to the data array
+    $data['age'] = $age;
+
+    // Handle file upload if image is present in the request
+    if ($request->hasFile('image')) {
         $imageFile = $request->file('image');
         $imageFileName = $imageFile->getClientOriginalName();
         $image = $imageFile->move('public/upload/user/image', $imageFileName);
         $data['photo'] = $imageFileName;
-       }
-        $user = User::create($data);
-
-        $user->roles()->sync($request->input('roles', []));
-
-        return redirect()->route('admin.users.index')->with('success', 'User created successful!');
-
-
     }
+
+    // Create user with the updated data
+    $user = User::create($data);
+
+    // Sync roles if provided in the request
+    $user->roles()->sync($request->input('roles', []));
+
+    // Redirect with success message
+    return redirect()->route('admin.users.index')->with('success', 'User created successfully!');
+}
+
 
     public function edit(User $user)
-    {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+{
+    abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('title', 'id');
+    $roles = Role::pluck('title', 'id');
 
-        $user->load('roles');
+    // Calculate age from date of birth
+    $dateOfBirth = Carbon::parse($user->date_of_birth);
+    $now = Carbon::now();
+    $age = $dateOfBirth->diffInYears($now);
 
-        return view('backend.users.edit', compact('roles', 'user'));
-    }
+    // Add calculated age to the user object
+    $user->age = $age;
+
+    $user->load('roles');
+
+    return view('backend.users.edit', compact('roles', 'user'));
+}
 
     public function update(UpdateUserRequest $request, User $user)
     {

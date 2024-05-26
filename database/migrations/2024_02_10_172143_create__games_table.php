@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('number_of_player')->nullable();
             $table->text('equipment')->nullable();
             $table->string('season')->nullable();
-            $table->string('governing_body')->nullable();
             $table->timestamps();
         });
     }

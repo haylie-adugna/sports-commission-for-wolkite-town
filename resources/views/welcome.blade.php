@@ -10,39 +10,7 @@
 
     <!-- Add your stylesheets and other head content here -->
 
-    <style>
-        /* Add your custom styles here */
-        html, body {
-  margin: 0; padding: 0;
-}
-.shaper {
-  background: gray url('{{ asset('assets/images/logo.png') }}') repeat 0 0;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  height: 550px;
-  padding-top: 120px;
-  box-sizing: border-box;
-  -webkit-animation: slide 30s linear infinite;
-}
-
-.shaper h1 {
-  font-family: sans-serif;
-  font-size: 80px;
-  color: white;
-}
-
-.shaper h2 {
-  font-family: sans-serif;
-  font-size: 40px;
-  color: white;
-}
-
-@-webkit-keyframes slide {
-    from { background-position: 0 0; }
-    to { background-position: -512px -512px; }
-}
-    </style>
+    
 
     @include('common.style')
 

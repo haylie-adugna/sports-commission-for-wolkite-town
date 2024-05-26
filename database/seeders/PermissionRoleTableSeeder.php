@@ -18,14 +18,7 @@ class PermissionRoleTableSeeder extends Seeder
                 && substr($permission->title, 0, 6) != 'asset_';
         });
         Role::findOrFail(2)->permissions()->sync($user_permissions);
-        Role::findOrFail(3)->permissions()->sync($user_permissions);
-        Role::findOrFail(4)->permissions()->sync($user_permissions);
-        Role::findOrFail(5)->permissions()->sync($user_permissions);
-        Role::findOrFail(6)->permissions()->sync($user_permissions);
-        Role::findOrFail(7)->permissions()->sync($user_permissions);
-        Role::findOrFail(8)->permissions()->sync($user_permissions);
-        Role::findOrFail(9)->permissions()->sync($user_permissions);
-        Role::findOrFail(10)->permissions()->sync($user_permissions);
+        
 
 
     }

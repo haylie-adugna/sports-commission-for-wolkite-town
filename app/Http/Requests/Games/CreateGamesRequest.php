@@ -21,7 +21,6 @@ class CreateGamesRequest extends FormRequest
         'end_date' => 'required|date',
         'number_of_player' => 'required|integer',
         'equipment' => 'required|string',
-        'governing_body' => 'required|string|max:255',
     ];
 
 }

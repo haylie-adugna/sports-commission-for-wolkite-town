@@ -27,7 +27,6 @@ class UpdateUserRequest extends FormRequest
             'gender' => ['sometimes', 'required', 'string'],
             'phone_number'=> ['string', 'regex:/^\+?[0-9]+$/', 'min:10', 'max:20', 'unique:users,id'],
             'roles.*' => ['integer'],'roles'   => ['required','array'],
-            'age' => ['sometimes', 'required', 'integer'],
             'country' => ['sometimes', 'required'],
             'nationality' => ['sometimes', 'required'],
             'city' => ['sometimes', 'required'],

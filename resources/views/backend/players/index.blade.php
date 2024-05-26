@@ -30,17 +30,9 @@
                                     <th>Player_Name</th>
                                     <th>Club_ID</th>
                                     <th>Club_Name</th>
-                                    <th>Club_Manager</th>
-                                    <th>Coach_Name</th>
-                                    <th>Contact Information</th>
-                                    <th>Social Media Link</th>
-                                    <th>Location</th>
-                                    <th>Game Category</th>
-                                    <th>Document</th>
-                                    <th>Description</th>
+
                                     <th>Status</th>
-                                    <th>Logo</th>
-                                    <th>PDF</th>
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,34 +44,7 @@
                                         <td>{{$player->user->first_name }}</td>
                                         <td>{{ $player->club_id }}</td>
                                         <td>{{ $player->club->club_name }}</td>
-                                        <td>
-                                            @if ($player->club_manager)
-                                                {{ $player->club_manager->first_name }} {{ $player->club_manager->last_name }}
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($player->coach)
-                                                {{ $player->coach->first_name }} {{ $player->coach->last_name }}
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>                                        <td>{{ $player->contact_information }}</td>
-                                        <td>{{ $player->social_media_link }}</td>
-                                        <td>{{ $player->location }}</td>
-                                        <td>
-                                            @if ($player->gameType)
-                                                {{ $player->gameType->game_type }}
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>
-                                        <td>{{ $player->document }}</td>
-                                        <td>{!! $player->description !!}</td>
-                                        <td>{{ $player->status }}</td>
-                                        <td><img style="height: 100px; width: 100px;" src="{{asset('upload/clubs/image')}}/{{$player->logo}}" alt="logo"></td>
-                                        <td><a href="{{ asset($player->pdf) }}" target="_blank">View PDF</a></td>
+                                        <td>Active</td>
                                         <td class="text-center">
                                             <div class="fa fa-edit">
                                                 <div class="btn-group">
@@ -101,7 +66,7 @@
                                                         {{--Delete--}}
                                                         <a id="" href="{{ route('clubs.destroy', $player->id) }}"
                                                             class="dropdown-item"><i class="fa fa-fw fa-edit"></i> Delete
-                                                            Club</a>
+                                                            player</a>
                                                         <form method="HEAD" id="" action=""
                                                             class="hidden">@csrf @method('delete')</form>
                                                     </div>
