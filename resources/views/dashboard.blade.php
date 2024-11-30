@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-7499642912383120">
+</amp-auto-ads>
   <!-- Main content -->
   <section class="content">
     <!-- Small boxes (Stat box) -->

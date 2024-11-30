@@ -12,7 +12,7 @@
             <div class="col-xs-12 col-md-4 text-center">
                 <h5>Contact Us</h5>
                 <p>Email: info@wolkitesport.com</p>
-                <p>Phone: +123 456 789</p>
+                <p>Phone: +251 921 34 6019</p>
             </div>
             <div class="col-xs-12 col-md-4 text-right">
                 <!-- Add any additional content here -->

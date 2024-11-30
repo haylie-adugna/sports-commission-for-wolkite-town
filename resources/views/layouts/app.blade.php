@@ -8,11 +8,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   @include('common.style')
-
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 </head>
 <body class="hold-transition skin-blue fixed sidebar-mini" >
 <div class="wrapper">
-
+    <amp-ad width="100vw" height="320"
+    type="adsense"
+    data-ad-client="ca-pub-7499642912383120"
+    data-ad-slot="9856550625"
+    data-auto-format="rspv"
+    data-full-width="">
+ <div overflow=""></div>
+</amp-ad>
   @include('layouts.navigation')
   @include('layouts.sidebar1')
 
@@ -76,5 +83,33 @@
 <!-- page script -->
 <div id="styleSelector">
 </div>
+<!--Start of Tawk.to Script-->
+
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/66c2152f0cca4f8a7a7755ba/1i5j25h8b';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', 'anonymous');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+
+    // Custom CSS for black theme
+    Tawk_API = Tawk_API || {};
+    Tawk_API.onLoad = function() {
+        Tawk_API.customStyle = {
+            backgroundColor: "#000000", // Black background color
+            buttonColor: "#ffffff",     // White button color
+            textColor: "#ffffff",       // White text color
+            fontSize: "16px",           // Font size
+            borderRadius: "10px",       // Rounded corners
+            borderColor: "#ffffff"      // Optional: White border around widget (if needed)
+        };
+    };
+</script>
+
+    <!--End of Tawk.to Script-->
 </body>
 </html>
